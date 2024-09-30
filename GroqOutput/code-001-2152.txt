@@ -1,0 +1,54 @@
+Here is the output with developer comments and a summary:
+
+**Part I**
+
+```
+int count;
+```
+Declare a variable `count` of type `int`, which will be used to keep track of the number of factors for each number.
+
+```
+void fun(int m,int n)
+{
+    if(m <=sqrt(n)){
+        // If m is less than or equal to the square root of n, then we need to check for factors
+        for (int a=m;a <=sqrt(n);a++)
+        {
+            if(n%a==0){
+                // If n is divisible by a, then a is a factor of n
+                count ++; fun (a,n/a);}
+            else 
+                // If n is not divisible by a, then we move on to the next number
+                count=count; 
+        }
+    }
+    else
+        // If m is greater than the square root of n, then we don't need to check for factors anymore
+        count=count; 
+ }
+```
+
+```
+main()
+{
+    int n;scanf("%d",&n);
+    // Read the number of test cases
+    for (int i =0;i<n;i++)
+    {
+        // For each test case
+        count=0; 
+        int num;scanf("%d",&num);
+        // Read the number to be checked for factors
+        for(int j=2;j<=sqrt(num);j++)
+        {
+            if(num%j==0)
+            {count ++; fun(j,num/j);}
+        }
+        printf ("%d\n",count+1); 
+    }
+}
+```
+
+**Part II**
+
+The provided code is designed to find the number of factors for a given set of numbers. The `fun` function is a recursive function that checks if a number is divisible by `m`, and if it is, it increments the `count` variable and recursively calls itself with `a` and `n/a` as arguments. The `main` function reads the number of test cases and for each test case, it reads the number to be checked and uses the `fun` function to find the number of factors. The `count` variable is incremented for each factor found, and finally, the total count is printed out.

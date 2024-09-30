@@ -1,0 +1,59 @@
+Here is the code with developer comments added to each line:
+
+**Part I: Code with Comments**
+```c
+// This is the first line of the program, specifying the filename and version information
+// ?????HW7_10.cpp
+// ???????1100019007?
+// ???2012-11-14 
+// ???1090 ????? 
+
+// This is the factorize function, which takes two integer parameters: m and k
+int factorize(int m,int k)
+{
+    // Initialize a variable c to 1
+    int c=1; // a = a???
+
+    // If m is less than 4, return 1
+    if(m<4) return 1; // ?m ?? 4 ?? 1
+
+    // Loop through each integer i from k to the square root of m
+    for(int i=k;i<=sqrt(m);i++) 
+    {
+        // If m is divisible by i, recursively call factorize with m divided by i
+        if(!(m%i)) c+=factorize(m/i,k>i?k:i); // ??????an>an-1, ???k???
+    }
+
+    // Return the final value of c
+    return c; // ????
+}
+
+// This is the main function, which takes an integer parameter argc and a character array parameter argv
+int main(int argc, char *argv[]){
+    // Declare two integer variables n and m
+    int n,m;
+
+    // Read an integer value from the input and store it in n
+    cin>>n;
+
+    // Loop through each value of n until it reaches 0
+    while(n--){
+        // Read an integer value from the input and store it in m
+        cin>>m; // ?????
+
+        // Call the factorize function with m and 2 as parameters, and print the result
+        cout<<factorize(m,2)<<endl; // ????
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The code provided is a C++ program that calculates the number of distinct prime factors of a given integer `m`. The program uses the factorize function to recursively divide `m` by its prime factors until it reaches a prime number, which is 1. The number of distinct prime factors is then returned as the result.
+
+The program also includes a main function that reads multiple values of `m` from the input and calls the factorize function for each value, printing the result to the console. The program uses a while loop to iterate through each value of `m`, reading the value from the input and calling the factorize function for each iteration.
+
+Overall, the code provides an efficient way to calculate the number of distinct prime factors of an integer, making it useful for a variety of applications in number theory and cryptography.

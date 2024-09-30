@@ -1,0 +1,47 @@
+**Part I: Code with developer comments**
+
+```c
+int f(int x, int y) {
+    // Initialize variable a and counter n
+    int a, n = 0;
+    // Loop through numbers from y to the square root of x
+    for (a = y; a <= sqrt(x); a++) {
+        // Check if x is divisible by a
+        if (x % a == 0) {
+            // Increment counter n
+            n++;
+            // Recursively call function f with x divided by a and a as arguments
+            n += f(x / a, a);
+        }   
+    }
+    // Return the final value of n
+    return n;
+}
+
+int main() {
+    // Initialize variables m and i
+    int m, i;
+    // Read input value m
+    scanf("%d", &m);
+    // Initialize arrays x and n with m elements
+    int x[m], n[m];
+    // Loop through m times
+    for (i = 0; i < m; i++) {
+        // Read input value for x[i]
+        scanf("%d", &x[i]);
+        // Calculate value of n[i] using function f and initialize n[i] to 1
+        n[i] = 1 + f(x[i], 2);
+    }
+    // Loop through m times
+    for (i = 0; i < m; i++) {
+        // Print value of n[i]
+        printf("%d\n", n[i]);
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This C program counts the number of divisors of a given number. The function `f` takes two integer arguments `x` and `y` and returns the number of divisors of `x` that are greater than or equal to `y`. The function uses a recursive approach to calculate the divisors. The main function reads a sequence of numbers from the input, calculates the number of divisors for each number using the `f` function, and prints the results. The program is designed to handle an arbitrary number of input values.

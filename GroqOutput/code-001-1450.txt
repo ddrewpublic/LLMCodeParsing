@@ -1,0 +1,31 @@
+**Part I: Code with Developer Comments**
+```
+/*
+ * h35.cpp
+ * function:????
+ * Created on: 2012-11-30
+ * Author: sear
+ */
+// m, a very special number
+int f(int m, int n) {  // m is the starting number, n is the end number
+    int i, sum = 0;  // i is a loop variable, sum is the total sum
+    if (n == 1)
+        return 1;  // base case, n is 1 so return 1
+    for (sum = 0, i = m; i <= n; i++)  // loop from m to n
+        if (n % i == 0)  // if n is divisible by i
+            sum += f(i, n / i);  // recursively call the function with i and n/i
+    return sum;  // return the total sum
+}
+int main() {
+    int i, n, k;  // i is a loop variable, n is the number of inputs, k is the input number
+    for (i = 0, cin >> n; i < n; i++) {  // loop for n inputs
+        cin >> k;  // read the input number
+        cout << f(2, k) << endl;  // call the function with m = 2 and k
+    }
+    return 0;  // end of program
+}
+```
+
+**Part II: Summary**
+
+The code calculates the sum of all divisors of a given number `k` less than or equal to a starting number `m`. The function `f` takes two arguments `m` and `n` and recursively calculates the sum of all divisors from `m` to `n`. The base case is when `n` is 1, in which case the function returns 1. Otherwise, it loops from `m` to `n`, checking if `n` is divisible by each number `i`. If it is, the function calls itself with `i` and `n/i` and adds the result to the total sum. The main function reads `n` inputs, each of which is a number `k`, and prints the sum of all divisors of `k` less than or equal to `k`. The starting number `m` is fixed at 2.

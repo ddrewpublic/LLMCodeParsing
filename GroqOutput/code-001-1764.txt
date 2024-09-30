@@ -1,0 +1,37 @@
+**Part I**
+
+```c
+int count(int x,int y)//????????? 
+{
+    if(x<y) return 0;//???? 
+```
+
+* This function takes two integers `x` and `y` as input and calculates the count of numbers less than `x` that have `y` as a factor.
+
+```c
+    if(x>=y) 
+    {
+```
+
+* This condition checks if `x` is greater than or equal to `y`.
+
+```c
+      int sum=0;
+      for(int j=y;j<x;j++)
+      {
+        if(x%j==0)
+        sum=sum+count(x/j,j);//??? 
+      }
+      return sum+1;
+    }
+```
+
+* This block of code calculates the count of numbers less than `x` that have `y` as a factor. If `x` is divisible by `j`, it recursively calls the function with `x` divided by `j` and `j` as arguments. The sum of these counts is returned, plus 1 (since `x` itself is a factor).
+
+**Part II**
+
+Summary:
+
+The provided code is a C++ program that calculates the count of numbers less than a given input number `x` that have `2` as a factor. The program uses a recursive function `count` to achieve this. The function takes two integers `x` and `y` as input and returns the count of numbers less than `x` that have `y` as a factor.
+
+The program prompts the user to input a number `n` and an array of `n` integers. For each integer in the array, it calculates the count of numbers less than the integer that have `2` as a factor and prints the result.

@@ -1,0 +1,56 @@
+**Part I: Code with Developer Comments**
+
+```c
+int col(int a, int b); // Function declaration for col()
+int main()
+{
+    // Declare integer variables n, i, m, and l
+    int n, i, m, l;
+    // Read an integer from the user and store it in variable n
+    scanf("%d", &n);
+    // Loop through the range from 1 to n (inclusive)
+    for (i = 1; i <= n; i++)
+    {
+        // Read an integer from the user and store it in variable m
+        scanf("%d", &m);
+        // Call the col() function with arguments m and 2, then add 1 to the result
+        l = col(m, 2) + 1;
+        // Print the value of l to the console, followed by a newline
+        printf("%d\n", l);
+    }
+    // Return an exit status of 0 to indicate success
+    return 0;
+}
+int col(int a, int b)
+{
+    // Declare integer variables i, t, and tt
+    int i, t, tt = 0;
+    // Initialize variable sig to 0
+    int sig = 0;
+    // Loop through the range from b to a/2 (inclusive), as long as a divided by i is greater than or equal to i
+    for (i = b; (i < a / 2) && ((a / i) >= i); i++)
+    {
+        // If a is divisible by i
+        if (a % i == 0)
+        {
+            // Calculate the integer quotient a divided by i
+            t = a / i;
+            // Add the result of calling col() with arguments t and i to the value of tt
+            tt = tt + 1 + col(t, i);
+            // Set sig to 1 to indicate that a has been fully factored
+            sig = 1;
+        }
+    }
+    // If sig is still 0, set tt to 0 (i.e., a has not been fully factored)
+    if (sig == 0)
+    {
+        tt = 0;
+    }
+    // Return the value of tt
+    return (tt);
+}
+```
+
+**Part II: Summary**
+
+This program is designed to calculate the number of distinct prime factors of a given integer. The main() function reads an integer from the user and then loops through a range from 1 to that integer. For each iteration, it reads another integer and calls the col() function to calculate the number of distinct prime factors of that integer. The col() function iteratively factors the input integer by dividing it by small prime numbers (starting from 2) and checking for divisibility. It recursively calls itself to factor the quotient, stopping when the quotient is less than the square root of the original integer. The function returns the total count of distinct prime factors found, which is then printed to the console.

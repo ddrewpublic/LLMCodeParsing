@@ -1,0 +1,36 @@
+**Part I: Code**
+
+```c
+int sum(int a,int i) {
+    // function to calculate the sum of proper divisors of a given integer a
+    int ret = 1; // initialize return variable to 1 (1 is always a divisor of a number)
+    for (; i <= sqrt((float)a); i++) { // loop until the square root of a
+        // note: (float)a is used to ensure proper division for larger integers
+        if (a % i == 0) { // if a is divisible by i
+            ret += sum(a / i, i); // recursively add the sum of proper divisors of a/i to ret
+        }
+    }
+    return ret; // return the final sum
+}
+```
+
+```c
+int main() {
+    // main function
+    int t, a, j;
+    cin >> t; // read the number of test cases (t)
+    for (j = 0; j < t; j++) { // loop through each test case
+        cin >> a; // read the value of a for each test case
+        cout << sum(a, 2) << endl; // call the sum function and print the result
+    }
+    return 0; // exit the program
+}
+```
+
+**Part II: Summary**
+
+This code calculates the sum of proper divisors of a given integer using a recursive function called `sum`. The function takes two parameters: the integer `a` and an integer `i` representing the current divisor to check. The function returns the sum of all proper divisors of `a` and `i`.
+
+The main function reads a number of test cases (`t`) and for each test case, it reads the value of `a` and calls the `sum` function with `a` and `i` set to 2. The result of the `sum` function is then printed.
+
+The `sum` function works by recursively adding the sum of the proper divisors of `a/i` to the current sum. This is done in a loop that continues until the square root of `a` is reached. The function also ensures that the divisor is added to the sum only if `a` is divisible by `i`.

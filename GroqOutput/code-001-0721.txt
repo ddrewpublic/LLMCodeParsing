@@ -1,0 +1,62 @@
+**Part I**
+
+```
+/*
+*????111120 04.cpp
+*??????
+*?????2011-11-22
+*?????????????
+*/
+```
+
+* Header comment block with date and the script name
+
+```
+int g=0;     // Global variable to keep track of the total number of prime factors
+```
+
+* Initializes a global variable `g` to 0, which will be used to count the number of prime factors.
+
+```
+void s(int n,int z)     // Recursive function to find prime factors
+{
+    for(int i=2;i<=sqrt(n);i++)     // Loop through all numbers up to the square root of n
+    {
+    	if(n%i==0&&i>=z)
+    	{
+    		g=g+1;
+    		s(n/i,i);     // Recursively call the function with the current divisor as the new number
+    	}
+    }
+}
+```
+
+* A recursive function `s` takes two arguments: `n` (the number to find prime factors of) and `z` (the current divisor). It loops through all numbers up to the square root of `n` and checks if `n` is divisible by each number. If it is and the divisor is greater than or equal to `z`, it increments the global `g` variable and recursively calls itself with the quotient of `n` divided by the current divisor.
+
+```
+int main()     // Main program function
+{
+	int a,b;
+	cin>>a;     // Read the first number from standard input
+	while(cin>>b)    // Read numbers from standard input until the end of the file
+	{
+		for(int j=2;j<=sqrt(b);j++)     // Loop through all numbers up to the square root of b
+		{
+			if(b%j==0)
+			{
+				g=g+1;
+				s(b/j,j);     // Recursively find prime factors of the quotient
+			}
+		}
+		cout<<g+1<<endl;     // Print the total number of prime factors plus 1
+		g=0;     // Reset the global variable for the next number
+	}
+	return 0;     // Return 0 to indicate successful execution
+}
+```
+
+**Part II**
+
+Summary:
+
+This is a C++ program that finds the number of prime factors for a sequence of numbers. It uses a recursive function `s` to find the prime factors of a given number, starting from the smallest possible prime factor (2) and incrementing by 1 until it reaches the square root of the number. The program reads the sequence of numbers from standard input and for each number, it recursively finds its prime factors, counting them up and storing them in the global `g` variable. Finally, it prints the total number of prime factors plus 1 for each number. The program resets the `g` variable to 0 before processing the next number in the sequence.

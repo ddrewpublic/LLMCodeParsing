@@ -1,0 +1,43 @@
+**Part I: Code with Comments**
+
+```c
+// Function to calculate the number of ways to factorize a number
+int f(int x, int min) {
+    // If the number is less than the minimum, return 0
+    if (x < min) return 0;
+    int r = 1; // Initialize the result variable
+    // Iterate through the numbers from min to x/2
+    for (int i = min; i < x / 2; i++) {
+        // If the number is divisible by i, recursively call the function
+        if (x % i == 0) {
+            r += f(x / i, i);
+        }
+    }
+    // Return the result
+    return r;
+}
+
+int main() {
+    // Variable to store the number of tests
+    int n;
+    // Read the number of tests from the input
+    cin >> n;
+    // Loop through each test
+    while (n--) {
+        // Variable to store the number to factorize
+        int x;
+        // Read the number to factorize from the input
+        cin >> x;
+        // Calculate and print the number of ways to factorize the number
+        cout << f(x, 2) << endl;
+    }
+}
+```
+
+**Part II: Summary**
+
+This C++ code calculates the number of ways to factorize a given integer and prints the result for multiple test cases. The function `f(x, min)` takes two parameters: `x`, the integer to factorize, and `min`, the minimum number to consider as a factor. It returns the number of ways to factorize `x` using numbers greater than or equal to `min`.
+
+The code uses a recursive approach to find the number of ways to factorize the given integer. It iterates through the numbers from `min` to `x/2` and checks if `x` is divisible by any of these numbers. If it is, it recursively calls the function with the quotient and the current number as parameters.
+
+The code also reads the number of test cases and the integers to factorize from the input. It then loops through each test case, calculates the number of ways to factorize the integer using the `f(x, min)` function, and prints the result.

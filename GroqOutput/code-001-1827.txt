@@ -1,0 +1,66 @@
+**Part I**
+
+```c
+int num=0;
+```
+Declare a global variable `num` to keep track of the count of prime factors.
+
+```c
+int sum(int a,int i)
+{
+	...
+}
+```
+Define a recursive function `sum` that takes two parameters: `a` (the number to be factored) and `i` (the current divisor).
+
+```c
+	if(a==1)
+	{
+		num++;
+	}
+	else
+	{
+		while(i<=a)
+		{
+			...
+		}
+	}
+	return num;
+}
+```
+If `a` is equal to 1, increment the `num` variable. Otherwise, loop through divisors starting from `i` up to `a` and recursively call `sum` to factor `a/i`.
+
+```c
+int main()
+{
+	...
+}
+```
+Define the `main` function, which will read input from the user and call the `sum` function to calculate prime factors.
+
+```c
+int a,t,j,i,count;
+cin>>t;
+for(j=0;j<t;j++)
+{
+	...
+}
+```
+Declare variables to store the number of test cases, the current test case number, and the current number to be factored. Read the number of test cases from the user input.
+
+```c
+count=1;
+cin>>a;
+i=2;
+while(i<=(a/2))
+{
+	...
+}
+cout<<count<<endl;
+}
+```
+Initialize a count variable to 1 and read the current number to be factored from the user input. Loop through divisors starting from 2 up to `a/2` and increment the count if the divisor is a prime factor. Print the final count.
+
+**Part II**
+
+This code is a program that calculates the count of prime factors for a given number. It takes the number of test cases as input from the user and then reads each number to be factored. For each number, it loops through divisors starting from 2 up to `a/2` and recursively calls a function to factor `a/i` if `a/i` is greater than 1 and `a/i` is divisible by `i`. It then prints the count of prime factors for each number. The program uses a recursive function `sum` to calculate the count of prime factors, which is a useful concept in number theory.

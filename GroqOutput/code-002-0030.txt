@@ -1,0 +1,85 @@
+**Part I**
+
+```c
+struct inf
+{
+	int num;
+	char name[26];
+	struct inf *next;
+};
+int m;
+```
+The first section of the code starts by defining a struct called `inf` which will be used to store the data of the linked list. The struct has three components: an integer `num`, an array of characters `name` of size 26, and a pointer to the next node in the list `next`. It also declares an integer variable `m`.
+
+```c
+struct inf *creat(void)
+{
+	struct inf *head,*p1,*p2;
+	int n;
+	p1=p2=(struct inf *)malloc(LEN);
+	scanf("%d %s",&p1->num,p1->name);
+	head=NULL;
+	n=0;
+	while(1)
+	{
+		n++;
+		if(n==1)
+			head=p1;
+		else
+			p2->next=p1;
+		p2=p1;
+		if(n==m)
+			break;
+		else
+		{
+		p1=(struct inf *)malloc(LEN);
+		scanf("%d %s",&p1->num,p1->name);
+		}
+	}
+	p2->next=NULL;
+	return(head);
+}
+```
+
+This function creates a linked list of nodes of type `inf` and returns the head of the list. It first allocates memory for the first node using `malloc`, then reads the data for that node using `scanf`. It then loops until it has read `m` nodes, allocating memory for each new node and reading its data. The new node is added to the list by setting its `next` pointer to the previous node, unless it is the first node, in which case it becomes the head of the list.
+
+```c
+void count(struct inf *head,int o)
+{
+	struct inf *q1;
+	int *q2,*q3,*q4;
+	char *t1;
+	q1=head;
+	q2=(int *)malloc(26*LEM);
+    for(q3=q2;q3<q2+26;q3++)
+        *q3=0;
+	while(q1!=NULL)
+	{
+		for(t1=q1->name;*t1!='\0';t1++)
+			*(q2+(*t1-'A'))=*(q2+(*t1-'A'))+1;
+		q1=q1->next;
+	}
+	q4=q2;
+    for(q3=q2;q3<q2+26;q3++)
+		if(*q4<*q3)
+			q4=q3;
+	printf("%c\n%d\n",q4-q2+'A',*q4);
+	q1=head;
+	while(q1!=NULL)
+	{
+        for(t1=q1->name;*t1!='\0';t1++)
+			if(*t1==(q4-q2+'A'))
+				printf("%d\n",q1->num);
+		q1=q1->next;
+	}
+    
+}
+```
+
+This function takes the head of a linked list and an integer `o` as input, and counts the frequency of each letter in the names of the nodes in the list. It then finds the letter with the highest frequency and prints it, along with its frequency. Finally, it prints the numbers of the nodes that have the letter with the highest frequency in their names.
+
+**Part II**
+
+This program is designed to create a linked list of `inf` nodes, where each node contains an integer and a string. The `creat` function creates the linked list by reading `m` nodes from input and linking them together. The `count` function counts the frequency of each letter in the names of the nodes in the list, finds the letter with the highest frequency, and prints it, along with the numbers of the nodes that have that letter in their names.
+
+The program starts by creating a linked list of `m` nodes using the `creat` function. It then calls the `count` function to count the frequency of each letter in the names of the nodes in the list. Finally, it prints the letter with the highest frequency, along with its frequency.

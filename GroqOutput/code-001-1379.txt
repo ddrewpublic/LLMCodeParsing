@@ -1,0 +1,47 @@
+**Part I: Code with Developer Comments**
+
+```
+int factorization(int num, int i);
+// Define a function called factorization that takes two integer parameters: num and i
+
+int main()
+{
+    int n, i, num;
+    // Declare three integer variables: n, i, and num
+
+    cin >> n;
+    // Read an integer from the user and store it in variable n
+
+    for (i = 0; i < n; i++)
+    {
+        cin >> num;
+        // Read an integer from the user and store it in variable num
+        cout << factorization(num, 2) << endl;
+        // Call the factorization function with num and 2 as parameters, and print the result
+    }
+    return 0;
+}
+// This is the main function, which is the entry point of the program
+
+int factorization(int num, int i)
+{
+    int j, squ, sum = 1;
+    // Declare four integer variables: j, squ, and sum; initialize sum to 1
+
+    squ = sqrt((double) num);
+    // Calculate the square root of num and store it in variable squ
+
+    for (j = i; j <= squ; j++)
+    {
+        if (num % j == 0)
+            sum = sum + factorization(num / j, j);
+        // If num is divisible by j, recursively call factorization with num / j and j as parameters, and add the result to sum
+    }
+    return sum;
+};
+// This function calculates the sum of all factors of a given number, and recursively calls itself to calculate the sum of the factors of smaller numbers
+```
+
+**Part II: Summary**
+
+This C++ program calculates the sum of all factors of a given number. The program reads a number of integers from the user and for each integer, it calculates the sum of its factors using a recursive function called `factorization`. The function takes two parameters: the number and a starting point for the search of factors. It returns the sum of all factors of the number. The program uses the `cin` and `cout` functions to read and print integers. The `sqrt` function is used to calculate the square root of a number. The program is simple and easy to understand, but it may be inefficient for large numbers due to its recursive nature.

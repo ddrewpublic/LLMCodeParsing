@@ -1,0 +1,95 @@
+**Part I: Code**
+```
+struct book
+{
+    int ID;
+    char author[30];
+    struct book *next;
+};
+int n, max = 0;
+char c;
+struct book *create()
+{
+    struct book *head, *p1, *p2;
+    p1 = (struct book*)malloc(LEN);   
+    // Allocate memory for the first book
+    scanf("%d %s", &p1->ID, p1->author);
+    head = p1;
+    p2 = p1;
+    p1->next = NULL;
+    
+    int i = 1;
+    do
+    {
+        if(i == n) break;
+        p1 = (struct book*)malloc(LEN);
+        // Allocate memory for the next book
+        scanf("%d %s", &p1->ID, p1->author);
+        p2->next = p1;
+        p2 = p1;
+        p1->next = NULL;
+        i++;
+    }while(1);
+    return(head);
+}
+
+int main()
+{
+    struct book *head;
+    int i;
+    int *num;
+    num = (int*)malloc(26*sizeof(int));
+    for(i=0; i<26; i++)
+        *(num+i) = 0;
+    // Initialize an array to count the frequency of each letter
+    scanf("%d", &n);
+    head = create();
+    struct book *p;
+    char *s;
+    p = head;
+    while(p)
+    {
+        for(s=p->author; *s!='\0'; s++)
+        {
+            int temp;
+            temp = *s-'A';
+            // Convert the letter to its corresponding index in the array
+            (*(num+temp))++;
+        }
+        p = p->next;
+    }
+    for(i=0; i<26; i++)
+    {
+        if(*(num+i)>max) max=*(num+i);
+        // Find the maximum frequency of any letter
+    }
+    for(i=0; i<26; i++)
+    {
+        if(*(num+i)==max)break;
+        // Find the first letter with the maximum frequency
+    }
+    printf("%c\n%d\n", 'A'+i, max);
+    c = 'A'+i;
+    p = head;
+    while(p)
+    {
+        for(s=p->author; *s!='\0'; s++)
+        {
+            if(*s==c) break;
+        }
+        if(*s!='\0') printf("%d\n", p->ID);
+        // Print the ID of the first book with the maximum frequency letter
+        p = p->next;
+    }
+}
+```
+**Part II: Summary**
+This is a C program that reads in a list of books and then finds the letter that appears most frequently in the authors' names. The program uses a linked list to represent the books, where each book is represented by a struct containing the book's ID, author's name, and a pointer to the next book in the list.
+
+The program starts by reading in the number `n` of books to be read, and then creates a linked list of `n` books using the `create` function.
+
+Next, the program initializes an array `num` to count the frequency of each letter in the authors' names. It then reads in each book's author name and increments the corresponding count in the `num` array.
+
+After counting the frequencies, the program finds the maximum frequency and sets `max` to this value. It then finds the first letter that has this maximum frequency and prints the letter and the value of `max`.
+
+Finally, the program prints the ID of the first book that has the maximum frequency letter in its author's name.

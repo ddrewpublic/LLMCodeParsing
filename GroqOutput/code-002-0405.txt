@@ -1,0 +1,63 @@
+**Part I**
+
+Here is the code with developer comments added:
+```c
+main() {
+    // Declare integer variables n, i, j, and max
+    int n, i, j, max = 0, maxp;
+    
+    // Scan the number of writers using format specifiers
+    scanf("%d", &n);
+    
+    // Declare an array to store the writer's preference of people
+    int a[n];
+    
+    // Declare an array to store the frequency of each person's name
+    int person[26] = {0};
+    
+    // Declare a 2D array to store the writers' names
+    char writer[n][26];
+    
+    // Loop through each writer
+    for (i = 0; i < n; i++) {
+        // Scan the preference of the current writer and their name
+        scanf("%d %s", &a[i], writer[i]);
+        
+        // Loop through each character in the writer's name
+        for (j = 0; j < strlen(writer[i]); j++) {
+            // Increment the frequency of the person's name in the person array
+            person[writer[i][j] - 'A']++;
+        }
+    }
+    
+    // Loop through each person's name
+    for (i = 0; i < 26; i++) {
+        // Check if the current person's name has a higher frequency than max
+        if (max < person[i]) {
+            // Update max and maxp to the current person's name
+            max = person[i];
+            maxp = i;
+        }
+    }
+    
+    // Print the person's name with the highest frequency and their maximum frequency
+    printf("%c\n%d\n", maxp + 'A', max);
+    
+    // Loop through each writer
+    for (i = 0; i < n; i++) {
+        // Loop through each character in the writer's name
+        for (j = 0; j < strlen(writer[i]); j++) {
+            // Check if the current character matches the person's name with the highest frequency
+            if (writer[i][j] == 'A' + maxp) {
+                // Print the preference of the current writer
+                printf("%d\n", a[i]);
+            }
+        }
+    }
+}
+```
+
+**Part II**
+
+Summary:
+This code is designed to find the most popular person's name among a group of writers. The program takes in the number of writers and their preferences as input, and then outputs the person's name with the highest frequency and a list of the preferences of writers who chose that person's name. The code uses two nested loops to iterate through the writers and their names, and another nested loop to compare each character in the writer's name to the person's name with the highest frequency.

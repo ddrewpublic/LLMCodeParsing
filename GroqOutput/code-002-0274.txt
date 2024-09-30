@@ -1,0 +1,138 @@
+**Part I**
+
+```c
+struct book
+{
+    int num;
+    char name[20];
+};
+```
+Define a struct `book` with two fields: `num` of type `int` and `name` of type `char` array with a size of 20.
+
+```c
+void main()
+{
+```
+Declare the `main` function.
+
+```c
+    struct book c[1000];
+```
+Declare an array `c` of type `struct book` with a size of 1000.
+
+```c
+    int i,j,n,k,max,l,d[26],a;
+```
+Declare several integer variables: `i`, `j`, `n`, `k`, `max`, `l`, `a`, and an array `d` of size 26.
+
+```c
+    int b[26]={0};
+```
+Declare an array `b` of size 26, initialized to 0.
+
+```c
+    scanf("%d",&n);
+```
+Read an integer from the input and store it in variable `n`.
+
+```c
+    for(k=0;k<n;k++)
+    {
+        scanf("%d %s",&c[k].num,c[k].name);
+```
+Read an integer and a string of length <= 20 from the input and store them in the struct `c[k]`.
+
+```c
+        for(i=0;i<strlen(c[k].name);i++)
+        {
+```
+Loop through each character in the string stored in `c[k].name`.
+
+```c
+            for(j=0;j<26;j++)
+            {
+                if('A'+j==c[k].name[i])
+                    break;
+            }
+```
+Find the index `j` of the character in the string that corresponds to the alphabet.
+
+```c
+            b[j]=b[j]+1;
+```
+Increment the count of the character in array `b`.
+
+```c
+        }
+    }
+```
+End of outer loop.
+
+```c
+    for(a=0;a<26;a++)
+        d[a]=b[a];
+```
+Copy the values from array `b` to array `d`.
+
+```c
+    max=b[0];
+```
+Initialize the maximum count to the value of the first element in array `b`.
+
+```c
+    for(l=0;l<26;l++)
+    if(b[l]>max)
+        max=b[l];
+```
+Find the maximum count in array `b`.
+
+```c
+    for(a=0;a<26;a++)
+    {
+        if(d[a]==max)
+            break;
+    }
+```
+Find the index `a` of the maximum count in array `d`.
+
+```c
+    printf("%c\n",'A'+a);
+```
+Print the corresponding alphabet for the maximum count.
+
+```c
+    printf("%d\n",max);
+```
+Print the maximum count.
+
+```c
+    for(k=0;k<n;k++)
+    {
+```
+Loop through each struct `c[k]`.
+
+```c
+        for(i=0;i<strlen(c[k].name);i++)
+        {
+```
+Loop through each character in the string stored in `c[k].name`.
+
+```c
+            if('A'+a==c[k].name[i])
+            {
+```
+Check if the current character matches the alphabet corresponding to the maximum count.
+
+```c
+                printf("%d\n",c[k].num);
+                break;
+            }
+        }
+    }
+}
+```
+End of program.
+
+**Part II**
+
+This program reads a list of books, each with a unique number and a name, from the input. It then finds the most frequently occurring letter in the names of the books and prints the letter and the number of times it occurs. Finally, it prints the numbers of books that have the most frequently occurring letter in their names.

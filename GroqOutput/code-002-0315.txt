@@ -1,0 +1,46 @@
+**Part I**
+```
+void main()
+{
+    // Declare arrays a, b, c, and s of length 1000, 1000, 27, and 1000 respectively
+    char a[1000][100];
+    int b[1000],c[27],s[1000],max,i,j,k;
+    
+    // Declare variable n and read input integer value
+    int n;
+    scanf("%d",&n);
+
+    // Loop through each record (i=0 to n-1)
+    for (i=0;i<n;i++)
+    {
+        // Read integer value and string a[i] from input
+        scanf("%d %s",&b[i],a[i]);
+        
+        // Calculate length of string a[i] and store it in s[i]
+        s[i]=strlen(a[i]);
+    }
+
+    // Loop through each character (j=0 to 25, the ASCII values of a-z)
+    for (j=0;j<26;j++)
+    {
+        // Initialize count c[j] to 0
+        c[j]=0;
+        
+        // Loop through each record (i=0 to n-1)
+        for (i=0;i<n;i++)
+        {
+            // Loop through each character in string a[i]
+            for (k=0;k<s[i];k++)
+            {
+                // Check if the current character in a[i] matches the current ASCII value (65+j)
+                if (a[i][k]==65+j)
+                    // If match, increment count c[j]
+                    c[j]=c[j]+1;
+            }
+        }
+    }
+```
+
+**Part II**
+
+This program reads a number of records (n) from the input, where each record consists of an integer value and a string. It counts the frequency of each letter in the strings, and then prints out the letters that appear with the maximum frequency, along with the frequency and the integers associated with them. The program loops through the records, reading the integer and string values, and updating the counts for each letter. It then finds the maximum frequency and prints out the corresponding letters and integers.

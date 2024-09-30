@@ -1,0 +1,51 @@
+**Part I: Code with Developer Comments**
+
+```
+/*
+ * fenjieyinshi1.cpp
+ * Created on: 2011-12-1
+ */
+int remember=0; // Initialize a variable to store the count of prime numbers
+
+int number(int const1, int a) // Function to calculate prime numbers
+{
+	if(a==1) // Check if the number is 1
+	{
+		remember++; // Increment the count of prime numbers
+		return 1; // Return 1, indicating the number is prime
+	}
+	else
+	{
+		for(int i=const1; i<=a; i++) // Loop from const1 to a
+		{
+			if(a%i==0) // Check if the number is divisible by i
+				number(i, a/i); // Recursively call the function with i and a/i
+		}
+	}
+}
+
+int main()
+{
+	int n; // Input the number of test cases
+	cin >> n; // Read the input
+
+	int cases[n]; // Create an array to store the input numbers
+
+	for(int j=0; j<n; j++) // Loop for each test case
+		cin >> cases[j]; // Read the input for each case
+
+	for(int j=0; j<n; j++) // Loop for each test case
+	{
+		number(2, cases[j]); // Calculate prime numbers for each case
+		cout << remember << endl; // Print the count of prime numbers
+		remember = 0; // Reset the count for the next test case
+	}
+	return 0;
+}
+```
+
+**Part II: Summary**
+
+This program calculates the number of prime numbers for each of the input test cases. It uses a recursive function "number" that takes two arguments: a starting number "const1" and a target number "a". The function checks if "a" is divisible by any number from "const1" to "a", and if so, it calls itself with the divisor and the quotient. This process continues until the target number is prime. The function returns the count of prime numbers found.
+
+In the main function, the program reads the number of test cases and each test case, then calls the "number" function for each case, starting from 2. The output is the count of prime numbers for each test case. The program resets the count for each test case.

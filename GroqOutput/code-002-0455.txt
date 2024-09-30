@@ -1,0 +1,49 @@
+Here is the output with developer comments:
+
+**Part I**
+
+```c
+struct inf
+{
+    int sum;         // Structure to store book information (sum of occurrences and corresponding author's name)
+    char write[1000][4]; // Array to store the names of authors with the same number of occurrences
+}; 
+
+int main()
+{   
+    int m;           // Variable to store the number of inputs
+    int i, j;       // Loop variables
+    char name[5];    // Array to store the book name
+    char author[27]; // Array to store the book author
+    struct inf book[26]; // Array of book structures
+    for(i=0;i<26;i++) // Initialize the sum of occurrences for each author
+        book[i].sum=0;
+    cin >> m ;        // Read the number of inputs
+    cin.get();        // Discard the newline character
+    while( m -->0 )  // Loop until all inputs have been processed
+    {
+        cin.get( name,5); // Read the book name
+        cin.getline( author,27); // Read the book author
+        for(i=0;i <strlen(author);i++) // Loop through each character in the author's name
+        {
+            book[author[i]-'A'].sum++; // Increment the sum of occurrences for the author
+            for( j=0;j<=3;j++) // Loop to store the book name for each occurrence
+            {
+                if(j<3)
+                    book[author[i]-'A'].write[book[author[i]-'A'].sum][j] = name[j]; // Store the book name
+                else
+                    book[author[i]-'A'].write[book[author[i]-'A'].sum][j]='\0'; // Null-terminate the string
+            }
+        }
+    }
+```
+
+**Part II**
+
+This program reads a list of book names and authors from the user, and then finds the most frequent author and prints out the author's name, the number of occurrences, and the names of books written by that author.
+
+The program uses a structure `struct inf` to store book information, where `sum` represents the sum of occurrences for an author and `write` is an array to store the names of authors with the same number of occurrences.
+
+The program then reads the number of inputs `m` and initializes the sum of occurrences for each author to 0. It then loops through each input, reads the book name and author, and increments the sum of occurrences for the author. It also stores the book name for each occurrence.
+
+After all inputs have been processed, the program finds the author with the maximum sum of occurrences and prints out the author's name, the number of occurrences, and the names of books written by that author.

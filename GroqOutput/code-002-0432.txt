@@ -1,0 +1,66 @@
+**Part I: Code with Comments**
+
+```c
+struct book // Define a struct to store book information
+{
+    int H; // Page number
+    char writer[26]; // Author name
+} b[max]; // Array of book structures
+
+int main()
+{
+    int m, i, j, k, sum[26] = {0}, t, Max, g; // Initialize variables
+    char y; // Initialize a character variable
+
+    scanf("%d", &m); // Read the number of books
+
+    for (i = 0; i < m; i++) 
+    { // Loop through each book
+        scanf("%d %s", &b[i].H, b[i].writer); // Read page number and author
+        t = strlen(b[i].writer); // Get the length of the author name
+        for (j = 0; j < t; j++) 
+        { // Loop through each character in the author name
+            k = b[i].writer[j] - 65; // Convert character to index based on ASCII value
+            sum[k]++;
+        }
+    }
+    
+    Max = sum[0]; // Initialize maximum frequency
+    for (i = 0; i < 26; i++) 
+    { // Loop through each possible letter
+        if (sum[i] > Max) 
+            Max = sum[i]; // Update maximum frequency if found
+    }
+    
+    for (i = 0; i < 26; i++) 
+    { // Loop through each possible letter again
+        if (sum[i] == Max) 
+        { // If frequency is equal to maximum frequency
+            y = i + 65; // Convert index to a character
+            printf("%c\n%d\n", y, Max); // Print the letter and frequency
+        }
+    }
+    
+    for (i = 0; i < m; i++) 
+    { // Loop through each book again
+        g = 0; // Initialize a counter
+        t = strlen(b[i].writer); // Get the length of the author name
+        for (j = 0; j < t; j++) 
+        { // Loop through each character in the author name
+            if (b[i].writer[j] == y) 
+            { // If the character matches the found letter
+                g++; // Increment the counter
+                break; // Stop searching
+            }
+        }
+        if (g != 0) 
+            printf("%d\n", b[i].H); // Print the page number if the letter is found
+    }
+    
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code is designed to find the most frequently occurring letter in a set of author names, where each author name is stored in a struct `book` along with its corresponding page number. The code first reads the number of books and then loops through each book to extract the author name and count the frequency of each letter. The frequency counts are then processed to find the maximum frequency, which corresponds to the most frequently occurring letter. The code then prints this letter and its frequency, and finally, it prints the page numbers of books that contain this letter.

@@ -1,0 +1,31 @@
+**Part I**
+
+```
+/*1090 ????*/ 
+int num; // declares an integer variable num
+void divide(int a,int k) {
+    // function to calculate the number of divisors of a number
+    int i;
+    if(a==1) num++;//?????????????? // if the number is 1, increment the count of divisors
+    for(i=k;i<=a;i++)//???????? // loop from k to a
+        if(a%i==0) divide(a/i,i); // if the number is divisible by i, recursively call the function with the quotient
+}
+int main() {
+    int t;
+    cin>>t; // read an integer t
+    while(t--) {
+        int n;
+        cin>>n; // read an integer n
+        num=1; // reset the count of divisors to 1
+        int i;
+        for(i=2;i*i<=n;i++) // loop from 2 to sqrt(n)
+            if(n%i==0) divide(n/i,i); // if the number is divisible by i, recursively call the function with the quotient
+        cout<<num<<endl; // print the count of divisors
+    }
+    return 0;
+}
+```
+
+**Part II**
+
+This code calculates the number of divisors of a given integer n. The function `divide` recursively calculates the number of divisors of a number by dividing it by all its divisors and incrementing the count of divisors. The main function reads an integer t, and for each iteration of the while loop, it reads an integer n, calculates its divisors using the `divide` function, and prints the count of divisors.

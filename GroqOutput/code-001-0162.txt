@@ -1,0 +1,63 @@
+Here is the code with developer comments and a 200-word summary:
+
+**Part I: Code with comments**
+```c
+// This program calculates the number of prime factors for a given integer
+// Created by: ??? (no name provided)
+// Date: 2010-12-01
+// Version: No version number provided
+
+int m, num;  // global variables to store the current number and the count of prime factors
+
+int make(int a);  // function declaration for the make function
+int pan(int a);  // function declaration for the pan function
+
+int main() {
+    int n, a, i;  // input variables
+    cin >> n;  // read the number of inputs
+    for (i = 1; i <= n; i++) {
+        cin >> a;  // read the current number
+        num = 0;  // initialize the count of prime factors
+        m = a;  // initialize the current number
+        cout << make(a) << endl;  // call the make function and print the result
+    }
+    return 0;
+}
+
+int pan(int a) {
+    int n = 0, i;  // variables for the pan function
+    for (i = 1; i <= sqrt(a); i++) {
+        if (a % i == 0)  // check if i is a factor of a
+            n++;  // increment the count of factors
+    }
+    if (n == 1)  // if the number has only one factor, it's prime
+        return 0;
+    else
+        return 1;  // if the number has more than one factor, it's not prime
+}
+
+int make(int a) {
+    int i, j, ans;  // variables for the make function
+    ans = sqrt(a);  // initialize the maximum value of the prime factors
+    if (pan(a) == 0) {  // if the number is prime
+        num++;  // increment the count of prime factors
+        return num;  // return the count
+    } else {
+        num++;  // increment the count of prime factors
+        for (i = m / a; i <= ans; i++) {  // iterate through the possible prime factors
+            if (i == 1) continue;  // skip 1
+            if (a % i == 0) {  // if i is a factor of a
+                m = a;  // update the current number
+                num = make(a / i);  // recursive call
+            }
+        }
+        if (i == ans + 1)  // if all possible prime factors have been checked
+            return num;  // return the count
+    }
+    return num;  // return the count
+}
+```
+
+**Part II: Summary**
+
+This program calculates the number of prime factors for a given integer. The program takes in a number of inputs from the user and prints the number of prime factors for each input. The program uses two helper functions: `pan` checks if a given number is prime, and `make` recursively calculates the number of prime factors for a given number. The `make` function uses the `pan` function to detect prime numbers and then iterates through the possible prime factors to calculate the total count. The program provides a clear and efficient way to calculate the number of prime factors for a given integer.

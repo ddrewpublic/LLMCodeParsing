@@ -1,0 +1,54 @@
+Here is the code with developer comments added for each line:
+```
+Part I
+int number = 0; // initialize a variable to keep track of the number of prime numbers
+int main()
+{
+    void f(int first, int m); // declare a function f with two integer parameters
+    int n, i, num; // declare variables to read from input and keep track of counters
+    cin >> n; // read an integer from input
+    for (i = 0; i < n; i++)
+    {
+        cin >> num; // read an integer from input
+        f(2, num); // call the function f with initial value 2 and the input integer
+        cout << number / 2 << endl; // print the result divided by 2
+        number = 0; // reset the number variable for the next iteration
+    }
+    return 0; // return 0 to indicate successful execution
+}
+void f(int first, int m)
+{
+    int i; // declare a variable to iterate in the loop
+    for (i = first; i <= m; i++)
+    {
+        //          ^         ^
+        // search for divisors
+        if (m % i == 0)
+        {
+            //          ^      ^
+            // if m is divisible by i, divide m by i and continue iteration
+            m = m / i; 
+            f(i, m); // recursive call with updated values
+            if (m != 1)
+            {
+                //          ^         ^
+                // if m is not 1, multiply i back into m
+                m = m * i;
+            }
+        }
+    }
+    if (m == 1)
+    {
+        //          ^
+        // if m becomes 1, increment the number of prime numbers
+        number += 1;  
+    }
+}
+```
+
+Part II
+This code is designed to find the prime factors of a given number and count the prime numbers found. The function `f` is a recursive function that starts with an initial value of 2 and divides the input number `m` by a divisor `i` until `m` becomes 1. The function keeps track of the number of prime numbers found and returns this count to the `main` function.
+
+The `main` function reads an integer `n` from input and then iterates `n` times, reading an integer `num` each time and calling the `f` function with the initial value 2 and the input integer. The `f` function returns the count of prime numbers found, which is then divided by 2 and printed to the console.
+
+The recursive function call allows the `f` function to explore all possible divisors of the input number, effectively factorizing it into its prime factors. The prime numbers found are counted and accumulated in the `number` variable, which is then returned to the `main` function.

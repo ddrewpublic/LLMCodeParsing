@@ -1,0 +1,47 @@
+**Part I: Code with Comments**
+
+```
+// This program calculates the number of prime numbers up to a given number.
+// Created on: 2012-11-27
+// Author: ???
+// Description: The program calculates the number of prime numbers a1 * a2 * a3 * ... * an, where a1, a2, a3, ..., an are positive integers, and 1 < a1 <= a2 <= a3 <= ... <= an.
+
+int answer = 0; // Initialize answer variable to 0
+
+void f(int n, int N) {
+    if (n < N) {
+        // If n is less than N, update N to n
+        N = n;
+    }
+    if (N == 1) {
+        // If N is 1, increment answer and return
+        answer++;
+        return;
+    }
+    while (N > 1) {
+        // Loop until N is 1
+        if (n % N == 0) {
+            // If n is divisible by N, recursively call f with n divided by N and N
+            f(n / N, N);
+        }
+        N--; // Decrement N
+    }
+}
+
+int main() {
+    int n, a; // Declare variables n and a
+    cin >> n; // Read input for n
+    for (int i = 0; i < n; i++) {
+        // Loop n times
+        cin >> a; // Read input for a
+        f(a, a); // Call f with a and a
+        cout << answer << endl; // Print answer
+        answer = 0; // Reset answer to 0
+    }
+    return 0; // Return 0 to indicate successful execution
+}
+```
+
+**Part II: Summary**
+
+This program calculates the number of prime numbers in a sequence of numbers. It uses a recursive function `f` to count the number of prime numbers. The function takes two parameters `n` and `N`, where `n` is the current number being processed and `N` is the highest divisor of `n`. The function recursively divides `n` by `N` until `N` is 1, and increments the `answer` variable each time it finds a divisor. The `main` function reads input for `n` and `a`, calls the `f` function with `a` and `a`, and prints the answer. The `answer` variable is reset to 0 at the beginning of each iteration to ensure accurate counting of prime numbers.

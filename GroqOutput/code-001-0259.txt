@@ -1,0 +1,39 @@
+**Part I: Code with Developer Comments**
+
+```c
+int num;  // Initialize a variable num to store the result
+int main()
+{
+    int f(int,int);  // Declare a function f that takes two integers as arguments
+    int i,n,a[100],result[100];  // Declare variables i, n, a and result
+    cin>>n;  // Read an integer n from the standard input
+
+    for(i=1;i<=n;i++)
+    {
+        num=1;  // Initialize num to 1 for each iteration
+        cin>>a[i];  // Read an integer from the standard input and store it in a[i]
+        result[i]=f(1,a[i]);  // Call the function f with arguments 1 and a[i] and store the result in result[i]
+    }
+    for(i=1;i<=n;i++)
+    {
+        cout<<result[i]<<endl;  // Output the result[i] to the standard output
+    }
+}
+int f(int x,int y)//f takes two integers as arguments x and y
+{
+    int i;  // Declare a variable i
+    for(i=2;i<=sqrt(y);i++)  // Loop from 2 to the square root of y
+    {
+        if(y%i==0&&i>=x)// Check if y is divisible by i and i is greater than or equal to x
+        {
+            num++;//Increment num by 1
+            f(i,y/i);  // Recursively call the function f with arguments i and y/i
+        }
+    }
+    return num;  // Return the value of num
+}
+```
+
+**Part II: Summary**
+
+This code is designed to count the number of divisors for each number in a given array. The function `f` takes two integers as arguments `x` and `y`, and it returns the number of divisors of `y` that are greater than or equal to `x`. The main function reads an integer `n` and an array `a` of size `n` from the standard input. It then calls the function `f` for each element in the array and stores the result in an array `result`. Finally, it outputs the result to the standard output.

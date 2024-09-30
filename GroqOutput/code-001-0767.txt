@@ -1,0 +1,52 @@
+Here is the output with developer comments for each line, using the header "Part I" and a 200-word summary, using the header "Part II":
+
+**Part I**
+
+```c
+int divide(int n,int j)
+{
+    // Function to find the sum of divisors of a number
+    int sum=1,i,s,p,k;
+    s=sqrt(n);
+    // Loop through all numbers from j to the square root of n
+    for(i=j;i<=s;i++)
+    {
+        // Check if the number is divisible by i
+        if (n%i==0)
+        {
+            // If divisible, calculate the quotient and keep track of the divisor
+            p=n/i;
+            k=i;
+            // Recursively call the function to add the sum of divisors of the quotient
+            sum=sum+divide(p,i);
+        }
+    }
+    // Return the sum of divisors
+    return sum;
+}
+
+int main()
+{
+    // Get a number from the user input
+    int n;
+    cin>>n;
+    // Initialize variables for the loop
+    int k,m,p;
+    // Loop through all numbers from 0 to n-1
+    for(k=0;k<n;k++)
+    {
+        // Get a number from the user input
+        cin>>m;
+        // Calculate the sum of divisors of the number starting from 2
+        p=divide(m,2);
+        // Print the sum of divisors
+        cout<<p<<endl;
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II**
+
+This program is designed to calculate the sum of divisors of a number. The `divide` function takes two arguments, `n` and `j`, and returns the sum of divisors of `n` starting from `j`. The function uses a loop to iterate through all numbers from `j` to the square root of `n`, and for each number, it checks if `n` is divisible by it. If it is, the function recursively calls itself to add the sum of divisors of the quotient. The `main` function first gets a number from the user input, then loops through all numbers from 0 to `n-1`, getting each number from the user input and calculating the sum of divisors starting from 2. The program finally prints the sum of divisors for each number.

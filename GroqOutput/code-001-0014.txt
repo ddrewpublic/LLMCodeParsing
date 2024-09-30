@@ -1,0 +1,59 @@
+**Part I: Code with Developer Comments**
+
+```c
+void main()
+{
+    // Declare function f and variables n, sum, and i with sizes 100 and 100
+    int f(int, int);
+    int n[100], sum, i, m;
+
+    // Read input of m
+    scanf("%d", &m);
+
+    // Read input of n values
+    for (i = 0; i < m; i++)
+        scanf("%d", &n[i]);
+
+    // Iterate through each value of n
+    for (i = 0; i < m; i++)
+    {
+        // Calculate and print the sum
+        sum = f(1, n[i]) + 1;
+        printf("%d\n", sum);
+    }
+}
+
+int f(int i, int n)
+{
+    int j, k, sum = 0;
+
+    // Iterate through each value of j from i to sqrt(n) + 1
+    for (j = i; j < (int)sqrt((double)n) + 1; j++)
+    {
+        // Initialize sum to 0 for each iteration
+        k = sum;
+
+        // Check if j is 1
+        if (j == 1)
+            sum = 0;
+        else
+        {
+            // Check if n is divisible by j and n/j >= j
+            if (n % j == 0 && n / j >= j)
+            {
+                // Recursively call f with j and n/j
+                sum = f(j, n / j) + 1;
+            }
+            else
+                sum = 0;
+        }
+        // Add k to sum
+        sum = sum + k;
+    }
+    return (sum);
+}
+```
+
+**Part II: Summary**
+
+This code is designed to calculate the sum of the proper divisors of each integer in an input array. The function `f` is used to calculate the sum of proper divisors for a given integer, and it utilizes a recursive approach to accomplish this. The main function iterates through each value in the input array, calculates the sum of proper divisors using the `f` function, and then prints the result. The sum of proper divisors of an integer is calculated as the sum of all integers that divide the integer except for one (the integer itself).

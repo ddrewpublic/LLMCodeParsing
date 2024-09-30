@@ -1,0 +1,75 @@
+**Part I: Code with Comments**
+
+```c
+int main()
+{
+    // declare variables
+    int i, j, k, t, m, c[26] = {0}, max = 0;
+    
+    // declare an array of 27 characters for the alphabet
+    char b[27] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+    
+    // declare a structure for a book, containing an integer and an array of 26 characters
+    struct book    
+    {
+       int num;
+       char man[26];
+    }a[999];
+    
+    // read the number of books from the user
+    scanf("%d", &m);
+    
+    // iterate through each book and read the book number and maintainer
+    for(i=0; i<m; i++)
+    {
+        scanf("%d %s", &a[i].num, a[i].man);
+    }
+    
+    // reset the counter for the maintainer with the most books
+    i = 0;
+    
+    // iterate through each book and count the frequency of each maintainer
+    for(i=0; i<m; i++)
+    {
+        for(j=0; j<26; j++)
+        {
+            for(k=0; k<26; k++)
+            {
+                // check if the character at index j in the maintainer's name matches the character at index k in the alphabet
+                if(a[i].man[j] == b[k])
+                    c[k] = c[k] + 1;
+            }
+        }
+    }
+    
+    // reset the counters
+    i = 0; j = 0; k = 0;
+    
+    // find the maintainer with the most books
+    for(i=0; i<26; i++)
+    {
+        if(c[i] > max)
+        {
+            max = c[i];
+            t = i;
+        }
+    }
+    
+    // print the maintainer with the most books
+    printf("%c\n%d\n", b[t], max);
+    
+    // iterate through each book and print the numbers of the books written by the maintainer with the most books
+    for(j=0; j<m; j++)
+    {
+        for(k=0; k<26; k++)
+        {
+            if(a[j].man[k] == b[t])
+                printf("%d\n", a[j].num);
+        }
+    }    
+}
+```
+
+**Part II: Summary**
+
+This C program reads in a list of books and their maintainers, where each maintainer is represented by a 26-character string (a-z, A-Z). The program then finds the maintainer who has written the most books and prints out the name of that maintainer and the number of books they have written. Finally, it prints out the numbers of all the books written by that maintainer. The program uses a 26-element array `c` to count the frequency of each maintainer, and a 26-element array `b` to represent the alphabet.

@@ -1,0 +1,38 @@
+Here is the code with developer comments for each line, using the header "Part I".
+
+**Part I**
+
+```c
+int fact(int n,int m); // Function declaration for fact(n, m)
+
+int main() // Main function
+{
+    int n, a[35000], i, b[35000]; // Declare variables
+    cin >> n; // Read input for variable n
+    for (i = 0; i < n; i++) cin >> a[i]; // Read input for array a
+    for (i = 0; i < n; i++) b[i] = fact(a[i], 2); // Calculate fact(a[i], 2) and store in array b
+    for (i = 0; i < n; i++) cout << b[i] << endl; // Print output for array b
+    return 0; // Return 0 to indicate successful execution
+} // End of main function
+
+int fact(int n, int m) // Function definition for fact(n, m)
+{
+    int sum = 1, i, temp = 0; // Initialize variables
+    if (n < m) return 0; // If n is less than m, return 0
+    else if (n == 2) return 1; // If n is 2, return 1
+    else
+    {
+        for (i = m; i < n; i++) // Loop from m to n
+        { if (n % i == 0) sum += fact(n / i, i); } // Calculate and sum
+        return sum;
+    }
+} // End of fact function
+```
+
+**Part II**
+
+This code calculates the factorial of each element in an array using a recursive function. The main function reads input for the array size `n` and the array elements, then calculates the factorial of each element by calling the `fact` function with arguments `a[i]` and `2`. The results are stored in an array `b` and printed to the console.
+
+The `fact` function takes two integer arguments `n` and `m`, and returns the factorial of `n` with `m` as the multiplier. It uses a recursive approach to calculate the factorial, with a base case of returning 0 when `n` is less than `m`, and 1 when `n` is 2. Otherwise, it calculates the factorial by summing the factorials of the quotient `n/i` and the divisor `i` for `i` ranging from `m` to `n`, and returns the result.
+
+Overall, this code demonstrates how to use recursive functions to calculate the factorial of an array of integers.

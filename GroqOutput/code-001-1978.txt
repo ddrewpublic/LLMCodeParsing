@@ -1,0 +1,50 @@
+Here is the output with developer comments:
+```
+Part I
+
+int fg(int k,int m)
+{
+    // function fg takes two integer parameters k and m as input
+    int j,d=0;
+    if (m==1)
+    {
+       // base case: if m is 1, return 1
+       d=1;
+    }
+    for(j=k;j<=m;j++)
+    {
+        // iterate from k to m
+        if (m%j==0)
+            // if m is divisible by j, recursively call fg with j and m/j
+            d=d+fg(j,m/j);
+    }
+    return(d);
+}
+
+int main()
+{
+    // function main is the entry point of the program
+    int n,i,a[40000],b[40000],s;
+    scanf("%d",&n);
+    // read an integer n from standard input
+    for(i=1;i<=n;i++)
+    {
+        // read n integers and store them in array a
+        scanf("%d",&a[i]);
+    }
+    for(i=1;i<=n;i++)
+    {
+        // for each integer in a, compute its sigma function value using fg and store it in array b
+        b[i]=fg(2,a[i]);
+        printf("%d\n",b[i]);
+        // print the sigma function value
+    }
+    return 0;
+}
+```
+
+Summary:
+
+Part II
+
+This program calculates the sigma function values for a sequence of positive integers. The sigma function (also known as the sum of divisors function) takes an integer as input and returns the sum of its divisors (excluding the number itself). The program uses a recursive approach to compute the sigma function values, starting from the smallest divisor and recursively calling itself until the base case of 1 is reached. The main function reads a sequence of positive integers from standard input, computes the sigma function values for each integer using the fg function, and prints the results.

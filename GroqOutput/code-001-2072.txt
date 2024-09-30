@@ -1,0 +1,59 @@
+**Part I: Code with Developer Comments**
+
+```c
+// Declare a variable to store the result
+int num;
+
+// Define the main function
+main()
+{
+      // Declare a function pointer to fenjie
+      void fenjie(int x,int qi);
+      
+      // Declare variables n, k, and a
+      int n,k,a;
+      
+      // Read an integer from input and store it in n
+      scanf("%d",&n);
+      
+      // Loop through each number from 1 to n
+      for(k=1;k<=n;k++)
+      {
+          // Initialize num to 0
+          num=0;
+          
+          // Read an integer from input and store it in a
+          scanf("%d",&a);
+          
+          // Call fenjie function with a and 2 as parameters
+          fenjie(a,2);
+          
+          // Print the value of num
+          printf("%d\n",num);
+      }
+}
+
+// Define the fenjie function
+void fenjie(int x,int qi)
+{
+      // If x is 1, increment num
+      if(x==1) num++;
+      
+      // If x is not 1, iterate from qi to x
+      else
+      {
+         // Loop through each number from qi to x
+         for(int i=qi;i<=x;i++)
+         {
+              // If x is divisible by i, recursively call fenjie
+              if(x%i==0) fenjie(x/i,i);
+         }
+      }
+}
+```
+
+**Part II: Summary**
+
+This C code calculates the number of distinct prime factors for each integer input within a specified range. The program uses a recursive function called `fenjie` to break down each number into its prime factors. The `main` function reads input integers, calls the `fenjie` function with an initial value of 2, and prints the resulting number of prime factors for each input.
+
+The `fenjie` function works by recursively dividing the input number `x` by the lowest possible divisor `qi`, starting from 2. For each successful division, the function continues recursively dividing the new value of `x` by the new divisor until `x` reaches 1, indicating that a prime factor has been found. By tracking the number of times this process is repeated, the function returns the total number of distinct prime factors.

@@ -1,0 +1,49 @@
+Here is the code with developer comments for each line, using the header "Part I".
+
+**Part I**
+
+```c
+//*****************************
+//* ???????            *
+//* ??????              *
+//* ???2010-12-7           *
+//*****************************
+
+int num=1,flag=2;// Initialize two integer variables, num and flag, to 1 and 2 respectively.
+
+void way(int);// Declare a function called way that takes an integer as a parameter.
+
+int main()
+{
+    int a,n;
+    cin>>n;// Read an integer from input and store it in variable n.
+    while(n--)// Loop until n is 0.
+    {
+        cin>>a;
+        way(a); // Call the way function with the input value a.
+        cout<<num<<endl; // Print the value of num.
+        num=1; // Reset the value of num to 1.
+        flag=2; // Reset the value of flag to 2.
+    }
+    return 0;
+}
+
+void way(int a)
+{
+    int i,max;
+    max=sqrt(a); // Calculate the square root of the input value a and store it in max.
+    for(i=flag;i<=max;i++)// Count from flag to max.
+    {
+        if(a%i==0)// Check if a is divisible by i.
+        {
+            flag=i;// Update the flag value to i.
+            num++; // Increment the num value by 1.
+            way(a/i); // Recursively call the way function with a/i.
+        }
+    }
+}
+```
+
+**Part II**
+
+The code above is a C++ program that finds the number of prime numbers less than or equal to a given number. The prime numbers are calculated using the prime factorization method. The program uses a recursive function called way() to find the prime factors of the input number. The num variable keeps track of the count of prime factors found. The flag variable is used to avoid counting duplicate prime factors. The program repeats this process for each input number until zero. The output is the count of prime numbers less than or equal to each input number.

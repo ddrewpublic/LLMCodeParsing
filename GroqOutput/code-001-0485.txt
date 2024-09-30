@@ -1,0 +1,50 @@
+Here is the code with developer comments added:
+
+**Part I: Code**
+
+```
+int devide(int n, int m) {
+    // Check if n is less than m, if so, swap them to ensure m is the larger number
+    if (n < m) 
+        m = n;
+    // If n is equal to 1, return 1
+    if (n == 1) 
+        return 1;
+    // Initialize sum to 0
+    int sum = 0;
+    // Loop from m down to 2
+    for (int i = m; i >= 2; i--) {
+        // If n is divisible by i
+        if (n % i == 0) {
+            // Recursively call devide with n divided by i
+            sum = sum + devide(n / i, i);
+        }
+    }
+    // Return the sum
+    return sum;
+}
+
+int main() {
+    // Declare variables
+    int n, i, m;
+    // Read in the number of inputs
+    cin >> n;
+    i = 0;
+    // Loop until we've processed all inputs
+    while (i < n) {
+        // Read in the next input
+        cin >> m;
+        // Print the result of devide(m, m)
+        cout << devide(m, m) << endl; // ???????
+        i++;
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code is a recursive implementation of the divisor function, which calculates the sum of the divisors of a given number. The `devide` function takes two parameters, `n` and `m`, and returns the sum of the divisors of `n` that are less than or equal to `m`. The function uses a recursive approach, dividing `n` by `m` and adding the results of the recursive calls to the sum.
+
+The `main` function uses the `devide` function to calculate the sum of the divisors for a series of input numbers, and prints the results to the console. The program first reads in the number of inputs, then loops until it has processed all inputs, reading in each input and printing the result of the `devide` function.

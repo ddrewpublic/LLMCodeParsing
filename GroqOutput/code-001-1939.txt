@@ -1,0 +1,28 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```
+int t; // declare a variable t of type int
+
+int main() // define the main function
+{ 
+    int n,i,a[100]; // declare variables n, i, and an array a of size 100
+    void fenjie(int x,int y); // declare a function fenjie with parameters x and y
+    scanf("%d",&n); // read an integer from input and store it in variable n
+    for(i=0;i<n;i++) // loop i from 0 to n
+        scanf("%d",&a[i]); // read an integer from input and store it in array a at index i
+    for(i=0;i<n;i++) // loop i from 0 to n
+    { 
+        t=0; // initialize variable t to 0
+        fenjie(2,a[i]); // call function fenjie with parameters 2 and a[i]
+        printf("%d\n",t); // print the value of t
+    }
+    return 0; // return from main function
+}
+```
+
+**Part II**
+
+Summary:
+This program is designed to find the number of prime factors for each element in an array. The function fenjie is used to recursively divide the number until it becomes 1, and the number of divisions is counted as the number of prime factors. The program reads the number of elements and the elements themselves from input, calls the function fenjie for each element, and prints the number of prime factors for each element.

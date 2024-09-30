@@ -1,0 +1,91 @@
+Here is the code with developer comments for each line, using the header "Part I":
+
+**Part I**
+
+```c
+struct author
+{
+    int num;
+    char aut[27];
+}a[999];
+```
+
+Struct declaration for an array of authors with an integer number and a character array for their name.
+
+```c
+void main()
+{
+    void search(struct author b[],int n,char marker);
+```
+
+Function declaration for the search function, which takes an array of authors, the number of authors, and a marker character as parameters.
+
+```c
+    int m ,i,times[30]={0};
+```
+
+Variable declarations for the number of books, an integer counter, and an array to store the frequency of characters.
+
+```c
+    int length=0,j;
+    int max=0,flag=9;
+    char chac;
+```
+
+Variable declarations for length of author's name, a counter for the maximum frequency, a flag, and a character variable.
+
+```c
+    scanf("%d",&m);
+```
+
+Read the number of books from the user.
+
+```c
+    for(i=0;i<m;i++)
+    {
+        scanf("%d %s",&a[i].num,&a[i].aut);
+```
+
+Read the number and name of each book and store it in the array.
+
+```c
+        length=strlen(a[i].aut);
+        for(j=0;j<length;j++)
+        {
+            chac=a[i].aut[j];
+            times[chac-'A']++;
+        }
+```
+
+Calculate the frequency of characters in each author's name and store it in the times array.
+
+```c
+    }
+    for(i=0;i<26;i++)
+    {
+        if(max<times[i])
+        {
+            max=times[i];
+            flag=i;
+        }
+    }
+```
+
+Find the most frequent character and adjust the maximum frequency.
+
+```c
+    printf("%c\n%d\n",(char)(flag+'A'),max);
+```
+
+Print the most frequent character and its frequency.
+
+```c
+    search(a,m,(char)(flag+'A'));
+}
+```
+
+Call the search function to print the numbers of books containing the most frequent character.
+
+**Part II**
+
+The code above is a solution to a problem where we have to find the most frequently occurring letter in a array of authors' names and then print the numbers of books that have this letter. The code first reads the number of authors and then reads the name and number of each book. It calculates the frequency of characters in each author's name and then finds the most frequent character and its frequency. Finally, it calls a search function to print the numbers of books that have this character.

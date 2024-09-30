@@ -1,0 +1,57 @@
+**Part I: Code with Comments**
+
+```c
+// This is the main function where the program starts execution
+int main()
+{
+    // Define a function pointer to function f
+    int f(int,int);
+
+    // Declare two integer variables, n and a
+    int n, a;
+
+    // Read an integer from the standard input
+    cin>>n;
+
+    // Loop until n becomes 0
+    while(n--)
+    {
+        // Read an integer from the standard input
+        cin>>a;
+
+        // Call function f with argument a twice and print the result
+        cout<<f(a,a)<<endl;
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+// This is the function f, which calculates the sum of divisors
+int f(int m,int k)
+{
+    // Initialize a variable i and a sum
+    int i, sum=0;
+
+    // If m is 1, the sum is 1
+    if(m==1) sum=1;
+
+    // Loop from m down to 1
+    for(i=m;i>1;i--)
+    {  
+        // If m is divisible by i and i is less than or equal to k
+        if(m%i==0&&i<=k)
+            // Recursively call function f with the quotient of m and i as the new m
+            sum+=f(m/i,i);
+    }
+
+    // Return the calculated sum
+    return sum;
+}
+```
+
+**Part II: Summary**
+
+This program is designed to calculate the sum of the divisors of a given integer up to a certain limit. The main function reads an integer n and a limit k from the standard input, then calls the function f with the given integer a as the argument for n times. In each iteration, the function f calculates the sum of the divisors of the current integer a, while limiting the sum to the given limit k. The result of each calculation is then printed to the standard output.
+
+The function f uses a recursive approach to calculate the sum of the divisors. It starts by checking if the current integer m is 1, in which case the sum is 1. Then, it loops from m down to 1, and for each integer i, it checks if m is divisible by i and i is less than or equal to k. If the condition is met, it recursively calls itself with the quotient of m and i as the new m, adding the result of the previous calculation to the sum. The final sum is then returned. This approach ensures that the sum is calculated correctly and efficiently, avoiding duplicate calculations and limiting the sum to the given limit k.

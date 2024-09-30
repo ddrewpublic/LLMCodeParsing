@@ -1,0 +1,51 @@
+Here is the code with developer comments:
+```
+Part I
+```
+
+```
+int sum=0; // initialize sum variable to 0
+void f(int x,int y)
+{
+	if(x==1) // base case: if x is 1, increment sum
+		sum++;
+	while(y<=x)
+	{
+		if(x%y==0) // if x is divisible by y, recursively call f with x/y and y
+			f(x/y,y);
+		y++;
+	}
+} // recursive function f to count prime factors
+```
+
+```
+int main()
+{
+	int n,i,a; // declare variables n, i, and a
+	cin>>n; // read input n
+	for(i=1;i<=n;i++)
+	{
+		cin>>a; // read input a
+		int j=2,num=1; // initialize j and num
+		while(j<=a/2)
+		{
+			if(a%j==0) // if a is divisible by j
+			{
+				sum=0; // reset sum
+				f(a/j,j); // recursively count prime factors of a/j
+				num+=sum; // add sum to num
+			}
+			j++;
+		}
+		printf("\n%d",num); // print num
+	}
+	return 0; // return 0 to indicate successful execution
+}
+```
+```
+Part II
+```
+
+The code is designed to calculate the sum of prime factors of each number from 1 to n. The recursive function `f` is used to count the prime factors of a given number. The `main` function reads input n and then iterates through each number from 1 to n, calculating the sum of its prime factors using the `f` function. The result is then printed to the console.
+
+The code has a complexity of O(n log n) due to the use of a loop and recursive function calls. It may not be efficient for large values of n, but it is sufficient for small to medium-sized inputs.

@@ -1,0 +1,63 @@
+**Part I: Code with Comments**
+
+```c
+int fun(int m, int n) {
+    // Initialize a variable i to store the value of i
+    int i;
+    // Initialize sum to 1, as we will be adding 1 to the sum for each divisor
+    int sum = 1;
+    // Check if n is equal to 1
+    if (n == 1) {
+        // If n is 1, start a loop from 2 to the square root of m
+        for (i = 2; i * i <= m; i++) {
+            // Check if m is divisible by i
+            if (m % i == 0) {
+                // If m is divisible by i, add the sum of fun(m/i, i) to the sum
+                sum += fun(m / i, i);
+            }
+        }
+    } else {
+        // If n is not 1, start a loop from n to the square root of m
+        for (i = n; i * i <= m; i++) {
+            // Check if m is divisible by i
+            if (m % i == 0) {
+                // If m is divisible by i, add the sum of fun(m/i, i) to the sum
+                sum += fun(m / i, i);
+            }
+        }
+    }
+    // Return the sum
+    return sum;
+}
+
+int main() {
+    // Declare variables n, i, and b
+    int n, i, b;
+    // Declare an array a of size 1000
+    int a[1000];
+    // Read the value of n from the input
+    cin >> n;
+    // Loop through i from 0 to n-1
+    for (i = 0; i < n; i++) {
+        // Read the value of b from the input
+        cin >> b;
+        // Calculate the sum of fun(b, 1) and store it in a[i]
+        a[i] = fun(b, 1);
+    }
+    // Loop through i from 0 to n-1
+    for (i = 0; i < n; i++) {
+        // Print the value of a[i] on the screen
+        cout << a[i] << endl;
+    }
+}
+```
+
+**Part II: Summary**
+
+The provided code is a program written in C++ that calculates and prints the sum of the factors of each number in a given array. The function `fun(m, n)` takes two integers `m` and `n` as parameters, where `m` is the number for which we want to find the sum of its factors and `n` is the starting point for finding the factors.
+
+The function `fun(m, n)` first checks if `n` is equal to 1. If it is, it starts a loop from 2 to the square root of `m` and for each number `i` in this range, it checks if `m` is divisible by `i` and if it is, it adds the sum of `fun(m/i, i)` to the sum. If `n` is not 1, it starts the same loop from `n` to the square root of `m`.
+
+In the `main()` function, the program reads the value of `n` from the input, then reads an array of `n` numbers, and for each number in the array, it calculates and stores the sum of its factors in the array `a`. Finally, the program prints the sum of the factors for each number in the array.
+
+This code demonstrates the concept of recursion by using the function `fun(m, n)` to calculate the sum of the factors of a number, and also uses arrays to store and manipulate the results.

@@ -1,0 +1,40 @@
+**Part I (Code Output with Developer Comments)**
+
+```c
+int cc; // declare a variable to store the count of divisors
+void fen(int x,int h); // declare a function to calculate the count of divisors
+
+int main()
+{
+    int n=0,k=0; // initialize variables to store the number of test cases and the current test case
+    cin>>n; // read the number of test cases from the input
+    for(k=1;k<=n;k++) // loop through each test case
+    {
+        cc=0; // reset the count of divisors for each test case
+        int ff; // declare a variable to store the number to be processed
+        cin>>ff; // read the number to be processed from the input
+        fen(ff,2); // call the fen function to calculate the count of divisors
+        cout<<cc<<endl; // print the count of divisors
+    }
+    return 0; // end of the program
+}
+
+void fen(int x,int h)
+{
+    for(int i=2;i<=x;i++) // loop through all numbers from 2 to x
+    {
+        if((x%i==0)&&(i>=h)&&(i<x)) // check if the number is a proper divisor (i.e., not equal to x) and greater than or equal to h
+            fen(x/i,i); // recursive call to calculate the count of divisors
+        if((x%i==0)&&(i>=h)&&(i==x)) // check if the number is a proper divisor and equal to x
+            cc++; // increment the count of divisors
+    }
+}
+```
+
+**Part II (Summary)**
+
+The code implements a function to calculate the count of divisors of a given number. The `fen` function takes two parameters, `x` and `h`, where `x` is the number to be processed and `h` is the lower bound of the divisors to be considered. The function uses a recursive approach to calculate the count of divisors.
+
+The main function reads the number of test cases from the input and processes each test case by calling the `fen` function. The `fen` function calculates the count of divisors for each test case and stores the result in the `cc` variable. The main function then prints the count of divisors for each test case.
+
+The code also includes a loop that resets the `cc` variable to zero at the beginning of each test case. This is necessary because the `fen` function is recursive and may overwrite the value of `cc` in the previous test case.

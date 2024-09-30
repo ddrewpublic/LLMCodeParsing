@@ -1,0 +1,57 @@
+Here is the modified code with comments and a summary:
+
+
+**Part I: Code with Comments**
+
+```cpp
+// main.cpp program to find the sum of divisors of a number
+// Created by unknown on 13-11-22.
+// Copyright (c) 2013 unknown. All rights reserved.
+
+int f(int a, int s) // s is for start
+{
+    // if a is less than or equal to start, return 1
+    if (a <= s) return 1;
+
+    int b = sqrt((float)a), flag = 0, sum = 1;
+    // iterate from start to the square root of a
+    for (int i = s; i <= b; i++)
+    {
+        // if a is divisible by i
+        if (a % i == 0)
+        {
+            // increment the flag and calculate the sum of divisors of a/i
+            flag++;
+            
+            sum = sum + f(a / i, i);
+        }
+    }
+    // if no proper divisors are found, return the square of the number
+    if (flag == 0) return 1;
+    else return sum;
+}
+
+int main()
+{
+    int a, n;
+    // read the number of test cases
+    cin >> n;
+    
+    // iterate over each test case
+    for (int i = 1; i <= n; i++)
+    {
+        // read the number for which to find divisors
+        cin >> a;
+        // calculate and print the sum of divisors
+        cout << f(a, 2) << endl;
+    }
+    
+    // terminate the program
+    return 0;
+}
+```
+
+
+**Part II: Summary**
+
+This C++ program calculates the sum of divisors of a given number for multiple test cases. The `f` function takes an integer `a` and an integer `s` (start) as input and returns the sum of divisors of `a`. It iterates over all numbers from `s` to the square root of `a` and updates the sum of divisors accordingly. The `main` function reads the number of test cases, processes each test case by reading a number and calculating its sum of divisors using the `f` function, and then prints the result. The program terminates after processing all test cases.

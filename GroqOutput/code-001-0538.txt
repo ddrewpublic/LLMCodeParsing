@@ -1,0 +1,84 @@
+Here is the code with developer comments for each line:
+
+**Part I: Code with comments**
+
+```c
+int reek(int i,int j)
+{
+    // Initialize k and g to 0
+    int k,g=0;
+    
+    // Iterate from j to i-1
+    for (k=j;k<i;k++)
+    {
+        // Check if i is divisible by k except for 1
+        if ((i%k==0)&&(k!=1))
+        {
+            // Set g to 1 and break the loop
+            g=1;
+            break;
+        }
+        else
+        {
+            // Continue to the next iteration
+            continue;
+        }
+    }
+    
+    // If g is 0, return 1
+    if (g==0) return 1;
+    else
+    {
+        // Initialize num to 1
+        int num=1;
+        
+        // Iterate from j to sqrt(i)
+        for(k=j;k<=sqrt(i);k++)
+        {
+            // Check if i is divisible by k except for 1
+            if ((i%k==0)&&(k!=1))
+            {
+                // Recursively call reek with i/k and k, and add the result to num
+                num+=reek(i/k,k);
+            }
+            else
+            {
+                // Continue to the next iteration
+                continue;
+            }
+        }
+        // Return num
+        return num;
+    }
+}
+
+int main()
+{
+    // Declare an array of 1000 integers
+    int n,i,a[1000];
+    
+    // Read the number of inputs
+    cin>>n;
+    
+    // Iterate through the inputs
+    for(i=0;i<n;i++)
+    {
+        // Read the current input
+        cin>>a[i];
+        
+        // Print the result of reek(a[i], 1)
+        cout<<reek(a[i],1)<<endl;
+    }
+    
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The code is a C++ program that implements a function `reek` to calculate the sum of all proper divisors of a given integer. The function takes two arguments, `i` and `j`, where `j` is a starting point for the search for divisors. The function returns the total count of divisors, including 1 and the number itself.
+
+The main function reads a number of inputs, and for each input, it calls the `reek` function with the input value and 1 as arguments, and prints the result. The `reek` function uses a recursive approach to find all proper divisors of the input number. It starts by checking if the input number is divisible by any number from `j` to `i`. If it is, it breaks the loop and returns 1. Otherwise, it recursively calls itself with the quotient of the input number and the current divisor, and adds the result to the total count of divisors.
+
+The program uses the `(sqrt)` function to optimize the calculation by only considering divisors up to the square root of the input number. This is because a larger divisor of the input number would have a corresponding smaller divisor that has already been counted.

@@ -1,0 +1,67 @@
+**Part I: Code with Comments**
+
+```c
+int main()
+{
+    // Declare variables for number of test cases and array
+    int n, a[100];
+    int i;
+    // Declare a function called f that takes two integers and returns an integer
+    int f(int x, int min);
+
+    // Initialize array to all zeros
+    for(i=0;i<100;i++) {
+        a[i] = 0;
+    }
+
+    // Read number of test cases
+    scanf("%d",&n);
+
+    // Run through each test case
+    for(i=0;i<n;i++) {
+        // Read number
+        scanf("%d",&a[i]);
+        // Call function f and assign result to array
+        a[i] = f(a[i], 2);
+    }
+
+    // Print results
+    for(i=0;i<n;i++) {
+        printf("%d\n",a[i]);
+    }
+
+    // Exit program
+    return 0;
+}
+
+int f(int x, int min)
+{
+    // Initialize variables
+    int y = 0;
+    int i;
+
+    // Base case: if input is 1, return 1
+    if(x == 1) {
+        y = 1;
+    }
+    else {
+        // Recursive case: loop from min to x
+        for(i = min; i <= x; i++) {
+            // If x is divisible by i, recursive call f with x/i and i
+            if(x % i == 0) {
+                y = y + f(x/i, i);
+            }
+        }
+    }
+
+    // Return result
+    return y;
+}
+```
+**Part II: Summary**
+
+The provided code is a C program that calculates the sum of proper divisors for each number in an array. The program uses a recursive function `f` to calculate the sum of divisors for each number. The function `f` takes two parameters, `x` and `min`, where `x` is the number for which to calculate the sum of divisors, and `min` is the starting value for the loop that finds the divisors.
+
+The program reads the number of test cases and the numbers for which to calculate the sum of divisors. For each number, it calls the function `f` with the number and the starting value of 2, and assigns the result to an array. Finally, the program prints the results.
+
+The code is designed to handle a large number of test cases and numbers, and it uses a recursive approach to calculate the sum of divisors, which makes it efficient and scalable.

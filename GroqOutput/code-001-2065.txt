@@ -1,0 +1,40 @@
+**Part I: Code with Developer Comments**
+
+```c
+int times;  // initialize a global variable to count the number of factors
+void fenjie(int m,int k) // definition of recursive function to find factors
+{
+    int i;  // loop variable
+    {
+        for(i=k;i<=sqrt(m);i++) // loop to find factors from k to sqrt(m)
+        {
+            if(m%i==0) // check if m is divisible by i
+            {
+                fenjie(m/i,i); // recursively call fenjie with m/i and i
+            }
+        }
+    }
+    times++; // increment the global variable times each time a factor is found
+}
+int main() // main function
+{
+    int n,i;  // variables to store input and loop index
+    scanf("%d",&n); // read the number of test cases
+    for(i=0;i<n;i++) // loop for each test case
+    {
+        int m;  // variable to store the test case number
+        times=0; // reset the times variable for each test case
+        scanf("%d",&m); // read the test case number
+        fenjie(m,2); // call fenjie with m and 2 as the starting limit
+        printf("%d\n",times); // print the number of factors found
+    }
+}
+```
+
+**Part II: Summary**
+
+This code is designed to find the number of factors of a given integer within a certain range. The `fenjie` function is a recursive function that takes an integer `m` and an integer `k` as input, and finds all factors of `m` greater than or equal to `k`. The function works by dividing `m` by each integer from `k` to the square root of `m`, and recursively calling itself with the quotient and the same value of `k`. The number of factors found is stored in the global variable `times`.
+
+The `main` function reads the number of test cases, and for each test case, it reads the test case number and calls the `fenjie` function with the test case number and 2 as the starting limit. The number of factors found is then printed for each test case.
+
+The code is efficient because it only needs to check for factors up to the square root of the test case number, which implies that the code runs in O(n^(1/2)) time complexity. The recursive nature of the `fenjie` function allows the code to efficiently find the factors of the test case numbers.

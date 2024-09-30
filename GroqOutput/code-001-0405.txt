@@ -1,0 +1,42 @@
+**Part I**
+
+```c
+//1000012915???
+int f(int a,int min);  // Define function f with parameters a and min, returning an integer value.
+int main()
+{
+    int n,i,a,A[100];        // Declare an array A of size 100 and initialize n, i, and a to integers.
+    cin>>n;                     // Read n from standard input.
+    
+    for(i = 0;i < n;i++)     // Loops n times, starting from 0.
+    {
+        cin>>a;
+        A[i]=f(a,2);         // Calls function f with parameters a and 2, and assigns the result to A[i].
+    };
+    for(i = 0;i < n;i++)cout<<A[i]<<endl; // Prints the elements of array A on separate lines.
+    return 0;
+}
+
+int f(int a,int min)
+{ 
+    int result = 1; 
+    int i;
+    if(a < min)                 // If a is less than min, returns 0.
+    { 
+        return 0; 
+    } 
+    
+    for(i = min;i<a;i++)        // Loops from min to a-1.
+    { 
+        if(a % i == 0)
+        { 
+            result += f(a/i,i); // Recursively calls f with a/i and i, and adds the result to result.
+        } 
+    } 
+    return result; 
+}
+```
+
+**Part II**
+
+This program is designed to find the sum of all divisors of each number in an array up to a certain limit. The function `f(a, min)` calculates the sum of divisors of `a` starting from `min`. The main function reads in an array of numbers `n`, and then calls the function `f` for each number in the array, using the value 2 as the starting divisor. The results are stored in an array `A`, and then printed out.

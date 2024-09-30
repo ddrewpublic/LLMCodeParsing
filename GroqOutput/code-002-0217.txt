@@ -1,0 +1,38 @@
+**Part I:'
+
+```
+void main()
+{
+    // Declare a struct 'book' to hold information about a book
+    struct book
+    {
+        int num;
+        char wri[26];
+    }*s;
+    
+    // Declare an integer 'n' and initialize it to a large value
+    int n,i,j,a[100],t;
+    
+    // Declare a character 'c'
+    char c;
+    
+    // Allocate memory for 'n' number of 'book' structs
+    s=(struct book *)malloc(n*sizeof(struct book));
+    
+    // Initialize an array 'a' to hold the frequency of characters
+    for(i=0;i<100;i++)
+        a[i]=0;
+    
+    // Read the number of books from the input
+    scanf("%d",&n);
+    
+    // Read the details of each book from the input
+    for(i=0;i<n;i++)
+        scanf("%d %s",&(*(s+i)).num,(*(s+i)).wri);
+```
+
+**Part II: Summary**
+
+In this program, we are reading the details of 'n' number of books from the input, where each book has a unique author. The program then calculates the frequency of each author's first letter and prints the author with the highest frequency. Finally, it prints the numbers of the books written by the author with the highest frequency.
+
+The program uses a struct 'book' to hold the information about a book, and an array 'a' to calculate the frequency of the first letter of each author. The program uses the 'malloc' function to dynamically allocate memory to 'n' number of 'book' structs. It then reads the details of each book from the input and calculates the frequency of each first letter. The program then prints the author with the highest frequency and the numbers of the books written by that author.

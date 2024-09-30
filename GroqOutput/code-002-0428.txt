@@ -1,0 +1,44 @@
+Here is the code with developer comments for each line, using the header "Part I":
+
+**Part I**
+
+```c
+int main()   // Starting point of the program
+{
+    char ma='A'; // Variable to store the most frequently occurring character
+    int cnt[128]={0}; // Array to count the frequency of each character
+    int i,j,n; // Variables for loop counters and number of books
+    struct s
+    { // Struct to represent a book
+        int id;
+        char au[27];
+    }bk[1000]; // Array to store book information
+    scanf("%d",&n); // Read the number of books from input
+```
+
+The code then initializes the `ma` variable to 'A' and sets all elements of the `cnt` array to 0. It also declares three integer variables `i`, `j`, and `n`, and a struct `s` to represent a book. The `bk` array is declared to store information about 1000 books.
+
+```c
+    for(i=0;i<n;i++)
+    { // Loop to process each book
+        scanf("%d%s",&bk[i].id,bk[i].au); // Read the book's id and author
+        for(j=0;bk[i].au[j]!='\0';j++) // Loop to process each character in the author's name
+        {
+            cnt[bk[i].au[j]]++; // Increment the count for the current character
+            if(cnt[bk[i].au[j]]>cnt[ma]){ma=bk[i].au[j];} // Update the most frequently occurring character
+        }
+    }
+    printf("%c\n%d\n",ma,cnt[ma]); // Print the most frequently occurring character
+    for(i=0;i<n;i++)
+    {
+       	if(strchr(bk[i].au,ma)){printf("%d\n",bk[i].id);} // Print the id of books whose author's name contains the most frequently occurring character
+    }
+    return 0;
+}
+```
+
+This code reads the number of books and processes each book's author's name to find the most frequently occurring character. It then prints this character and the ids of all books whose author's name contains this character.
+
+**Part II**
+
+This code is designed to find the most frequently occurring character in the author's names of a set of books and print the id of books whose author's name contains this character. The code is written in C programming language and uses the `stdio.h` library for input and output operations. The code uses a `struct` to represent a book, and an array of this struct to store information about the books. The code also uses an array to count the frequency of each character in the author's names. The most frequently occurring character is updated in each iteration of the loop, and the ids of books whose author's name contains this character are printed at the end. The code is efficient in terms of memory usage, as it uses a fixed-size array to store the book information and character counts. The code can be extended to handle more complex tasks, such as sorting and ranking the books based on their author's names.

@@ -1,0 +1,77 @@
+**Part I: Code with Developer Comments**
+```
+struct book
+{
+    int mark; // stores the book's mark (score)
+    char name[26]; // stores the book's name (up to 26 characters)
+};
+
+int main()
+{
+    int m, h, i, j, k, max, length; // declared variables
+    int t[26]; // array to store the frequency of each letter
+    char a; // declared variable
+    scanf("%d", &m); // read the number of books (m)
+
+    struct book book[1000]; // array to store book structures (max 1000 books)
+    for (i = 0; i < m; i++)
+    {
+        // read mark and name for each book
+        scanf("%d %s", &book[i].mark, book[i].name);
+    }
+
+    // traverse the books and count the frequency of each letter
+    for (i = 0; i < 26; i++)
+    {
+        a = 'A' + i; // get the ASCII value of the current letter
+        t[i] = 0; // initialize the count to 0
+        for (j = 0; j < m; j++)
+        {
+            length = strlen(book[j].name); // get the length of the current book's name
+            for (h = 0; h < length; h++)
+            {
+                // check if the current letter appears in the book's name
+                if (a == book[j].name[h])
+                {
+                    t[i]++; // increment the count
+                }
+            }
+        }
+    }
+
+    max = 0; // initialize the maximum count
+    for (i = 0; i < 26; i++)
+    {
+        // check if the current count is greater than the maximum
+        if (t[i] > max)
+        {
+            max = t[i]; // update the maximum count
+            k = i; // store the corresponding letter index
+        }
+    }
+    a = 'A' + k; // get the letter corresponding to the maximum count
+
+    printf("%c\n%d\n", a, t[k]); // print the letter and its frequency
+
+    for (i = 0; i < m; i++)
+    {
+        length = strlen(book[i].name);
+        for (j = 0; j < 26; j++)
+        {
+            if ('A' + k == book[i].name[j])
+            {
+                printf("%d\n", book[i].mark); // print the mark for each book
+            }
+        }
+    }
+
+    return 0;
+}
+```
+**Part II: Summary**
+
+The given code is a C program that reads information about a list of books, calculates the frequency of each letter in the book names, and prints the letter with the highest frequency, along with the marks for each book that contains the most frequent letter. The program takes input from the user in the form of a number m, followed by m lines of input, where each line contains a book's mark and name.
+
+The code first initializes an array of book structures and a count array t to store the frequency of each letter. It then reads the book information and calculates the frequency of each letter in each book's name. Next, it finds the maximum count and stores the corresponding letter index. Finally, it prints the letter with the highest frequency and the marks for each book that contains the most frequent letter.
+
+The code demonstrates a simple frequency counting algorithm and provides a basic understanding of the concept of frequency in programming. However, it does not handle cases where multiple letters have the same highest frequency or provides a clear explanation of the program's functionality.

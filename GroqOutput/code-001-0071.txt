@@ -1,0 +1,81 @@
+**Part I: Code with Comments**
+
+```c
+int main()
+{
+    // Declare integer variables n and i
+    int n, i;
+
+    // Declare function num(int,int) as type int
+    int a, num(int, int);
+
+    // Read integer n from input
+    cin >> n;
+
+    // Loop through i from 0 to n-1
+    for (i = 0; i < n; i++)
+    {
+        // Read integer a from input
+        cin >> a;
+
+        // Calculate the count of divisors of a using the num(2,a) function
+        cout << num(2, a) + 1 << endl;
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+int num(int m, int n)
+{
+    // Declare integer variables i and count
+    int i, count = 0;
+
+    // Declare function su(int) as type int
+    int su(int);
+
+    // Loop through i from m to the square root of n
+    for (i = m; i <= (int)sqrt(n); i++)
+    {
+        // Check if n is divisible by i
+        if (n % i == 0)
+        {
+            // Increment the count of divisors
+            count++;
+
+            // Recursively calculate the divisors of n/i
+            if (su(n / i) != 0)
+                count += num(i, n / i);
+        }
+    }
+
+    // Return the count of divisors
+    return count;
+}
+
+int su(int n)
+{
+    // Declare integer variable i
+    int i;
+
+    // Loop through i from 2 to n-1
+    for (i = 2; i < n; i++)
+    {
+        // Check if n is divisible by i
+        if (n % i == 0)
+        {
+            // Return 1 if a divisor is found
+            return 1;
+            break;
+        }
+    }
+
+    // Return 0 if no divisor is found
+    if (i == n)
+        return 0;
+}
+```
+
+**Part II: Summary**
+
+This code calculates the number of divisors for a given number using a recursive function `num(int, int)`. The function `num(int, int)` counts the number of divisors for a given number `n` by checking for divisors from 2 to the square root of `n`. If a divisor is found, it recursively calls itself with `n/i` as the new input. The function `su(int)` is used to check if a number is prime or not. The main function reads input numbers, calculates their divisors, and prints the results.

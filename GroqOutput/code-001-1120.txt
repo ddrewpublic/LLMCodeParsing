@@ -1,0 +1,56 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```cpp
+/*
+ * ????apple.cpp
+ * ???00948343_??
+ * ?????2012/11/19
+ * ???????
+ */
+
+// Function to calculate the sum of all divisors of a given number
+int fenjie(int a, int start);
+
+int main(){
+	// Declare variables
+    int n, i, integ;
+	// Read the number of inputs from the user
+    cin >> n;
+	// Loop through each input
+    for (i=0;i<n;i++){
+		// Read the current input
+        cin >> integ;
+		// Calculate the sum of all divisors of the current input
+        cout << fenjie(integ, 2) << endl;
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+int fenjie(int a, int start){
+	// Declare variables
+    int i, sum=1;
+	// If the start value is equal to the input number a, return 1 (since 1 is a divisor)
+    if (start==a)
+        sum=1;
+    else{
+		// Loop through numbers from start to the square root of a
+        for (i=start;i<=sqrt(a);i++){
+			// Check if i is a divisor of a
+            if (a%i==0){
+				// If i is a divisor, add the sum of all divisors of a/i (recursively call fenjie) to the sum
+                sum = sum + fenjie(a/i, i);
+            }
+        }
+    }
+	// Return the sum of all divisors
+    return sum;
+}
+```
+
+**Part II**
+
+Summary:
+
+The code is designed to calculate the sum of all divisors of a given number, including 1 and the number itself. The `fenjie` function recursively breaks down the input number into smaller factors, adding up the sum of divisors of each factor until it reaches the base case where the start value is equal to the input number. The `main` function reads a sequence of input numbers and outputs the sum of all divisors for each input, using the `fenjie` function to perform the calculation.

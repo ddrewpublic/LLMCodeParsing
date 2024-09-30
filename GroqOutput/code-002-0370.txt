@@ -1,0 +1,51 @@
+**Part I**
+```c
+struct a {
+    int book;
+    char author[26];
+    struct a *next;
+};
+```
+Defines a struct `a` with three members: `book` (an integer), `author` (an array of 26 characters), and `next` (a pointer to the next struct `a` in a linked list).
+
+```c
+struct a *creat(int m) {
+    int i = 0;
+    struct a *p, *head, *temp;
+    head = NULL;
+```
+Declares three pointers (`p`, `head`, `temp`) of type `struct a` and initializes `head` to `NULL`.
+
+```c
+    do {
+        p = (struct a *)malloc(sizeof(struct a));
+        if (p == NULL) {
+            exit(1);
+        }
+        scanf("%d %s", &p->book, p->author);
+        if (head == NULL) {
+            head = p;
+            temp = p;
+        } else {
+            temp->next = p;
+            temp = p;
+        }
+        i++;
+    } while (i < m);
+```
+ Allocates memory for `m` struct `a` objects using `malloc`. Reads the book number and author name for each object using `scanf`. If the linked list is empty, sets `head` to the current object and sets `temp` to the current object. Otherwise, sets the `next` pointer of the current `temp` object to the current object and sets `temp` to the current object.
+
+```c
+    temp->next = NULL;
+    return (head);
+}
+```
+Sets the `next` pointer of the last object in the linked list to `NULL` and returns the head of the linked list.
+
+**Part II**
+
+The provided code creates a linked list of structs `a`, each representing a book with its title and author. The `creat` function allocates memory for the linked list and reads the book information from standard input. The `main` function initializes the linked list using the `creat` function, then calculates and prints the most frequent author's name and the corresponding book titles.
+
+The program works by iterating through the linked list, counting the frequency of each author's name, and then finding the character with the highest frequency. It then prints the book titles for each author with the most common name.
+
+Note: The code uses a simple frequency count approach, which may not be efficient for large inputs.

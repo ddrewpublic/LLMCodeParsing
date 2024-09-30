@@ -1,0 +1,78 @@
+**Part I**
+
+```c
+void main()
+{
+    // Declare a variable m to store the number of books
+    int m;
+    // Read the number of books from the input
+    scanf("%d",&m);
+    // Declare variables i, j, k, x, and t
+    int i, j, k, x, t;
+    // Declare a structure "book" to store the book information
+    struct book
+    {
+        int num;  // Book number
+        char w[26];  // Book title
+    }b[1000];  // Array of 1000 "book" structures
+    // Loop through each book
+    for(i=0;i<m;i++)
+    {
+        // Read the book number and title from the input
+        scanf("%d",&b[i].num);
+        scanf("%s",&b[i].w);
+    }
+    // Declare an array c to count the frequency of each letter
+    int c[26];
+    // Initialize the frequency count for each letter
+    for(i=0;i<26;i++)c[i]=0;
+    // Loop through each book and count the frequency of each letter
+    for(i=0;i<26;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            for(k=0;k<26;k++)
+            {
+                // Check if the letter is not null and matches the current letter
+                if(b[j].w[k]!='\0'&&b[j].w[k]-i=='A')c[i]++;
+            }
+        }
+    }
+    // Declare an array d to store the sorted frequency count
+    int d[26];
+    // Copy the frequency count to array d
+    for(i=0;i<26;i++)d[i]=c[i];
+    // Sort the frequency count in descending order
+    for(i=0;i<25;i++)
+    {
+        if(d[i]>d[i+1])
+        {
+            t=d[i];
+            d[i]=d[i+1];
+            d[i+1]=t;
+        }
+    }
+    // Find the letter with the maximum frequency
+    for(i=0;i<26;i++)
+    {
+        if(c[i]==d[25])x=i;
+    }
+    // Print the most frequent letter
+    printf("%c\n",'A'+x);
+    // Print the frequency count of the most frequent letter
+    printf("%d\n",c[x]);
+    // Loop through each book and print the book numbers that contain the most frequent letter
+    for(j=0;j<m;j++)
+    {
+        for(k=0;k<26;k++)
+        {
+            // Check if the book contains the most frequent letter
+            if(b[j].w[k]-x=='A')printf("%d\n",b[j].num);
+        }
+    }
+}
+```
+
+**Part II**
+
+This program reads a list of book titles and numbers from the input and finds the most frequent letter in the titles. It then prints the most frequent letter, its frequency count, and the numbers of the books that contain this letter. The program uses three arrays: `c` to count the frequency of each letter, `d` to store the sorted frequency count, and `b` to store the book information. The program uses a combination of loops to iterate through the books, count the frequency of each letter, sort the frequency count, and find the most frequent letter. Finally, it prints the results.

@@ -1,0 +1,63 @@
+**Part I**
+
+```c
+void main()
+{
+    // Declare an integer n and initialize it to 0
+    int n,i,j,t[26]={0},k=0,max,h;
+    // Read n from the input
+    scanf("%d",&n);
+    
+    struct book
+    {
+        int a;
+        char b[26];
+    }book[100]={0,""}; // Declare a struct book array and initialize all elements to 0 and empty strings
+    for(i=0;i<n;i++)
+    {
+        // Read the input for the book array
+        scanf("%d%s",&book[i].a,book[i].b);
+    }
+    for(i=0;i<n;i++)
+    {
+        // Get the length of the book's title
+        k=strlen(book[i].b);
+        // Iterate over each character in the title
+        for(j=0;j<k;j++)
+        {
+            // Increment the count of the character in the t array
+            t[book[i].b[j]-65]++;
+        }
+    }
+    max=0;
+    // Iterate over the t array to find the maximum count
+    for(i=0;i<26;i++)
+    {
+        //printf("%d ",t[i]);
+        // Check if the current count is greater than the maximum count
+        if(t[i]>max)
+        {
+            max=t[i];
+            h=i;
+        }
+    }
+    // Print the character with the maximum count and the count itself
+    printf("%c\n%d\n",h+65,max);
+    for(i=0;i<n;i++)
+    {
+        // Get the length of the book's title
+        k=strlen(book[i].b);
+        // Iterate over each character in the title
+        for(j=0;j<k;j++)
+        {
+            // Check if the current character matches the character with the maximum count
+            if(book[i].b[j]==h+65)
+                printf("%d\n",book[i].a);
+        }
+    }
+}
+```
+
+**Part II**
+
+This C code is designed to find the most frequent character in a list of book titles and print the title(s) of the book(s) that contain this character. The code uses a struct array to store the book titles and their corresponding publication years. The character frequency is calculated using an array t, where t[i] represents the frequency of the i^{th} character of the alphabet (A=0, B=1, ..., Z=25). The maximum frequency is then used to find the character with the maximum frequency. The code then prints the character and its frequency, and finally prints the title(s) of the book(s) that contain this character.

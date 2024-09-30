@@ -1,0 +1,53 @@
+Here is the code with developer comments:
+```
+/* Part I */
+int main() {
+    // Declare variables and arrays
+    int n, a[999], i, k[27] = {0}, j, t, m;
+    char b[999][27];
+    // Read the number of inputs
+    scanf("%d", &n);
+    // Loop through each input
+    for (i = 0; i < n; i++) {
+        // Read the array and corresponding string
+        scanf("%d %s", &a[i], b[i]);
+        // Loop through each character in the string
+        for (j = 0; b[i][j]; j++) {
+            // Increment the count for the character in the k array
+            k[b[i][j] - 65]++;
+        }
+    }
+    // Initialize variables for the most common character
+    t = k[0];
+    m = 0;
+    // Loop through each character in the k array
+    for (j = 0; j < 26; j++) {
+        // Check if the current character count is greater than the maximum
+        if (k[j] > t) {
+            t = k[j];
+            m = j;
+        }
+    }
+    // Print the most common character and its count
+    printf("%c\n%d\n", m + 65, t);
+    // Loop through each input again
+    for (i = 0; i < n; i++) {
+        // Loop through each character in the string
+        for (j = 0; b[i][j]; j++) {
+            // Check if the current character matches the most common character
+            if (b[i][j] == m + 65) {
+                // Print the corresponding array value
+                printf("%d\n", a[i]);
+                // Break out of the inner loop
+                break;
+            }
+        }
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This program reads in a number of strings and corresponding arrays, and then finds the most common character in those strings. It does this by iterating through the strings and counting the occurrences of each character in the alphabet. Once the most common character is found, it is printed along with its count. Finally, the program loops through the strings again to find and print the array value corresponding to the most common character.

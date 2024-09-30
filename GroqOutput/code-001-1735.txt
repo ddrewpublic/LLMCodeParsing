@@ -1,0 +1,43 @@
+**Part I: Code with Developer Comments**
+```
+int sum = 0; // initialize sum variable to 0
+void f(int n, int i)
+{
+    if(n == 1) sum++; // if n is 1, increment sum by 1
+    while(i <= n)
+    {
+        if(n % i == 0) // check if n is divisible by i
+        {
+            f(n/i, i); // recursive call to f with n divided by i and i
+        }
+        i++; // increment i
+    }
+    return ; // end of function
+}
+
+int main()
+{
+    int t = 0; // initialize variable t to 0
+    cin >> t; // read input for t
+    while(t--)
+    {
+        int n = 0; // initialize variable n to 0
+        cin >> n; // read input for n
+        int i = 2, result = 1; // initialize i to 2 and result to 1
+        for (i = 2; i <= n/2; i++) { // loop through numbers from 2 to n/2
+            if(n % i == 0) // check if n is divisible by i
+            {
+                sum = 0; // reset sum to 0 before calling f
+                f(n/i, i); // call f with n divided by i and i
+                result = result + sum; // add sum to result
+            }
+        }
+        cout << result << endl; // print result
+    }
+    return 0; // end of program
+}
+```
+
+**Part II: Summary**
+
+This code calculates the sum of all proper divisors of a given integer n. It does this by recursively finding all divisors of n and summing them up. The main function reads input for n and calls the recursive function f to calculate the sum of divisors. The f function uses a while loop to iterate through numbers from 2 to n, and a recursive call to find the divisors of n. The code outputs the sum of proper divisors for each input n. The program is efficient because it only calculates the divisors up to the square root of n, reducing the time complexity.

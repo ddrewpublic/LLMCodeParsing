@@ -1,0 +1,50 @@
+**Part I: Code with Comments**
+
+```c
+int n, m, ans, a[20];
+
+// Function to calculate the number of divisors of a number
+void calc(int dep, int x)
+{
+    // If the input number is 1, increment the answer and return
+    if (x == 1)
+    {
+        ans++;
+        return;
+    }
+    // Loop through all numbers from the last divisor to the input number
+    for (int i = a[dep-1]; i <= x; i++)
+    {
+        // Check if the input number is divisible by the current number
+        if (!(x % i))
+        {
+            // Update the array of divisors and recursively call the function
+            a[dep] = i;
+            calc(dep + 1, x / i);
+        }
+    }
+}
+
+int main()
+{
+    // Read the number of input cases
+    scanf("%d", &n);
+    // Loop through each input case
+    for (a[0] = 2;n; n--)
+    {
+        // Read the number for the current case
+        scanf("%d", &m);
+        // Initialize the answer to 0 for the current case
+        ans = 0;
+        // Call the function to calculate the divisors
+        calc(1, m);
+        // Print the result for the current case
+        printf("%d\n", ans);
+    }
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code calculates the number of distinct divisors for each number in a series of inputs. It uses a recursive function `calc` to find the divisors of a number by checking all possible divisors from the last divisor found to the input number. The function keeps track of the divisors in an array `a`, which is used to store the divisors found so far. The function is called recursively until the input number is reduced to 1, at which point the answer is incremented. The main function reads the number of input cases, loops through each case, reads the input number, calculates the divisors, and prints the result.

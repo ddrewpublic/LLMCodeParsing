@@ -1,0 +1,51 @@
+**Part I**
+```
+int get(int n,int m)//??????????????????n??????m??????
+{
+    // Function to calculate the Ath root of N
+    if(n==1)return 1;//??n?1???????????1???
+    // Base case: if N is 1, return 1 as the 1st root
+    while(m>=2)//?m?????????????????????????????????????
+    {
+        // Decrement M until M is less than 2
+        if(n%m==0)break;
+        // Break the loop if N is divisible by M
+        --m;
+    }
+    if(m==1)return 0;//??m?1??????????
+    // If M is 1, return 0 as the root does not exist
+    return get(n/m,m)+get(n,m-1);//?????????????????????????????????????n/m??????????
+}
+```
+```
+int main()
+{
+    // Read the number of test cases
+    int t;
+    cin>>t;
+    // Read the test cases
+    for(int i=0;i<t;++i)
+    {
+        // Read the input number N
+        int n;
+        cin>>n;
+        // Calculate and print the Ath root of N
+        cout<<get(n,n)<<endl;    
+    }
+    return 0;
+}
+```
+**Part II**
+
+This code calculates the `A`th root of a given number `N`. The `get` function takes two parameters, `N` and `M`, and returns the `M`th root of `N`. The function uses a dynamic programming approach to solve the problem efficiently.
+
+Here's a summary of how the code works:
+
+* The `get` function first checks if `N` is 1, in which case it returns 1 as the 1st root.
+* If `N` is not 1, the function decrements `M` until `M` is less than 2.
+* If `N` is divisible by `M`, the function breaks the loop and returns 0 as the root does not exist.
+* If `M` is 1, the function returns 0 as the root does not exist.
+* Otherwise, the function recursively calls itself with `N/m` and `M-1`, where `m` is the largest integer that divides `N`, and returns the sum of the results.
+* The `main` function reads the number of test cases, reads each test case, calculates the `A`th root of `N` using the `get` function, and prints the result.
+
+The code uses a bottom-up approach to calculate the `A`th root of `N`, which is efficient and optimal for large values of `A` and `N`.

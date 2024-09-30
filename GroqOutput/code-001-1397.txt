@@ -1,0 +1,58 @@
+**Part I**
+
+```c
+int f(int s,int num) //s?????num????? 
+{    
+```
+* This is a function named `f` that takes two integer parameters, `s` and `num`.
+
+```c
+     if(s==num) return 1; 
+```
+* This is a base case for the recursion. If `s` is equal to `num`, the function returns 1.
+
+```c
+     if(s<num)
+```
+* This is the starting point for a recursive loop. If `s` is less than `num`, the function calls itself with modified arguments.
+
+```c
+      for(int i=s;i<=num;i++)
+      {
+```
+* This is a loop that starts from `s` and goes up to `num` (inclusive).
+
+```c
+        if(num%i==0)
+        {
+```
+* This checks if `num` is divisible by `i`.
+
+```c
+          if(i<num)   return f(i,num/i)+f(i+1,num);
+```
+* If `i` is less than `num`, the function calls itself twice: once with `i` and `num/i`, and once with `i+1` and `num`. The results are added together.
+
+```c
+          if(i==num)  return 1;
+```
+* If `i` is equal to `num`, the function returns 1, as `num` is divisible by itself.
+
+```c
+      }
+```
+* The end of the loop.
+
+```c
+     if(s>num)  return 0;  
+```
+* This is an edge case. If `s` is greater than `num`, the function returns 0.
+
+**Part II**
+
+Summary:
+This code defines a function `f` that calculates the number of ways to express `num` as a product of positive integers greater than 1. The function uses recursion to achieve this. The main function reads input from the user and prints the result of calling `f` with the given numbers.
+
+The function `f` works by checking if `s` is equal to `num`, or if `s` is less than `num`. If `s` is less than `num`, it calls itself with modified arguments until it finds a divisor of `num`. It then recursively calculates the number of ways to express the quotient as a product of positive integers. The results are added together to give the total number of ways to express `num`. If `s` is greater than `num`, the function returns 0, as `num` cannot be expressed as a product of positive integers greater than `s`.
+
+The main function reads the number of test cases and the values of `num` for each test case. It then calls the function `f` with the given numbers and prints the result. This code is used to calculate the count of numbers in given range that have more than one factor.

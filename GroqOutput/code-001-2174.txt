@@ -1,0 +1,28 @@
+**Part I: Code**
+
+```c
+int divide(int a, int b) {
+    // Declare two integer variables i and r
+    int i, r;
+    // Initialize r to 1
+    r = 1;
+    // Start a for loop that iterates from b to a
+    for (i = b; i < a; i++) {
+        // Check if the division of a by i equals a and if the quotient is less than or equal to i
+        if (((a / i) * i) == a && (a / i) >= i) {
+            // If the condition is true, recursively call the function with a/i and i as arguments
+            r = r + divide(a / i, i);
+        }
+    }
+    // Return the result of the function
+    return r;
+}
+```
+
+**Part II: Summary**
+
+This program is designed to calculate the sum of the digits of a given integer using recursion. The `divide` function takes two integer arguments, `a` and `b`, and returns the sum of the digits of `a` divided by `b` (without using the division operator `/`).
+
+The function works by iterating from `b` to `a` and checking if the division of `a` by `i` equals `a` and if the quotient is less than or equal to `i`. If this condition is true, it recursively calls itself with `a/i` and `i` as arguments, which effectively divides the number by the current digit and continues the process until the quotient is less than the current digit. The result is the sum of the digits of the original number.
+
+In the `main` function, the program reads a series of integers from the user and calculates the sum of the digits of each number using the `divide` function, printing the result to the console.

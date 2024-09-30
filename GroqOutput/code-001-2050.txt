@@ -1,0 +1,55 @@
+**Part I: Code with Developer Comments**
+
+```c
+int fenjie(int max,int min)
+{
+    // Initialize a variable num to 1
+    int num=1,i,k;
+    // Start a for loop to iterate from min to max/2
+    for(i=min;i<max/2;i++)
+    {
+        // Calculate the remainder of max divided by i
+        k=max%i;
+        // If the remainder is 0
+        if(k==0)
+        {
+            // Check if i is less than or equal to max divided by i
+            if(i<=max/i)
+            {
+                // Recursively call the function with max/i and i
+                num+=fenjie(max/i,i);
+            }
+        }
+    }
+    // Return the value of num
+    return num;
+}
+
+int main()
+{
+    // Declare an array of 10000 integers
+    int a[10000],n,j;
+    // Read the number of elements to process
+    scanf("%d",&n);
+    // Read each element of the array
+    for(j=0;j<n;j++)
+    {
+        // Ignore the newline character and read the next integer
+        scanf("\n%d",&a[j]);
+    }
+    // Print the result for each element of the array
+    for(j=0;j<n;j++)
+    {
+        // Call the fenjie function with the current element and 2
+        printf("%d\n",fenjie(a[j],2));
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C program that calculates the number of divisors for each element in an input array. The function `fenjie` takes two parameters, `max` and `min`, and recursively calculates the number of divisors for each number in the range from `min` to `max/2`. The `main` function reads the input array and calls the `fenjie` function for each element, then prints the result. The output for each element is the number of divisors it has, starting from 2.
+
+Please note that the code does not handle invalid input or edge cases, and the algorithm for finding the number of divisors is not the most efficient.

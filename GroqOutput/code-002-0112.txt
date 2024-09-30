@@ -1,0 +1,42 @@
+**Part I: Code with Developer Comments**
+
+```c
+int main()
+{
+    // Declare variables
+    int m, i, j, a[1000], c[91] = {0}, k, n, p = 0;
+    char b[1000][26], q;
+
+    // Read the number of test cases
+    scanf("%d", &m);
+
+    // Loop through each test case
+    for (i = 1; i <= m; i++)
+    {
+        // Read the number and string for the current test case
+        scanf("%d%s", &a[i], b[i]);
+
+        // Get the length of the string
+        n = strlen(b[i]);
+
+        // Loop through each character in the string
+        for (j = 0; j <= n - 1; j++)
+        {
+            // Get the character and increment its count in the array
+            k = b[i][j];
+            c[k]++;
+        }
+    }
+```
+
+**Part II: Summary**
+
+This code is a solution to a problem where you have to find the character that appears most frequently across all strings in a set of test cases. 
+
+The code reads the number of test cases, and then for each test case, it reads the number and a string. It then counts the frequency of each character in the string and stores it in an array. 
+
+After all test cases are read, it loops through each character in the array that stores the frequency counts and finds the character with the highest frequency. 
+
+Finally, it prints out the character with the highest frequency and the test cases that this character appears in. 
+
+The code is written in C and has a time complexity of O(m*n), where m is the number of test cases and n is the maximum length of the strings.

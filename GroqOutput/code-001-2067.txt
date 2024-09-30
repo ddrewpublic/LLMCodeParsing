@@ -1,0 +1,59 @@
+Here is the code with developer comments:
+
+**Part I: Code**
+
+```c
+int n, m;
+int sum(int x, int y) {
+    // Initialize variable c to store the result
+    int c, i;
+    // If x is greater than the square root of y, return 0
+    if (x > sqrt(y))
+        c = 0;
+    else {
+        // If y is divisible by x
+        if (y % x == 0) {
+            // Initialize variable c to 1
+            c = 1;
+            // Loop from x to y/2
+            for (i = x; i <= (y / 2) + 1; i++) {
+                // If y divided by x is divisible by i
+                if ((y / x) % i == 0) {
+                    // Add the result of the recursive call to c
+                    c = c + sum(i, (y / x));
+                }
+            }
+        } else {
+            // If y is not divisible by x, return 0
+            c = 0;
+        }
+    }
+    // Return the result
+    return (c);
+}
+
+main() {
+    // Initialize variable i, k, and j
+    int i, k, j;
+    // Read the number of test cases
+    scanf("%d", &n);
+    // Loop through each test case
+    for (j = 1; j <= n; j++) {
+        // Initialize variable k to 0
+        k = 0;
+        // Read the number of elements in the array
+        scanf("%d", &m);
+        // Loop through each element in the array
+        for (i = 2; i <= (m / 2) + 1; i++) {
+            // Add the sum of the factors of the element to k
+            k = k + sum(i, m);
+        }
+        // Print the sum of the factors plus 1
+        printf("%d\n", k + 1);
+    }
+}
+```
+
+**Part II: Summary**
+
+This code calculates the sum of the factors of each number in an array, and for each number, it finds the sum of its factors by recursively calling a function `sum`. The function `sum` checks if a number is a factor of another number, and if it is, it recursively calls itself to find the sum of the factors of the quotient of the two numbers. The main function reads the size of the array and the elements in the array, and then it calls the `sum` function for each element to find the sum of its factors. The results are then printed out.

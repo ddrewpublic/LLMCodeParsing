@@ -1,0 +1,73 @@
+**Part I**
+
+```c
+int num=1,k=0;
+```
+This line declares two integer variables `num` and `k` and initializes them to 1 and 0 respectively.
+
+```c
+int count(int n)
+{
+```
+This line declares a function `count` that takes an integer `n` as a parameter.
+
+```c
+for(int i=2;i<=sqrt(n);i++)
+```
+This line starts a for loop that iterates from 2 to the square root of `n`. This loop is used to check if `n` is prime.
+
+```c
+if(n%i==0&&i>=k)
+```
+This line checks if `n` is divisible by `i` and if `i` is greater than or equal to `k`. This is used to handle prime factors.
+
+```c
+{
+	num++;
+	k=i;
+	count(n/i);
+	k=0;
+}
+```
+If the conditions in the if statement are met, this block of code increments `num`, updates `k` to `i`, recursively calls `count` with `n/i` as the new value of `n`, and resets `k` to 0.
+
+```c
+return (num);
+}
+```
+This line returns the value of `num` from the function.
+
+```c
+int main()
+```
+This line declares the main function.
+
+```c
+int i,n,a[100];
+cin>>n;
+```
+This line declares an integer array `a` of size 100, reads an integer `n` from the input, and stores it in the variable `n`.
+
+```c
+for(i=0;i<n;i++)
+{
+	cin>>a[i];
+}
+```
+This loop reads `n` integers from the input and stores them in the array `a`.
+
+```c
+for(i=0;i<n;i++)
+{cout<<count(a[i])<<endl;num=1;k=0;}
+```
+This loop calls the function `count` for each integer in the array `a` and prints the result to the output.
+
+```c
+return 0;
+}
+```
+This line ends the main function and returns 0.
+
+**Part II**
+
+This code is used to count the number of divisors of a given integer. The `count` function recursively checks for divisors of the input number starting from 2 and updating the maximum divisor found so far. The `main` function reads a set of integers from the input, calculates the number of divisors for each integer, and prints the results. This algorithm has a time complexity of O(n sqrt(n)) where n is the input number, making it less efficient for large input numbers.

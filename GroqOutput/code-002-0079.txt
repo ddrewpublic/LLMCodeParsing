@@ -1,0 +1,86 @@
+Here is the output with comments added:
+
+```
+Part I
+```
+
+```c
+int main()
+{
+    // Declare variables
+    int m, a[1000], i, n, j, k;
+
+    // Read the number of lines m
+    scanf("%d", &m);
+
+    // Declare a 2D array b to store strings and an array count to count the frequency of each character
+    char b[1000][27];
+    int count[26] = {0};
+
+    // Loop through each line
+    for (i = 0; i < m; i++)
+    {
+        // Read the loop number and the corresponding string
+        scanf("%d %s", &a[i], b[i]);
+
+        // Reset the count of characters for each string
+        n = strlen(b[i]);
+        for (j = 0; j < n; j++)
+        {
+            // Loop through each character in the string
+            for (k = 0; k < 26; k++)
+            {
+                // If the character matches the current index in the alphabet, increment the count
+                if (b[i][j] == k + 65)
+                    count[k]++;
+            }
+        }
+    }
+
+    // Find the maximum frequency count and the corresponding character
+    int max, maxk;
+    max = count[0];
+    maxk = 0;
+    for (k = 0; k < 26; k++)
+    {
+        // If the current count is greater than the maximum, update the maximum and the corresponding character
+        if (count[k] > max)
+        {
+            max = count[k];
+            maxk = k;
+        }
+    }
+
+    // Convert the maximum alphabet index back to the corresponding character
+    char mauthor;
+    mauthor = maxk + 65;
+
+    // Print the results
+    printf("%c\n%d\n", mauthor, max);
+
+    // Loop through each string again to find the corresponding loop numbers
+    for (i = 0; i < m; i++)
+    {
+        n = strlen(b[i]);
+
+        // Print the loop number for the first occurrence of the maximum character
+        for (j = 0; j < n; j++)
+        {
+            if (b[i][j] == mauthor)
+            {
+                printf("%d\n", a[i]);
+                break;
+            }
+        }
+    }
+
+    // Return 0 to indicate successful termination
+    return 0;
+}
+```
+
+And here is the summary:
+
+**Part II**
+
+This code is a simple program that finds the most frequently occurring character in a group of strings and prints the corresponding loop number. It reads in a number of lines `m`, followed by each line's loop number and corresponding string. It then loops through each string, counting the frequency of each character. It finds the maximum frequency and the corresponding character, then prints the character and its frequency, followed by the loop number for the first occurrence of the maximum character.

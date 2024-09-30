@@ -1,0 +1,49 @@
+Here is the modified code with developer comments and a summary:
+
+**Part I**
+
+```
+/*
+ * wanyi.cpp
+ *
+ *  Created on: 2012-11-20
+ *      Author: 7
+ */
+
+int t = 1;  // Initialize a counter variable t to 1
+void fen(int n, int i)  // Define a function fen that takes two integers n and i
+{
+    for(i = i; i * i <= n; i++)  // Loop from i to the square root of n
+    {
+        if(n % i == 0)  // Check if n is divisible by i
+        {
+            fen(n / i, i);  // Recursively call the function with n divided by i
+            t++;  // Increment the counter t
+        }
+    }
+}
+
+int main()  // Define the main function
+{
+    int k;  // Initialize an integer k
+    cin >> k;  // Read an integer from the input
+    while(k--)  // Loop k times
+    {
+        int n;  // Initialize an integer n
+        cin >> n;  // Read an integer from the input
+        t = 1;  // Reset the counter t to 1
+        fen(n, 2);  // Call the function fen with n and 2
+        cout << t << endl;  // Print the value of t to the output
+    }
+}
+```
+
+**Part II**
+
+Summary:
+
+This C++ program is designed to calculate the number of divisors for a given integer. The program uses a recursive function called `fen` to perform the calculation. The function takes two integer parameters: `n` which is the number to calculate the divisors for, and `i` which is the current divisor being checked.
+
+The program receives a series of integers as input and calculates the number of divisors for each integer. The result is then printed to the output. The counter variable `t` is used to keep track of the number of divisors found.
+
+The program works by dividing the input number `n` by the current divisor `i` as long as it is divisible. For each successful division, the function calls itself with the new value of `n` and the previous value of `i`. This process continues until `i` is greater than the square root of `n`, at which point all divisors have been found. The counter `t` is incremented each time a divisor is found.

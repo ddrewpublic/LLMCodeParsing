@@ -1,0 +1,28 @@
+**Part I**
+
+```
+int fenjie(int n,int x){
+    int i,t=0;       // Initialize a variable t to 0, not sure what this variable is used for
+    for(i=x;i<=sqrt(n);i++){ 
+        if(n%i==0){  
+            t=t+1+fenjie(n/i,i); // Recursively call the function fenjie with n/i and i as arguments
+        }
+    }
+    return t;    // Return the value of t
+}
+int main(){
+    int i,t,n;
+    cin>>t;
+    for(i=0;i<t;i++){ // Iterate t times
+        cin>>n;
+        cout<< fenjie(n,2)+1<<endl;}
+    return 0;
+}
+```
+**Part II**
+
+Summary:
+
+The code is a C++ program that calculates the number of prime factors of a given integer n. The function fenjie(n,x) takes two arguments: n, the integer to be factored, and x, the starting divisor. The function iterates from x to the square root of n, and for each divisor i, it recursively calls itself with the quotient n/i and the same divisor i, until i is no longer a divisor of n. The value of t is updated to include the number of divisors found. The function returns the value of t, which represents the number of prime factors of n.
+
+The main function reads an integer t from the input, and for each iteration, it reads an integer n and calls the function fenjie(n,2), adding 1 to the result, which represents the number of prime factors of n including 1. The program outputs this value for each iteration.

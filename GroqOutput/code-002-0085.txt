@@ -1,0 +1,76 @@
+Here is the code with developer comments:
+
+**Part I: Code with Comments**
+
+```c
+int main() {
+    // Define an array to store the frequency of each letter
+    int n[26] = {0};
+    
+    // Define an array to store the alphabet
+    char z[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    
+    // Define an array to store the strings
+    char nn[26][100][20];
+    
+    // Declare variables
+    int m, i, j, r;
+    
+    char a[100][100];
+    
+    // Scan the input value of m
+    scanf("%d", &m);
+    
+    // Loop through each string
+    for (j = 0; j < m; j++) {
+        // Scan the string
+        scanf("%s", a[j]);
+        
+        // Initialize variables
+        char b[20];
+        
+        // Scan the substring
+        scanf("%s", b);
+        
+        // Calculate the length of the substring
+        int w = strlen(b);
+        
+        // Loop through each character in the substring
+        for (i = 0; i < w; i++) {
+            // Loop through each letter in the alphabet
+            for (r = 0; r < 26; r++) {
+                // Check if the character is equal to the letter
+                if (b[i] == z[r]) {
+                    // Increment the frequency of the letter
+                    n[r]++;
+                    
+                    // Copy the string to the corresponding array
+                    strcpy(nn[r][n[r]], a[j]);
+                }
+            }
+        }
+    }
+    
+    // Initialize variables
+    int c = 0;
+    
+    // Loop through the alphabet
+    for (r = 1; r < 26; r++) {
+        // Check if the frequency of the letter is greater than the previous maximum
+        if (n[r] > n[c])
+            c = r;
+    }
+    
+    // Print the maximum frequency letter and the frequency
+    printf("%c\n%d\n", z[c], n[c]);
+    
+    // Print the strings corresponding to the maximum frequency letter
+    for (i = 1; i <= n[c]; i++) {
+        printf("%s\n", nn[c][i]);
+    }
+}
+```
+
+**Part II: Summary**
+
+This program reads input strings and counts the frequency of each letter in the strings. It then prints the letter with the highest frequency and the corresponding strings. The program uses 26 arrays to store the letters, frequencies, and strings for each letter. It iterates through each string, and for each character in the string, it checks if the character is equal to any of the letters in the alphabet. If it is, it increments the frequency of that letter and stores the string in the corresponding array. After iterating through all the strings, it finds the maximum frequency letter and prints the letter and the corresponding strings. The program assumes that the input is valid and that there are no duplicate characters in the alphabet.

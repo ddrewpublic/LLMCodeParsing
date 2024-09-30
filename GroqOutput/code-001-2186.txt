@@ -1,0 +1,67 @@
+Here is the output with developer comments:
+
+**Part I**
+
+```c
+int main()
+{
+    // Declare the function digui with two int parameters and a return type of int
+    int digui(int p,int q); 
+    int n,i,j;
+    // Read the value of n from the standard input
+    scanf("%d",&n);
+    // Loop n times
+    for(i=0;i<n;i++)
+    {
+        int a,sum=1;
+        // Read the value of a from the standard input
+        scanf("%d",&a);
+        // Loop from 2 to a-1
+        for(j=2;j<a;j++)
+        {
+            // If j*j is greater than a, break the loop
+            if(j*j>a)
+                break;
+            // If a is divisible by j, recursively call digui with j and a/j
+            else if(a%j==0)
+                sum=sum+digui(j,a/j);
+        }
+        // Print the value of sum to the standard output
+        printf("%d\n",sum);
+    }
+}
+int digui(int p,int q)
+{
+    // Initialize the variable z to 1
+    int z=1,d;
+    // If p is equal to q, set z to 1
+    if(p==q)
+        z=1;
+    // If p is greater than q, set z to 0
+    else if(p>q)
+        z=0;
+    // Otherwise, loop from p to q-1
+    else
+    {
+        for(d=p;d<q;d++)
+        {
+            // If d*d is greater than q, break the loop
+            if(d*d>q)
+                break;
+            // If q is divisible by d, recursively call digui with d and q/d
+            else if(q%d==0)
+                z=z+digui(d,q/d);
+        }
+    }
+    // Return the value of z
+    return(z);
+}
+```
+
+**Part II**
+
+This program is designed to solve a problem in recreational mathematics. The `digui` function calculates the sum of the divisors of a given number. The `main` function reads a series of numbers from the input and prints the sum of the divisors for each number.
+
+The `digui` function works by recursively dividing the input number by the smallest divisor and adding it to the total sum of divisors. The function checks for each potential divisor if it is greater than the square root of the number, and if so, breaks the loop to save time and resources. The function also checks if the number is divisible by the potential divisor, and if so, adds it to the sum.
+
+The `main` function reads the input numbers from the user, and for each number, calculates the sum of the divisors using the `digui` function. The sum is then printed to the output.

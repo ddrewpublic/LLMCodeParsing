@@ -1,0 +1,35 @@
+Here is the code with developer comments for each line, using the header "Part I" and a 200-word summary at the header "Part II":
+
+**Part I:**
+
+```c++
+int main()
+{
+	 //= declare the main function
+    int F( int, int ); //= declare the F function that takes two integer parameters
+    int N; //= declare a variable N and read input from the standard input
+    cin>>N; //= read an integer value into N
+    for( int I=1; I<=N; ++I)//loop from 1 to N
+    {
+    	int A; //= declare a variable A and read input from the standard input
+    	cin>>A; //= read an integer value into A
+    	cout<<F(A,2)<<endl; //= call the F function with arguments A and 2 and print the result
+    }
+    return 0; //= return from the main function
+}
+int F(int A, int CHU)//declare F function that takes two integer parameters
+{
+   int RET=1; //= initialize the result to 1
+   for( int I=CHU;I<=sqrt(A);I++)//loop from CHU to the square root of A
+   {
+	   if(A%I==0)RET+=F(A/I,I); //= if A is divisible by I, add the result of the recursive call to RET
+   }
+   return RET; //= return the final result
+}
+```
+
+**Part II:**
+
+This code is a solution to a mathematical problem. The main function reads a single integer N from the standard input and loops N times. In each iteration, it reads an integer A and calls the F function with arguments A and 2, then prints the result. The F function takes two integer parameters, A and CHU, and returns the sum of all divisors of A less than or equal to CHU, excluding A itself.
+
+The F function uses a recursive approach to calculate the sum of divisors. It starts by initializing the result to 1, then loops from CHU to the square root of A. For each integer I within the loop range, it checks if A is divisible by I. If it is, it adds the result of the recursive call F(A/I, I) to the result. This is because the divisors of A/I are the same as the divisors of A, plus I. Finally, the F function returns the final result. The main function then prints the results for each iteration.

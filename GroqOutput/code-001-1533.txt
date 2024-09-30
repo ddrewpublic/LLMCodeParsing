@@ -1,0 +1,61 @@
+**Part I: Code with Developer Comments**
+```
+int main()
+{
+    // Declare a function pointer to a function that takes two integers and returns an integer
+    int f(int a,int b);
+    
+    // Declare four integer variables
+    int n,m,i,d;
+    
+    // Read an integer from the user and store it in variable n
+    scanf("%d",&n);
+    
+    // Loop through n times
+    for(i=0;i<n;i++)
+    {
+        // Read an integer from the user and store it in variable m
+        scanf("%d",&m);
+        
+        // Call the function f with arguments m and 2, and store the result in variable d
+        d=f(m,2);
+        
+        // Print the value of d to the console
+        printf("%d\n",d);
+    }
+    
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+int f(int a,int b)
+{
+    // Declare three integer variables
+    int t=1,k,j;
+    
+    // Loop through the range [b, a) (i.e., from b to a-1)
+    for(j=b;j<a;j++)
+    {
+        // If a is divisible by j and a/j is greater than or equal to j
+        if(a%j==0&&a/j>=j)
+        {
+            // Recursively call the function f with arguments a/j and j
+            k=f(a/j,j);
+        }
+        else
+        {
+            // Otherwise, set k to 0
+            k=0;
+        }
+        
+        // Add k to the running total t
+        t=t+k;
+    }
+    
+    // Return the final value of t
+    return t;
+}
+```
+
+**Part II: Summary**
+This program is designed to calculate the sum of all proper divisors of a given integer `m` for `n` iterations. The main function `main()` reads an integer `n` from the user and then loops `n` times. In each iteration, it reads another integer `m`, calls the function `f` with arguments `m` and 2, and prints the result. The function `f` takes two integers `a` and `b` as input and returns the sum of all proper divisors of `a` that are greater than or equal to `b`. The function uses a recursive approach to calculate the sum, checking each potential divisor `j` such that `a/j` is an integer and `a/j` is greater than or equal to `j`.

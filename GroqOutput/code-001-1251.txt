@@ -1,0 +1,51 @@
+**Part I: Code with Developer Comments**
+
+```c
+int t(int, int); // Function declaration for t(int, int)
+int s, j, k1; // Global variables declaration
+
+int main()
+{
+    int a, n, i; // Local variables declaration
+    cin >> n; // Read the number of inputs
+    for (i = 1; i <= n; i++) // Loop through the inputs
+    {
+        cin >> a; // Read the current input
+        s = 1; // Initialize the variable s to 1
+        k1 = 0; // Initialize the variable k1 to 0
+        for (j = 2; j <= sqrt((double) a); j++) // Loop through the divisors of a
+        {
+            if (a % j == 0) // Check if a is divisible by j
+                t(a / j, j); // Call the function t(int, int) with a/j and j
+        }
+        cout << s << endl; // Print the value of s
+    }
+    return 0; // Return 0 to indicate successful execution
+}
+
+int t(int a, int b) // Function definition for t(int, int)
+{
+    int k; // Local variable declaration
+    for (k = b; k <= a; k++) // Loop through the numbers from b to a
+    {
+        if (a % k == 0) // Check if a is divisible by k
+        {
+            if (a / k == 1) // Check if a is a prime number
+            {
+                s = s + 1; // Increment the value of s
+                break; // Exit the loop
+            }
+            t(a / k, k); // Call the function t(int, int) with a/k and k
+        }
+    }
+    return 0; // Return 0 to indicate successful execution
+}
+```
+
+**Part II: Summary**
+
+This code is designed to find the prime factors of a given number and count the number of prime factors. The main function reads the number of inputs, then for each input, it reads the number, finds its prime factors using the function t, and prints the count of prime factors.
+
+The function t recursively finds the prime factors of a given number, starting from the largest factor down to the smallest. It initializes a variable s to 1 and increments it for each prime factor found. The function continues to call itself with the quotient and the divisor until the quotient becomes 1, indicating that it has found all prime factors.
+
+The code is written in C++ and uses the sqrt function from the math library to calculate the square root of a number for efficiency purposes. The function returns 0 to indicate successful execution.

@@ -1,0 +1,30 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```c
+int ans = 0; // Initialize the variable 'ans' to 0
+void work(int p,int k)
+{
+    // If the number 'p' is 1, increment 'ans' and return
+    if(p == 1){
+        ans ++;
+        return ;
+    }
+    // Iterate from 'k' to 'p' (inclusive) and find the divisors of 'p'
+    for(int i =k;i <= p;i ++){
+        // If 'p' is divisible by 'i', recursively call 'work' with 'p / i' and 'i'
+        if(p % i == 0){
+            work(p / i,i);
+        }
+    }
+}
+```
+
+**Part II**
+
+This program is designed to find the total number of divisors for a given number `t`. The `work` function takes two parameters `p` and `k`, which represent the current number and the starting divisor, respectively. The function recursively finds all divisors of `p` and increments the `ans` variable each time a new divisor is found.
+
+The `main` function reads the input `n` and repeatedly asks for a number `t` until `n` reaches 0. For each `t`, it resets the `ans` variable to 0, calls the `work` function with `t` as the initial number and 2 as the starting divisor, and then prints the result.
+
+The program aims to solve the problem of finding the total number of divisors for a given number, which is an important concept in number theory. The recursive approach used in the `work` function allows the program to efficiently find all divisors of a given number.

@@ -1,0 +1,51 @@
+**Part I: Code with Developer Comments**
+
+```cpp
+// This function calculates the number of factors for a given integer.
+// Input: an integer.
+void FenJie(int x)
+{
+    int i, temp = Befor; // Initialize a temporary variable to store the previous value of Befor.
+
+    // Base case: If the number is 1, increment the counter and return.
+    if (x == 1)
+    {
+        counter++;
+        return;
+    }
+
+    // Loop until x is greater than 1.
+    for (i = Befor; i > 1; i--) // Iterate from Befor down to 1.
+    {
+        // Check if x is divisible by i.
+        if (x % i == 0)
+        {
+            // If x is divisible by i, update Befor to i and recursively call FenJie with x/i.
+            Befor = i;
+            FenJie(x / i);
+        }
+        // Update Befor to the temporary value to backtrack.
+        Befor = temp;
+    }
+    return;
+}
+
+int main()
+{
+    int n, x, i; // Initialize variables to store the number of inputs, the current input, and a counter.
+    cin >> n; // Read the number of inputs.
+    for (i = 0; i < n; i++) // Loop through each input.
+    {
+        cin >> x; // Read the current input.
+        counter = 0; // Reset the counter for each input.
+        Befor = x; // Initialize Befor to the current input.
+        FenJie(x); // Call FenJie with the current input.
+        cout << counter << endl; // Print the number of factors for the current input.
+    }
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code calculates the number of factors for a given sequence of integers. The `FenJie` function takes an integer as input and recursively calculates the number of factors by dividing the input by a number and calling itself until the input is reduced to 1. The `main` function reads a sequence of integers, calls `FenJie` for each integer, and prints the number of factors for each integer. The code uses a temporary variable `Befor` to store the previous value of `Befor` to backtrack during the recursive process.

@@ -1,0 +1,51 @@
+**Part I: Code with Comments**
+
+```c
+int division(int m,int k)
+{
+    // Initialize the variable num to 0, which will store the count of divisors
+    int num=0;
+    if(m>=k)
+    {
+        // Check if m is greater than or equal to k
+        for(int i=k;i<=m;i++)
+        {
+            // Loop through all numbers from k to m
+            if(m==i) num++;
+            // Check if m is divisible by the current number i
+            else if(m%i==0)
+            {
+                // If m is divisible by i, call the function recursively with m/i and i
+                num+=division(m/i,i);
+            }
+        }
+    }
+    return num;
+}
+
+int main()
+{
+    // Declare an integer variable n
+    int n;
+    // Read the value of n from the input stream
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        // Declare an integer variable a
+        int a;
+        // Read the value of a from the input stream
+        cin>>a;
+        // Call the function division with a and 2, and print the result
+        cout<<division(a,2)<<endl;
+    }
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided C++ code implements a function to calculate the number of divisors of a given integer. The `division` function takes two integer parameters `m` and `k`, and returns the count of divisors of `m` that are also divisible by `k`.
+
+In the `main` function, the program reads the value of `n` from the input stream and then iterates `n` times. In each iteration, it reads another integer value `a` from the input stream, and calls the `division` function with `a` and `2`. The result is then printed to the output stream.
+
+The `division` function uses a recursive approach to find the divisors of `m`. It checks if `m` is divisible by the current number `i`, and if so, recursively calls itself with `m/i` and `i`. The base case of the recursion is when `m` is exactly equal to `i`, in which case it increments the count of divisors.

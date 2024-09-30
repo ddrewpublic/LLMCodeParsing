@@ -1,0 +1,72 @@
+**Part I**
+
+```c
+int sum;
+```
+
+* Declare a global integer variable called 'sum' with an initial value of 0.
+
+```c
+void zhongshu(int qian,int a);
+```
+
+* Declare a function called 'zhongshu' which takes two integer parameters 'qian' and 'a', and returns void.
+
+```c
+int main()
+```
+
+* Define the main function which is the entry point of the program.
+
+```c
+{
+    int n,i,j,a[100];
+```
+
+* Declare integer variables 'n' and 'i', and an array 'a' of size 100 to store the input numbers.
+
+```c
+    cin>>n;
+```
+
+* Read an integer value from the standard input and store it in 'n'.
+
+```c
+    for(i=0;i<n;i++)
+    cin>>a[i];
+```
+
+* Read 'n' integer values from the standard input and store them in the array 'a'.
+
+```c
+    for(i=0;i<n;i++)
+    {  sum=0;
+```
+
+* Initialize a local 'sum' variable to 0 inside the loop.
+
+```c
+       zhongshu(2,a[i]);
+```
+
+* Call the 'zhongshu' function with parameters 2 and the current number in the array 'a'.
+
+```c
+       cout<<sum<<endl;
+```
+
+* Print the value of 'sum' followed by a newline character.
+
+```c
+       }
+    return 0;
+}
+```
+
+* The function returns an integer value of 0 to indicate successful execution.
+
+**Part II**
+
+Summary:
+
+This C++ program calculates the sum of the number of divisors for each number in an input array. The calculation is performed recursively using a function 'zhongshu' which counts the divisors of a given number starting from 2. The main function reads the input numbers, calls the 'zhongshu' function for each number, and prints the results. This program can be used to solve problems related to the number of divisors of integers.

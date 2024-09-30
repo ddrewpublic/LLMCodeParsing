@@ -1,0 +1,40 @@
+Here is the code with developer comments for each line, with a 200-word summary and using the headers "Part I" and "Part II":
+
+**Part I: Code with Comments**
+
+```c
+int a[40000] = {0}; // declare an array a of size 40000 and initialize all elements to 0
+
+void fun(int n, int j, int k) {
+    int i; // declare a variable i
+    for (i = j; i <= sqrt(n); i++) { // iterate from j to the square root of n
+        if (n % i == 0) { // if n is divisible by i
+            j = i; // update the value of j to i
+            a[k]++; // increment the value at index k in array a
+            fun(n / i, j, k); // recursively call the function with n divided by i, j, and k
+        }
+    }
+}
+
+int main() {
+    int n; // declare a variable n
+    int m[40000] = {0}; // declare an array m of size 40000 and initialize all elements to 0
+    int i; // declare a variable i
+    scanf("%d", &n); // read an integer from the console and store it in variable n
+    for (i = 1; i <= n; i++) { // iterate from 1 to n
+        scanf("%d", &m[i]); // read an integer from the console and store it in array m at index i
+    }
+    for (i = 1; i <= n; i++) { // iterate from 1 to n
+        fun(m[i], 2, i); // recursively call the function with the value at index i in array m, 2, and i
+    }
+    for (i = 1; i <= n; i++) { // iterate from 1 to n
+        printf("%d\n", a[i] + 1); // print the value at index i in array a plus 1, followed by a newline
+    }
+
+    return 0; // return 0 to indicate successful program execution
+}
+```
+
+**Part II: Summary**
+
+This code is designed to find the prime factors of a set of given numbers. The `fun` function recursively finds the prime factors of a given number by dividing it by the smallest prime factor found so far (represented by `j`), and then recursively calling itself with the new value of `n`. The results are stored in an array `a`. The `main` function reads a set of numbers from the console, calls the `fun` function for each number, and then prints the results. The results are displayed as the number of prime factors for each input number, plus 1 (since each prime factor is counted individually).

@@ -1,0 +1,39 @@
+Here is the code with developer comments for each line, and a summary of 200 words:
+
+**Part I: Code with comments**
+
+```c
+//**************************************
+//**???12.1??——????       ***
+//**?????   ???1000012888    ***
+//**************************************
+int f(int, int);//??f?????????? (declares a function f that takes two integers as parameters)
+
+int main()
+{
+    int n, a, i; // declares three integer variables
+    cin >> n; // reads an integer from the input (n)
+    for (i = 1; i <= n; i++) // loops from 1 to n
+    {
+        cin >> a; // reads an integer from the input (a)
+        cout << f(a, 2) << endl; // calls the function f with parameters a and 2, and prints the result
+    }
+    return 0; // returns 0 to indicate successful execution
+}
+int f(int x, int b)//f(a,b)?a?????b???????? (declares a function f that takes two integers as parameters)
+{
+    int j, re = 1;//??a=a???????re???0 (declares two integer variables j and re, and initializes re to 1)
+    if(x < b)
+        return 0; // returns 0 if x is less than b
+    for (j = b; j < x; j++)// loops from b to x
+    {
+        if(x % j == 0) // checks if x is divisible by j
+            re = re + f(x / j, j);//??????????????? ( recursively calls the function f with parameters x/j and j, and adds the result to re)
+    }
+    return re; // returns the value of re
+}
+```
+
+**Part II: Summary**
+
+This is a C++ program that calculates the sum of all divisors of a given natural number n, excluding n itself. The program uses a recursive function f(x, b) to calculate the sum of all divisors of x, starting from b. The function f calls itself recursively until the parameter x is less than b, at which point it returns 0. The program then prints the result of f(a, 2) for each input number a, where a is an integer read from the input. The function f returns the sum of all divisors of x, starting from 2, which is a efficient way to calculate the sum of divisors for large numbers.

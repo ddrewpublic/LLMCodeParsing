@@ -1,0 +1,43 @@
+**Part I: Code with Developer Comments**
+```c
+// Function to calculate the Euler's totient function (φ(n))
+int fenj(int x, int y) {
+  // Initialize a variable a to 0
+  int a = (x == 1), i;
+  // Loop from y to x
+  for (i = y; i <= x; i++) {
+    // Check if x is divisible by i
+    if (x % i == 0) {
+      // Recursively call the function with x/i and i
+      a = a + fenj(x / i, i);
+    }
+  }
+  // Return the value of a
+  return a;
+}
+
+// Main function
+int main() {
+  // Declare an integer variable k
+  int k;
+  // Read input value for k
+  cin >> k;
+  // Declare an array a of size k
+  int a[k];
+  // Read input values for array a
+  for (int i = 0; i < k; i++) cin >> a[i];
+  // Loop through the array and calculate the Euler's totient function for each element
+  for (int i = 0; i < k; i++) cout << fenj(a[i], 2) << endl;
+  // Return 0 to indicate successful execution
+  return 0;
+}
+```
+**Part II: 200-word Summary**
+
+The provided code calculates the Euler's totient function (φ(n)) for a given array of integers. The Euler's totient function is a mathematical function that counts the positive integers up to a given integer n that are relatively prime to n.
+
+The `fenj` function takes two integer parameters, x and y, and calculates the Euler's totient function for x using the recursive formula φ(x) = φ(x/i) + φ(i) for each divisor i of x.
+
+The `main` function reads an integer value k and an array of k integers from the input. It then calls the `fenj` function for each element in the array with y = 2 and prints the result. The Euler's totient function is calculated recursively for each element in the array, starting from the most prime number 2.
+
+This code can be used to calculate the Euler's totient function for a given array of integers and print the results.

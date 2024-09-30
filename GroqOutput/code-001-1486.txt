@@ -1,0 +1,36 @@
+**Part I**
+```
+int tmp = 2 ;  // initialize the variable tmp with the value 2
+int suml(int n,int tmp)  // declare a function suml that takes two integer parameters n and tmp
+{
+    int sum = 0 ;  // declare a variable sum and initialize it to 0
+    if(n==1)
+    {
+        return 1 ;  // if n is 1, return 1
+    }
+    for(int i = tmp ; i <=n ; i++)
+    {
+        if(n%i==0)
+        {
+            sum+=suml(n/i,i);  // recursively call suml with n/i and i
+        }
+    }
+    return sum ;  // return the calculated sum
+}
+int main()
+{
+    int m ;  // declare an integer variable m
+    cin >> m ;  // read the value of m from the input
+    int n ;  // declare an integer variable n
+    for(int i = 0 ; i < m ; i++)
+    {
+        cin >> n ;  // read the value of n from the input
+        int zon_shu = 0 ;  // declare an integer variable zon_shu and initialize it to 0
+        zon_shu = suml(n,tmp) ;  // calculate the value of zon_shu using suml and print it
+        cout << zon_shu <<endl ;  // print the calculated value
+    }
+}
+```
+
+**Part II**
+This code calculates the sum of all divisors of a given number n, up to m times. The function `suml` recursively calculates the sum of all divisors of n, starting from 2. If n is 1, the function returns 1. Otherwise, it loops from tmp (initially set to 2) to n, and for each i, it checks if n is divisible by i. If it is, the function recursively calls itself with n/i and i, adding the result to the sum. The main function reads the value of m from the input, and for each of the m inputs, it calculates the sum of divisors using the `suml` function and prints the result.

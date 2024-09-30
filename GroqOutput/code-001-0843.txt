@@ -1,0 +1,41 @@
+**Part I: Code with Comments**
+
+```
+int fenjie(int ,int ); // function prototype to calculate the sum of proper divisors
+int main()
+{
+    int i, n, t, r, num; // declare variables
+    cin >> n; // read the number of test cases from input
+    for(i=1; i<=n; i++) // loop through each test case
+    {
+        cin >> num; // read the number for which to calculate the sum of proper divisors
+        r = fenjie(num, 2); // call the fenjie function to calculate the sum
+        cout << r << endl; // print the result
+    }
+    return 0; // return 0 to indicate successful execution
+}
+
+int fenjie(int num, int min)
+{
+    int i, j, k, r = 0; // declare variables
+    for(i=min; i<=num; i++) // loop through numbers starting from min to num
+    {
+        if(num%i==0) // check if num is divisible by i
+        {
+            r = r + fenjie(num/i, i); // recursively call fenjie for num/i and i
+        }
+        if(i==num) r++; // increment r if i equals num (num itself is a proper divisor)
+    }
+    return r; // return the sum of proper divisors
+}
+```
+
+**Part II: Summary**
+
+This is a C++ program that calculates the sum of proper divisors for a given number. The program consists of two functions: `fenjie` and `main`.
+
+The `fenjie` function takes two parameters: a number `num` and a minimum value `min`. It returns the sum of proper divisors of `num`. The function uses recursion to calculate the sum by iterating through numbers from `min` to `num` and checking if each number is a divisor of `num`. If a number is a divisor, the function calls itself with `num/i` and `i` as parameters, effectively dividing the calculation into smaller sub-problems. The sum of proper divisors is then returned.
+
+The `main` function reads the number of test cases from input, then loops through each test case, reading a number and calling the `fenjie` function to calculate the sum of its proper divisors. The result is then printed to output.
+
+This program demonstrates a simple implementation of the Sum of Proper Divisors (SPD) function using recursion.

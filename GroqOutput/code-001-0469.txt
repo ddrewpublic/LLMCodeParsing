@@ -1,0 +1,37 @@
+**Part I: Code with Developer Comments**
+
+```
+int total, p; // Declare integer variables total and p
+void part(int y){
+    int i2, up; // Declare integer variables i2 and up
+    if (y == 1) return; // If y is 1, exit the function
+    up = (int)sqrt(y); // Calculate the square root of y and cast it to an integer
+    for (i2 = 2; i2 <= up; i2++){ // Loop from 2 to the square root of y
+        if (p <= i2){ // Check if p is less than or equal to i2
+            if (y % i2 == 0){ // Check if y is divisible by i2
+                total++; // Increment the total count
+                p = i2; // Update p to be i2
+                part(y / i2); // Recursive call to part(y/i2)
+                p = 0; // Reset p to 0
+            }
+        }
+    }
+}
+
+int main(){
+    int n, i, a; // Declare integer variables n, i, and a
+    scanf("%d", &n); // Read an integer from the console and store it in n
+    for (i = 1; i <= n; i++){ // Loop n times
+        total = 0; // Reset the total count to 0
+        p = 0; // Reset p to 0
+        scanf("%d", &a); // Read an integer from the console and store it in a
+        part(a); // Call the part function with argument a
+        printf("%d\n", total + 1); // Print the total count plus 1 (since we increment the count at the last iteration)
+    }
+    return 0; // Return 0 to indicate program termination
+}
+```
+
+**Part II: Summary**
+
+This code calculates the prime numbers up to a given number using Eratosthenes' sieve algorithm. The main function reads a series of integers from the console, and for each integer, it calls the part function to calculate the number of prime numbers less than or equal to the given integer. The part function uses a recursive approach to find the prime numbers, starting from 2 and iterating up to the square root of the given integer. The total count of prime numbers is incremented for each prime factor found, and the function calls itself recursively to iterate through the remaining factors. The final total count is then printed to the console.

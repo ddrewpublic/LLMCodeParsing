@@ -1,0 +1,63 @@
+Here's the code with developer comments:
+
+Part I
+
+```
+int main() // This is the main function where the program starts execution
+{
+    int m, i, j, b[999], n[26], t[2]={0}, x=0; // Declare various integer variables and arrays
+    char a[999][26], au; // Declare a 2D array of characters and a single character variable
+
+    scanf("%d",&m); // Read the number of lines from the user
+
+    // Loop through each line of input
+    for(i=0;i<m;i++)
+    {
+        scanf("%d%s",&b[i],a[i]); // Read the number and string for each line
+    }
+
+    // Loop through each line and count the frequency of each character
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<(int)strlen(a[i]);j++)
+        {
+            // Convert the character to uppercase and increment the corresponding index in the array
+            n[(int)a[i][j]-65]++; // 65 is the ASCII value of 'A'
+        }
+    }
+
+    // Find the maximum frequency and the corresponding character
+    for(i=0;i<26;i++)
+    {
+        if(t[0]<n[i])
+        {
+            t[0]=n[i],t[1]=i;
+        }
+    }
+    // Convert the character index back to uppercase and store it in the string
+    au=t[1]+65;
+    printf("%c\n%d\n",au,t[0]);
+
+    // Loop through each line again and print the corresponding number if the character is found
+    for(i=0;i<m;i++)
+    {
+        x=0,j=0;
+        while(j<(int)strlen(a[i])&&x==0)
+        {
+            if(a[i][j]==t[1]+65)
+            {
+                printf("%d\n",b[i]),x++;
+            }
+            else
+            {
+                j++;
+            }
+        }
+    }
+    return 0;
+}
+```
+
+Summary:
+
+This C program reads input in the form of lines, where each line contains a number and a string. It then counts the frequency of each character in each string and finds the character with the maximum frequency. It prints the character and the number of times it appears in each string.

@@ -1,0 +1,57 @@
+Here is the code with developer comments added, organized into two parts:
+
+**Part I: Code with Comments**
+
+```c
+// recursive function to calculate the sum of the factors of a number
+int factor(int n, int min) {
+    // initialize the result to 1
+    int result = 1;
+    int i;
+
+    // if the number is less than the minimum, return 0
+    if (n < min) {
+        return 0;
+    }
+
+    // loop through the numbers from min to n-1
+    for (i = min; i < n; i++) {
+        // if the current number is a factor of n
+        if (n % i == 0) {
+            // add the sum of the factors of n/i to the result
+            result += factor(n / i, i);
+        }
+    }
+
+    // return the result
+    return result;
+}
+
+// main function
+int main() {
+    // declare arrays to store input numbers and their factors
+    int n, a[100000], b[100000];
+
+    // read the number of input numbers
+    scanf("%d", &n);
+
+    // loop through the input numbers
+    for (int j = 0; j <= n - 1; j++) {
+        // read an input number
+        scanf("%d", &a[j]);
+
+        // calculate the sum of the factors of the input number
+        b[j] = factor(a[j], 2);
+
+        // print the result
+        printf("%d\n", b[j]);
+    }
+
+    // return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code calculates the sum of the factors of input numbers and prints the results. The `factor` function is a recursive function that takes a number `n` and a minimum value `min` as input, and returns the sum of the factors of `n`. The function works by iterating through numbers from `min` to `n-1`, checking if each number is a factor of `n`, and if so, recursively calculating the sum of the factors of the quotient `n/i`. The `main` function reads input numbers, calculates their sums of factors using the `factor` function, and prints the results. The code uses arrays `a` and `b` to store input numbers and their corresponding sums of factors, respectively.

@@ -1,0 +1,77 @@
+**Part I: Code with comments**
+
+```c
+int main()
+{
+    // Declare integer variables
+    int n, i, j, num[1000], l[1000], count[128], m, max;
+
+    // Declare character arrays
+    char edi[1000][26], au[128];
+
+    // Read the number of input lines (n)
+    scanf("%d", &n);
+
+    // Loop through each input line
+    for(j = 0; j < n; j++)
+    {
+        // Read the number associated with the line
+        scanf("%d", &num[j]);
+
+        // Read the line of text
+        gets(edi[j]);
+
+        // Calculate the length of the line
+        l[j] = strlen(edi[j]);
+    }
+
+    // Initialize count array to 0
+    for(i = 0; i < 128; i++)
+        count[i] = 0;
+
+    // Loop through each line again
+    for(j = 0; j < n; j++)
+    {
+        // Loop through each character in the line
+        for(i = 1; i < l[j]; i++)
+        {
+            // Get the index of the character ( ASCII value minus 97, since 'a' has ASCII value 97)
+            m = edi[j][i];
+
+            // Increment the count of the character in the count array
+            au[m] = edi[j][i];
+            count[m]++;
+        }
+    }
+
+    // Find the maximum count
+    max = 0;
+    for(i = 0; i < 128; i++)
+    {
+        // Update max if count at current index is greater
+        if(count[i] > max)
+        {
+            max = count[i];
+            m = i;
+        }
+    }
+
+    // Print the character with the maximum count and its count
+    printf("%c\n%d", au[m], max);
+
+    // Loop through each line again
+    for(j = 0; j < n; j++)
+    {
+        // Loop through each character in the line
+        for(i = 1; i < l[j]; i++)
+        {
+            // Check if current character matches the character with the maximum count
+            if(edi[j][i] == au[m])
+                printf("\n%d", num[j]);
+        }
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```

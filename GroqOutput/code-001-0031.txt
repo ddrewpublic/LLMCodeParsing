@@ -1,0 +1,35 @@
+Here is the code with developer comments:
+
+```
+int calc(int p,int t); // Function declaration for calc function
+int main()
+{
+    int m,n,ans; // Declare variables for main function
+    scanf("%d",&m); // Read the number of test cases
+    while (m--) // Loop through each test case
+    {
+        scanf("%d",&n); // Read the test case number
+        ans=calc(2,n); // Calculate the answer using the calc function
+        printf("%d\n",ans);   
+        // Print the calculated answer
+    }
+    return 0; // Return 0 indicating successful execution of the program
+}
+int calc(int p,int t)
+{
+    int i,a; // Declare variables for calc function
+    a=1; // Initialize the answer to 1
+    for (i=p;i<=sqrt(t);i++) // Loop through the range p to sqrt(t)
+    {
+        if (t%i==0) 
+            a=a+calc(i,t/i); // If t is divisible by i, add the recursive result to a
+    }
+    return a; // Return the calculated answer
+}
+```
+
+And here is the summary in "Part II":
+
+**Part II: Summary**
+
+This program is designed to solve a problem related to summing the divisors of a given number. The main function takes an integer `m` as input, which represents the number of test cases. For each test case, it reads an integer `n` and calls the `calc` function to calculate the sum of its divisors. The `calc` function uses a recursive approach to find the sum of divisors by iterating through the range from `p` to the square root of `t`, and adding the recursive result for each divisor `i`. The calculated answer is then printed to the console. The program is designed to handle multiple test cases efficiently and provide accurate results for each case.

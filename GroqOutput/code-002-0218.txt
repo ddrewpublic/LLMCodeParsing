@@ -1,0 +1,61 @@
+Here is the code with developer comments and a summary:
+
+**Part I: Code with comments**
+
+```c
+// Define a struct for a book with an id and a name
+struct book {
+    int id;
+    char p[26]; // assume a fixed length of 26 for the name
+};
+
+// Main function
+void main() {
+    // Initialize variables
+    int n, i, j, k, a[150] = {0}, flag, max = 0;
+    struct book t, *s, o[1000], y[1000]; // assume that the struct book can hold 1000 elements
+
+    // Read the number of books from the input
+    scanf("%d", &n);
+
+    // Allocate memory for an array of struct book
+    s = (struct book *)malloc(n * sizeof(struct book));
+
+    // Read the details of each book from the input
+    for (i = 0; i < n; i++) {
+        scanf("%d %s", &s[i].id, s[i].p);
+
+        // Count the frequency of each character in the book title
+        for (j = 0; s[i].p[j] != '\0'; j++)
+            a[s[i].p[j]]++;
+
+        // Store the books in an array
+        o[i] = s[i];
+    }
+
+    // Find the maximum frequency and the corresponding character
+    for (i = 'A'; i <= 'Z'; i++)
+        if (max < a[i]) {
+            max = a[i];
+            j = i;
+        }
+
+    // Print the character with the maximum frequency
+    printf("%c\n", j);
+
+    // Print the maximum frequency
+    printf("%d\n", max);
+
+    // Print the ids of books whose title contains the character with the maximum frequency
+    for (i = 0; i < n; i++) {
+        flag = 0;
+        for (k = 0; s[i].p[k] != '\0'; k++)
+            if (s[i].p[k] == j) flag = 1;
+        if (flag == 1) printf("%d\n", s[i].id);
+    }
+}
+```
+
+**Part II: Summary**
+
+The given C program is designed to find the character that occurs most frequently in the titles of a set of books and print the IDs of the books whose titles contain this character. The program first reads the number of books and the details of each book from the input. It then counts the frequency of each character in the titles and stores the books in an array. The character with the maximum frequency is found and its frequency is printed. Finally, the program prints the IDs of the books whose titles contain the character with the maximum frequency.

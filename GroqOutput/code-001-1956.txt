@@ -1,0 +1,29 @@
+**Part I**
+```
+int sum=0; // initialize sum to 0
+void f(int n,int y)
+{
+  int a=sqrt(n); // calculate the square root of n
+  for(int i=y;i<=a;i++)
+  {
+    if(n%i==0) // check if n is divisible by i
+    {
+      sum++; // increment sum if n is divisible by i
+      y=i; // update y to be the current value of i
+      f(n/i,y); // recursively call f with n/i and y
+    }
+  }
+}
+```
+
+**Part II**
+
+This program calculates the number of prime factors for each number in an input array. The function `f` takes two parameters: `n` (the number to be factored) and `y` (the starting point for the factorization).
+
+Here's a summary of how the program works:
+
+* The program starts by initializing the `sum` variable to 0, which will store the number of prime factors for each number.
+* The function `f` recursively calculates the prime factors of a number `n` starting from a given `y`.
+* It does this by iterating from `y` to the square root of `n`, and checking if `n` is divisible by each number in this range.
+* If `n` is divisible by a number `i`, it increments the `sum` and updates `y` to be the current value of `i`, then recursively calls itself with `n/i` and `y`.
+* The main function reads an array of numbers from the user, and for each number, it calls `f` with the number and 2 as the starting point (since 2 is the smallest prime number), and prints the sum plus 1 (since the program doesn't count 1 as a prime factor).

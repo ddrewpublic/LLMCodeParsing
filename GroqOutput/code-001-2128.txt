@@ -1,0 +1,70 @@
+**Part I**
+
+```
+int ispr(int t) 
+{
+    // Function to check if a number is prime
+    int v=(int)sqrt(t*1.0)+1;
+    // Calculate the square root of the input number and add 1 to it
+    for(int i=2; i<v; i++)
+        // Check if the number is divisible by any number from 2 to the square root
+        if(t%i==0)
+            return 0; // If it's divisible, the number is not prime, return 0
+    return 1; // If the number is not divisible by any number from 2 to the square root, it's prime, return 1
+}
+
+int sum;
+void fun(int n,int i) 
+{
+    // Function to calculate the sum of proper divisors of a number
+    if(n==1) 
+        sum++;
+    // If the number is 1, increment the sum
+    for (; i<=n; i++)
+    {
+        if(n%i==0)
+            fun(n/i,i);
+    }
+    // Recursively calculate the sum of proper divisors for the remaining numbers
+    return ;
+}
+
+int main() {
+    int n;
+    scanf("%d",&n);
+    // Read the number of test cases
+    for (int j=0; j<n; j++)
+    {
+        int a;
+        scanf("%d",&a);
+        // Read each test case
+        if(ispr(a)==1) 
+        {
+            printf("1\n");
+            // If the number is prime, print 1 and continue
+            continue;
+        }
+        
+        int res=1;
+        for (int i=2; i<=a/2; i++)
+        {
+            if(a%i==0)
+            {
+                sum=0;
+                // Calculate the sum of proper divisors for the number
+                fun(a/i,i);
+                res=res+sum;
+            }
+            
+        }
+        printf("%d\n",res);
+        // Print the sum of proper divisors for each test case
+    }
+    
+    return 0;
+}
+```
+
+**Part II**
+
+This program is designed to solve a problem where it takes as input a number of test cases, and for each test case, it reads a positive integer. If the integer is prime, it prints 1, otherwise, it calculates the sum of the proper divisors of the integer and prints the result. The function `ispr` checks if a number is prime by checking divisibility up to the square root of the number. The function `fun` calculates the sum of the proper divisors of a number by recursively adding the divisors and their corresponding sums. The main function reads the test cases, checks if each number is prime, and calls the corresponding functions to calculate and print the results.

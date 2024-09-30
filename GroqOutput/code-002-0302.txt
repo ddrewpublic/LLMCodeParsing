@@ -1,0 +1,76 @@
+Here is the code with developer comments for each line:
+
+```c
+Part I
+
+void main()
+// The main function
+{
+    struct book
+    // Define a struct called book
+    {
+        int n;
+        // An integer to store the book number
+        char a[26];
+        // An array of 26 characters to store the book title
+    };
+    struct book book[999];
+    // Create an array of 999 book structures
+    int m,c[26]={0},k;
+    // Declare variables m, c, and k
+    char w[26];
+    // Declare a character array w
+    scanf("%d",&m);
+    // Read an integer from the user
+    int i,j,max=0,t;
+    // Declare variables i, j, max, and t
+    for(i=0;i<m;i++)
+       scanf("%d %s",&book[i].n,book[i].a);
+    // Read m integers and strings from the user and store them in the book array
+    for(i=0;i<26;i++)
+    w[i]='A'+i;
+    // Initialize the character array w with uppercase letters
+    for(i=0;i<26;i++)
+       for(j=0;j<m;j++)
+           for(k=0;k<26;k++)
+           {
+               if(book[j].a[k]==w[i])
+                   c[i]++;
+           }
+    // Count the occurrences of each uppercase letter in the book titles
+
+    for(i=0;i<26;i++)
+    {
+        if(c[i]>max)
+            max=c[i];
+    }
+    // Find the maximum count
+    for(i=0;i<26;i++)
+    {
+        if(c[i]==max)
+        {
+            t=i;
+            break;
+        }
+    }
+    // Find the letter with the maximum count
+    printf("%c\n%d\n",w[t],c[t]);
+    // Print the letter with the maximum count and its count
+    for(j=0;j<m;j++)
+        for(k=0;k<26;k++)
+        {
+            if(book[j].a[k]==w[t])
+            {
+                printf("%d\n",book[j].n);
+                break;
+            }
+        }
+}
+
+```
+
+Summary:
+
+Part II
+
+This program reads a list of book titles and their corresponding numbers, and then analyzes the list to find the most frequently occurring uppercase letter in the titles. It uses a struct to represent a book, with an integer to store the book number and an array of 26 characters to store the book title. The program then counts the occurrences of each uppercase letter in the book titles and finds the letter with the maximum count. Finally, it prints the letter with the maximum count and its count, as well as the book numbers that contain this letter.

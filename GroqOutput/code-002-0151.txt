@@ -1,0 +1,77 @@
+**Part I**
+
+```c
+struct book {
+    char writer[32];
+    int id;
+    struct book *next;
+};
+```
+* Definition of a struct called `book` to represent a book. Each book has a `writer` of 32 characters, an `id` of type `int`, and a `next` pointer of type `struct book *`.
+
+```c
+struct book *create(int m) {
+    struct book *head = NULL, *p1, *p2;
+    int i;
+    p1 = p2 = (struct book*)malloc(sizeof(struct book));
+```
+* Function `create` takes an integer argument `m` and returns a pointer to a struct `book *`. It initializes three pointers `head`, `p1`, and `p2` to NULL and allocates a block of memory for a struct `book`.
+
+```c
+    scanf("%d %s", &p1->id, p1->writer);
+    p1->next = NULL;
+    head = p1;
+    p2 = p1;
+    for (i = 1; i < m; i++) {
+        p1 = (struct book*)malloc(sizeof(struct book));
+        scanf("%d %s", &p1->id, p1->writer);
+        p1->next = NULL;
+        p2->next = p1;
+        p2 = p1;
+    }
+    return head;
+}
+```
+* The function reads the details of the first book from the user, and then reads the details of `m` more books. Each book's `next` pointer is set to NULL, and the previous book's `next` pointer is set to the current book.
+
+**Part II**
+
+The following code is the main function that uses the `create` function to create a linked list of books and then analyzes the linked list to find the most common author.
+
+```c
+int main() {
+    struct book *head, *p;
+    int m, i, *q1, *q2, j;
+    q1 = (int*)malloc(26 * sizeof(int));
+    q2 = q1;
+    for (i = 0; i < 26; i++)
+        q1[i] = 0;
+    q1 = q2;
+```
+* The main function initializes several pointers and variables. It allocates an array `q1` of 26 integers to keep track of the frequency of each author, and initializes all the elements to 0.
+
+```c
+    scanf("%d", &m);
+    head = create(m);
+    p = head;
+    for (i = 0; i < m; i++) {
+        for (j = 0; p->writer[j] != '\0'; j++)
+            q1[p->writer[j] - 'A']++;
+        p = p->next;
+    }
+    q1 = q2;
+```
+* The main function calls the `create` function to create a linked list of `m` books, and then iterates through the linked list to count the frequency of each author.
+
+```c
+    int max = 0;
+    char maxm = 'A';
+    for (i = 0; i < 26; i++)
+        if (max < q1[i]) { max = q1[i]; maxm = i + 'A'; }
+    printf("%c\n%d", maxm, max);
+    for (i = 0, p = head; i < m; i++, p = p->next)
+        for (j = 0; p->writer[j] != '\0'; j++)
+            if (p->writer[j] == maxm) printf("\n%d", p->id);
+}
+```
+* The main function finds the author with the maximum frequency and prints the author's name and frequency. It then iterates through the linked list again to find and print the IDs of all books written by the most common author.

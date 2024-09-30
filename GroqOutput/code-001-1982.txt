@@ -1,0 +1,49 @@
+Here is the modified code with developer comments:
+
+// ============================================================================
+// Name        : 30fenjie.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+// ============================================================================
+int factorize(int a, int b) {
+  // Initialize local variables
+  int factor = 0; // initialized to 0, as factors are assumed to be 0 initially
+  int i;
+
+  // If a is 1, return 1 as it has only one factor (1)
+  if(a==1)  
+    factor = 1;
+
+  // If a is not 1, set factor to 0
+  if(a!=1)  
+    factor = 0;
+
+  // Iterate from b to a
+  for (i=b;i<=a;i++) {
+    // Check if a is divisible by i
+    if (a%i==0) {
+      // Recursively call the function to factorize a/i and add the result to factor
+      factor = factor + factorize(a/i, i);
+    }
+  }
+  return factor;
+}
+
+// ============================================================================
+int main() {
+  // Initialize global variable n
+  int n;
+  
+  // Read and consume input until n becomes 0
+  // For each iteration, call factorize with variables a and 2
+  for (cin >> n; n--; cout << factorize(a, 2) << endl) {
+    // Read a
+    cin >> a;
+  }
+}
+
+**Part II: Summary**
+
+The code provided defines a function `factorize` that calculates the number of factors of a given integer `a` using a recursive approach. The function iterates from `b` to `a`, checking if `a` is divisible by each integer `i`. If it is, the function calls itself with `a` divided by `i` and `i` as arguments, adding the result to a running total. The `main` function reads input integers, calls `factorize` with the current integer and 2 as arguments, and prints the result until the user enters 0. The code effectively calculates the number of factors of each integer entered by the user.

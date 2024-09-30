@@ -1,0 +1,41 @@
+**Part I**
+
+```c
+void main()
+{
+    // declaring an array a of size 999 to store integers
+    int a[999],m,i,j,c[26],max=0,d,k;
+
+    // scanning an integer value m from standard input
+    scanf("%d\n",&m);
+
+    // initializing an array c of size 26 to store character frequencies
+    for(k=0;k<26;k++)
+    {
+        c[k]=0;
+    }
+
+    // declaring a struct books to store book information
+    struct books
+    {
+        int num;
+        char name[26];
+    }
+
+    // creating an array books of size 999 to store book information
+    books[999];
+
+    // reading m number of book records from standard input
+    for(i=0;i<m;i++)
+    {
+        scanf("%d %s",&books[i].num,books[i].name);
+    }
+```
+
+**Part II**
+
+This C program reads a list of book records, each containing a book number and a name, and then finds the most frequently occurring character in the names. It uses an array `c` to store the frequency of each character, and a variable `max` to keep track of the maximum frequency. The most frequent character is then printed along with its frequency.
+
+The program then iterates through the book records again, printing the book numbers of the books whose names contain the most frequent character. The program uses the ASCII value of the characters to compare them with the most frequent character. If a character matches, the book number is printed and the loop is terminated to avoid processing the rest of the book name.
+
+The program finally terminates with a single space character.

@@ -1,0 +1,61 @@
+Here is the code with developer comments:
+
+**Part I: Code with Comments**
+```
+void main()
+{
+  // Function zy takes two integer arguments a and b and returns an integer
+  int zy(int a, int b);
+  
+  // Declare variables j, n, and m as integers
+  int j, n, m, sum;
+  
+  // Read an integer from the user and store it in n
+  scanf("%d", &n);
+  
+  // Loop through j from 1 to n
+  for (j = 1; j <= n; j++) {
+    // Read an integer from the user and store it in m
+    scanf("%d", &m);
+    
+    // Call function zy with arguments 2 and m, and store the result in sum
+    sum = zy(2, m);
+    
+    // Print the sum to the console
+    printf("%d\n", sum);
+  }
+}
+
+int zy(int a, int b)
+{
+  // Declare variables i, c, and t as integers
+  int i, c, t = 1;
+  
+  // Initialize c to 0
+  c = 0;
+  
+  // Loop through i from a to the square root of b
+  for (i = a; i * i <= b; i++) {
+    // If b is divisible by i, call zy recursively with arguments i and b/i, and add the result to c
+    if (b % i == 0) {
+      c = zy(i, (b / i)) + c;
+    }
+  }
+  
+  // If the square of i is greater than b, add 1 to c
+  if (i * i > b) {
+    c = c + 1;
+  }
+  
+  // Return the value of c
+  return (c);
+}
+```
+
+**Part II: Summary**
+
+The provided code implements a function `zy` that computes the sum of proper divisors of a given integer `b`, starting from 2. The function uses a recursive approach to find the divisors. The main function reads an integer `n` and `m` from the user, calls the `zy` function with arguments 2 and `m`, and prints the result to the console.
+
+The function `zy` first initializes a variable `c` to 0, which will store the sum of divisors. It then iterates from `a` to the square root of `b`, checking if `b` is divisible by `i`. If it is, the function calls itself recursively with arguments `i` and `b/i`, and adds the result to `c`. Finally, it checks if the square of `i` is greater than `b`, and adds 1 to `c` if so. The function returns the final value of `c`.
+
+The main function uses a loop to iterate `n` times, reading an integer `m` each time and calling the `zy` function with arguments 2 and `m`.

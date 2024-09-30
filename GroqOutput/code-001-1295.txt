@@ -1,0 +1,56 @@
+**Part I: Code with Developer Comments**
+
+```c
+// Function prototype for f()
+// takes two int arguments and returns an int
+int f(int, int);
+
+int main()
+{
+    // Declare integer variables x, n, and i
+    int x, n, i;
+    // Read an integer from standard input cin and store it in variable n
+    cin >> n;
+    // Loop through a range of values from 1 to n
+    for (i = 1; i <= n; i++)
+    {
+        // Read an integer from standard input cin and store it in variable x
+        cin >> x;
+        // Call function f() with x and 2 as arguments and print the result
+        cout << f(x, 2) << endl;
+    }
+    // Return an exit code of 0 to indicate successful execution
+    return 0;
+}
+
+int f(int x, int i)
+{
+    // Initialize an integer variable ans to 0
+    int ans = 0;
+    // Check if x is equal to 2
+    if (x == 2)
+    {
+        // If true, return 1
+        return 1;
+    }
+    else 
+    {
+        // Loop through a range of values from i to square root of x
+        for (; i <= sqrt(x); i++)
+        {
+            // Check if x is divisible by i
+            if (x % i == 0)
+            {
+                // If true, recursively call f() with x divided by i and i as arguments, and add the result to ans
+                ans = ans + f(x / i, i);
+            }
+        }
+        // Return the final value of ans plus 1
+        return ans + 1;
+    }
+}
+```
+
+**Part II: 200-word Summary**
+
+This C++ code calculates the prime factors of a given number using the recursive function f(). The main function takes an integer n as input from the user and then iterates n times, reading another integer x each time and calling the f() function with x and 2 as arguments. The f() function calculates the number of prime factors of x and returns the result. If x is equal to 2, the function returns 1, as 2 is a prime number. Otherwise, the function recursively breaks down x into smaller factors until it finds a prime number, adding the results to a running total. The final result includes 1 as the number of prime factors of 1. The code uses the standard input/output streams cin and cout, respectively, for reading and writing data. The sqrt() function is used to calculate the square root of x. The code is well-structured and easy to follow, with clear variable names and descriptive comments.

@@ -1,0 +1,66 @@
+**Part I: Code with Developer Comments**
+
+```
+main()
+{
+    // Declare variables
+    int n, i, a, t, d[26] = {0}, f = 0, c, h, e = 0;
+    
+    // Declare structure for book
+    struct book
+    {
+        int N;
+        char name[20];
+    }p[1000];
+    
+    // Read the number of books
+    scanf("%d", &n);
+    
+    // Read book information (number and name) for each book
+    for (i = 0; i <= n - 1; i++)
+        scanf("%d %s", &p[i].N, p[i].name);
+    
+    // Count the frequency of each letter in the book names
+    for (i = 0; i <= n - 1; i++)
+    {
+        a = strlen(p[i].name);
+        for (t = 0; t <= a - 1; t++)
+        {
+            c = p[i].name[t] - 'A';
+            d[c]++;
+        }
+    }
+    
+    // Find the most frequent letter and its frequency
+    for (i = 0; i <= 25; i++)
+    {
+        if (e < d[i])
+        {
+            e = d[i];
+            f = i;
+        }
+    }
+    
+    // Convert the most frequent letter to uppercase and print it
+    h = f + 'A';
+    printf("%c\n%d\n", h, e);
+    
+    // Find the book with the most frequent letter and print its number
+    for (i = 0; i <= n - 1; i++)
+    {
+        a = strlen(p[i].name);
+        for (t = 0; t <= a - 1; t++)
+        {
+            if (p[i].name[t] == h)
+            {
+                printf("%d\n", p[i].N);
+                break;
+            }
+        }
+    }
+}
+```
+
+**Part II: Summary**
+
+This C program reads the information of a certain number of books, where each book has a number and a name. It then counts the frequency of each letter in the book names and finds the most frequent letter. The program prints the most frequent letter, its frequency, and the number of the book that has this letter most frequently. The program uses a structure to store book information and arrays to store the letter frequencies.

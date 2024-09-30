@@ -1,0 +1,73 @@
+**Part I: Code with Comments**
+
+```c
+int p(int a, int m) {
+    // Initialize variable to store the result
+    int t = 0;
+    // Initialize loop variable
+    int i;
+
+    // Check if a is not divisible by m
+    if (a % m != 0)
+        // Return 0 if not divisible
+        return 0;
+
+    // Check if a is divisible by m and the quotient is less than m
+    if ((a % m == 0) && (a / m < m) && (a != m))
+        // Return 0 if quotient is less than m
+        return 0;
+
+    // Check if a is equal to m
+    if (a == m)
+        // Return 1 if a is equal to m
+        return 1;
+
+    // Check if a is divisible by m and the quotient is greater than or equal to m
+    if ((a % m == 0) && (a / m >= m)) {
+        // Loop from m to the quotient of a and m
+        for (i = m; i <= a / m; i++) {
+            // Recursively call the function with the quotient of a and m as the new a
+            t = t + p(a / m, i);
+        }
+        // Return the result
+        return t;
+    }
+}
+
+int main() {
+    // Read the number of test cases
+    int n;
+    cin >> n;
+    // Initialize variables
+    int i;
+    int x;
+    int j;
+    int num = 0;
+
+    // Loop through each test case
+    for (i = 0; i < n; i++) {
+        // Read the number for the current test case
+        cin >> x;
+        // Initialize a variable to store the result for the current test case
+        for (j = 2; j <= x; j++) {
+            // Add the result of the function p with x and j to the result
+            num = num + p(x, j);
+        }
+        // Print the result for the current test case
+        cout << num << endl;
+        // Reset the result for the current test case
+        num = 0;
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a solution to a problem that involves calculating the number of proper divisors for a given integer. The `p` function takes two integers `a` and `m` as input and returns the number of proper divisors of `a` that are less than or equal to `m`. The function uses recursion to calculate the result.
+
+In the `main` function, the code reads the number of test cases and then loops through each test case. For each test case, it reads the number and then loops through each divisor of the number from 2 to the number. The code then calls the `p` function with the number and each divisor and adds the result to a running total. Finally, the code prints the total number of divisors for the current test case.
+
+The code is written in C++ and uses the `cin` and `cout` functions for input and output, respectively. The `return` statement is used to exit the program with a status code of 0.

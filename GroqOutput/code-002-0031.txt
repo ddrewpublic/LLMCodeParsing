@@ -1,0 +1,60 @@
+Here is the code with developer comments and a summary:
+
+---
+
+**Part II: Summary**
+
+This C program reads a series of input lines, where each line contains an integer followed by a string. The program then analyzes each string to find the most frequently occurring uppercase letter, prints the letter and its frequency, and finally prints the corresponding integer for each string.
+
+---
+
+**Part I: Code**
+
+```c
+void main()
+{
+    // Declare an array of 1000 integers to store the input integers
+    int a[1000], i, j, m, b[26], t = 0, k;
+
+    // Declare an array of 1000 strings to store the input strings
+    char c[1000][20];
+
+    // Read the input integer m
+    scanf("%d", &m);
+
+    // Read m input lines, where each line contains an integer and a string
+    for (i = 0; i < m; i++)
+        scanf("%d %s", &a[i], c[i]);
+
+    // Initialize an array b to count the frequency of uppercase letters
+    for (i = 0; i < 26; i++)
+        b[i] = 0;
+
+    // Calculate the frequency of uppercase letters for each string
+    for (i = 0; i < m; i++)
+        for (j = 0; j < strlen(c[i]); j++)
+            if ('A' < c[i][j] < 'Z') b[c[i][j] - 65]++;
+
+    // Find the most frequently occurring uppercase letter
+    for (i = 0; i < 26; i++)
+        if (b[i] > t) {
+            t = b[i];
+            k = i;
+        }
+
+    // Print the most frequently occurring uppercase letter
+    printf("%c\n", k + 65);
+
+    // Print the frequency of the most frequently occurring uppercase letter
+    printf("%d\n", t);
+
+    // Print the corresponding integer for each string that contains the most frequently occurring uppercase letter
+    for (i = 0; i < m; i++)
+        for (j = 0; j < strlen(c[i]); j++) {
+            // Check if the character at position j of string c[i] is equal to the most frequently occurring uppercase letter
+            if (c[i][j] == k + 65) printf("%d\n", a[i]);
+        }
+}
+```
+
+I hope this helps! Let me know if you have any further questions.

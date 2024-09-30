@@ -1,0 +1,29 @@
+**Part I: Code with Developer Comments**
+
+```
+int sum = 0; // Initialize the sum variable to 0
+
+int main() {
+  void shu(int a, int b); // Declare the shu function
+  int n = 0, i = 0, a = 0, c = 0, j = 0; // Initialize variables
+  scanf("%d", &n); // Read the input value of n
+  for (i = 1; i <= n; i++) {
+    scanf("%d", &a); // Read the value of a
+    for (j = 2; j <= sqrt((double)a); j++) {
+      // Check if a is divisible by j
+      if (a % j == 0) {
+        sum = sum + 1; // Increment the sum if a is divisible by j
+        shu(j, a / j); // Call the shu function with the divisors
+      }
+    }
+    printf("%d", sum + 1); // Print the sum plus 1 (for the current a)
+    if (i < n) printf("\n"); // Print a newline if it's not the last iteration
+    sum = 0; // Reset the sum for the next iteration
+  }
+  return (0); // Return exit success
+}
+```
+
+**Part II: Summary**
+
+This program calculates the sum of the number of divisors of each number from 1 to a given input value n. For each number a, it checks all numbers from 2 to the square root of a to see if a is divisible by them. If a is divisible by any of these numbers, it increments the sum and recursively calls the shu function with the divisor and the quotient. The shu function performs the same check for the divisor and its quotient, until it reaches 1. The program then prints the sum plus 1 (for the current a) and resets the sum for the next iteration.

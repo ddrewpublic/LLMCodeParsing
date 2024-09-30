@@ -1,0 +1,69 @@
+**Part I: Code with Developer Comments**
+
+```c
+void main() {
+    // Declare integer variables
+    int num = 0, n, a[26], name[1000], name2[1000], i, j, k, max = 0, maxi = 0;
+
+    // Declare character arrays
+    char wr[1000][27];
+
+    // Declare character variable
+    char q;
+
+    // Read the number of inputs
+    scanf("%d", &n);
+
+    // Initialize an array to store the count of each character
+    for (i = 0; i < 26; i++) {
+        a[i] = 0;
+    }
+
+    // Loop through each input
+    for (i = 0; i < n; i++) {
+        // Read the name and its corresponding string
+        scanf("%d%s", &(name[i]), wr[i]);
+
+        // Count the occurrences of each character in the string
+        for (j = 0; j < 26; j++) {
+            for (k = 0; k < 26; k++) {
+                if (wr[i][j] == 'A' + k) a[k]++;
+            }
+        }
+    }
+
+    // Find the maximum count and its corresponding character
+    for (i = 0; i < 26; i++) {
+        if (a[i] > max) {
+            max = a[i];
+            maxi = i;
+        }
+    }
+
+    // Store the maximum character
+    q = 'A' + maxi;
+
+    // Print the maximum character
+    printf("%c\n", q);
+
+    // Store the names corresponding to the maximum character
+    num = 0;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < 26; j++) {
+            if (wr[i][j] == q) {
+                name2[num] = name[i];
+                num++;
+            }
+        }
+    }
+
+    // Print the number of names stored
+    printf("%d\n", num);
+
+    // Print the stored names
+    for (i = 0; i < num; i++) printf("%d\n", name2[i]);
+}
+```
+**Part II: 200-word Summary**
+
+This program reads in a number of input pairs, where each pair consists of a name and a string of characters. It then counts the occurrences of each character in the string for each input and stores the counts in an array. The program then finds the character with the maximum count and prints it. It also stores the names corresponding to the maximum character and prints them. The program uses two arrays, `name` and `name2`, to store the names, and an array `a` to store the counts of each character. The program uses a nested loop to count the occurrences of each character in the string, and another loop to find the maximum count and its corresponding character.

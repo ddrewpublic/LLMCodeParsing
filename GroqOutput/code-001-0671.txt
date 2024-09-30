@@ -1,0 +1,88 @@
+Here is the code with developer comments added for each line:
+
+**Part I**
+
+```cpp
+// ????.cpp : ??????????????
+```
+
+This is a comment at the top of the file, noting the filename and stating that the purpose of the file is unknown.
+
+```cpp
+int f(int x,int y)
+{
+```
+
+This is the definition of a function called `f` that takes two integer parameters, `x` and `y`.
+
+```cpp
+    int i,a=1;
+```
+
+This initializes two variables: `i` to an integer and `a` to 1.
+
+```cpp
+    if(x<y) return 0;
+```
+
+This checks if `x` is less than `y`, and if so, returns 0.
+
+```cpp
+    if(x==y) return 1;
+```
+
+This checks if `x` is equal to `y`, and if so, returns 1.
+
+```cpp
+    if(x>y)
+    {
+```
+
+This checks if `x` is greater than `y`.
+
+```cpp
+        if(y==1)
+        {
+            for(i=y+1;i<=x;i++)
+            {
+                if(x%i==0) a=a+f(x/i,i);
+            }
+        }
+```
+
+This is a nested if statement that checks if `y` is equal to 1, and if so, enters a loop that checks if `x` is divisible by the current value of `i`, and if so, recursively calls the `f` function with `x` divided by `i` and `i` as parameters.
+
+```cpp
+        else
+        {
+            for(i=y;i<=x;i++)
+            {
+                if(x%i==0) a=a+f(x/i,i);
+            }
+        }
+```
+
+This is another loop that checks if `x` is divisible by the current value of `i`, and if so, recursively calls the `f` function with `x` divided by `i` and `i` as parameters.
+
+```cpp
+        return a;
+    }
+```
+
+This returns the value of `a`.
+
+```cpp
+}
+```
+
+This closes the `f` function definition.
+
+**Part II**
+
+This code is a C++ program that implements a function `f(x,y)` that calculates the number of divisors of `x` (excluding `x` itself and 1). The program reads input from the user, calculates the number of divisors for each input, and prints the results.
+
+The program starts by defining the function `f(x,y)` as described above. It then defines the main function `main()`, which reads input from the user and calls the `f()` function for each input.
+
+The input is stored in the variable `p`, and the program loops `p` times, reading an integer `n` each time and printing the result of calling `f(n,1)`.
+
+The program then returns 0 to indicate successful execution.

@@ -1,0 +1,48 @@
+**Part I**
+
+```c
+struct book
+{
+    int order;
+    int num;
+    char writer[26];
+}b[1000];
+```
+
+This line defines a struct `book` with three members: `order`, `num`, and `writer`. The `writer` is an array of 26 characters to store the author's name.
+
+```c
+int main()
+{
+    int n,i,j,k,p,q[1000];
+```
+
+This line declares several integer variables: `n`, `i`, `j`, `k`, and `p`, and an array `q` to store the book numbers.
+
+```c
+    scanf("%d",&n);
+```
+
+This line reads an integer value from the standard input and stores it in the variable `n`.
+
+```c
+    for(i=0;i<=(n-1);i++)
+    {
+        scanf("%d %s",&b[i].num,&b[i].writer);
+        b[i].order=i;
+    }
+```
+
+This loop reads `n` book records from the standard input, where each record consists of an integer `num` and a string `writer`. The `order` field of each book is automatically initialized to the index `i`.
+
+**Part II**
+
+**Summary**
+
+This C program aims to find the most frequent author's initial in a list of books. It reads a list of books from the standard input, where each book is described by an integer number and a string author's name. The program then determines the most frequent initial among all authors and prints the corresponding initial and its frequency. Finally, it prints the book numbers corresponding to the most frequent initial.
+
+The program first defines a struct `book` to represent a book, and then reads the book records from the standard input. It initializes an array `c` to count the frequency of each author's initial, and another array `q` to store the book numbers corresponding to the most frequent initial.
+
+The program then iterates through the book records to update the frequency counts and initializes an array `q` to store the book numbers. It then finds the maximum frequency, prints the corresponding author's initial, and prints the book numbers corresponding to the most frequent initial.
+
+This program assumes that the input is well-formed and that the list of books does not exceed 1000 records.

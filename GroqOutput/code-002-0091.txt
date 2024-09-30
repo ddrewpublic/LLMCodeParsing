@@ -1,0 +1,53 @@
+Part I
+
+```
+int main()
+{
+    // Declaration of variables
+    int n, i, l, x, maxnumber;
+    
+    // Read the number of songs from the user
+    scanf("%d", &n);
+    
+    // Allocate an array to store song IDs
+    int a[1000];
+    
+    // Allocate a 2D array to store song titles
+    char k[1000][30];
+    
+    // Initialize an array to store the count of each letter
+    int author[27] = {0};
+    
+    // Loop through each song
+    for (i = 1; i <= n; i++)
+    {
+        // Read the song ID and title
+        scanf("%d %s", &a[i], k[i]);
+        
+        // Calculate the length of the song title
+        int m;
+        m = strlen(k[i]);
+        
+        // Loop through each character in the song title
+        for (l = 0; l < 30; l++)
+        {
+            // Loop through each letter
+            for (x = 1; x <= 26; x++)
+            {
+                // Check if the character is the current letter
+                if (k[i][l] == x + 64)
+                    // Increment the count of the letter
+                    author[x]++;
+            }
+        }
+    }
+```
+
+Part II
+
+Summary:
+This code is a C program that reads in data about a collection of songs. Each song is assigned a unique ID and has a title. The program then analyzes the titles of the songs to determine which letter appears most frequently. The letter that appears most frequently is considered the most popular letter among song titles. The program then prints out the ID of the first song that contains this letter and the frequency of the letter.
+
+The program uses two arrays, a[1000] and k[1000][30], to store the song IDs and titles, respectively. It also uses an array, author[27], to keep track of the count of each letter in the song titles. The program loops through each song, calculating the length of the title and then iterating through each character in the title to update the count of each letter.
+
+Finally, the program loops through the author array to find the letter with the highest count, and then prints out the desired information.

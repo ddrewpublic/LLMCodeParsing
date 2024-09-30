@@ -1,0 +1,44 @@
+Here is the code with developer comments added for each line, along with a 200-word summary:
+
+**Part I**
+
+```c
+int sum=0; // Initialize a variable sum to store the count of distinct prime factors
+int yueshu[100]={0}; // Declare an array yueshu of size 100, initialized to zeros
+int s=0; // Initialize a variable s to store the index of the array yueshu
+
+void number(int num,int s) {
+    int i; // Declare a variable i as an index
+    for(i=s;i>=0;i--) {
+        if(num<yueshu[i]) // If num is less than the current prime factor
+            continue; // Skip to the next iteration
+        if(num==yueshu[i]) // If num is equal to the current prime factor
+            sum++; // Increment the sum by 1
+        else if(num>yueshu[i]&&num%yueshu[i]==0) // If num is greater than the current prime factor and divisible by it
+            number(num/yueshu[i],i); // Recursively call the function with num divided by the current prime factor and the same index
+    }
+}
+
+int main() {
+    int n=0; // Declare a variable n to store the number of inputs
+    cin>>n; // Read the number of inputs from the user
+    int num=0; // Declare a variable num to store the current number
+    while(cin>>num) { // Read a series of numbers from the user
+        int i=0,j=0; // Declare variables i and j as indices
+        for(i=2;i<=num;i++) // Iterate from 2 to num
+            if(num%i==0) { // If num is divisible by i
+                yueshu[j]=i; // Store i as a prime factor in the array yueshu
+                j++; // Increment the index j
+            }
+        s=j-1; // Update the index s to the last prime factor found
+        number(num,s); // Call the function number with num and s
+        cout<<sum<<endl; // Print the sum of distinct prime factors
+        sum=0; // Reset the sum for the next iteration
+    }
+    return 0; // Exit the program
+}
+```
+
+**Part II**
+
+This program counts the number of distinct prime factors for a series of input numbers. The function `number` recursively finds the prime factors of a given number and updates the `sum` variable accordingly. The main function reads a series of numbers from the user, finds their distinct prime factors, and prints the count of distinct prime factors for each number. The program uses an array `yueshu` to store the prime factors of each number and updates the index `s` to keep track of the last prime factor found.

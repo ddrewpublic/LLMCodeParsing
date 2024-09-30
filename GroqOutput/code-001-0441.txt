@@ -1,0 +1,33 @@
+**Part I: Code with Comments**
+
+```c
+void TRY(int, int); // Function prototype for TRY function
+int num = 1; // Variable to store the number of divisors
+int main() {
+    unsigned short int n; // Variable to store the number of test cases
+    int INTEGER; // Variable to store the input integer
+    cin >> n; // Read the number of test cases
+    while (n-- > 0) { // Loop until all test cases are processed
+        cin >> INTEGER; // Read the input integer
+        int h = 2; // Initialize the variable h to 2
+        TRY(h, INTEGER); // Call the TRY function for the first time
+        cout << num << endl; // Print the number of divisors
+        num = 1; // Reset the number of divisors
+    }
+    return 0;
+}
+
+void TRY(int a, int b) {
+    int i; // Initialize the variable i
+    for (i = a; i <= sqrt(b); i++) { // Loop until the square root of b
+        if ((b % i == 0) && (b / i != 1)) { // Check if i is a divisor of b
+            num++; // Increment the number of divisors
+            TRY(i, b / i); // Recursively call the TRY function
+        }
+    }
+}
+```
+
+**Part II: Summary**
+
+This program reads a number of test cases from the input, and for each test case, it reads an integer and finds the number of divisors of the integer. The function `TRY(int, int)` is used to recursively find the divisors of the integer, and the variable `num` is used to store the number of divisors. The program prints the number of divisors for each test case. The function `TRY(int, int)` works by iterating from 2 to the square root of the integer, and for each iteration, it checks if the integer is divisible by the current number. If it is, the program recursively calls itself with the current number and the integer divided by the current number, and increments the number of divisors.

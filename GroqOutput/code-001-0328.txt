@@ -1,0 +1,51 @@
+**Part I**
+
+```
+int Divide(int a,int b);
+```
+This line declares a function named `Divide` that takes two integers, `a` and `b`, as parameters and returns an integer value.
+
+```
+int main()
+```
+This line begins the definition of the main function, the entry point of the program.
+
+```
+int Times=0;
+int Num=0;
+int i=0;
+int Temp[100]={0};
+```
+These lines declare four integer variables: `Times`, `Num`, `i`, and `Temp`, all initialized to zero. `Temp` is an array of 100 elements, all initialized to zero.
+
+```
+cin>>Times;
+```
+This line reads an integer from the console and stores it in the `Times` variable.
+
+```
+for (i=0;i<Times;i++)
+```
+This line begins a `for` loop that will iterate `Times` times, with `i` as the loop variable.
+
+```
+{ cin>>Num;
+   Temp[i]=Divide(Num,Num);
+}
+```
+This inner block reads an integer from the console, stores it in the `Num` variable, and passes `Num` and `Num` as arguments to the `Divide` function, storing the result in the corresponding element of the `Temp` array.
+
+```
+for (i=0;i<Times;i++)
+   {cout<<Temp[i]<<endl;}
+```
+This outer `for` loop iterates `Times` times, printing each element of the `Temp` array to the console.
+
+```
+return 0;
+```
+This line returns an integer value of 0 to indicate success.
+
+**Part II**
+
+This program reads a number of inputs from the console, calculates the result of dividing each input by itself using the `Divide` function, and then prints the results. The `Divide` function recursively finds the sum of all factors of its input, effectively counting the number of factors. The program is designed to calculate the sum of factors for each input number.

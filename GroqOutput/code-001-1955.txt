@@ -1,0 +1,71 @@
+**Part I: Code with comments**
+
+```
+int main()
+{
+    // Declare function f that takes two integer parameters and returns an integer
+    int f(int k, int m);
+    // Declare a variable n to store the input from the user
+    int n;
+    // Read input from the user and store it in variable n
+    scanf("%d", &n);
+    // Declare a for loop that iterates n times
+    int i;
+    for(i=1; i<=n; i++)
+    {
+        // Declare a variable k to store the input from the user
+        int k;
+        // Read input from the user and store it in variable k
+        scanf("%d", &k);
+        // Call function f with parameters k and 2, and print the result
+        printf("%d\n", f(k, 2));
+    }
+    // Return 0 to indicate successful program execution
+    return 0;
+}
+
+int f(int k, int m)
+{
+    // Declare loop variable i
+    int i;
+    // Initialize variable j to 0
+    int j = 0;
+    // Check if k is less than or equal to m
+    if(k<=m)
+    {
+        // Check if k is equal to m
+        if(k==m){
+            // Set j to 1 and return it
+            j = 1;
+            return j;
+        }
+        // k is not equal to m, so set j to 0 and return it
+        else 
+        {
+            j = 0;
+            return j;
+        }
+    }
+    else
+    {
+        // Loop from m to k (inclusive)
+        for(i=m; i<=k; i++)
+        {
+            // Check if k is divisible by i
+            if(k%i==0 && k/i!=1)
+                // Recursively call f with k/i and i, and add the result to j
+                j = j + f(k/i, i);
+            // Check if k is divisible by i and k/i is 1
+            if(k%i==0 && k/i==1)
+                // Add 1 to j
+                j = j + 1;
+        }
+    }
+    // Return the calculated value of j
+    return j;
+}
+```
+
+**Part II: Summary**
+
+The provided code consists of a main function and a recursive function f. The main function reads user input n, then iterates n times, reading another input k each time and calling function f with parameters k and 2. Function f calculates the sum of the proper divisors of k (excluding 1 and k) and adds it to j. If k is less than or equal to m, it simply returns 0 if k is not equal to m, and 1 if k is equal to m. Otherwise, it loops from m to k (inclusive), checks for divisors, and recursively calls itself with k/i and i. The final result is the sum of the proper divisors of k.

@@ -1,0 +1,34 @@
+Here is the code with developer comments and a 200-word summary:
+
+**Part I**
+
+```c
+int chu(int i,int n); // function to calculate the sum of divisors of a number
+int main() // main function to execute the program
+{
+    int n,m,i,j; // declare variables n, m, i, and j
+    int sum[100]; // declare an array sum to store the sum of divisors for each number
+    scanf("%d",&n); // read the number of elements
+    for(i=0;i<=(n-1);i++) // loop to process each number
+    {
+        scanf("%d",&m); // read the number
+        sum[i]=0; // initialize the sum for the current number
+        for(j=2;j<=sqrt(m);j++) // loop to find the divisors of the number
+        {
+            if(m%j==0) // check if j is a divisor of m
+            {
+                sum[i]+=chu(j,m/j); // calculate and add the sum of divisors of j and m/j to the sum
+            }
+        }
+    }
+    for(i=0;i<=(n-1);i++) // loop to print the sums
+    {
+        printf("%d\n",sum[i]+1); // print the sum plus 1 (because the number itself is also a divisor)
+    }
+}
+```
+
+**Part II**
+
+Summary:
+This program is designed to calculate the sum of divisors for each number in a given set of numbers. The program uses a helper function "chu" to calculate the sum of divisors of a number. The main function reads the number of elements and the elements themselves, then uses nested loops to calculate the sum of divisors for each number. The sum is printed at the end, with the number itself included in the sum.

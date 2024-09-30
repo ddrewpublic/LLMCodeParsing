@@ -1,0 +1,29 @@
+**Part I**
+
+```
+void fenjie( int i , int a ) ; // Function prototype for fenjie function
+int k = 1 ; // Initialize variable k to 1
+
+int main()
+{
+    int n , m , a ; // Declare variables n, m, and a
+    cin >> n ; // Read input for variable n
+    for( m = 1 ; m <= n ; m ++ )
+    {
+        cin >> a ; // Read input for variable a
+        fenjie( 2 , a ) ; // Call fenjie function with arguments 2 and a
+        cout << k << endl ; // Print the value of k
+        k = 1 ; // Reset k to 1
+    }
+    return 0 ; // End of main function
+}
+```
+
+**Part II**
+
+Summary:
+The provided code is a C++ program that calculates the number of divisors for a given set of input numbers. The program prompts the user to input the number of integers to be processed (n) and then reads in each integer. For each integer, the program calls a helper function "fenjie" to calculate the number of divisors.
+
+The "fenjie" function uses a recursive approach to find the divisors of the input number. It starts by checking divisibility of the input number with numbers from 2 to its square root. If a number is found to be a divisor, the function increments the "k" variable, which keeps track of the number of divisors, and recursively calls itself with the quotient of the input number and the divisor. This process continues until the input number is fully factored, and the total number of divisors is reported.
+
+Overall, the code demonstrates a practical application of recursion in calculating the number of divisors for a given set of integers.

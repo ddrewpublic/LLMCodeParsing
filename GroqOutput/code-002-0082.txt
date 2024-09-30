@@ -1,0 +1,47 @@
+Here is the code with developer comments and a summary:
+
+**Part I: Code**
+```c
+void main()
+{
+    // Declare variables: n, i, j, max, num[], sum[], a[]
+    int n, i, j, max = 0;
+    scanf("%d", &n); // Read the number of test cases
+    int num[1000]; // Array to store numbers
+    int sum[26]; // Array to store sum of frequencies of each letter
+    for (i = 0; i < 26; i++) {
+        sum[i] = 0; // Initialize sum array with zeros
+    }
+    char a[1000][27]; // Array to store strings
+    for (i = 0; i < n; i++) {
+        scanf("%d %s", &num[i], a[i]); // Read number and string for each test case
+    }
+    // Perform calculations on the strings
+    for (i = 0; i < n; i++) {
+        for (j = 0; a[i][j] != '\0'; j++) { // iterate through each character in the string
+            sum[a[i][j] - 'A'] = sum[a[i][j] - 'A'] + 1; // Increment frequency of the letter
+        }
+    }
+    // Find the maximum frequency
+    for (i = 1; i < 26; i++) {
+        if (sum[i] > sum[max]) {
+            max = i; // Update max to the new maximum frequency
+        }
+    }
+    printf("%c\n", max + 'A'); // Print the letter with the maximum frequency
+    printf("%d\n", sum[max]); // Print the maximum frequency
+    // Print the numbers associated with the letters
+    for (i = 0; i < n; i++) {
+        for (j = 0; a[i][j] != '\0'; j++) {
+            if (a[i][j] == max + 'A') { // Check if the current letter matches the maximum frequency
+                printf("%d\n", num[i]); // Print the number associated with the letter
+                break; // Exit the inner loop
+            }
+        }
+    }
+}
+```
+
+**Part II: Summary**
+
+This program reads a series of test cases, where each test case consists of a number and a string. It calculates the frequency of each letter in the string and finds the letter with the maximum frequency. The program then prints the letter with the maximum frequency, the maximum frequency, and the numbers associated with the letters. The program uses two arrays: `sum` to store the sum of frequencies of each letter, and `a` to store the strings. The program iterates through each character in each string, incrementing the frequency of the letter in the `sum` array. The program then iterates through the `sum` array to find the maximum frequency and prints the corresponding letter, frequency, and numbers.

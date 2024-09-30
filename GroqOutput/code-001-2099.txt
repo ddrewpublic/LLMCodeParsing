@@ -1,0 +1,30 @@
+**Part I**
+```
+int main()
+{
+    int n, i, fenjie(int x, int y), *a, re = 0, j; // Declare variables for the array size, iteration, function pointer, array, result, and counter
+    scanf("%d", &n); // Read the size of the array from the input
+    a = (int*)malloc(n * sizeof(int)); // Allocate memory for the array
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]); // Read each element of the array from the input
+    }
+    for (i = 0; i < n; i++)
+    {
+        printf("%d\n", fenjie(a[i], 2) + 1); // Calculate and print the result for each element using the fenjie function
+    }
+    return 0;
+}
+```
+
+**Part II**
+
+Summary:
+
+This is a C program that calculates the number of ways to factorize a number into the product of prime numbers. The program first reads the size of the array and each element of the array from the input. It then uses the `fenjie` function to calculate the number of ways to factorize each element and prints the result. The `fenjie` function takes two parameters, `x` and `y`, where `x` is the number to be factorized and `y` is the starting number for the factorization.
+
+The program uses a recursive approach to calculate the number of ways to factorize a number. The function works by checking if the number is divisible by `y` and recursively calling itself with the quotient and `y` as parameters. The result is the sum of the results of the recursive calls plus the number of times `y` is a factor of the number.
+
+The program uses dynamic memory allocation to allocate memory for the array, and it uses a counter to keep track of the number of ways to factorize each element. The program also uses a flag to check if the number is prime.
+
+Overall, the program is an implementation of the Sieve of Eratosthenes algorithm to factorize numbers, but with a recursive approach.

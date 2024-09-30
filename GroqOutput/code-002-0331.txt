@@ -1,0 +1,69 @@
+**Part I**
+
+```c
+struct shu {
+    int haoma;
+    char b[26];
+    struct shu *next;
+};
+```
+
+* Declaration of a struct named `shu`. It has three members: `haoma` of type `int`, `b` of type `char` array with length 26, and `next` of type `struct shu` pointer.
+
+```c
+int main() {
+    int n, i, a[26], c[26][100], max;
+    int *s, (*q)[100];
+    s = a;
+    q = c;
+    char m[26];
+    struct shu *head, *p;
+```
+
+* Function `main` is declared. Variables are initialized including `n`, `i`, `a`, `c`, `max`, `s`, `q`, `m`, `head`, and `p`.
+    * `a` is an array of 26 integer elements to keep count of each letter.
+    * `c` is a 2D array of size 26x100 to store the frequency of each letter.
+    * `s` and `q` are pointers to `a` and `c` respectively.
+    * `m` is a char array of size 26 to store the current letter.
+    * `head` and `p` are pointers to the struct `shu`.
+
+```c
+for(i = 0; i < 26; i++)
+    a[i] = 0;
+```
+
+* Initialize all elements of `a` to 0. This array is used to keep count of each letter.
+
+```c
+scanf("%d", &n);
+head = (struct shu *)malloc(n * sizeof(shu));
+p = head;
+```
+
+* Read the number of nodes `n` from the input.
+* Allocate memory for `n` nodes of type `shu` using `malloc`.
+* Initialize `head` and `p` to the first node.
+
+```c
+for(i = 0; i < n-1; i++)
+    (p+i)->next = p+i+1;
+(p+n-1)->next = 0;
+```
+
+* Create a linked list of nodes where the next pointer of each node points to the next node until the end of the list, where it points to 0.
+
+```c
+p = head;
+for(; p != 0; )
+```
+
+* Initialize `p` to the head of the linked list.
+* Start a loop that will continue until `p` points to the end of the list.
+
+**Part II**
+
+The code reads a linked list of nodes, each containing an integer `haoma` and a string `b`. For each node, it counts the frequency of each letter in the string `b` and stores this frequency in a 2D array `c`. 
+
+After processing the linked list, the code finds the maximum frequency of any letter and prints the letter and its frequency. Then, it prints the frequency of each letter for the most frequent letter.
+
+The time complexity of this code is O(n) where n is the number of nodes in the linked list.

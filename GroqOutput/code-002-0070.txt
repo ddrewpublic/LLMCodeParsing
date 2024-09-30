@@ -1,0 +1,52 @@
+**Part I**
+
+Here is the code with developer comments added for each line:
+
+```c
+int main() // This is the main function where the program starts execution
+{
+    int n,i; // Declaring two integer variables, n and i
+    char wri[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}; // Declaring an array of 26 characters to hold the alphabet
+    int num[26];//declaring an array of 26 integers to hold the count of each alphabet
+    char tem[100];
+    int j=0,k; // Declaring two integer variables, j and k
+    int shu[26][100];//declaring a 2D array to hold the location of the alphabet
+    int hao;; // Declaring an integer variable, hao
+    for(i=0;i<26;i++)
+        num[i]=0; // Initializing the count for each alphabet to 0
+    scanf("%d",&n); // Reading an integer value from the user and storing it in n
+    for(i=0;i<n;i++)
+    {
+        scanf("%d %s",&hao,tem); // Reading an integer value and a string from the user
+        j=0;
+        while(tem[j] != '\0') // Looping through each character in the string
+        {
+            for(k=0;k<=25;k++) // Looping through each alphabet
+            {
+                if(wri[k] == tem[j]) // Checking if the current alphabet is equal to the current character
+                {
+                    shu[k][num[k]]=hao; // Storing the location of the alphabet in the 2D array
+                    num[k]++;
+                }
+            }
+            j++;
+        }
+    }
+    int max=0; // Declaring an integer variable, max
+    for(i=1;i<26;i++) // Looping through each alphabet
+    {
+        if(num[i]>num[max]) // Checking if the count of the current alphabet is greater than the max count
+            max=i;
+    }
+    printf("%c\n%d\n",wri[max],num[max]); // Printing the alphabet with the maximum count and its count
+    for(i=0;i<num[max];i++) // Looping through each occurrence of the alphabet with the maximum count
+        printf("%d\n",shu[max][i]); // Printing the locations of the alphabet
+    return 0; // This is the end of the main function
+}
+```
+
+**Part II**
+
+Summary:
+
+This program is designed to count the occurrences of each alphabet in a given set of strings and store the locations of each alphabet in a 2D array. The program starts by reading an integer value from the user, which represents the number of strings to process. Then, for each string, it reads the string and the corresponding alphabet. It counts the occurrences of each alphabet and stores its locations in a 2D array. Finally, it prints the alphabet with the maximum count and its locations.

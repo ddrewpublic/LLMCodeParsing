@@ -1,0 +1,47 @@
+**Part I: Code with Comments**
+```
+int f(int m, int l) {
+  // Initialize a variable to store the result
+  int re = 0, j;
+
+  // If the number of divisors is exactly 4, set the result to 1
+  if (l == 4)
+    re = 1;
+
+  // If the number of divisors is more than 4
+  if (l > 4) {
+    // Iterate from m to the square root of l
+    for (j = m; j <= sqrt(l); j++) {
+      // If l is divisible by j
+      if (l % j == 0) {
+        // Increment the result by 1 and recursively call f with j and l/j
+        re = re + 1 + f(j, l / j);
+      }
+    }
+  }
+  // Return the result
+  return re;
+}
+
+int main() {
+  // Declare an array to store the input numbers
+  int n, i, a[100] = {0};
+
+  // Read the number of input numbers
+  scanf("%d", &n);
+
+  // Read the input numbers and store them in the array
+  for (i = 0; i < n; i++) {
+    scanf("%d", &a[i]);
+  }
+
+  // Print the result for each input number
+  for (i = 0; i < n; i++) {
+    // Call the f function with 2 and the current input number, and add 1 to the result
+    printf("%d\n", (f(2, a[i]) + 1));
+  }
+}
+```
+**Part II: Summary**
+
+The provided code calculates the number of divisors for each input number and then increments the result by 1. The `f` function recursively finds the divisors of a number by iterating from 2 to the square root of the number and checking for divisibility. If the number is divisible by the current value, the function recursively calls itself with the divisor and the quotient. The result is incremented by 1 for each divisor found. The `main` function reads the input numbers, calls the `f` function for each number, and prints the result.

@@ -1,0 +1,30 @@
+**Part I: Code with Comments**
+
+```c
+int fjys(int x,int y) {
+    // Check if x is less than y, if true return 0
+    if(x<y) 
+        return 0;
+
+    // Initialize a variable i to 0 and a variable n to 1
+    int i,n=1;
+    // Iterate through the loop from i=y to i<x
+    for(i=y;i<x;i++) {
+        // Check if x is divisible by i
+        if(x%i==0) {
+            // Recursively call the function fjys with arguments x/i and i, and add the result to n
+            n+=fjys(x/i,i);
+        }
+    }
+    // Return the final value of n
+    return n;
+}
+```
+
+**Part II: Summary**
+
+This program is designed to calculate the sum of all proper divisors of each number in an array, starting from 2. The function `fjys` takes two integers `x` and `y` as input, and returns the sum of all proper divisors of `x`, excluding `y` and itself.
+
+The `main` function reads a number `n` from the input, then reads an array of `n` integers. For each integer in the array, it calls the `fjys` function with the integer and 2 as arguments, and prints the result to the console.
+
+The time complexity of this program is O(n^2), where n is the input number, because in the worst case, the function `fjys` recursively calls itself for each divisor of `x`, and the loop in the for statement runs up to `x`. Therefore, this program is not efficient for large input numbers.

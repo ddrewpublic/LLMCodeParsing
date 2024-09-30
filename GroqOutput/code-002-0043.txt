@@ -1,0 +1,53 @@
+**Part I: Code**
+
+struct book
+{int num;
+  // The 'book' structure contains two members: 'num' (an integer) and 'w' (an array of 26 characters).
+  char w[26];
+};
+
+void main()
+{  
+  // Declare integer variables 'm', 'i', 'j', 'k', and 'e'.
+  int m,i,j,k,e;
+  // Read the value of 'm' from the standard input.
+  scanf("%d",&m);
+  for(i=0;i<m;i++)
+    // Read the 'num' and 'w' members of each 'book' structure from the standard input.
+    scanf("%d %s",&b[i].num,b[i].w);
+  // Define an array of characters called 'a' with 26 elements, each initialized to a letter of the alphabet.
+  char a[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+  // Create an array of 26 integers called 'c' and initialize each element to 0.
+  int c[26]={0};
+  for(j=0;j<26;j++)
+  {for(i=0;i<m;i++)
+    // Iterate over each 'book' structure.
+	{e=strlen(b[i].w);
+   // Get the length of the current 'book''s title.
+   for(k=0;k<e;k++)
+     // Iterate over each character in the book's title.
+     if(b[i].w[k]==a[j])
+       // If the current character matches the current letter of the alphabet, increment the corresponding count in 'c'.
+       c[j]++;
+   }
+  }
+  int sum=0;
+  for(j=0;j<26;j++)
+    if(c[j]>c[sum])
+      // Find the letter with the highest count and store its index in 'sum'.
+      sum=j;
+  // Print the letter with the highest count, followed by its count.
+  printf("%c\n",a[sum]);
+  printf("%d\n",c[sum]);
+  for(i=0;i<m;i++)
+  {e=strlen(b[i].w);
+   for(k=0;k<e;k++)
+     if(b[i].w[k]==a[sum])
+       // Find each occurrence of the letter with the highest count in each book's title and print the book's number.
+       printf("%d\n",b[i].num);
+  }
+}
+
+**Part II: Summary**
+
+This code reads a series of book titles from the standard input, along with their corresponding numbers. It then calculates the frequency of each letter of the alphabet in the book titles and determines which letter appears most frequently. The program then prints the most frequently occurring letter, as well as its frequency, and finally prints the numbers of the books that contain this letter. The code uses two arrays, 'a' and 'c', to store the alphabet and the letter frequencies, respectively. The 'book' structure is used to represent each book, with 'num' storing the book's number and 'w' storing the book's title. The program iterates over each book and calculates the frequency of each letter in the title, and then finds the most frequently occurring letter by iterating over the frequencies and keeping track of the highest count.

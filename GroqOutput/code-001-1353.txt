@@ -1,0 +1,48 @@
+**Part I**
+
+```cpp
+//********************************
+//*???1.cpp   **
+//*?????? 1200012768 **
+//*???2012.11.28  **
+//*???????  **
+//********************************
+```
+
+**Code starts here**
+
+```cpp
+int fun(int n, int m);
+int main()
+{
+    int n, num;
+    cin >> n;          // Take input for number of test cases
+    for (int i = 0; i < n; i++) {
+        cin >> num;     // Take input for a number in each test case
+        cout << fun(num, 2) << endl;   // Call function fun with num and 2 as parameters
+    }
+    return 0;
+}
+```
+
+```cpp
+int fun(int n, int m)
+{
+    int sum = 1;         // Initialize sum to 1
+    double t = sqrt(n);  // Calculate square root of n
+    for (int i = m; i <= t; i++) {  // Loop from m to square root of n
+        if (n % i == 0) {          // Check if n is divisible by i
+            sum += fun(n /i, i);    // Recursively call function with n divided by i and i as parameters
+        }
+    }
+    return sum;
+}
+```
+
+**Part II**
+
+This code calculates the sum of all divisors of a given number. The divisors of a number are the numbers that can divide the number without leaving a remainder. The function `fun` takes two parameters, `n` and `m`. It calculates the sum of all divisors of `n` that are greater than or equal to `m`. If `m` is not specified, the default value is 2.
+
+The code first takes input for the number of test cases. For each test case, it takes a number as input and calls the function `fun` with the number and 2 as parameters. The function `fun` calculates the sum of all divisors of the number that are greater than or equal to 2.
+
+The time complexity of this code is O(sqrt(n)) because it uses a loop that runs up to the square root of `n`. This is because a larger factor of `n` must be a multiple of a smaller factor that has already been considered. Therefore, we only need to consider numbers up to the square root of `n` in the loop.

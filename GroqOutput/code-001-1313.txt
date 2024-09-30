@@ -1,0 +1,32 @@
+Here is the code with developer comments for each line, a 200-word summary, and the headers "Part I" and "Part II":
+
+**Part I**
+
+```c
+int main()
+{
+    // Declare the depart function
+    int depart (int number, int y);
+    
+    // Declare variables
+    int i, n, number;
+    
+    // Read the number of inputs
+    cin >> n;
+    // Loop through each input
+    for (i = 1; i <= n; i++)
+    {
+        // Read the number
+        cin >> number;
+        // Print the result of the depart function
+        cout << depart (number, 2) << endl;
+    }
+    
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code implements a function called `depart` to calculate the number of divisors of a given integer `number`. The function is called recursively to find the divisors of `number` up to its square root. The main function reads a series of integers from input, calls the `depart` function for each number with `y` set to 2, and prints the results. The `depart` function returns the count of divisors for a given `number` and `y`.

@@ -1,0 +1,90 @@
+**Part I: Code with Comments**
+
+```c
+struct book {
+    int number;
+    char writer[26];
+    struct book *next;
+};
+```
+
+*   Define a struct `book` to represent a book, which contains an integer `number`, a character array `writer` of size 26, and a pointer `next` to the next book in the linked list.
+
+```c
+int main() {
+    int n, i, j, num[26] = {0}, nu[26];
+    struct book *head, *p1, *p2;
+    scanf("%d", &n);
+    p1 = p2 = (struct book *)malloc(LEN);
+```
+
+*   In the `main` function, declare variables `n`, `i`, `j`, `num`, and `nu` of various types. Initialize the `num` array to contain 26 elements all set to 0.
+*   Declare pointers `head`, `p1`, and `p2` of type `struct book`. Allocate memory for `p1` and `p2` using `malloc`.
+
+```c
+    for (i = 0; i < n; i++) {
+        scanf("%d%s", &p1->number, &p1->writer);
+        for (j = 0; j < strlen(p1->writer); j++) {
+            ++num[p1->writer[j] - 65];
+        }
+        if (i == 0) {
+            head = p1;
+        } else {
+            p2->next = p1;
+        }
+        p2 = p1;
+        p1 = (struct book *)malloc(LEN);
+    }
+```
+
+*   Iterate `n` times to read `n` books from input using `scanf`.
+*   For each book, increment the corresponding index in the `num` array based on the writer's last letter.
+*   Update the linked list by inserting new books at the end and setting the `next` pointer accordingly.
+*   Update the `head` and `p2` pointers to keep track of the current and previous books in the list.
+
+```c
+    p2->next = NULL;
+    for (i = 0; i < 26; i++) {
+        nu[i] = i;
+    }
+```
+
+*   Set the `nu` array to contain the original indices (0 to 25) for sorting.
+
+```c
+    for (i = 0; i < 25; i++) {
+        for (j = 0; j < 25 - i; j++) {
+            if (num[j] < num[j + 1]) {
+                a = nu[j];
+                nu[j] = nu[j + 1];
+                nu[j + 1] = a;
+                b = num[j];
+                num[j] = num[j + 1];
+                num[j + 1] = b;
+            }
+        }
+    }
+```
+
+*   Sort the `num` array and the corresponding `nu` array using bubble sort.
+
+```c
+    printf("%c\n%d\n", nu[0] + 65, num[0]);
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < strlen(head->writer); j++) {
+            if (head->writer[j] == (char)(nu[0] + 65)) {
+                printf("%d\n", head->number);
+                break;
+            }
+        }
+        head = head->next;
+    }
+}
+```
+
+*   Print the sorted writer and its corresponding book number.
+*   Traverse the linked list to find the book with the writer whose last letter matches the first index in the `nu` array and print its number.
+
+**Part II: Summary**
+
+This program reads a list of books from input, where each book is represented by a unique number and a writer's last name (limited to 26 characters). It sorts the books based on the frequency of each writer's last letter and prints the writer with the most frequent last letter, along with the corresponding book numbers. The sorting is performed using a custom implementation of bubble sort.

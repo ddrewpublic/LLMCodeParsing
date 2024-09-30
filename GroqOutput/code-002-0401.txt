@@ -1,0 +1,68 @@
+Here is the code with developer comments for each line, a summary, and a header:
+
+
+**Part I**
+
+```
+int main()
+{
+    // Declare variables
+    int n,i,j,k,max;
+    char name[2000][30],alp[27]={"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+    int No[2000],num[30]={0};
+
+    // Read the number of names to be processed
+    scanf("%d",&n);
+
+    // Read the names and their corresponding numbers
+    for(i=0;i<n;i++){
+        scanf("%d %s",&No[i],name[i]);       
+    }
+
+    // Initialize a frequency counter array
+    for(i=0;i<26;i]){               
+        for(k=0;k<n;k++){
+            for(j=0;j<strlen(name[k]);j++){
+                // Check if a character matches the letter at position i in the alphabet
+                if(name[k][j]==alp[i]){
+                    // Increment the frequency count for that letter
+                    num[i]++;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Find the maximum frequency count
+    max=num[0];
+    for(i=1;i<26;i++){
+        if(num[i]>max){
+            max=num[i];
+        }
+    }
+
+    // Print the letter with the maximum frequency count, along with its frequency count
+    // and the numbers of the names that contain that letter
+    for(i=0;i<26;i]){ 
+        if(num[i]==max){
+            printf("%c\n%d\n",alp[i],max);
+            for(k=0;k<n;k++){
+                for(j=0;j<27;j++){
+                    // Check if a character of the name matches the letter with maximum frequency
+                    if(name[k][j]==alp[i]){
+                        // Print the number of the name
+                        printf("%d\n",No[k]);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+```
+
+**Part II**
+
+Summary: The program reads the number of names to be processed, along with the names and their corresponding numbers. It then counts the frequency of each letter in the alphabet and finds the maximum frequency. The program then prints the letter with the maximum frequency, its frequency count, and the numbers of the names that contain that letter.

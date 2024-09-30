@@ -1,0 +1,56 @@
+**Part I: Code with Comments**
+```
+int fen(int m, int k) {
+    // Initialize variables
+    int i, t = 1, n = 0;
+
+    // Iterate from 2 to m
+    for (i = 2; i <= m; i++) {
+        // Check if m is divisible by i
+        if (m % i == 0) n++; // Increment n if m is divisible
+    }
+
+    // If n is 1 or m is 1, return 1
+    if (n == 1 || m == 1) return 1;
+
+    // Otherwise, iterate from 2 to m
+    for (i = 2; i <= m; i++) {
+        // Check if m is divisible by i and m/i >= i && i >= k
+        if (m % i == 0 && m / i >= i && i >= k) {
+            // Update k and recursively call fen
+            k = i;
+            t = t + fen(m / i, k);
+        }
+    }
+
+    // Return the result
+    return t;
+}
+
+int main() {
+    // Declare function fen and variables
+    int fen(int m, int k);
+    int n, i, x;
+
+    // Read number of inputs
+    scanf("%d\n", &n);
+
+    // Loop through each input
+    for (i = 0; i < n; i++) {
+        // Read input
+        scanf("%d", &x);
+
+        // Call fen with x and 1
+        printf("%d\n", fen(x, 1));
+    }
+}
+```
+**Part II: Summary**
+
+The provided code is a recursive function `fen` that calculates the number of factors of a given integer `m`. The function takes two integer inputs: `m`, the number to calculate the factors for, and `k`, an optional parameter that represents the lower bound for the factors (default value is 1).
+
+The function iterates through the numbers from 2 to `m` and checks for divisibility. If `m` is divisible by a number `i`, it increments a counter `n`. If `n` is 1 or `m` is 1, it returns 1, indicating that `m` has only one or no factors.
+
+Otherwise, it iterates again and checks for divisibility with the condition `m/i >= i && i >= k`. If this condition is true, it updates `k` and recursively calls `fen` with the reduced `m` and the updated `k`. The function accumulates the results of these recursive calls and returns the total count.
+
+The `main` function is a simple loop that reads an integer `n` representing the number of inputs and then reads each input `x`. It calls the `fen` function with `x` and 1, and prints the result.

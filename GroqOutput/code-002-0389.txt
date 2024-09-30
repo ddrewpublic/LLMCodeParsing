@@ -1,0 +1,79 @@
+**Part I: Code with Comments**
+
+Here is the code with line-by-line comments:
+
+```c
+struct index {
+    int num;
+    char wr[26]; // define a struct with two members: an integer and a 26-character array
+};
+
+int main() {
+    int n, a[26], *pr, max; // declare variables
+    char s[26], *sp, *pt, temp; // declare variables
+    for (pr = a; pr < a + 26; pr++) {
+        *pr = 0; // initialize all elements of array 'a' to 0
+    }
+    sp = s; // set 'sp' to point to the first character of 's' (an array of 26 characters)
+    *sp = 65; // set the first character of 's' to 'A'
+    for (sp = s + 1; sp < s + 26; sp++) {
+        *sp = *(sp - 1) + 1; // increment each character in 's' by 1 (initialize 65, 66, ..., 90)
+    }
+
+    struct index *p; // declare a pointer to struct 'index'
+    scanf("%d", &n); // read an integer 'n'
+    struct index *ind = (struct index*)malloc(sizeof(struct index)*n); // allocate memory for an array of 'n' structs 'index'
+    for (p = ind; p < ind + n; p++) {
+        scanf("%d %s", &p->num, p->wr); // read 'n' pairs of integer and string
+    }
+
+    for (p = ind; p < ind + n; p++) {
+        for (pt = (*p).wr; pt < (*p).wr + 26; pt++) { // iterate over each character in the string
+            for (pr = a, sp = s; sp < s + 26; sp++, pr++) {
+                if (*pt == *sp) { // if current character matches a character in 's'
+                    (*pr)++; // increment the count for that character in 'a'
+                }
+            }
+        }
+    }
+
+    max = *a; // initialize max count
+    temp = 65; // initialize temp character
+    for (pr = a, sp = s; pr < a + 26; pr++, sp++) {
+        if (*pr > max) { // if current count is greater than max
+            max = *pr; // update max
+            temp = *sp; // update temp character
+        }
+    }
+
+    for (pr = a, sp = s; sp < s + 26; sp++, pr++) {
+        if (*pr == max) { // if current count is equal to max
+            printf("%c\n%d\n", *sp, *pr); // print the character and count
+        }
+    }
+
+    for (p = ind; p < ind + n; p++) {
+        for (pt = (*p).wr; pt < (*p).wr + 26; pt++) {
+            if (*pt == temp) { // if current character matches temp
+                printf("%d\n", (*p).num); // print the corresponding integer
+            }
+        }
+    }
+
+    free(ind); // free allocated memory
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided C code performs the following operations:
+
+1. Reads an integer 'n' and allocates memory for an array of 'n' structs 'index'.
+2. Reads 'n' pairs of integer and string into the structs 'index'.
+3. For each string, counts the frequency of characters in the alphabet (checks each character against the array 's' which contains the characters 'A' to 'Z') and stores the counts in array 'a'.
+4. Finds the maximum frequency count and corresponding character.
+5. Prints the character with the maximum count and its frequency.
+6. Iterates over each string and prints the corresponding integer if the character matches the character with maximum count.
+
+This code can be used to solve a specific problem related to frequency counting, possibly in the context of a competition or programming challenge.

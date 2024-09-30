@@ -1,0 +1,53 @@
+Here is the code with developer comments and a 200-word summary:
+
+**Part I**
+
+```cpp
+// FileName: counter.cpp
+// Description: This is a program to count the number of partitions of a given number.
+// Author: [Your Name]
+// Date: 2012-11-12
+
+int count(int num, int m) {
+    // If the number is not divisible by the divisor, return 0.
+    if (num % m != 0) return 0;
+    
+    // If the number is equal to the divisor, return 1.
+    if (num == m) return 1;
+    // Otherwise, recursively call the function with the quotient of the number and the divisor.
+    else {
+        int counter = 0;
+        for (int i = m; i <= num / m; i++){
+            counter += count(num / m, i);
+        }
+        return counter;
+    }
+}
+
+int main () {
+    int n,num;
+    // Read the number of test cases.
+    cin >>n;
+    for (int i = 1; i <= n; i++){
+        int counter = 0;
+        // Read the number to be partitioned.
+        cin >> num;
+        // Count the number of partitions for each possible divisor from 2 to num.
+        for (int i = 2; i <= num; i++)
+            counter += count(num,i);//Count the number of partitions for this number and this divisor.
+        // Print the result.
+        cout << counter << endl;
+    }
+    return 0;
+}
+```
+
+**Part II**
+
+This program counts the number of partitions of a given number. A partition is a way of expressing the number as a sum of positive integers. For example, the number 4 can be partitioned in 5 ways: 4, 3+1, 2+2, 2+1+1, and 1+1+1+1.
+
+The program uses a recursive function `count` to count the number of partitions. The function takes two arguments, `num` and `m`, where `num` is the number to be partitioned and `m` is the divisor. The function returns the number of partitions of `num` using divisors from 1 to `m`.
+
+In the `main` function, the program reads the number of test cases and then for each test case, it reads the number to be partitioned and counts the number of partitions using all possible divisors from 2 to `num`. The result is then printed.
+
+The program uses a bottom-up approach, starting from the smallest possible divisor (2) and gradually increasing it to `num`. This approach helps to avoid redundant calculations and reduce the number of recursive calls.

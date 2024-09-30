@@ -1,0 +1,52 @@
+**Part I: Code with Comments**
+```c
+int main()
+{
+    // Declaration of function f with two integer parameters
+    int f(int a,int b);
+
+    // Declaration of integer variables n and a
+    int n,a;
+
+    // Input integer value from user
+    cin>>n;
+
+    // Loop until n becomes 0
+    while(n>0)
+    {
+        // Input integer value a
+        cin>>a;
+
+        // Output the result of function f(a,2)
+        cout<<f(a,2)<<endl;
+
+        // Decrement n by 1
+        n--;
+    }
+    return 0;
+}
+
+int f(int a,int b)
+{
+    // Declaration of integer variables i and s
+    int i;
+    int s=1;
+
+    // Condition to check if a is less than b
+    if(a<b)
+        return 0;
+
+    // Loop from b to a
+    for(i=b;i<a;i++)
+    {
+        // Condition to check if a is divisible by i
+        if(a%i==0)
+            s=s+f(a/i,i);  // Recursive call to f with a/i and i
+    }
+    return s;
+}
+```
+
+**Part II: Summary**
+
+This program is designed to calculate the sum of proper divisors of a given number. It first takes an integer input `n` from the user and repeatedly asks for another integer `a` until `n` becomes 0. For each input `a`, it calls the function `f(a, 2)` and prints the output. The function `f(a, b)` calculates the sum of proper divisors of `a` starting from `b` to `a`. If `a` is less than `b`, it returns 0. Otherwise, it iterates over the range from `b` to `a`, adding the divisor `i` to the sum only if `a` is divisible by `i`, and recursively calls itself with the quotient of `a` and `i` and `i`. The final sum is returned by the function.

@@ -1,0 +1,35 @@
+**Part I: Code with comments**
+
+```
+int ans; // variable to store the answer
+void dfs(int, int); // function prototype for dfs
+int main() {
+    int n, num; 
+    // read the number of test cases
+    cin >> n;
+    while (n--) {
+        cin >> num; // read the number for each test case
+        ans = 0; // reset the answer for each test case
+        dfs(num, 2); // start DFS from num with factor 2
+        cout << ans << endl; // print the final answer
+    }
+    return 0;
+}
+
+void dfs(int x, int f) {
+    // base case: if x is 1, increment ans and return
+    if (x == 1) {
+        ++ans;
+        return;
+    }
+    // recursively call dfs for all factors of x starting from f
+    for (int i = f; i <= x; ++i) 
+        if (x % i == 0) 
+            dfs(x / i, i);
+    return;
+}
+```
+
+**Part II: Summary**
+
+The code implements a Depth-First Search (DFS) algorithm to find the number of divisors for each integer input. The program takes an input of the number of test cases, followed by the test cases themselves. For each test case, it starts a DFS from the input number with the initial factor of 2, and recursively finds all the divisors by iterating through all the numbers that can divide the input number without leaving a remainder. The final answer, which represents the number of divisors, is printed to the console. The code uses memoization by passing the current number and the current factor to the DFS function, which keeps track of the divisors found so far in the `ans` variable.

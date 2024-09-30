@@ -1,0 +1,60 @@
+**Part I**
+
+Here is the code with developer comments:
+
+```c
+struct book{
+    int co;
+    char A[26];
+}; // Define a structure called book with an integer co and a character array A of size 26
+
+int main(){
+    int m,i,k,max;
+    int count[26]; // Declare an array of size 26 to store the count of each character
+    int *cc; // Declare a pointer to an integer
+    scanf("%d",&m); // Read the number of books from the user
+    struct book *bk=(struct book*)malloc(sizeof(struct book)*m); // Dynamically allocate memory for an array of m structures of type book
+    struct book *p; // Declare a pointer to a structure of type book
+    p=bk; // Initialize the pointer to the beginning of the dynamically allocated array
+    for(i=0;i<m;i++,p++){
+        scanf("%d %s",&(p->co),p->A); // Read the coefficient and title of each book
+    }
+    cc=count; // Initialize the pointer to the beginning of the count array
+    memset(count,0,sizeof(count)); // Initialize the count array to zero
+    for(i=0;i<26;i++,cc++){
+        p=bk;
+        for (k=0;k<m;k++,p++)
+        {
+            if (strchr(p->A,'A'+i))
+            {
+                (*cc)++;
+            }
+        }/*??*/
+    }
+    max=0; // Initialize the maximum index to zero
+    for (i=0;i<26;i++)
+    {
+        if (count[i]>count[max])
+        {
+            max=i;
+        }
+    }
+    printf("%c\n%d\n",'A'+max,count[max]); // Print the character with the maximum count and its count
+    p=bk;
+    for (i=0;i<m;i++,p++)
+    {
+        if (strchr(p->A,'A'+max))
+        {
+            printf("%d\n",p->co);
+        }
+    }
+    free(bk);
+    return 0;
+} // Free the dynamically allocated memory and return 0
+```
+
+**Part II**
+
+This code is a simple C program that reads a list of books from the user. Each book is represented by a structure containing an integer coefficient and a character array title. The program then counts the frequency of each character in the titles and prints the character with the highest frequency along with its count. Finally, it prints the coefficients of all books that contain this character. The code uses pointers and dynamic memory allocation to efficiently handle the input and output.
+
+In summary, this program is used to analyze the presence of characters in a list of book titles. It calculates the frequency of each character and finds the most common one. It then prints the character along with its frequency and lists the coefficients of all books that contain this character.

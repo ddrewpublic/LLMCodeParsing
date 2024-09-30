@@ -1,0 +1,38 @@
+Here is the output with developer comments:
+
+**Part I**
+```c
+int s=0,p;
+// Declare integer variables s and p
+
+int a[100];
+// Declare an array a to hold 100 integer values
+
+void factor(int m,int n,int t){
+	// Declare a function factor that takes three integer parameters
+	// m and n are used to keep track of the current divisor and quotient
+	// t is used as a counter for the number of factors
+
+	int i;
+	// Declare an integer variable i to be used in the loop
+	for(i=2;i<=(int)sqrt(n);i++)
+		// Loop from 2 to the square root of n (inclusive)
+		if((n%i==0)&&(i>=m)){
+			// Check if n is divisible by i and if i is greater than or equal to m
+			s++;
+			// Increment the value of s (the number of factors)
+			factor(i,n/i,t+1);
+			// Recursively call the factor function with updated values
+		}
+	return;
+}
+// Return control to the calling function after the loop completes
+```
+
+**Part II**
+
+This code calculates the number of prime factors for each number in an array of integers and then prints the results. Here is a summary:
+
+This code begins by declaring variables and an array. The function factor is defined, which takes three parameters: the starting divisor m, the number n, and the current factor counter t. The function recursively calls itself to find all the factors of a given number. The main function reads in the array of integers, calculates the number of prime factors for each number by calling the factor function, and then prints the results after incrementing each result by 1 to get the total number of prime factors plus 1 (since the first prime factor is counted as prime and the second prime factor is counted as prime, etc.).
+
+The output will be the number of prime factors for each number in the array.

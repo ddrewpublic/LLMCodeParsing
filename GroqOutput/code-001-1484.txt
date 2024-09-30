@@ -1,0 +1,49 @@
+Here is the code with developer comments:
+
+```
+/************************************
+*???????						*
+*?????? 1200012921			*
+*???2012-11-30					*
+*************************************/
+int part(int x, int t)					// Function to calculate the sum of divisors of a number
+{
+    int i;										// Initialize a loop variable
+    int number = 1;						// Initialize the sum of divisors to 1
+    if (x == 1)							// Base case: if x is 1, return 0
+    {
+        return 0;
+    }
+    if (x == 2)							// Base case: if x is 2, return 1
+    {
+        return 1;
+    }
+    for (i = t; i <= sqrt(x); i++)		// Loop through all possible divisors
+    {
+        if (x % i == 0)					// Check if i is a divisor of x
+        {
+            number += part(x / i, i);	// Recursively calculate the sum of divisors for x/i and add it to the sum
+        }
+    }
+    return number;						// Return the sum of divisors
+}
+int main()
+{
+    int i, n, a;							// Declare variables
+    cin >> n;						// Read the number of inputs
+    for (i = 1; i <= n; i++)		// Loop through each input
+    {
+        cin >> a;						// Read the current input
+        cout << part(a, 2) << endl;	// Calculate and print the sum of divisors for the current input
+    }
+    return 0;
+}
+```
+
+**Part II:**
+
+This code is used to calculate the sum of divisors of a given number. It uses a recursive function `part(x, t)` to calculate the sum of divisors of a number `x` starting from a given divisor `t`. The function returns the sum of divisors of `x`.
+
+The `main()` function reads the number of inputs `n` and then loops through each input, reading the current input `a` and calculating its sum of divisors using the `part()` function. The result is then printed to the console.
+
+The code has a time complexity of O(sqrt(n)) due to the usage of the `sqrt()` function in the loop, where `n` is the input number. This could be optimized by using a more efficient algorithm for calculating the sum of divisors.

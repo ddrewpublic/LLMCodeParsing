@@ -1,0 +1,37 @@
+**Part I: Code with Comments**
+
+```c
+int f(int,int); // function declaration for f(int a, int p)
+
+int main() // main function
+{
+    int n,a[32768],i; // declare variables
+    cin>>n; // read the number of elements in the array
+    for(i=0;i<=n-1;i++) // loop to read array elements
+    {
+        cin>>a[i]; // read array elements
+    }
+    for(i=0;i<=n-1;i++) // loop to calculate and print results
+    {
+        cout<<f(a[i],2)+1<<endl; // call function f and print the result
+    }
+    return 0; // end of main function
+}
+
+int f(int a,int p) // function f to calculate the sum of divisors
+{
+    int i,sum=0; // initialize variables
+    for(i=2;i<=sqrt(a);i++) // loop to check for divisors
+    {
+        if(((double)a/i==a/i)&&(i>=p)) // check if i is a divisor of a
+        {   p=i; // update p if i is a divisor
+            sum=sum+1+f(a/i,p); // recursively call f with a/i and p=i
+        }
+    }
+    return sum; // return the sum of divisors
+}
+```
+
+**Part II: Summary**
+
+The code calculates the sum of divisors for each number in an array. The function `f` calculates the sum of divisors for a given number `a` by recursively dividing `a` by a divisor `p` until `a` becomes 1. The sum of divisors is calculated by adding 1 to the sum and recursively calling `f` with `a/i` and `p=i`. The `main` function reads the array, calculates the sum of divisors for each number, and prints the results. The code uses the `sqrt` function to limit the number of iterations in the loop to check for divisors.

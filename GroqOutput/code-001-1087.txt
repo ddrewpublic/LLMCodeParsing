@@ -1,0 +1,61 @@
+**Part I**
+
+```
+/*
+ * main.cpp
+ *
+ *  Created on: 2012-11-12
+ *      Author: ??
+ * 1090 ???
+ */
+```
+
+// File header information
+
+```
+int sum;
+```
+
+// Declare a variable to store the sum of divisors
+
+```
+int a[100];
+```
+
+// Declare an array to store divisors
+
+```
+void search(int t,int k)
+{
+    int i;
+    if (k==1) sum++;
+    else
+    for (i=a[t-1];i<=k;i++)
+        if (k%i==0) {a[t]=i;search(t+1,k/i);}
+}
+```
+
+// Function to find divisors of a number. recursively calls itself to find divisors.
+
+```
+int main()
+{
+    int n,i,k;
+    cin>>n;
+    for (i=1;i<=n;i++)
+    {
+        cin>>k;
+        sum=0;
+        a[0]=2;
+        search(1,k);
+        cout<<sum<<endl;
+    }
+    return 0;
+}
+```
+
+// Main function, reads the number of inputs, calls the search function for each input and prints the sum of divisors.
+
+**Part II**
+
+This code is designed to find the sum of divisors of a number. It works by recursively dividing the number by its divisors, starting from 2, until it reaches 1. The sum of these divisors is then printed out. The code takes multiple inputs, one at a time, and processes each one individually. The main output is the sum of divisors for each input.

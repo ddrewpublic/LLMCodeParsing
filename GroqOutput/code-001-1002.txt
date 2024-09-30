@@ -1,0 +1,29 @@
+**Part I**
+```c
+int f(int a, int b) {  // function to calculate the sum of proper divisors
+    int i, p, q;        // variable declaration
+    for (i = b, p = 0; i <= sqrt(a); i++) {  // loop starting from b to sqrt(a)
+        if (a % i == 0) {  // check if i is a divisor of a
+            q = f(a / i, i);  // recursive call to f()
+            p = p + q;        // sum of proper divisors
+        }
+    }
+    p++;  // increment p by 1 before returning
+    return (p);        // return the sum of proper divisors
+}
+
+void main() {  // main function
+    int i, a, n, k;     // variable declaration
+    scanf("%d", &n);    // read the number of test cases
+    for (i = 1; i <= n; i++) {  // loop for each test case
+        scanf("%d", &a);      // read the number for which sum of divisors is to be calculated
+        k = f(a, 2);          // call the function f() with a and 2 as arguments
+        printf("%d\n", k);    // print the sum of proper divisors
+    }
+}
+```
+
+**Part II**
+The given C program calculates the sum of proper divisors for a given number. It uses a recursive function `f()` which takes two parameters `a` and `b`. The function calculates the sum of divisors for `a` excluding `a` itself, and for each divisor `i`, it calls itself recursively with `a/i` and `i`. The sum of divisors for `i` is added to the total sum. The function continues this process until `i` exceeds the square root of `a`. Before returning, it increments the sum by one to include `a` itself in the sum.
+
+The `main()` function reads the number of test cases `n` and for each test case, it reads a number `a` and calculates its sum of divisors using the `f()` function. The sum is then printed to the console.

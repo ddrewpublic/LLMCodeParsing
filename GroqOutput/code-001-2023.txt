@@ -1,0 +1,23 @@
+Here is the code with developer comments and a 200-word summary:
+
+**Part I**
+
+```
+int fun(int i, int j, int count) {
+  int k;  // declare a local variable k
+  for (k = i; k <= sqrt(j); k++) {  // loop through numbers from i to sqrt(j)
+    if (j % k == 0) {  // check if j is divisible by k
+      count++;  // increment the count if j is divisible by k
+      count = fun(k, j / k, count);  // recursively call the function with k, j/k, and the updated count
+    }
+  }
+  return count;  // return the final count
+}
+```
+
+**Part II**
+
+Summary:
+This code calculates the number of divisors for a given number. The `fun` function takes three parameters: `i`, `j`, and `count`, where `i` is the starting number, `j` is the target number, and `count` is the number of divisors found so far. The function recursively calls itself to find the divisors of `j` by dividing `j` by `i` and updating the count accordingly. The `main` function prompts the user to input a number `k` and then loops through numbers from 0 to `k-1`. For each number `n` in the range, it calculates the number of divisors using the `fun` function and prints the result.
+
+Note: The `fun` function has a time complexity of O(sqrt(n)), where n is the target number, because it uses a recursive approach with a loop that iterates up to the square root of n.

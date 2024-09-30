@@ -1,0 +1,106 @@
+**Part I**
+
+```
+struct a {
+    int num;
+    char s[20];
+    struct a *next;
+};
+```
+Define a structure named `a` with three members: an integer `num`, a character array `s` of length 20, and a pointer to another structure `a` named `next`.
+
+```
+main()
+{
+```
+The `main` function is declared.
+
+```
+    int n,i,a[26],b[26]={0},t,j,max;
+    struct a *p1,*p2,*head;
+```
+ Declare several integer variables: `n`, `i`, `a`, `b`, `t`, `j`, and `max`. Also declare several pointers: `p1`, `p2`, and `head`. These variables will be used later in the program.
+
+```
+    scanf("%d",&n);
+```
+Read an integer from the standard input and store it in the variable `n`.
+
+```
+    head=p1=(struct a *)malloc(L);
+```
+Allocate memory for a structure `a` using the `malloc` function and store the pointer in the variable `head` and `p1`.
+
+```
+    scanf(M,&p1->num,p1->s);
+```
+Read an integer and a string from the standard input and store them in the structure `a` pointed to by `p1`.
+
+```
+    for(i=1;i<n;i++)
+    {
+        p2=p1;
+        p1=(struct a *)malloc(L);
+        p2->next=p1;
+        scanf(M,&p1->num,p1->s);
+    }
+```
+Allocate memory for more structures `a` and link them together to form a linked list.
+
+```
+    p1->next=NULL;
+```
+Set the `next` pointer of the last structure `a` to `NULL` to mark the end of the linked list.
+
+```
+    for(i=0;i<26;i++)
+        a[i]=65+i;
+```
+Fill an array `a` with the ASCII values of the characters 'A' to 'Z'.
+
+```
+    for(i=0;i<26;i++)
+    {
+        p1=head;
+        while(p1!=NULL)
+        {
+            for(j=0;p1->s[j]!='\0';j++)
+                if(a[i]==p1->s[j])
+                    b[i]++;
+            p1=p1->next;
+        }
+    }
+```
+Scan through the linked list and count the occurrences of each character from 'A' to 'Z' in the strings.
+
+```
+    max=b[0];t=0;
+    for(i=1;i<26;i++)
+        if(b[i]>max)
+        {
+            max=b[i];
+            t=i;
+        }
+```
+Find the character with the maximum frequency.
+
+```
+    printf("%c\n%d\n",a[t],max);
+```
+Print the character with the maximum frequency and its frequency.
+
+```
+    p1=head;
+    while(p1!=NULL)
+    {
+        for(j=0;p1->s[j]!='\0';j++)
+            if(a[t]==p1->s[j])
+            {printf("%d\n",p1->num);break;}
+        p1=p1->next;
+    }
+```
+Find the numbers associated with the character with the maximum frequency.
+
+**Part II**
+
+This program reads a linked list of structures `a` from the standard input. Each structure contains a number and a string. The program then counts the occurrences of each character from 'A' to 'Z' in the strings and finds the character with the maximum frequency. Finally, it prints the character with the maximum frequency, its frequency, and the numbers associated with it. The program uses a combination of array and linked list data structures to achieve this.

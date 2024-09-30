@@ -1,0 +1,59 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```
+int tru(int c)
+{
+  // Function to check if a number is prime
+  int j, p = 0;
+  if (c == 1 || c == 2)  // 1 and 2 are the only even prime numbers
+    return 1;
+  else 
+    for (j = 2; j <= pow((double)c, 0.5); j++) {  // check up to square root of c
+      if (c % j == 0) {
+        p = 1;
+        break;  // if c is divisible by j, it's not a prime number
+      }
+    }
+  if (p == 1)  // if p is 1, it means c is not prime
+    return 0;
+  else 
+    return 1;  // if p is 0, it means c is prime
+}
+
+int count(int a, int b)
+{
+  // Function to count the number of divisors of a number
+  int i, k = 1;
+  if (!tru(a))  // if a is not prime, it has more than 2 factors
+    for (i = b; i <= pow((double)a, 0.5); i++) {
+      if (a % i == 0) {
+        k = k + count(a/i, i);  // recursively count the divisors of a/i
+      }
+    }
+  return k;
+}
+
+int main()
+{
+  int n, x[999], q;
+  // Read the number of test cases
+  scanf("%d", &n);
+  for (q = 0; q < n; q++) {
+    // Read the number for each test case
+    scanf("%d", &x[q]);
+  }
+  for (q = 0; q < n; q++) {
+    // Print the number of divisors for each test case
+    printf("%d\n", count(x[q], 2));
+  }
+  return 0;
+}
+```
+
+**Part II**
+
+The code is designed to count the number of divisors of a given number. The function `tru` checks if a number is prime, and the function `count` uses recursion to count the number of divisors of a number. The main function reads the number of test cases, reads the numbers for each test case, and then prints the number of divisors for each test case.
+
+The `count` function is quite inefficient, as it uses recursion to count the divisors of a number. This can lead to a lot of repeated calculations, especially for large numbers. A more efficient approach would be to use iteration instead of recursion, or to use a more efficient algorithm to count the divisors of a number.

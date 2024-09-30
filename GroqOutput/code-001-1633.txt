@@ -1,0 +1,54 @@
+**Part I: Code with Comments**
+
+```c
+int fj(int a, int zs){
+    // Define local variables
+    int k, n, z;
+    // Initialize variables n and z to 0
+    n = 0; z = 0;
+    // Loop through all numbers from zs to the square root of a
+    for(k=zs; k<=sqrt(a); k++){
+        // Check if a is divisible by k
+        if(a%k == 0){
+            // Recursively call fj with a divided by k and add the result to n
+            n = n + fj(a/k, k);
+            // Set z to 1 to indicate that a has divisor
+            z = 1;
+        }
+    }
+    // If a has no divisors, return 1
+    if(z == 0){
+        return 1;
+    }
+    // Otherwise, return n+1
+    else{
+        return n+1;
+    }
+}
+
+int main(){
+    // Define local variables
+    int m, i, t;
+    // Read the number of test cases
+    scanf("%d", &m);
+    // Loop through each test case
+    for(i=0; i<m; i++){
+        // Read the number for this test case
+        scanf("%d", &t);
+        // Call fj with the number and 2 as input, and print the result
+        printf("%d\n", fj(t,2));
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a solution to a programming problem that involves finding the number of distinct divisors of a given number. The function `fj` takes two integers `a` and `zs` as input, and returns the number of distinct divisors of `a` that are greater than or equal to `zs`.
+
+The function uses a recursive approach to find the divisors of `a`. It starts by checking if `a` is divisible by any number from `zs` to the square root of `a`. If it is, it recursively calls itself with `a` divided by the divisor and adds the result to a running total `n`. It also sets a flag `z` to 1 to indicate that `a` has a divisor.
+
+If `a` is not divisible by any number in this range, the function returns 1, indicating that `a` has no divisors. Otherwise, it returns the total number of divisors `n+1`.
+
+The `main` function reads the number of test cases and loops through each test case, calling the `fj` function with each number and 2 as input, and printing the result. The function then returns 0 to indicate successful execution.

@@ -1,0 +1,73 @@
+**Part I: Code with Comments**
+
+```c
+int main() {
+    // Declare variables
+    int n, i, j, k;
+
+    // Read the number of books
+    scanf("%d\n", &n);
+
+    // Declare an array of structure book
+    struct book {
+        int num;
+        char name[26];
+    } book[999];
+
+    // Read book information
+    for (i = 0; i < n; i++) {
+        scanf("%d %s\n", &book[i].num, book[i].name);
+    }
+
+    // Declare an array of structure author
+    struct author {
+        char l;
+        int count;
+    } au[26];
+
+    // Initialize author information
+    for (i = 0; i < 26; i++) {
+        au[i].l = 65 + i;  // Assign ASCII value of 'A' to 'Z' to each author
+        au[i].count = 0;   // Initialize count to 0
+    }
+
+    // Count the occurrences of each author's letter
+    for (i = 0; i < 26; i++) {
+        for (j = 0; j < n; j++) {
+            for (k = 0; k < 26; k++) {
+                if (au[i].l == book[j].name[k]) {
+                    au[i].count++;  // Increment the count if the letter matches
+                    break;            // Stop checking once the letter is found
+                }
+            }
+        }
+    }
+
+    // Find the author with the maximum count
+    int max = 0;
+    for (i = 1; i < 26; i++) {
+        if (au[max].count < au[i].count) {
+            max = i;                        // Update max if a higher count is found
+        }
+    }
+
+    // Print the author with the maximum count and their frequency
+    printf("%c\n%d\n", au[max].l, au[max].count);
+
+    // Print the book numbers corresponding to the author with the maximum count
+    for (j = 0; j < n; j++) {
+        for (k = 0; k < 26; k++) {
+            if (au[max].l == book[j].name[k]) {
+                printf("%d\n", book[j].num);  // Print the book number
+                break;                          // Stop checking once the author's letter is found
+            }
+        }
+    }
+
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This program reads information about books from the user, where each book is represented by a struct book containing its number and title. It then finds the author with the most appearances in the title of the books, and prints the author's letter and the frequency of their appearances. Finally, it prints the book numbers corresponding to the books written by the author with the most appearances. The program uses nested loops to iterate over the book information and count the occurrences of each author's letter.

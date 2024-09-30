@@ -1,0 +1,56 @@
+**Part I: Code with comments**
+
+```c
+// Define a structure called sa
+struct sa {
+    int a;  // integer variable a
+    char b[100];  // array of 100 characters for variable b
+    struct sa *next;  // pointer to the next structure of type sa
+};
+
+// Global integer variables
+int n, m, k[27];  // n is the number of elements, m is the input number, k is an array of 27 elements
+
+// Function to create a linked list
+struct sa *kao(void) {
+    // Initialize variables
+    struct sa *head = NULL;  // head of the linked list
+    struct sa *p1, *p2;  // pointers to structures of type sa
+    int len = sizeof(struct sa);  // size of the structure
+
+    // Read the number of elements and the first element from the user
+    n = 0;
+    scanf("%d %s", &p1->a, p1->b);
+
+    // Initialize the head of the linked list
+    head = p1;
+
+    // Loop to create the linked list
+    for (;;) {
+        n++;
+        if (n == m + 1) {
+            break;  // stop when the desired number of elements is reached
+        }
+
+        // Read the next element from the user
+        p2 = p1;
+        p1 = (struct sa *)malloc(len);
+        scanf("%d %s", &p1->a, p1->b);
+
+        // Link the new element to the previous one
+        p2->next = p1;
+    }
+
+    // Set the last element's next pointer to NULL
+    p1->next = NULL;
+
+    // Return the head of the linked list
+    return head;
+}
+```
+
+**Part II: Summary**
+
+The provided C program is designed to read a stream of strings from the user and create a linked list of these strings. The program also counts the frequency of each character in the strings and finds the character that appears most frequently. Finally, it prints the most frequent character and the elements in the linked list that contain this character.
+
+The `kao` function creates a linked list of strings by reading the strings from the user and linking them together. The `main` function initializes the linked list, counts the frequency of each character in the strings, finds the most frequent character, and prints the most frequent character and the elements in the linked list that contain this character.

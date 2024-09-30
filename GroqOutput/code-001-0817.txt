@@ -1,0 +1,68 @@
+Here is the output with developer comments for each line, using the header "Part I":
+
+**Part I**
+
+```c
+int prime(int n)
+{
+    // Function that checks if a number is prime
+    int i,judge=1;
+    for(i=2;i<n;i++)
+    {
+        // Check if the number is divisible by any number from 2 to n-1
+        if(n%i==0)
+            judge=0;
+        // If it is divisible, set judge to 0
+    }
+    return judge;
+}
+
+int function(int number,int x)
+{
+    // Function that calculates the result
+    int temp=0,i,result=0;
+    if(!prime(number))
+    {
+        // If the number is not prime
+        for(i=x;i<=number;i++)
+        {
+            // Check if the number is divisible by any number from x to number
+            if(number%i==0)
+            {
+                // If it is divisible, set x to the divisor and calculate the result recursively
+                x=i;
+                temp=number/i;
+                result+=function(temp,x);
+            }
+        }
+    }
+    else if((number>=x||number==1)&&prime(number))
+        // If the number is prime and greater than or equal to x, or if it's 1
+        result=1;
+    return result;
+}
+
+int main()
+{
+    int i,times,number;
+    cin>>times;
+    for(i=0;i<times;i++)
+    {
+        // Read the number of times and the numbers
+        cin>>number;
+        cout<<function(number,2)<<endl;
+        // Calculate the result and print it
+    }
+    return 0;
+}
+```
+
+**Part II**
+
+This code is a solution to a programming problem that involves counting the sum of the proper divisors of a number. The function `prime` checks if a number is prime, and the function `function` calculates the sum of the proper divisors of a number by recursively dividing the number by its divisors. The `main` function reads the number of times and the numbers, and calculates the sum of the proper divisors for each number using the `function`. The result is then printed to the console.
+
+The `prime` function first checks if the number is divisible by any number from 2 to n-1. If it finds a divisor, it returns 0, indicating that the number is not prime. If it doesn't find any divisors, it returns 1, indicating that the number is prime.
+
+The `function` function first checks if the number is prime. If it's not prime, it iterates from x to the number, and for each divisor, it recursively calls the function with the divisor and the quotient, and adds the result to the current result. If the number is prime, it returns 1.
+
+The `main` function reads the number of times and the numbers, and for each number, it calls the `function` function with the number and 2 (the starting divisor), and prints the result.

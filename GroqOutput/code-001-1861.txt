@@ -1,0 +1,44 @@
+Here is the code with developer comments for each line, using the headers "Part I" and "Part II":
+
+```
+/*
+ * fengjie.cpp
+ *
+ *  Created on: 2013-11-23
+ *      Author: sony
+ */
+
+// Part I
+
+int sum; // declare a variable to store the sum of divisors
+void f(int x,int i){ // function to calculate the sum of divisors of x
+	if (x == 1) sum++; // base case: if x is 1, increment the sum
+	for(;i<=x;i++) { // recursive function call
+		if (x%i == 0) f(x/i,i); // if x is divisible by i, recursively call f with x/i and i
+	}
+	return; // return from the function
+}
+
+// Part II
+
+int main(){
+	int t,a,i=2; // declare variables to store the number of test cases, and the current test case and divisor
+	cin>>t; // read the number of test cases
+	for (a = 0; a<t ; a++){ // loop for each test case
+		int x; // declare a variable to store the current number
+		cin >> x; // read the current number
+		int ans = 1; // initialize the answer to 1
+		for(i = 2; i<sqrt(x) ; i++){ // loop through divisors up to the square root of x
+			sum = 0; // reset the sum
+			if(x%i == 0) f(x/i,i); // if x is divisible by i, calculate the sum of divisors of x/i
+			ans = ans + sum; // add the sum to the answer
+		}
+		cout<<ans<<endl; // print the answer
+	}
+	return 0; // return from the main function
+}
+```
+
+Part II: Summary
+
+This program calculates the sum of divisors for each number from 1 to a given number. It uses a function `f` to recursively calculate the sum of divisors for a number. The main function reads the number of test cases and then for each test case, it reads the number and calculates the sum of divisors using the `f` function. The results are printed to the console.

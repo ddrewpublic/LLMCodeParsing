@@ -1,0 +1,81 @@
+**Part I**
+
+Here is the code with developer comments:
+
+```c
+/*
+?? - 1090 ????   
+ 
+This is a comment block, but it's not providing any meaningful information.
+*/
+
+?? 
+???????a?????????????????a = a1 * a2 * a3 * ... * an???1 < a1 <= a2 <= a3 <= ... <= an?????????????????
+a = a???????
+// This is a function declaration that calculates the sum of factors of 'a' up to 'b'.
+
+???? 
+?1?????????n?????n???????????1?????????a (1 < a < 32768)
+// This is a main function that takes two integer inputs 'a' and 'b', calculates their sum of factors, and prints the result.
+
+???? 
+n???????????????????????????????????
+// This is a repetitive sequence of numbers, but it's not providing any meaningful information.
+
+???? 
+2
+2
+20
+// This is another repetitive sequence of numbers, but it's not providing any meaningful information.
+
+???? 
+1
+4
+// This is another repetitive sequence of numbers, but it's not providing any meaningful information.
+
+void main()
+{
+	int st(int a,int b); //????st?????????a?=a1?b???????
+	// This is a function declaration for the 'st' function, which calculates the sum of factors of 'a' up to 'b'.
+
+	int j,n,m,sum;
+	// These are integer variables declared for the loop and variables.
+
+	scanf("%d",&n);
+	// This reads an integer input from the user.
+	for(j=1;j<=n;j++)
+	{
+		scanf("%d",&m);
+		sum=st(2,m);
+		printf("%d\n",sum);
+		// This loop iterates 'n' times, reading integer input for 'm', calculating the sum of factors using the 'st' function, and printing the result.
+	}
+}
+int st(int a,int b)
+{
+	int i,c;
+	c=0;
+	if(a==0)
+		c=c+1;
+	else
+	{
+		for(i=a;i<=sqrt(b);i++)
+		{
+			if(b%i==0)
+				c=st(i,(b/i))+c;
+		}
+		if(i>sqrt(b))
+			c=c+1;
+	}
+	return c;
+}
+// This is the 'st' function implementation that calculates the sum of factors of 'a' up to 'b'.
+```
+
+**Part II**
+
+Summary:
+
+This code is a C program that calculates the sum of factors for a given number up to a certain limit. The program declares a function `st` that takes two integers, `a` and `b`, as input and returns the sum of factors of `a` up to `b`. The main function reads a number `n` and iterates `n` times, reading another number `m` and calculating the sum of factors of `m` using the `st` function. The result is then printed.
+
+The purpose of this code is unclear, as it doesn't provide any meaningful comments or purpose statement. Additionally, the repetitive sequences of numbers and characters at the beginning of the code seem to be unnecessary and may be typos or attempts to obfuscate the code.

@@ -1,0 +1,35 @@
+**Part I: Code with Developer Comments**
+
+```c++
+int is_bottom,max;  // Declare integer variables is_bottom and max
+int div_foo(int n,int min);  // Declare a function div_foo(int n, int min) that takes two integer arguments
+int main(){
+  int N;  // Declare an integer variable N
+  cin>>N;  // Read an integer value from the user and store it in variable N
+  for(int index=0;index<N;index++){  // Start a for loop that will run N times
+    int k;  // Declare an integer variable k
+    cin>>k;  // Read an integer value from the user and store it in variable k
+    is_bottom=0;  // Set is_bottom to 0
+    cout<<div_foo(k,2)+1<<endl;  // Call the div_foo function with k and 2 as arguments and print the result + 1
+  }
+  
+  return 0;  // Return 0 to indicate successful execution of the program
+}
+
+int div_foo(int n,int min){
+  int cal=0;  // Initialize a variable cal to 0
+  for(int iter=min;iter<=sqrt(n);iter++){  // Start a for loop that will run from min to the square root of n
+    if(!(n%iter)){  // Check if n is divisible by iter
+      cal++;  // If it is, increment cal by 1
+      int f1=n/iter,f2=iter,g;  // Calculate the values of f1 and f2
+      g=div_foo(f1,f2);  // Recursively call the div_foo function with f1 and f2 as arguments
+      cal+=g;  // Add the result of the recursion to cal
+    }
+  }
+  return cal;  // Return the final value of cal
+}
+```
+
+**Part II: Summary**
+
+The code provided is designed to find the number of divisors of a given number. The program does this by recursively dividing the number by all its factors, starting from the smallest prime factor, and counting the number of divisors.

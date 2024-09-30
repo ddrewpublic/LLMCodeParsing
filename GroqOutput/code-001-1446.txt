@@ -1,0 +1,40 @@
+**Part I: Code with Comments**
+
+```
+int sum = 0; // Initialize sum variable to 0
+int main()
+{
+    void yinshu(int, int); // Declare function prototype for yinshu()
+    int i, n, a; // Declare variables for loop
+    cin >> n; // Read input for number of iterations
+    for (i = 1; i <= n; i++)
+    {
+        sum = 0; // Reset sum for each iteration
+        cin >> a; // Read input for current number
+        yinshu(a, 2); // Call yinshu function to calculate sum
+        cout << sum << endl; // Print calculated sum
+    }
+    return 0; // Return 0 to indicate successful execution
+}
+void yinshu(int a, int x)
+{
+    if (a != 1) // Check if number is not 1
+    {
+        for (int i = x; i <= a; i++) // Loop from x to a
+        {
+            if (a % i == 0) // Check if a is divisible by i
+                yinshu(a / i, i); // Recursively call yinshu with a/i and i
+        }
+    }
+    if (a == 1) // Check if number is 1
+        sum++; // Increment sum if number is 1
+}
+```
+
+**Part II: Summary**
+
+This code is designed to calculate the sum of proper divisors for each number in a given input sequence. The program uses a recursive function `yinshu()` to perform this calculation. The function takes two parameters: `a`, the number to calculate divisors for, and `x`, the starting point for the divisor search.
+
+In the main function, the program reads input for the number of iterations and the numbers to calculate divisors for. For each number, it calls the `yinshu()` function, which recursively calculates the divisors and updates the `sum` variable. The final sum is then printed to the console.
+
+The code uses a bottom-up approach to calculate divisors, starting from the smallest divisor and incrementing until the largest divisor is found. This approach is more efficient than a top-down approach, as it avoids recalculating divisors for larger numbers. Overall, this code is designed to provide an accurate and efficient calculation of proper divisors for a given sequence of numbers.

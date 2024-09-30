@@ -1,0 +1,33 @@
+**Part I: Code with Developer Comments**
+
+```
+int fenjie(int x, int y) { // Function to find the number of unique prime factors of a number
+    int i, s = 0; // Initialize counter for unique prime factors
+
+    if (x == y) // Base case: if x is equal to y, return 1
+        return 1;
+    for (i = y; i <= x; i++) { // Iterate from y to x
+        if (x % i == 0) { // Check if x is divisible by i
+            s += fenjie(x / i, i); // Recursively call the function with x divided by i and i
+        }
+    }
+    if (i == x) // If i equals x, it means x is a prime number, increment the counter
+        s++;
+    return s;
+}
+
+int main() {
+    int n, i; // Initialize variables for the number of inputs and input values
+
+    cin >> n; // Read the number of inputs
+    for (; n > 0; n--) { // Loop until all inputs have been processed
+        cin >> i; // Read the current input value
+        cout << fenjie(i, 2) << endl; // Call the function to find the unique prime factors and print the result
+    }
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This C++ program is designed to find the number of unique prime factors of a given integer. The `fenjie` function takes two integer parameters, `x` and `y`, and returns the number of unique prime factors of `x`. The function uses a recursive approach to find the prime factors, dividing `x` by each number from `y` to `x` until it finds a prime number. The `main` function reads a series of integer inputs from the user and calls the `fenjie` function for each input, printing the result to the console. The program is efficient in its use of recursion, but may cause a stack overflow for very large input values.

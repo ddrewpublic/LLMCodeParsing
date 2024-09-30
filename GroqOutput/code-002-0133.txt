@@ -1,0 +1,52 @@
+**Part I**
+
+Here is the code with developer comments:
+
+```c
+// Define a struct to represent a book
+struct book 
+{
+    int num; // Number of the book
+    char zhuzhe[26]; // Title of the book
+    int let; // Flag to indicate if the book is related to the current author
+};
+
+// Array to store book information
+struct book shu[1000];
+
+// Function to compare two characters
+int judge(char a, char b)
+{
+    // Return 1 if the characters are the same, 0 otherwise
+    if(a==b) return(1);
+    else return(0);
+}
+
+// Main function
+void main()
+{
+    int n, i, j, y, zhi, num; // Declare variables
+    char writer1[26] = {0}; // Initialize array to keep track of author frequencies
+    char writer2[26] = {0}; // Initialize array to store author names (ASCII values)
+    for(i=0; i<26; i++)
+        writer2[i]=i+65; // Initialize writer2 array with ASCII values from A to Z
+
+    // Read the number of books
+    scanf("%d", &n);
+
+    // Read information for each book
+    for(i=0; i<n; i++) 
+    {
+        scanf("%d", &shu[i].num); // Read book number
+        gets(shu[i].zhuzhe); // Read book title
+    }
+```
+
+**Part II**
+
+Summary:
+This program reads a list of books from the user, where each book has a number and a title. It then identifies the most frequent author in the list and marks the corresponding books as related. The final output includes the most frequent author's name, the number of books written by that author, and the numbers of the books written by that author.
+
+The program uses two arrays, `writer1` and `writer2`, to keep track of author frequencies and author names, respectively. The `judge` function is used to compare characters. The main function reads the number of books, reads book information, identifies the most frequent author, and prints the results.
+
+Note: The `main` function is declared as `void main()`, which is not the standard signature for `main` in C. In C, `main` should be declared as `int main()` to return an integer value indicating the program's exit status.

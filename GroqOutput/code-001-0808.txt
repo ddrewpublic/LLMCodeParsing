@@ -1,0 +1,99 @@
+**Part I**
+
+```c
+int sum = 0;
+```
+Initialization of the sum variable to 0.
+
+```c
+void fenjie(int t,int n)
+{
+```
+Definition of a function named `fenjie` that takes two integer parameters `t` and `n`.
+
+```c
+	int i = 0;
+```
+Initialization of a local variable `i` to 0.
+
+```c
+	if(n == 1)
+	    sum++;
+```
+If the input number `n` is equal to 1, increment the `sum` variable by 1.
+
+```c
+    for(i = t; i <= n; i++)
+	{
+```
+Start of a for loop that iterates from `t` to `n` (inclusive).
+
+```c
+		if(n % i == 0)
+		{
+			fenjie(i, n / i);
+		}
+	}
+```
+Inside the loop, if `n` is divisible by `i`, recursively call the `fenjie` function with parameters `i` and `n / i`.
+
+```c
+int main()
+{
+```
+Definition of the `main` function, the entry point of the program.
+
+```c
+	int n = 0, k = 0;
+```
+Initialization of two integer variables `n` and `k` to 0.
+
+```c
+	cin >> n;
+```
+Read an integer value from the standard input and store it in `n`.
+
+```c
+	while(n > 0)
+	{
+```
+Start of a while loop that continues until `n` becomes 0.
+
+```c
+		 cin >> k; 
+```
+Read an integer value from the standard input and store it in `k`.
+
+```c
+         sum = 0;
+```
+Reset the `sum` variable to 0.
+
+```c
+		 fenjie(2,k);
+```
+Call the `fenjie` function with parameters 2 and `k`.
+
+```c
+		 n--;
+```
+Decrement `n` by 1.
+
+```c
+		 cout << sum <<endl;
+```
+Print the value of `sum` followed by a newline character.
+
+```c
+	}
+```
+End of the while loop.
+
+```c
+	return 0;
+```
+End of the `main` function, returning an integer value indicating the program's termination.
+
+**Part II**
+
+This program calculates the number of divisors for each number from 2 to a given input number. The `fenjie` function is a recursive function that divides the input number by all possible divisors and recursively calls itself until the quotient is 1. The number of divisors for each number is then printed to the console.

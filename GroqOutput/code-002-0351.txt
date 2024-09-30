@@ -1,0 +1,20 @@
+**Part I:**
+
+```c
+void main()
+{
+    // Declaration of variables
+    int n,i,j,card[1000],num[26]={0},max=0,k=0;
+    char s[1000][27];
+
+    // Read the number of input strings
+    scanf("%d",&n);
+
+    // Read each string and store the number and the string in respective arrays
+    for(i=0;i<n;i++)
+        scanf("%d %s",&card[i],s[i]);
+```
+
+**Part II: Summary**
+
+This C program is designed to find the most frequent character in a set of input strings and print out the character and its frequency. The program first reads the number of input strings (n) from the user. Then, it reads each string and stores the number and the string in respective arrays. After that, it iterates through each string and counts the frequency of each character using an array (num). It then finds the maximum frequency and the corresponding character using a loop and prints out the character and its frequency. Finally, it iterates through each string again and prints out the numbers corresponding to the strings that contain the most frequent character.

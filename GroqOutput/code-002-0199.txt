@@ -1,0 +1,35 @@
+Here is the code with developer comments added to each line, using the header "Part I":
+
+**Part I**
+
+```
+struct book
+{
+        int mun; // integer to store book ID
+        char name[26]; // array to store book name up to 26 characters
+}a[999]; // array to store up to 999 book structures
+int main()
+{
+        int n,i,j,l,q=0; // integer to store number of books, indices, and flags
+        char k; // character to store each letter in the book name
+        scanf("%d",&n); // read the number of books from input
+        for(i=0;i<n;i++) // loop to read each book
+        {
+                scanf("%d %s",&a[i].mun,a[i].name); // read book ID and name
+        }
+        int w[26]={0}; // array to count the frequency of each letter (A-Z)
+        for(i=0;i<n;i++) // loop to iterate over each book
+        {
+                l=strlen(a[i].name); // get the length of the book name
+                for(j=0;j<l;j++) // loop to iterate over each letter in the book name
+                {
+                        k=a[i].name[j]; // get the current letter
+                        w[k-65]++; // increment the count of this letter
+                        /*for(k='A';k<=
+```
+
+And here is a 200-word summary, using the header "Part II":
+
+**Part II**
+
+This program counts the frequency of each letter in the names of a set of books. The user is asked to input the number of books, and then the ID and name of each book. The program then iterates over each book, counting the frequency of each letter in the name and storing these counts in an array. After all books have been processed, the program finds the letter with the highest frequency and prints this letter as well as its frequency. Finally, it prints the IDs of all books that contain this letter. The program uses a struct to store the ID and name of each book, and uses an array to count the frequency of each letter. The program's control flow is driven by a series of nested loops, which iterate over each book and each letter in the book's name. The program's output is determined by the letter with the highest frequency and the IDs of books that contain this letter.

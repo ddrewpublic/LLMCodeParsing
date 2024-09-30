@@ -1,0 +1,32 @@
+**Part I**
+```c
+int factoring(int a,int b)
+{
+    int i,kind=0;  // Initialize variable kind to 0, and declare integer variable i
+		//printf("ok  a=%d  b=%d\n",a,b);  // Un-commented code for debugging
+    if(a==1)  // Check if the input number is 1
+	{
+        kind=1;  // If 1, set kind to 1
+			//printf("kind=1   ok\n");  // Un-commented code for debugging
+    }
+    else  // If the number is not 1
+    {
+        for(i=b;i<=a;i++)  // Loop through numbers from b to a
+		{
+		//	printf("ok\n");  // Un-commented code for debugging
+            if(a%i==0)  // Check if the input number is divisible by the current number
+			{
+                kind=factoring(a/i,i)+kind;  // Recursively call function with new input, and add the result to kind
+					//printf("ok  %d\n",kind);  // Un-commented code for debugging
+			}
+        }
+    }
+    return kind;  // Return the final value of kind
+}
+```
+
+**Part II**
+
+This code defines a recursive function `factoring` that calculates the number of factors of a given number `a` up to a certain limit `b`. The function checks if `a` is 1, and if so, sets the `kind` variable to 1. Otherwise, it loops through numbers from `b` to `a`, checking if `a` is divisible by each number. If it is, the function recursively calls itself with the quotient `a/i` and `i`, and adds the result to `kind`. Finally, the function returns the value of `kind`.
+
+The `main` function reads an integer `n` and an array `x` of length `n` from the standard input. It then loops through the array, calling `factoring` for each element to calculate the number of factors up to a certain limit (in this case, 2), and prints the result.

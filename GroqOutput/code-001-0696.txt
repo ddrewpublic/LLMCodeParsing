@@ -1,0 +1,39 @@
+**Part I**
+
+```c
+int times;
+int move(int a, int num) // Function to calculate the number of divisors of a number starting from a
+{
+    int i;
+    if(num==1) // Base case: if the number is 1, increment the times counter
+        times++;
+    for(i=2;i<=num;i++) // Iterate from 2 to num
+        if(num%i==0&&i>=a) // Check if i is a divisor of num and i is greater than or equal to a
+            move(i, num/i); // recursively call move with i and num/i
+    return times;
+}
+```
+
+```c
+int main()
+{
+    int n, i; // Declare variables n and i
+    cin>>n; // Read the number of elements in the array
+    int a[n]; // Declare an array a of size n
+    for(i=0;i<n;i++) // Read elements of the array
+        cin>>a[i];
+    int b[n]; // Declare an array b of size n
+    for(i=0;i<n;i++) // Calculate the number of divisors for each element in the array
+    {
+        times=0; // Reset the times counter for each element
+        b[i]=move(1,a[i]); // Call the move function with starting value 1 and the current element
+    }
+    for(i=0;i<n;i++) // Print the results
+        cout<<b[i]<<endl;
+    return 0;
+}
+```
+
+**Part II**
+
+This code calculates the number of divisors of each element in an array and stores the result in another array. The `move` function is a recursive function that calculates the number of divisors of a number by dividing the number by all its divisors starting from a given number `a`. The `main` function reads an array of numbers, calls the `move` function for each element, and prints the results.

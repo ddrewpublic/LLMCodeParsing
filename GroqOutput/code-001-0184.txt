@@ -1,0 +1,44 @@
+Here is the code with developer comments:
+
+**Part I**
+```cpp
+/**
+* @file		????.cpp
+* @author	??	1000012792
+* @date		2010.12.3
+*/
+
+int f(int n, int m);				// Define a function f that takes two integers n and m
+int main()
+{
+	int n, num, i;						// Declare variables n, num, and i
+	cin >> n;						// Read an integer n from the input
+	for(i=0;i<n;i++)				// Loop n times
+	{
+		cin >> num;					// Read an integer num from the input
+		cout << f(num, 2) << endl;	// Call function f with num and 2, and print the result
+	}
+	return 0;
+}
+int f(int n, int m)
+{
+	int i, count=0;					// Initialize variables i and count
+	if(n==1)
+		return 1;					// Base case: if n is 1, return 1
+	for(i=m;i<=n;i++)				// Loop from m to n
+	{
+		if(n%i==0)					// Check if n is divisible by i
+			count += f(n/i,i);		// Recursively call f with n/i and i, and add the result to count
+	}
+	return count;					// Return the total count
+}
+```
+
+**Part II**
+This C++ code calculates the sum of all divisors of a given number, excluding the number itself, for a range of numbers. The program uses a recursive function `f` to calculate the sum of divisors for each number in the range.
+
+The `main` function reads an integer `n` from the input and then loops `n` times. In each iteration, it reads an integer `num`, calls the `f` function with `num` and 2, and prints the result.
+
+The `f` function takes two integers `n` and `m` as input. If `n` is 1, it returns 1 (base case). Otherwise, it loops from `m` to `n` and checks if `n` is divisible by `i`. If it is, it recursively calls `f` with `n/i` and `i`, adds the result to `count`, and returns the total count.
+
+The code uses recursion to calculate the sum of divisors, which can be an efficient approach for small ranges of numbers. However, it may cause a stack overflow for large numbers due to the recursive function calls.

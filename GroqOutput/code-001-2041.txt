@@ -1,0 +1,51 @@
+Here is your requested output with developer comments:
+
+**Part I: Code with comments**
+
+```c
+int fj(int n, int m) {
+    // Declare local variables
+    int i, j, k = 0;
+
+    // If n is 1, return 1 (base case)
+    if (n == 1) return 1;
+
+    // Initialize i to m
+    for (i = m; i <= n; i++) {
+        // Check if n is divisible by i
+        if (n % i == 0) {
+            // Recursively call fj with n divided by i and i
+            k += fj(n / i, i);
+        }
+    }
+    // Return the total count
+    return k;
+}
+
+// Define the main function
+int main() {
+    // Declare local variables
+    int n, i;
+
+    // Read input for number of test cases
+    scanf("%d", &n);
+
+    // Loop through each test case
+    for (; n > 0; n--) {
+        // Read input for the current test case
+        scanf("%d", &i);
+
+        // Call fj with i and 2 and print the result
+        printf("%d", fj(i, 2));
+
+        // If there are more test cases, print a newline
+        if (n - 1) printf("\n");
+    }
+}
+```
+
+**Part II: Summary (200-word limit)**
+
+The given code defines a recursive function `fj()` that calculates the sum of the total divisors of a given number `n`, starting from `m` which is 2 by default. The function iterates from `m` to `n` and checks if `n` is divisible by `i` in each iteration. If `n` is divisible by `i`, the function recursively calls `fj()` with `n` divided by `i` and `i` as arguments, and sums up all the results. The function returns the total sum of the total divisors of `n` when `n` is 1.
+
+The `main()` function reads the number of test cases `n` and then reads each test case `i` and prints the total sum of the total divisors of `i` by calling `fj()` with `i` and 2. If there are more test cases, it prints a newline after each test case. The code is well-suited for calculating the divisors for a large number of test cases.

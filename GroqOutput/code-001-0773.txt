@@ -1,0 +1,47 @@
+**Part I: Code with comments**
+
+```
+int a = 0; // initialize variable a to 0
+int s = 0; // initialize variable s to 0
+
+void find(int n, int prim)
+{
+  // if the current number matches the original number, increment the count
+  if (n == a) { s++; }
+  else
+  {
+    // iterate from prim to a/n to find factors
+    for (int i = prim; i <= a / n; i++)
+    {
+      // if the current number is a factor, recursively call the function
+      if ((a % (n * i) == 0)) { find(n * i, i); }
+    }
+  }
+}
+
+int main()
+{
+  int n = 0; // initialize input variable
+  cin >> n; // read input from user
+
+  // iterate n times
+  for (int i = 1; i <= n; i++)
+  {
+    cin >> a; // read input from user
+    s = 0; // reset the count for each number
+
+    // iterate from 2 to a to find factors
+    for (int i = 2; i <= a; i++)
+    {
+      // if the current number is a factor, recursively call the function
+      if (a % i == 0) { find(i, i); }
+    }
+    cout << s << endl; // print the count
+  }
+  return 0;
+}
+```
+
+**Part II: Summary**
+
+This C++ program counts the number of distinct prime factors for each number in a given input. The program uses a recursive function `find()` to find the factors of a number and increment a count `s` for each distinct prime factor. The main function reads input numbers from the user, iterates through each number, and recursively calls the `find()` function to count its prime factors. The program then prints the count of prime factors for each number. The program efficiently counts prime factors by avoiding duplicate factor checks and using recursion to find factors.

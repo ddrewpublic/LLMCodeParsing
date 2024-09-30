@@ -1,0 +1,47 @@
+Here is the code with developer comments added for each line:
+
+```
+/**
+*???4.cpp
+*??????
+*???????
+*???12?1?
+*/
+
+Part I
+
+int num,s=1; // Initialize num to 0 and s to 1
+
+void divide(int n,int a) // Function to find the number of divisors of a number
+{
+  for(int i=n;i<=a/s;i++)// Loop through the range from n to a divided by s
+  {
+    s*=i; 
+    if(s==a) // If the product of i and previous numbers is equal to a, increment num
+      num++;
+    else if(s<a && a%s==0) // If the product is less than a and a is divisible by s, recursively call divide
+      divide(i,a);
+    s/=i; // Update s to the result of s divided by i
+  }
+}
+
+int main() // Main function
+{
+  int n,i,a;
+  cin>>n; // Read the number of inputs
+
+  for(i=0;i<n;i++)
+  {
+    num=0; // Reset num to 0 for each input
+    cin>>a; // Read the input number
+    divide(2,a); // Find the number of divisors for the input number
+    cout<<num<<endl; 
+  }
+  return 0;
+}
+
+```
+
+Part II
+
+The code is designed to find the number of divisors for a given number. The function "divide" recursively finds the number of divisors for the number by looping through the range from n to a divided by the current product, and updates the product by multiplying it with the current number and then dividing it by the current number. The number of divisors is incremented whenever the product becomes equal to the input number. If the product is less than the input number and the input number is divisible by the product, the function is called recursively. The process continues until the product equals or exceeds the input number. Finally, the number of divisors is printed for each input number.

@@ -1,0 +1,38 @@
+**Part I**
+
+Here is the code with developer comments for each line:
+
+```c
+int f(int m,int j);  // Function declaration for f(m,j)
+int main()
+{
+    int n,m;  // Declare variables n and m
+    cin>>n;  // Read input for n
+    for(int i=0;i<n;i++)  // Loop n times
+    {
+        cin>>m;  // Read input for m
+        cout<<f(m,2)<<endl;  // Call function f(m,2) and print the output
+    }
+    return 0;  // Return 0 to indicate successful execution
+}
+int f(int m,int j)          // Function definition for f(m,j)
+{
+    int num=1;  // Initialize variable num to 1
+    for(int i=j;i<=sqrt(m);i++)  // Loop from j to the square root of m
+    {
+        if(m%i==0)  // Check if m is divisible by i
+        {
+            num+=f(m/i,i);  // Call f(m/i,i) recursively and add the result to num
+        }
+    }
+    return num;  // Return the final value of num
+}
+```
+
+**Part II**
+
+The code defines a function `f(m, j)` that calculates the sum of all divisors of `m` greater than or equal to `j`, and a `main` function that calls this function `n` times. Each time, the user is prompted to input a value `m`, and the sum of its divisors greater than or equal to 2 is printed.
+
+The `f(m, j)` function iterates from `j` to the square root of `m`, checking if `m` is divisible by each number. If it is, the function calls itself recursively with `m` divided by `i` and `i` as the new arguments, and adds the result to the sum. The final sum is then returned.
+
+The `main` function uses a `for` loop to iterate `n` times, reading input for `m` each time and calling `f(m, 2)` to calculate the sum of its divisors greater than or equal to 2, and printing the result.

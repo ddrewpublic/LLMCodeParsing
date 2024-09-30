@@ -1,0 +1,45 @@
+Here is the code with developer comments for each line, using the header "Part I":
+
+```
+Part I
+
+int f(int m,int min); // Function declaration for f(m, min)
+int main()
+{
+    int n,m,i; // Declaring variables n, m, and i
+    scanf("%d",&n); // Reading the input integer n
+    for(i=0;i<n;i++) // Looping for n times
+    {
+        scanf("%d",&m); // Reading the input integer m
+        printf("%d\n",f(m,2)); // Calling function f(m,2) and printing the result
+    }
+    return 0; // Ending the program
+}
+int f(int m,int min)
+{
+    int count=1,i; // Initializing count to 1 and declaring i
+    if(m==1)
+        return 1; // If m is 1, return 1
+    else if(m == 2)
+        return 1; // If m is 2, return 1
+    else
+    {
+        for(i=min;i<=sqrt(m);i++) // Looping from min to sqrt(m)
+        {
+            if(m%i==0) // If m is divisible by i
+            {
+                count += f(m/i,i); // Recursively calling f(m/i, i)
+            }
+        }
+        return count; // Returning the total count
+    }
+}
+```
+
+Here is the 200-word summary, using the header "Part II":
+
+**Part II**
+
+This program is designed to calculate the number of proper divisors for a given integer. The function `f(m, min)` takes two parameters, `m` and `min`, and returns the total count of proper divisors. The program starts by reading an integer `n` as input. Then, it iterates `n` times, reading another integer `m` each time and calling the `f(m, 2)` function to calculate the count of proper divisors for `m`. The result is then printed to the console.
+
+The `f(m, min)` function works by recursively dividing `m` by a divisor `i` until `i` is greater than the square root of `m`. It keeps track of the total count by adding the count of divisors of `m/i` to the current count. The function returns the total count once it has processed all divisors. The `f(m, min)` function can handle inputs from `1` to `2`, in which case it returns `1`, and for all other inputs, it processes the divisors to calculate the total count.

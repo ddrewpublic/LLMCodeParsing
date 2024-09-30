@@ -1,0 +1,67 @@
+**Part I: Code with Comments**
+
+```c
+// Define an array of structures to store the book details
+struct
+{
+    char name[20];
+    int num;
+} book[1000];
+
+// Main function
+int main()
+{
+    // Initialize variables
+    int n, i, j, max = 0, m = 0;
+    
+    // Read the number of books
+    scanf("%d", &n);
+    
+    // Initialize an array to store the frequency of each letter
+    int c[26] = {0};
+    
+    // Loop through each book
+    for (i = 0; i < n; i++)
+    {
+        // Read the number and name of the book
+        scanf("%d %s", &book[i].num, book[i].name);
+    }
+    
+    // Loop through each book again
+    for (i = 0; i < n; i++)
+    {
+        // Loop through each letter in the alphabet
+        for (j = 0; j < 26; j++)
+        {
+            // Check if the book name contains the current letter
+            strchr(book[i].name, 'A' + j)?c[j]++:0;
+        }
+    }
+    
+    // Find the letter with the maximum frequency
+    for (j = 0; j < 26; j++)
+    {
+        if (c[j] > max)
+        {
+            max = c[j];
+            m = j;
+        }
+    }
+    
+    // Print the most frequent letter
+    printf("%c\n%d\n", 'A' + m, c[m]);
+    
+    // Loop through each book again
+    for (i = 0; i < n; i++)
+    {
+        // Check if the book name contains the most frequent letter
+        strchr(book[i].name, 'A' + m)?printf("%d\n", book[i].num):0;
+    }
+    
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This program reads in the details of multiple books (number and name) and then calculates the frequency of each letter in the alphabet in each book's name. It then finds the letter with the highest frequency and prints it out, along with the number of times it appears in each book.

@@ -1,0 +1,71 @@
+Here is the code with developer comments added:
+
+**Part I: Code**
+
+```c
+int ispr(int t) 
+{
+    // Calculate the square root of t and add 1
+    int v=sqrt(t*1.0)+1;
+    // Check if t is prime by checking if it has any divisors other than 1 and itself
+    for(int i=2; i<v; i++)
+        if(t%i==0)
+            return 0;
+    // If no divisors found, return 1 (meaning t is prime)
+    return 1;
+}
+
+int sum=0;
+void fun(int n,int i) {
+    // Base case: if n is 1, increment the sum
+    if(n==1)
+        sum++;
+    // Recursively call fun with n divided by i, and increment i
+    while(i<=n) {
+        if(n%i==0)
+            fun(n/i,i);
+        i++;
+    }
+    // Return from the function
+    return ;
+}
+
+int main() {
+    // Read an integer from the input
+    int n;
+    scanf("%d",&n);
+    // Loop until n becomes 0
+    while(n--) {
+        // Read an integer from the input
+        int a;
+        scanf("%d",&a);
+        // Check if the integer is prime using the ispr function
+        if(ispr(a)) {
+            // If prime, print 1 and skip to the next loop iteration
+            printf("1\n");
+            continue;
+        }
+        
+        // Initialize variables for the fun function
+        int i=2,res=1;
+        // Loop until i is greater than the square root of a
+        while(i<=a/2) {
+            // Check if a has a divisor other than 1 and itself
+            if(a%i==0) {
+                // Reset the sum to 0 and call fun to find the sum of divisors
+                sum=0;
+                fun(a/i,i);
+                // Add the sum of divisors to the result
+                res+=sum;
+            }
+            i++;
+        }
+        // Print the result
+        printf("%d\n",res);
+    }
+}
+```
+
+**Part II: Summary**
+
+This program is designed to calculate the sum of divisors for a given integer. It uses a recursive function `fun` to find the sum of divisors for a given number, and a prime-checking function `ispr` to determine whether a number is prime. The main function reads integers from the input, checks if each integer is prime, and if not, calculates the sum of its divisors using the `fun` function. The results are printed to the output.

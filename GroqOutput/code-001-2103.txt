@@ -1,0 +1,56 @@
+**Part I: Code with Comments**
+
+```
+int f(int a, int min)
+{ 
+    /* If the input number 'a' is less than the minimum divisor 'min', return 0 */
+    if(a < min)
+    { 
+        return 0; 
+    } 
+    /* Initialize the result to 1 */
+    int result = 1; 
+    /* Iterate from 'min' to 'a' */
+    for(int i = min;i<a;i++)
+    { 
+        /* If 'a' is divisible by 'i', increment the result by the factorial of the quotient and recurse on the quotient */
+        if(a % i == 0)
+        { 
+            result += f(a/i,i); 
+        } 
+    } 
+    /* Return the result */
+    return result; 
+} 
+
+main()
+{
+    /* Read the number of test cases 'n' */
+    int n;
+    scanf("%d",&n);
+    /* Initialize variables 'i', 'a', and 'b' */
+    int i;
+    int a;
+    int b;
+    /* Loop through each test case */
+    for(i=0;i<n;i++)
+    {
+        /* Read the number for this test case */
+        scanf("%d",&a);
+        /* Initialize the minimum divisor to 2 */
+        int min=2;
+        /* Calculate the factorial of the number and print it */
+        b=f(a,2);
+        printf("%d",b);
+        printf("\n");         
+    }
+}
+```
+
+**Part II: Summary**
+
+This code implements a function `f` that calculates the factorial of a given number `a` using a recursive approach. The function takes two arguments: `a` and `min`, where `min` is the minimum divisor to check for divisibility.
+
+In the `main` function, the code reads the number of test cases `n` and loops through each test case. For each test case, it reads the number to be factored, initializes the minimum divisor to 2, and calls the `f` function to calculate the factorial. The result is then printed to the console.
+
+The `f` function works by recursively incrementing the result by the factorial of the quotient when `a` is divisible by `i`. This process continues until `a` is less than the minimum divisor, at which point the function returns 0. The final result is the sum of the factorial values calculated during the recursion.

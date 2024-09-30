@@ -1,0 +1,27 @@
+**Part I**
+
+```c
+void account(int m, int i); // function prototype for the recursive function account
+int p; // global variable to store the result
+int main() {
+    int m; // local variable for the loop
+    int n; // local variable for the loop
+    cin >> n; // input from user
+    while (n > 0) { // loop until n becomes 0
+        p = 0; // reset the global variable p to 0
+        cin >> m; // input for the number
+        account(m, 1); // call the recursive function account
+        cout << p << endl; // print the result
+        n--; // decrement the counter
+    }
+    return 0;
+}
+```
+
+**Part II**
+
+Summary:
+
+This program uses a recursive function called `account` to calculate the number of prime factors of each number entered by the user. The user is prompted to enter a number, and the program will print out the number of prime factors for that number. The program continues to prompt the user for input until the input is 0.
+
+The `account` function takes in two parameters, `m` and `i`. `m` is the number to be processed, and `i` is the current prime factor being checked. The function checks if `m` is equal to 1, and if so, increments the global variable `p` by 1. If `m` is not equal to 1, the function then checks for all numbers `j` from 2 to `m` that are factors of `m`. If `j` is a factor of `m` and `j` is greater than or equal to `i`, the function calls itself recursively with the arguments `m/j` and `j`. This process continues until `m` is reduced to 1, at which point `p` is incremented. The final value of `p` is then printed out as the number of prime factors for the original input number.

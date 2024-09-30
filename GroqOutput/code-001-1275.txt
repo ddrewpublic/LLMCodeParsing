@@ -1,0 +1,21 @@
+**Part I**
+
+Here is the code with developer comments:
+
+```c
+int ways(int n, int p) // function to calculate the number of ways to divide a number n into groups of size p
+{
+    if(n < p) return 0; // if n is less than p, it's not possible to divide n into groups of size p, so return 0
+    while(n % p != 0) p++; // keep incrementing p until n is divisible by p
+    if(n == p) return 1; // if n is equal to p, we can divide n into 1 group of size p, so return 1
+    return ways(n / p, p) + ways(n, p + 1); // recursively call the function for n/p groups of size p, and n groups of size p+1
+}
+```
+
+**Part II**
+
+Summary:
+
+The code calculates the number of ways to divide a given number 'n' into groups of a specific size 'p'. This is achieved by recursively calling the 'ways' function, which checks the divisibility of 'n' by 'p', and if 'n' is divisible by 'p', it returns 1. If 'n' is not divisible by 'p', it increments 'p' and tries again. The function finally returns the sum of ways to divide 'n' into groups of size 'p' and 'n/p' groups of size 'p'.
+
+In the main function, the user is prompted to input a number 'n' and 'n' numbers 'm'. For each 'm', the program calls the 'ways' function with the input 'm' and '2' as the arguments, and prints the result.

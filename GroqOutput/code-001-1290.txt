@@ -1,0 +1,42 @@
+**Part I**
+
+```c
+int factorize(int n,int j)
+{	
+    // Initialize the variable F to 1
+    int F=1;
+    // Loop until j becomes greater than the square root of n
+    for(;j<=sqrt(n);j++)
+        // If n is divisible by j, recursively call the function
+        if(n%j==0)
+            // Add the result of the recursive call to F
+            F+=factorize(n/j,j);
+    return F; 
+}
+
+int main()
+{
+    // Declare an array of integers n of size 1000
+    int i,m,n[1000];
+    // Read the value of m
+    scanf("%d",&m);
+    // Read m values from the user and store them in the array n
+    for(i=0;i<m;i++)
+        scanf("%d",&n[i]);
+    // Loop through each value in the array n
+    for(i=0;i<m;i++)
+        // Print the result of factorizing each value using the function factorize
+        printf("%d\n",factorize(n[i],2));
+    return 0;
+}
+```
+
+**Part II**
+
+This program is designed to factorize positive integers using the recursive function `factorize`. The function takes two arguments, `n` and `j`, where `n` is the integer to be factorized and `j` is the current factor being checked. The function returns the sum of the factors of `n`.
+
+In the `main` function, the user is prompted to input a value `m` and then `m` numbers. Each number is then factorized using the `factorize` function and the result is printed to the console.
+
+The time complexity of this program is O(sqrt(n)) because the loop in the `factorize` function continues until `j` becomes greater than the square root of `n`. The space complexity is O(log(n)) due to the recursive function calls.
+
+Note that the program only factors odd numbers as it starts from 2 and checks for divisibility up to the square root of `n`. This is because a larger factor of `n` must be a multiple of a smaller factor that has already been checked.

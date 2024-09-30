@@ -1,0 +1,49 @@
+Here is the output with developer comments for each line, along with a 200-word summary:
+
+**Part I**
+
+/************************/
+/*        yinyang      */
+/*    yaoer py    */
+/*   yao  2011.11.26   */
+/************************/
+
+void yinshu(int); // Function declaration for yinshu function
+
+int sum=1,j=2; // Initialize variables sum and j
+
+int main()
+{
+    int n,m; // Declare variables n and m
+    int i;
+    cin>>n; // Read input for variable n
+    for (i=1;i<=n;i++)     // Loop until i is greater than n
+    {
+        cin>>m; // Read input for variable m
+        yinshu(m);         // Call yinshu function with argument m
+        cout<<sum<<endl; // Print the value of sum
+        sum=1,j=2; // Reset the values of sum and j
+    }
+    return 0;
+}
+void yinshu(int mm)        // Function definition for yinshu function
+{
+    int k;
+    for (k=j;k*k<=mm;k++)  // Loop until k*k is greater than mm
+    { 
+        if (mm%k==0) // Check if mm is divisible by k
+        {
+            sum=sum+1; // Increment the value of sum
+            j=k; // Update the value of j
+            yinshu(mm/k);  // Call yinshu function recursively with argument mm/k
+        }
+    }
+}
+
+**Part II**
+
+This code is a C++ program that calculates the sum of the maximum prime factors of a given set of numbers. The program first declares a function `yinshu` that takes an integer as an argument and calculates the sum of the maximum prime factors of that number.
+
+In the `main` function, the program reads an integer `n` as input, then reads `n` more integers `m` as input. For each `m`, it calls the `yinshu` function to calculate the sum of the maximum prime factors, then prints the result.
+
+The `yinshu` function uses a recursive approach to find the maximum prime factors of the input number. It does this by dividing the number by the current prime factor, updating the current prime factor, and repeating the process until the number is reduced to 1. The sum of the maximum prime factors is calculated by incrementing the `sum` variable whenever a new prime factor is found.

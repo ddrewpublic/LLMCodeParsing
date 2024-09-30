@@ -1,0 +1,54 @@
+**Part I: Code with Developer Comments**
+
+```cpp
+//* * * * * * * * * * * * * * * * * * * * * * * *
+//*????????                             *
+//*???????? .cpp                        *
+//*?????  1000012839                       *
+//*???2010.12.04                             *
+//* * * * * * * * * * * * * * * * * * * * * * * *
+
+int ways(int a, int min);	// Function declaration for ways which calculates the number of ways to break down a number into its multiples
+
+int main()
+{
+    int n, a, i, sum = 0, k, min;	// Declaring variables n, a, i, sum, k and min
+    cin >> n;	// Reading the number of test cases
+    for (i = 0; i < n; i++)
+    {
+        cin >> a;	// Reading the number for each test case
+        sum = 0;	// Initializing sum variable to 0
+        for (k = 2; k <= a; k++)	// Loop to find the smallest divisor of the number a
+        {
+            if (a % k == 0)
+            {
+                min = k;
+                break;	// Breaking the loop as soon as the smallest divisor is found
+            }
+        }
+        if (a != min)	// If the number is not equal to its smallest divisor
+            sum = ways(a, min);	// Calling the ways function with parameters a and its smallest divisor
+        else
+            sum = 1;	// If the number is equal to its smallest divisor, return 1
+        cout << sum << endl;	// Printing the result
+    }
+    return 0;
+}
+
+int ways(int a, int min)	
+{
+    int result = 1, i;	// Declaring variables result and i with result initially set to 1
+    if(a < min)	// If a is less than its smallest divisor
+        return 0;	// Return 0 as there are no ways to break down a number into its multiples
+    for (i = min; i < a; i++)	// Loop to recursively find the number of ways to break down a number
+    {
+        if (a % i == 0)
+            result += ways(a / i, i);	// If the number a is divisible by i, recursively call ways function with parameters a/i and i
+    }
+    return result;	// Returning the result after executing the for loop
+}
+```
+
+**Part II: Summary**
+
+The code is designed to solve a problem where it takes as input a list of numbers and for each number, it finds the ways to break it down into its multiples. The number of ways is calculated by recursively calling a function that checks for each divisor whether the number can be divided by it and then recursively calls itself with the quotient and the current divisor until it reaches 1.

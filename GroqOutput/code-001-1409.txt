@@ -1,0 +1,35 @@
+Here is the code with developer comments added:
+
+Part I
+
+```c
+int num;  // Initialize a global variable num to keep track of the number of factorizations
+int wrh(int n,int r,int b[200],int y,int a)
+{
+    int i;  // Initialize a local variable i for the loop
+    for( i = y;i <= a/2;i ++ )  // Loop from y to a/2
+    {
+        if ( r % i == 0)  // Check if r is divisible by i
+        {
+            b[n] = i;  // Store i in the array b
+            int now = 1,j;  // Initialize variables now and j for the inner loop
+            for ( j = 1;j <= n;j ++ )  // Loop from 1 to n
+                now = now * b[j];  // Compute the product of the elements in b
+            if ( now == a)  // Check if the product is equal to a
+            {
+                num ++;  // Increment the global variable num
+                break;  // Break out of the loop
+            }
+            if ( now > a) break;  // Break out of the loop if the product is greater than a
+            else 
+                wrh(n + 1,r / i,b,i,a);  // Recursive call with updated parameters
+        }
+    }
+    return 0;  // Return 0 to indicate the end of the function
+}
+
+```
+
+Part II - Summary:
+
+This C program is designed to find and count the number of factorizations of a given number a. It uses a recursive function wrh to explore all possible factorizations. The function takes five parameters: n, the current level of the factorization; r, the remaining value to be factorized; b, an array to store the factors; y, the starting point for the loop; and a, the target number to be factorized. The function uses a loop to iterate from y to a/2, and for each iteration, it checks if r is divisible by i. If it is, the function stores i in the array b and recursively calls itself with updated parameters. The function returns the total number of factorizations found. The main function reads input from the user, calls the wrh function, and prints the result.

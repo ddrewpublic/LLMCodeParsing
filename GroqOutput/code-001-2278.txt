@@ -1,0 +1,25 @@
+**Part I**
+
+```c
+int f(int,int); // function declaration for f(int, int)
+int main()
+{
+    int N; // variable declaration for N
+	cin>>N; // taking input for N from the user
+    int i; // variable declaration for i
+    for(i=1;i<=N;i++)
+    {
+        // loop to execute N times
+        int a; // variable declaration for a
+        cin>>a; // taking input for a from the user
+        cout<<f(a,2)<<endl; // calling function f and printing the output
+    }
+    return 0; // returning 0 to indicate successful execution
+}
+```
+
+**Part II**
+
+This code is a solution for a programming problem where the user needs to calculate the sum of proper divisors of a number, except for the number itself. The program prompts the user for an integer `N`, and then takes `N` inputs and calculates the sum of divisors for each of those inputs. For each input, the function `f(a,2)` is called, which returns the sum of proper divisors of `a` (excluding `a` itself).
+
+The function `f(n,m)` takes two integers `n` and `m` as parameters. It calculates the sum of proper divisors of `n` by recursively dividing `n` by `m` until `m` is greater than the square root of `n`. If `n` is divisible by `m`, it recursively calls itself with `n/m` and `m`. This process continues until `m` is greater than the square root of `n`, at which point the function returns the calculated sum of divisors.

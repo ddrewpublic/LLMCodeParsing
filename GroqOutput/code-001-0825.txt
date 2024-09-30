@@ -1,0 +1,33 @@
+**Part I**
+
+```
+int num=0; // Initialize a global variable num to 0, which will be used to store the count of proper divisors for each number
+void f(int x,int y) // Function f takes two integers x and y as input and returns no value
+{
+    num++; // Increment the global variable num by 1
+    for(int j=y;j*j<=x;j++) // Iterate from y to the square root of x
+    {
+           if(x%j==0) // Check if x is divisible by j
+             f(x/j,j); // If x is divisible by j, recursively call f with x/j and j as the new inputs
+    }
+}
+int main() // The main function starts execution
+{
+    int n; // Declare a variable n to store the number of test cases
+    cin>>n; // Read the number of test cases from the input stream
+    int a[1100]; // Declare an array a to store the numbers for which to find the count of proper divisors
+    for(int i=1;i<=n;i++) // Loop through each test case
+    {
+            num=0; // Initialize num to 0 for each test case
+            cin>>a[i]; // Read the number from the input stream
+            f(a[i],2); // Calculate and store the count of proper divisors for the number in num
+            cout<<num<<endl; // Print the count of proper divisors
+            
+    }
+        return 0; // The main function ends
+}
+```
+
+**Part II**
+
+This program calculates the count of proper divisors for each number in a given array, and prints out the counts. The function f takes two integers x and y as input, and recursively calculates the count of proper divisors for x by dividing it by y if it is divisible, until y squared is greater than x. The main function reads the number of test cases and the numbers themselves from the input, calculates the count of proper divisors for each number, and prints it out.

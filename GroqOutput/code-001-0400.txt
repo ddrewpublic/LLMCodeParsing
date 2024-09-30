@@ -1,0 +1,58 @@
+**Part I**
+```
+/****************************************
+ * ????								*
+ *										*
+ *  Created on: 2010-12-8				*
+ *      Author:??						*
+ ***************************************/
+int factor(int x,int y)						//The function factor calculates the sum of factors of a number
+{
+    int i;										//Initialize a counter
+    for(i=2;i<x;i++)						//Start the loop from 2 and increment in each iteration until i reaches x
+    {
+        if(x%i==0)
+        {
+            break;								//If x is divisible by i, exit the loop
+        }
+    }
+    if(i==x)
+    {
+        return 1;							//If x is a prime number, return 1
+    }
+    else									//If x is not a prime number
+    {
+        int sum=0;							//Initialize a sum variable
+        if(x==y)							//If x equals y, only need to iterate up to sqrt(x)
+        {
+            for(i=y/x+1;i<=sqrt(x);i++)		//Increment i by 1 in each iteration until i reaches sqrt(x)
+            {
+                if(x%i==0)
+                {
+                    sum=sum+factor(x/i,x);		//Recursively call the function with x/i as the new input
+                }
+                else continue;					//If x is not divisible by i, skip the iteration
+            }
+            return sum+1;					//Add 1 to the sum and return
+        }
+        else
+        {									//If x is not equal to y
+            for(i=y/x;i<=sqrt(x);i++)		//Increment i by 1 in each iteration until i reaches sqrt(x)
+            {
+                if(x%i==0)
+                {
+                    sum=sum+factor(x/i,x);		//Recursively call the function with x/i as the new input
+                }
+                else continue;					//If x is not divisible by i, skip the iteration
+            }
+            return sum+1;					//Add 1 to the sum and return
+        }
+    }
+}
+```
+**Part II**
+
+Summary:
+The code is a C++ program that calculates the sum of factors for a given input. The function `factor` takes two integers `x` and `y` as input and returns the sum of factors of `x` that are not greater than `y`. If `x` is a prime number, the function returns 1. The program also includes a main function that reads input from the console, calculates the sum of factors for each input, and outputs the result. The code has a recursive structure, where the function calls itself with a smaller input until it reaches the base case (x is a prime number).
+
+Note: The program does not handle invalid input and may produce incorrect results for non-positive or non-integer inputs.

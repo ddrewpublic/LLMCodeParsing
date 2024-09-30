@@ -1,0 +1,36 @@
+Here is the code with developer comments and a summary:
+
+**Part I**
+
+```c
+int main()
+{
+	// Prompt user to enter the number of writers (m)
+	int m,i,num[26]={0},index1;
+	scanf("%d",&m);
+
+	// Create a struct array to hold writer indices and names
+	struct f
+	{
+		int index;
+		char writer[27];
+	};
+	struct f *p;
+
+	// Allocate memory for the struct array
+	p=(struct f *)malloc(m*sizeof(struct f));
+
+	// Read writer indices and names from user input
+	for(i=0;i<m;i++)
+	{
+		scanf("%d %s",&(p+i)->index,(p+i)->writer);
+	}
+```
+
+**Part II**
+
+The code provided is a C program that takes in a number of writers (m) and then reads the index and name of each writer from user input. It then counts the frequency of each letter in the names and prints out the letter that appears most frequently, along with the number of times it appears. Finally, it prints out the indices of the writers whose names do not contain the most frequently occurring letter.
+
+Here is a 200-word summary of the code:
+
+The program begins by allocating memory for an array of structs, where each struct represents a writer with an index and a name. The user is then prompted to enter the number of writers. The program then reads in the index and name of each writer, storing them in the struct array. The program then loops through each writer's name, counting the frequency of each letter. The letter that appears most frequently is stored as the variable 'wr'. The program then loops through each writer again, and if the writer's name does not contain the most frequently occurring letter, the writer's index is printed. The program's goal is to find the writer(s) whose name(s) do not contain the most frequently occurring letter, and print out their index(es).

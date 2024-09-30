@@ -1,0 +1,40 @@
+Here is the code with developer comments for each line:
+
+**Part I: Code**
+
+```c
+int ge,s,w;  // Define integer variables ge, s, and w
+void fen(int h,int a);  // Declare function fen with parameters h and a
+int main()
+{
+    int n=0,k=0;  // Initialize variables n and k to 0
+    cin>>n;  // Read an integer from standard input and store it in n
+    for(k=1;k<=n;k++)  // Loop n times
+    {
+       cin>>s;  // Read an integer from standard input and store it in s
+       ge=0;  // Initialize ge to 0
+       fen(s,2);  // Call function fen with parameters s and 2
+       cout<<ge<<endl;  // Print the value of ge followed by a newline
+    }
+    return 0;  // Return 0 to indicate successful program execution
+}
+void fen(int h,int a)
+{
+    for(int i=2;i<=h;i++)  // Loop from 2 to h
+    {
+        if((h%i==0)&&(i>=a))  // If h is divisible by i and i is greater than or equal to a
+        {
+            if(h/i!=1)  // If h is not equal to its largest factor
+            {fen(h/i,i);}  // Recursively call fen with h/i and i as arguments
+            else
+            {ge++;}  // Increment ge if h is equal to its largest factor
+        }
+    }     
+}
+```
+
+**Part II: Summary**
+
+This program calculates the number of prime factors of a number. It reads a number n from the user, and then for each number from 1 to n, it reads another number s and calculates the number of prime factors of s using the function fen. The result is then printed to the standard output.
+
+The function fen takes two parameters, h and a. It iterates from 2 to h and checks if h is divisible by i and i is greater than or equal to a. If both conditions are true, it recursively calls itself with h/i and i as arguments until h is no longer divisible by i. It increments the count ge each time it finds a prime factor. Finally, it prints the value of ge as the number of prime factors of the original number.

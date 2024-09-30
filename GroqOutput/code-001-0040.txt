@@ -1,0 +1,59 @@
+Here is the code with developer comments and a 200-word summary:
+
+**Part I: Code**
+
+```c
+int main()
+{
+    // Declare the function f and variables n, m, i, and z
+    int f(int x, int y);
+    int n, m, i, z;
+
+    // Read an integer n from the user
+    scanf("%d", &n);
+
+    // Iterate n times
+    for(i=0; i<n; i++)
+    {
+        // Read an integer m from the user
+        scanf("%d", &m);
+
+        // Call the function f with arguments 1 and m, and print the result
+        z = f(1, m);
+        printf("%d\n", z);
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+int f(int x, int y)
+{
+    // Declare variables z, t, and p
+    int z, t = 1, l = 0, p;
+
+    // Calculate p as the square root of y
+    p = (int) pow(y, 0.5);
+
+    // If x is 1, set it to 2
+    if(x == 1) x = 2;
+
+    // Iterate from x to p
+    for(z = x; z <= p; z++)
+    {
+        // If y is divisible by z and z is not equal to y
+        if(y % z == 0 && z != y)
+        {
+            // Recursively call f with z and y divided by z
+            t += f(z, y / z);
+        }
+    }
+
+    // Return the result
+    return t;
+}
+```
+
+**Part II: Summary**
+
+The code presented above is a program that calculates the sum of all distinct proper divisors of a given number. It does this by using a recursive function called f that takes two integer arguments, x and y. The function iterates from x to the square root of y, and for each number z in this range, it checks if y is divisible by z and if z is not equal to y. If these conditions are met, the function recursively calls itself with z and y divided by z. The function returns the sum of all these divisors. The main function reads an integer n and then iterates n times, reading an integer m and calling the function f with arguments 1 and m. The result is then printed to the console.

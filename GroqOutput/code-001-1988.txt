@@ -1,0 +1,27 @@
+Here is the code with developer comments and a summary:
+
+**Part I**
+```
+int dfs(int k, int b) {
+  // Initialize the return value to 0 if k is not 1
+  int ret=(k==1),i;
+  // Loop through all numbers from b to k
+  for (i=b;i<=k;i++) {
+    // Check if k is divisible by i
+    if (k%i==0) {
+      // If k is divisible by i, recursively call dfs with k/i and i
+      ret+=dfs(k/i,i);
+    }
+  }
+  // Return the accumulated result
+  return ret;
+}
+```
+
+**Part II**
+
+The code provided is a recursive function to calculate the sum of all proper divisors of a given number `k`. Here is a summary of the code:
+
+The function `dfs` takes two integer parameters `k` and `b`. It recursively calculates the sum of all proper divisors of `k` starting from `b`. The function initializes a variable `ret` to 0 if `k` is 1, and then loops through all numbers from `b` to `k`. For each number `i` in this range, it checks if `k` is divisible by `i`. If it is, it recursively calls `dfs` with `k/i` and `i`, and adds the result to `ret`. Finally, it returns `ret`.
+
+The `main` function reads an integer `n` from the input, and then for each of the `n` inputs, it reads an integer `k`, calls `dfs` with `k` and 2, and prints the result to the output.

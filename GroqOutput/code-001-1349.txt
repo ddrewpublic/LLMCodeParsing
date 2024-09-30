@@ -1,0 +1,75 @@
+**Part I**
+
+Here is the code with developer comments:
+
+```c
+int sushu(int b) {
+  // Declare a flag variable to keep track of whether the number is prime or not
+  int flag = 1, i;
+  
+  // If the number is 2, it is considered prime, so return 1
+  if (b == 2) return 1;
+  
+  // If the number is an even number (except for 2), it is not prime, so return 0
+  if (b % 2 == 0) return 0;
+  
+  // Loop through all numbers from 2 to half of the input number
+  for (i = 2; i <= b / 2; i++) {
+    // If the number is divisible by any of these numbers, it is not prime, so break the loop
+    if (b % i == 0) {
+      flag = 0;
+      break;
+    }
+  }
+  
+  // If the flag is still 1, the number is prime, so return 1
+  if (flag == 0) return 0;
+  else return 1;
+}
+
+int number(int a, int b) {
+  // Declare a variable to keep track of the total sum of prime factors
+  int i, total = 1;
+  
+  // If the number is prime, add it to the total sum
+  if (sushu(a)) total = 1;
+  else {
+    // Loop through all numbers from b to a
+    for (i = b; i <= a; i++) {
+      // If the number is divisible by any of these numbers and the quotient is greater than or equal to the divisor
+      if (a % i == 0 && a / i >= i) {
+        // Recursively call the function to get the prime factors of the quotient
+        total = total + number(a / i, i);
+      }
+    }
+  }
+  
+  // Return the total sum of prime factors
+  return total;
+}
+
+void main() {
+  // Declare variables to store the number of inputs and the input numbers
+  int n, i, A[100], B[100];
+  
+  // Read the number of inputs
+  scanf("%d", &n);
+  
+  // Loop through each input number
+  for (i = 0; i < n; i++) {
+    // Read the input number
+    scanf("%d", &A[i]);
+    // Calculate the sum of prime factors for the input number
+    B[i] = number(A[i], 2);
+  }
+  
+  // Print the sum of prime factors for each input number
+  for (i = 0; i < n; i++) {
+    printf("%d\n", B[i]);
+  }
+}
+```
+
+**Part II**
+
+The above code is written to solve a problem of calculating the sum of prime factors for a set of given numbers. It first defines a function `sushu` to check whether a number is prime or not, and then defines a function `number` to calculate the sum of prime factors for a given number. In the `main` function, it reads a set of numbers and calculates the sum of prime factors for each number using the `number` function.

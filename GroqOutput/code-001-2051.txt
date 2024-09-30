@@ -1,0 +1,66 @@
+Here is the code with developer comments:
+
+**Part I: Code**
+
+```c
+int count;
+```
+Declaring a global integer variable `count`.
+
+```c
+void f(int a ,int b)
+{
+	// Use a local integer variable j
+    int j;
+    if(a==1)
+	{
+        // If a is 1, increment the global count variable
+		count+=1;
+    }
+    else
+    {
+        // If a is not 1, use a loop to iterate from b to a
+        for(j=b;j<=a;j++)
+        {
+            // Check if a is divisible by j
+            if(a%j==0)
+            {
+                // If a is divisible by j, recursively call the function
+                f(a/j,j);
+            }
+        }
+    }
+}
+```
+Defining the `f` function takes a positive integer `a` and a positive integer `b` as input and performs a recursive algorithm to count the number of divisors of `a`.
+
+```c
+int main()
+{
+    // Declare an integer variable n
+    int n;
+    // Declare an integer variable i
+    int i;
+    // Declare an integer variable number
+    int number;
+    // Use scanf to read an integer from the standard input
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        // Initialize the global count variable to 0
+        count=0;
+        // Use scanf to read an integer from the standard input
+        scanf("%d",&number);
+        // Call the f function with the read number and 2 as input
+        f(number,2);
+        // Use printf to print the count to the standard output
+        printf("%d\n",count);
+    }
+    return 0;
+}
+```
+Defining the `main` function reads an integer `n` from the standard input, iterates `n` times, reads an integer `number` each time, calls the `f` function with `number` and 2 as input, and prints the count to the standard output.
+
+**Part II: Summary**
+
+This code is a solution to a problem that counts the number of divisors of a given positive integer `number`. The code uses a recursive algorithm implemented in the `f` function, which takes an integer `a` and a positive integer `b` as input. The algorithm checks if `a` is divisible by `b` and if so, recursively calls itself with `a` divided by `b` and `b` as input. The `main` function reads an integer `n` from the standard input, iterates `n` times, reads an integer `number` each time, calls the `f` function with `number` and 2 as input, and prints the count to the standard output.

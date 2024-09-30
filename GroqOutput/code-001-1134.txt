@@ -1,0 +1,29 @@
+**Part I: Code with Developer Comments**
+
+```c
+int qipa(int p,int q)    // Calculate the Quadratic Iterate Product Algorithm (QIPA) for a given pair of numbers p and q
+{
+    int i, l, s = 0; // Initialize variables i, l, and s
+    if (p == 1) return 1; // Base case: if p is 1, return 1
+    for (i = p; i > 1; i--) // Iterate from p to 2
+      if (p % i == 0 && i <= q) // Check if p is divisible by i and i is less than or equal to q
+        s += qipa(p / i, i); // Recursively call qipa with p divided by i and i as the new pair
+    return s; // Return the sum of the recursive calls
+}
+int main()
+{
+  int i, j, n, m, t; // Declare variables for main function
+  scanf("%d", &n); // Read the number of test cases
+  for (i = 1; i <= n; i++) // Loop through each test case
+  {
+    scanf("%d", &m);   
+    t = qipa(m, m); // Calculate the QIPA for the current pair and store the result in t
+    printf("%d\n", t);    
+  }
+  return 0; // Return exit code 0
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C program that implements the Quadratic Iterate Product Algorithm (QIPA) for a given pair of numbers p and q. The QIPA is a complex recursive function that calculates the product of the quadratic equations of a number and its divisors. The program takes the number of test cases as input and for each test case, it calculates the QIPA for the given pair of numbers using the qipa function. The results are then printed to the console. The program is designed to handle integer inputs and outputs and is efficient in terms of memory usage, but it may take a long time to run for large inputs due to the recursive nature of the qipa function.

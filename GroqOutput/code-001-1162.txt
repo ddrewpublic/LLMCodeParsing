@@ -1,0 +1,39 @@
+**Part I**
+
+```
+int main()
+{
+    // Declare a function pointer for the function f
+    int f(int x,int y);
+    
+    // Declare integer variables n and i
+    int n,i;
+    
+    // Declare an integer array a of size 100
+    int a[100];
+    
+    // Read an integer value for n
+    scanf("%d",&n);
+    
+    // Loop n times
+    for(i=0;i<n;i++)
+    {
+        // Read an integer value for a[i]
+        scanf("%d",&a[i]);
+        // Print the result of calling function f with arguments a[i] and 2
+        printf("%d\n",f(a[i],2));
+    }
+    
+    // Read an integer value for i
+    scanf("%d",&i);
+    
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C program that calculates and prints the values of a mathematical function f(x,y) for given values of x and y. The function f(x,y) is defined separately and recursively calculates the value based on certain conditions.
+
+The main function reads two integers, n and i, and a sequence of integers a. It then calls the function f(x,y) for each value of a, with y = 2, and prints the result. The function f(x,y) checks if x is prime, and if not, it recursively calculates the result by dividing x by the first divisor it finds until it is a prime number, at which point it returns 1. If x is prime, it returns 1.

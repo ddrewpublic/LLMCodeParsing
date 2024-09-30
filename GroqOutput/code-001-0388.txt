@@ -1,0 +1,26 @@
+**Part I**
+
+```c
+void fenjie(int);
+int solutionnum=1;// initialize a variable solutionnum to 1
+
+int main()
+{   int n,a,i;
+    cin>>n;// read an integer from input
+    for(i=1;i<=n;i++)
+        {cin>>a;// read an integer from input
+        fenjie(a);// call function fenjie with argument a
+        cout<<solutionnum<<endl;// print the value of solutionnum and a newline
+        solutionnum=1;// reset the value of solutionnum to 1
+        }
+    return 0;
+}
+```
+
+**Part II**
+
+Summary:
+The program is designed to calculate the number of divisors for a given integer. It uses a recursive function "fenjie" to find the divisors of the input number. The "fenjie" function takes an integer as input and returns the number of divisors. The main function reads multiple integers from input and calls the "fenjie" function for each integer, then prints the number of divisors along with the original integer.
+
+Note:
+The `yinzi` array in the `fenjie` function is used to store the prime numbers found during the recursion. The `fenjie` function does not seem to be correctly implemented as it appears to be missing a base case to stop the recursion. The function seems to be trying to find the prime factors of a number, but it would require a more robust implementation.

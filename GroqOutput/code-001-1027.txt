@@ -1,0 +1,21 @@
+**Part I**
+
+```c
+int num = 1, i, factor;  // declare variables num, i, and factor, initialize num to 1
+void f(int factor, int x)
+{
+	for (; factor * factor <= x; factor++)  // loop from 2 to the square root of x
+	{
+		if (x % factor == 0)  // check if x is divisible by factor
+		{
+			num++;  // increment num if x is divisible by factor
+			f(factor, x / factor);  // recursively call f with x divided by factor
+		}
+	}
+}
+```
+
+**Part II**
+
+Summary:
+This code calculates the number of prime factors for each number input by the user. The function `f` takes two integer parameters: `factor` and `x`. The function uses a loop that starts from 2 and goes up to the square root of `x`. For each iteration, it checks if `x` is divisible by `factor`. If it is, it increments the `num` variable and recursively calls itself with `x` divided by `factor`. The main function reads input numbers from the user, calls the `f` function for each number, and prints the result. The `num` variable is reset to 1 for each new input number.

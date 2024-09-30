@@ -1,0 +1,51 @@
+**Part I**
+```
+int i=0;
+```
+// Initialize variable i to 0
+
+```
+int f(int n,int m)
+{int k=0;
+  if(m==1)
+    i++;
+  else
+  {for(k=n;k<=m;k++)
+     {if(m%k==0)
+      {n=k;
+       f(n,m/n);}}}
+  return(i);}
+```
+// Function f takes two integers n and m as inputs, and returns the number of divisors of m
+// Initialize variable k to 0
+// If m is equal to 1, increment i by 1
+// If m is not equal to 1, loop from n to m and check if m is divisible by k
+// If m is divisible by k, set n to k and recursively call f with m/n
+// Return the value of i, which counts the number of divisors
+
+```
+int main()
+{
+ int n,b,c;
+ cin>>n;
+ int a;
+ for(b=0;b<n;b++)
+   {cin>>a;
+    c=f(2,a);
+    cout<<c<<endl;
+    i=0;}
+ return 0;
+}
+```
+// Function main
+// Read an integer n from the input
+// Initialize variables b, c, and a
+// Loop from 0 to n-1
+// Read an integer a from the input
+// Call function f with 2 and a, and store the result in c
+// Print the value of c to the output
+// Reset i to 0
+
+**Part II**
+
+This code is used to find the number of divisors for a given number. The divisors are calculated using a recursive function f(n,m), which takes two integers n and m as inputs. The function checks for each integer from n to m if it is a divisor of m. If it is, it calls itself recursively with m/n until m becomes 1 (i.e., until it is no longer divisible by any number other than 1 and itself). The number of times this function calls itself is equal to the number of divisors of m. The main function reads a number n from the input and calls the function f for each number from 2 to n. The numbers and their corresponding numbers of divisors are then printed to the output.

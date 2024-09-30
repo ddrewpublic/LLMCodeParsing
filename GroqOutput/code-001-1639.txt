@@ -1,0 +1,36 @@
+**Part I**
+
+```
+int d(int,int);  // Function prototype for function d(int, int)
+int main()
+{
+  int i,n,x;  // Declare variables i, n, x as integers
+  cin>>n;  // Read input value of n
+  for(i=1;i<=n;i++)    
+  {
+    cin>>x;  // Read input value of x
+    cout<<d(x,2)<<endl;    
+  }  // Call function d(x, 2) for each value of x
+  return 0;
+}
+int d(int x,int y)
+{
+  int j,num=1;   
+  if(x==1)
+    return 0;    
+  if(x==2)
+    return 1;    
+  for(j=y;j<=(int)sqrt((double)x);j++)
+    if(x%j==0)
+      num+=d(x/j,j);  
+  return num;	   
+}
+```
+
+**Part II**
+
+This program is designed to find the sum of all proper divisors of a given number up to a specified limit. The program prompts the user to input a number n, and then for each number from 1 to n, it prompts the user to input a number x. It then calls the function d(x, 2) to calculate the sum of the proper divisors of x.
+
+The function d(x, y) calculates the sum of the proper divisors of x up to y. It starts by checking if x is 1 or 2, in which case it returns 0 or 1, respectively. Then, it iterates from y to the square root of x, and for each number j in this range, it checks if x is divisible by j. If it is, it adds the sum of the proper divisors of x/j to the total sum. This process continues until all proper divisors have been found.
+
+The main function repeatedly calls the d function for each number from 1 to n, and prints the result to the console.

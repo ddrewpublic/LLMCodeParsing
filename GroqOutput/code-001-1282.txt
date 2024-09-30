@@ -1,0 +1,44 @@
+Here is the code with developer comments for each line, using the header "Part I", and a 200-word summary, using the header "Part II":
+
+**Part I: Code with comments**
+
+```c
+int f(int,int); // declare function f that takes two integer parameters and returns an integer
+int main()
+{
+    int n,i,a,b[100]; // declare variables n, i, a, and array b of size 100
+    scanf("%d",&n); // read integer n from standard input
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a); // read integer a from standard input
+        b[i]=f(a,2); // call function f with parameters a and 2, store result in b[i]
+    }
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n",b[i]); // print each value in array b to standard output
+    }
+    return 0; // return 0 to indicate successful execution
+}
+```
+
+```c
+int f(int x,int y)
+{
+    int j,sum=1; // declare variables j and sum, initialize sum to 1
+    if(x<y)
+        sum=0; // if x is less than y, set sum to 0
+    else
+    {
+        for(j=y;j<x;j++)
+        {
+            if(x%j==0)
+                sum=sum+f(x/j,j); // if x is divisible by j, recursively call f with x/j and j
+        }
+    }
+    return sum; // return the final value of sum
+}
+```
+
+**Part II: Summary**
+
+This C code consists of two parts: the `main` function and the `f` function. The `main` function reads input values `n` and `a` from the user, and then calls the `f` function with the input values and a fixed value `2`. The result of the `f` function is stored in an array `b` and then printed to the console. The `f` function is a recursive function that calculates the sum of the divisors of a given number `x` up to a certain value `y`. If `x` is less than `y`, the function returns 0. Otherwise, it iterates from `y` to `x` and, for each divisor `j` of `x`, recursively calls itself with `x/j` and `j`, and accumulates the results in the `sum` variable.

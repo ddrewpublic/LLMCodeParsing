@@ -1,0 +1,54 @@
+**Part I**
+
+```
+int main()
+{
+    // Declare a variable n of type int
+    int n,i,a,factor(int N,int min);
+    // Read an integer from the user using scanf and store it in n
+    scanf("%d",&n);
+    // Loop n times
+    for(i=0;i<n;i++)
+    {
+        // Read an integer from the user using scanf and store it in a
+        scanf("%d",&a);
+        // Call the factor function with arguments a and 2, and print the result
+        printf("%d\n",factor(a,2));
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+int factor(int N,int min)
+{
+    // Declare variables i and result of type int
+    int i,result;
+    // Initialize result to 1
+    result=1;
+    
+    // If N is less than min, return 0
+    if(N<min)
+    {
+        return 0;
+    }
+    // Loop from min to N
+    for(i=min;i<N;i++)
+    {
+        // If N is divisible by i, recursively call factor with N/i and i
+        if(N%i==0)
+        {
+            result+=factor(N/i,i);
+        }
+    }
+    // Return the result
+    return result;
+}
+```
+
+**Part II**
+
+This code is a implementation of the function to find the sum of all factors of a given number. The function `factor` takes two arguments, `N` and `min`, where `N` is the number for which the sum of factors is to be found, and `min` is the minimum factor to be considered. This function calls itself recursively to find the sum of all factors.
+
+In the main function, it reads a number `n` from the user, then reads `n` numbers from the user and for each number, it calls the `factor` function with the number and 2, and then prints the result. The result is the sum of all factors of the given number.
+
+The code is well commented to understand the logic behind it and helps to debug the code easily.

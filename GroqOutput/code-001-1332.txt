@@ -1,0 +1,29 @@
+**Part I**
+
+```cpp
+//***************************************************
+//1.cpp     ????     ******
+//?? ???  1200018209  ********
+//?? 2012-11-27 ******
+//***************************************************
+
+int dispose(int, int); // declare dispose function that takes two integers as parameters
+
+int main() {
+    int n, i, p; // declare variables n, i, p of type int
+    cin >> n; // read an integer value into variable n
+    for (i = 0; i < n; i++) {
+        cin >> p; // read another integer value into variable p
+        cout << dispose(p, 2) << endl; // call function dispose with p and 2 as parameters, print the result
+    }
+    return 0; // end of main function
+}
+```
+
+**Part II**
+
+This program is designed to find the sum of all divisors of a given number. The main function takes an integer input from the user, and then iterates through a loop. In each iteration, it reads another integer value and prints the sum of all divisors of that value, using the dispose function.
+
+The dispose function is recursive and takes two parameters, p and y. It initializes a variable sol to 1, which represents the sum of divisors so far. Then, it iterates from y to the square root of p. For each iteration, it checks if p is divisible by the current number i. If it is, it recursively calls itself with p divided by i and i as parameters, and adds the result to the sol. Finally, it returns the sol, which is the sum of all divisors of p.
+
+The purpose of the dispose function is to break down a number into its prime factors, and then calculate the sum of all the divisors by recursively calling itself. The output of the program is the sum of all divisors of each input number.

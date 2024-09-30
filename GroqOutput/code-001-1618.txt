@@ -1,0 +1,35 @@
+**Part I**
+
+```
+int main(){
+  // Declare a function pointer to the function hanshu with two integer parameters
+  int hanshu(int k,int min);
+  
+  int n, i, a;
+  
+  // Read an integer value from the user
+  scanf("%d",&n);
+  
+  // Loop through the input value
+  for(i=0;i<n;i++){
+      // Read an integer value from the user
+      scanf("%d",&a);
+      // Print the result of calling the function hanshu with a and 2
+      printf("%d\n",hanshu(a,2));
+     }
+  
+  // Read another integer value from the user
+  scanf("%d",&n);
+  
+  // Return 0 to indicate successful execution
+  return 0;
+}
+```
+
+**Part II**
+
+Summary:
+
+The code consists of a main function that reads an integer array from the user, and then calls a helper function Hanshu to calculate the result. The function Hanshu takes two integers as input: the number k and the minimum value min. If k is less than min, the function returns 0. Otherwise, it loops through all the numbers from min to k/j (inclusive), where j is the current number. If k is divisible by j, it recursively calls Hanshu with k/j and j, and adds the result to a variable b. The function finally returns b.
+
+The main function loops through the input array, reads each number, and calls Hanshu with that number and 2. It then prints the result. For example, if the user inputs [6,2,3], the output would be [6,2,3].

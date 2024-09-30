@@ -1,0 +1,46 @@
+**Part I**
+
+```
+/*
+ * ????????.cpp
+ * ??????
+ *  Created on: 2012-11-30
+ * ??????????a?????????????????a = a1 * a2 * a3 * ... * an?
+ ??1 < a1 <= a2 <= a3 <= ... <= an?????????????????a = a???????
+ */
+```
+
+// The program header is here, including the file name, author, and creation date.
+
+**int yinshu(int n,int m)**
+
+```
+int i,sum=0;           // Initialize a variable i and a sum variable to 0.
+if(n==1)                // Base case: if n is 1, return 1.
+    return 1;
+for(i=m;i<=n;i++)             // Loop through the numbers from m to n.
+{
+    if(n%i==0)              // If n is divisible by i, calculate the sum recursively.
+        sum+=yinshu(n/i,i);               // recursive function call with n/i and i.
+}
+return sum;
+```
+
+**int main()**
+
+```
+int n,i,m;                      // Initialize variables n, i, and m.
+cin>>n;                       // Read input for n.
+for(i=1;i<=n;i++)                    // Loop through the inputs n times.
+{
+    cin>>m;                      // Read input for m.
+    cout<<yinshu(m,2)<<endl;               // Call the yinshu function with m and 2, and print the result.
+}
+return 0;                        // Exit the program.
+```
+
+**Part II**
+
+This program calculates the sum of all proper divisors of a given integer, except for the number itself. It uses a recursive function called yinshu, which takes two arguments, the number to calculate the sum for, and the base divisor to start with.
+
+For example, if the input is a number `n`, the program will calculate the sum of all proper divisors of `n`, except for `n` itself. The sum will be calculated up to a certain base divisor, in this case 2. If the base divisor is changed, the sum will be calculated up to that base divisor instead. This makes the program useful for calculating sums of various types of divisors of a number.

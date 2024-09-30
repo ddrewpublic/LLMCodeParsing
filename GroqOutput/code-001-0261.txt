@@ -1,0 +1,37 @@
+**Part I**
+
+```cpp
+/*
+ * 35_1.cpp
+ * ????????????
+ *  Created on: 2010-12-3
+ *      Author: 1000012877
+ */
+
+int n, sum; // declare integers n and sum
+int fenjie(int min, int max) { // declare a function called fenjie with two integer parameters min and max
+    int i; // declare an integer i
+    for (i = min; i <= sqrt(max); i++) { // loop from min to the square root of max
+        if (max % i == 0 && i <= max / i) { // check if i is a divisor of max
+            sum++; // increment sum by 1
+            fenjie(i, max / i); } // recursively call fenjie with i and max/i
+    if (i > max / i) break; }
+    return sum; // return the result
+}
+int main() {
+    int i, k;
+    cin >> k; // read an integer from standard input
+    for (i = 0; i < k; i++) { // loop k times
+        cin >> n; // read an integer from standard input
+        sum = 1; // initialize sum to 1
+        sum = fenjie(2, n); // call fenjie with 2 and n
+        cout << sum << endl; // print the result
+    }
+    return 0; }
+```
+
+**Part II**
+
+This C++ program computes the number of divisors for a given positive integer. The main function reads a series of integers from the standard input, and for each integer, it calls a recursive function fenjie to count the number of its divisors. The fenjie function iterates from 2 to the square root of the given integer, checking if each number is a divisor. If it is, it increments a running count and recursively calls itself with the divisor and the quotient. The function returns the total count of divisors.
+
+This program demonstrates the use of recursive functions and loops in C++. The fenjie function is an example of a divide and conquer approach, dividing the problem of counting divisors into smaller sub-problems and solving them recursively. The main function showcases the use of cin and cout streams to read and print integers.

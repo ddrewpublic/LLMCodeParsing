@@ -1,0 +1,37 @@
+Here is the output with developer comments for each line under the header "Part I", along with a 200-word summary under the header "Part II":
+
+**Part I**
+
+```c
+int fun(int m,int n){
+    //m is initialized to a value, n is initialized to a value
+    //At some point, we will decide if we need to call this function again
+    if (m>sqrt(n)) return 0;
+    //Base case, if m is greater than the square root of n, return 0
+    //This is likely a boundary condition
+    if (n%m==0) return fun(m+1,n/m)+fun(m+1,n)+1;
+    //Recursive case, if n is divisible by m, return the sum of two recursive calls
+    //The +1 is likely a recursive call terminal condition
+    else return fun(m+1,n);
+    //Recursive case, otherwise, return the result of another recursive call
+    //The +1 is likely a recursive call terminal condition
+}
+
+//Main function declaration
+main(){
+    int i,x,y;
+    cin>>x;
+    //Read input value x
+    for (i=1;i<=x;i++){
+    //Loop x times
+        cin>>y;
+        cout<<fun(2,y)+1<<endl;
+        //Call fun with arguments 2 and y, then add 1 and print the result
+    }
+    return 0;
+}
+```
+
+**Part II**
+
+This code is a solution to a well-known dynamic programming problem. The function `fun` is designed to calculate the number of paths from the top-left corner to the bottom-right corner of a `m` x `n` grid, where each cell can either move diagonally, horizontally, or vertically to an adjacent cell. The base case is when `m` is greater than the square root of `n`, at which point there are no more paths to consider. The recursive case is when `n` is divisible by `m`, in which case the number of paths is the sum of the number of paths to the top-right and bottom-right corners, incremented by 1. The `main` function reads input values `x` and `y`, and then calls `fun` with arguments 2 and `y` to calculate the number of paths, adding 1 and printing the result for each iteration of the loop. The `fun` function is designed to avoid redundant calculations and the main function is designed to handle input values and print the results.

@@ -1,0 +1,71 @@
+**Part I**
+```
+int sum=0;
+```
+// Initialize the sum variable to 0
+
+```
+int geshu(int a,int x)
+{
+```
+// Define a function named geshu that takes two integer parameters, a and x
+
+```
+	int y,z;
+	z=a;
+	y=(int)sqrt(a);
+```
+// Declare two integer variables, y and z, and initialize z to the value of a
+// Calculate the square root of a and assign it to y, casting the result to an integer
+
+```
+	while(x<=y)
+	{
+```
+// Start a while loop that continues as long as x is less than or equal to y
+
+```
+		if(a%x==0)
+		{
+```
+// Check if a is divisible by x
+// If true, execute the code inside this if statement
+
+```
+			a=a/x;
+			geshu(a,x);
+		}
+```
+// Divide a by x and recursively call the geshu function with the new value of a and x
+
+```
+		if(a==z/x)
+			a=z;
+```
+// Check if a has been reduced to its original value z/x
+// If true, reset a to its original value z
+
+```
+		x++;
+```
+// Increment x by 1
+
+```
+	}
+	sum++;
+```
+// Increment the sum variable by 1
+
+```
+	return sum;
+```
+// Returns the sum variable
+
+```
+}
+```
+// End of the geshu function
+
+**Part II**
+
+The provided code is a C program that calculates the number of prime factors for each number in an array. It uses a recursive function named geshu to find the prime factors of a given number. The function works by continuously dividing the input number by the smallest prime number (starting from 2) until it can no longer be divided evenly. If the division is successful, it then calls itself recursively with the new value of the input number and the same prime number. This process continues until the input number is reduced to 1. The function keeps track of the number of recursive calls, which represents the number of prime factors. The main function reads the number of inputs and the input numbers from the user, then calls the geshu function for each input number and stores the result in an array. Finally, it prints the array.

@@ -1,0 +1,53 @@
+**Part I: Code with Developer Comments**
+
+```c
+void main()
+{
+    // Function to calculate the number of ways to divide an integer
+    int ways(int a, int min);
+
+    // Declare variables n and b
+    int n,b;
+
+    // Read input value for n
+    scanf("%d",&n);
+
+    // Loop until n becomes 0
+    while(n-->0)
+    {
+        // Read input value for b
+        scanf("%d",&b);
+
+        // Calculate and print the number of ways to divide b
+        printf("%d\n",ways(b,2));
+    }
+}
+
+int ways(int a, int min)
+{
+    // Base case: If a is less than the minimum value, return 0
+    if(a<min) return 0;
+
+    // Initialize sum to 0
+    int sum=0,i;
+
+    // Loop from min to the square root of a
+    for(i=min;i<=sqrt(a*1.0);i++)
+    {
+        // If a is divisible by i, recursively call ways with a/i and i
+        if(a%i == 0)
+            sum = sum + ways(a/i, i);
+    }
+
+    // Add 1 to the sum and return it
+    return sum+1;
+}
+```
+
+**Part II: Summary**
+
+This C program calculates the number of ways to divide an integer into smaller parts. It uses a recursive function `ways` to perform this calculation. The function takes two parameters: the integer to be divided (`a`) and a minimum value (`min`). The function returns the number of ways to divide `a` into parts greater than or equal to `min`.
+
+The program prompts the user to input a value for `n`, and then reads `n` values for `b`. For each value of `b`, the program calls the `ways` function with `b` and `min=2` (hardcoded), and prints the result.
+
+The `ways` function works by recursively dividing `a` into smaller parts, and summing up the number of ways to divide each part. The base case is when `a` is less than `min`, in which case the function returns 0. Otherwise, the function loops from `min` to the square root of `a`, and for each divisor `i`, it recursively calls itself with `a/i` and `i`. The function returns the sum of the number of ways to divide each part, plus 1 for the original value of `a`.

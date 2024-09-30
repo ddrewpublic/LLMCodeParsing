@@ -1,0 +1,64 @@
+**Part I: Code with comments**
+
+```
+char name; // variable to store the most frequently occurring character
+int num,k=0,t=0; // variables to store the number of books, count, and maximum count
+int nametimes[100]={0}; // array to store the count of each character
+
+struct book // define a structure to represent a book
+{
+    unsigned int No; // book number
+    char Name[26]; // book name
+} *p; // pointer to an array of book structures
+
+void operate() // function to find the most frequently occurring character
+{
+    int i;
+    for(i=65;i<91;i++) // loop through all uppercase letters
+        if(nametimes[i]>t) // if the count of the current character is greater than the maximum count
+        {
+            t=nametimes[i]; // update the maximum count
+            name=i; // update the most frequently occurring character
+        }
+}
+
+void print() // function to print the result
+{
+    struct book *pi;
+    int i;
+    printf("%c\n%d\n",name,t); // print the most frequently occurring character and its count
+    for(pi=p;pi<p+num;pi++) // loop through all books
+        for(i=0;pi->Name[i]!='\0';i++) // loop through all characters in the book name
+            if(pi->Name[i]==name) // if the current character matches the most frequently occurring character
+            {
+                if(k==0) // if this is the first occurrence of the character
+                {
+                    printf("%d",pi->No); // print the book number
+                    k++; // increment the count
+                }
+                else
+                    printf("\n%d",pi->No); // print the book number on a new line
+                break; // stop searching for the character
+            }
+}
+
+main()
+{
+    scanf("%d",&num); // read the number of books
+    struct book *pi;
+    int i;
+    p=(struct book*)malloc(num*sizeof(struct book)); // allocate memory for the array of book structures
+    for(pi=p;pi<p+num;pi++) // loop through all books
+    {
+        scanf("%d %s",&pi->No,pi->Name); // read the book number and name
+        for(i=0;pi->Name[i]!='\0';i++) // loop through all characters in the book name
+            nametimes[(int)pi->Name[i]]++; // increment the count of the current character
+    }
+    operate(); // find the most frequently occurring character
+    print(); // print the result
+}
+```
+
+**Part II: Summary**
+
+This C program reads a number of books from the user, along with their names and numbers. It then finds the most frequently occurring character in the book names and prints out the character, its frequency, and the numbers of books that contain it. The program uses a dynamic array of structures to represent the books, and a separate array to keep track of the frequency of each character. The `operate` function finds the most frequently occurring character by looping through all characters and updating the maximum count if necessary. The `print` function prints out the result and lists the numbers of books that contain the most frequently occurring character.

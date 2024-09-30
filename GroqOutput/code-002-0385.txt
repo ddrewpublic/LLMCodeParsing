@@ -1,0 +1,91 @@
+Here is the code with developer comments for each line, using the header "Part I", along with a 200-word summary and the header "Part II":
+
+**Part I**
+
+```c
+// Define a struct to represent a book, which contains an integer (num) and a character array (w) of size 26
+struct {
+    int num;
+    char w[26];
+} book[999], test[1];
+
+int main(int argc, char* argv[])
+{  
+    // Declare integer variables m, i, j, n, and s
+    int m, i, j, n, s;
+    // Declare character variables x and c
+    char x, c;
+
+    // Read an integer input m
+    scanf ("%d", &m);
+
+    // Loop m times
+    for (i = 0; i < m; i++)
+    {
+        // Read an integer and a string input for each book
+        scanf ("%d%s", &book[i].num, book[i].w);
+    }
+
+    // Initialize variables x, n, and c
+    x = 'A';
+    n = 0;
+    c = 'A';
+
+    // Infinite loop
+    while (1)
+    {
+        // Initialize variable s to 0
+        s = 0;
+
+        // Loop through all books
+        for (i = 0; i < m; i++)
+        {
+            // Loop through each character in the book's title
+            for (j = 0; j < strlen(book[i].w); j++)
+            {
+                // If the book's title contains the current character x, increment s
+                if (book[i].w[j] == x)
+                {
+                    s++;
+                }
+            }
+        }
+
+        // If s is greater than n, update n and c
+        if (s > n)
+        {
+            n = s;
+            c = x;
+        }
+
+        // If x reaches 'Z', break the loop
+        if (x == 'Z') {break;}
+        // Increment x
+        x++;
+    }
+
+    // Print the character c and integer n
+    printf ("%c\n%d\n", c, n);
+
+    // Loop through all books again
+    for (i = 0; i < m; i++)
+    {
+        // Loop through each character in the book's title
+        for (j = 0; j < strlen(book[i].w); j++)
+        {
+            // If the book's title contains the character c, print the book's number
+            if (book[i].w[j] == c)
+            {
+                printf ("%d\n", book[i].num);
+            }
+        }
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II**
+
+This program reads multiple book titles with corresponding numbers and finds the character that appears most frequently in the titles. It then prints the character and the count of its frequency. Finally, it prints the numbers of the books that contain this character. The program continuously increments the character until it reaches 'Z', at which point it breaks the loop. The program uses a struct to represent a book, with an integer (num) and a character array (w) of size 26. The program uses several loops to process the input data, find the most frequent character, and print the output.

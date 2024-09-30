@@ -1,0 +1,72 @@
+Here is the code with developer comments added for each line:
+
+```
+struct books {
+    // Define a struct called "books" with two fields: num (a character array of size 20)
+    // and w (a character array of size 26)
+    char num[20];
+    char w[26];
+};
+
+int main() {
+    // Declare integer variables k, j, i, and m
+    int k, j, i, m;
+    // Initialize an array of 150 integers to zero
+    int b[150] = {0};
+    // Read an integer from the input and store it in m
+    scanf("%d", &m);
+    // Declare an array of 1000 "books" structs
+    struct books a[1000];
+    // Loop m times
+    for (i = 0; i < m; i++) {
+        // Read a string and a character from the input, and store them in the
+        // num and w fields of the a[i] struct
+        scanf("%s %s", a[i].num, a[i].w);
+        // Loop through each character in the string a[i].w
+        for (j = 0; a[i].w[j] != '\0'; j++) {
+            // Increment the count in the b array for the character a[i].w[j]
+            b[a[i].w[j]]++;
+        }
+    }
+    // Initialize max to 0
+    int max = 0;
+    // Loop from 'A' to 'Z'
+    for (i = 'A'; i <= 'Z'; i++) {
+        // If the count in the b array for character i is greater than max
+        if (max < b[i]) {
+            // Update max to the count in the b array for character i
+            max = b[i];
+            // Update j to character i
+            j = i;
+        }
+    }
+    // Print the character j
+    printf("%c\n", j);
+    // Print the value of max
+    printf("%d\n", max);
+    // Initialize n to 0
+    int n = 0;
+    // Loop m times
+    for (i = 0; i < m; i++) {
+        // Initialize n to 0
+        n = 0;
+        // Loop through each character in the string a[i].w
+        for (k = 0; a[i].w[k] != '\0'; k++) {
+            // If the character a[i].w[k] is equal to j
+            if (a[i].w[k] == j) {
+                // Increment n
+                n = 1;
+            }
+        }
+        // If n is equal to 1
+        if (n == 1) {
+            // Print the string a[i].num
+            printf("%s\n", a[i].num);
+        }
+    }
+}
+```
+
+Part II: Summary
+
+This program reads a series of strings and characters from the input, and then prints out the most frequently occurring letter in these strings, as well as the strings themselves that contain this letter. The program uses an array `b` to keep track of the count of each character, and then loops through the array to find the maximum count. It then loops through the input strings again to find the strings that contain the most frequently occurring letter.

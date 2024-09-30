@@ -1,0 +1,53 @@
+**Part I: Code**
+
+```
+void next(int c[],int x)
+{
+    // Increment the first element of the array, then loop through the rest of the array
+    // to increment each element in the array to the value of the previous element, stop when
+    // the product of the array exceeds the given number x
+    int i,j;
+    c[0]++;
+    for (i=1; c[0]*c[1]*c[2]*c[3]*c[4]*c[5]*c[6]*c[7]*c[8]*c[9]*c[10]*c[11]*c[12]*c[13]*c[14]>x; i++)
+    {
+        c[i]++;
+        // If j is less than i, increment each value in the array to the value of j
+        for (j=0; j<i; c[j++]=c[i]);
+        // If the 15th element of the array is 2, break out of the loop
+        if (c[14]==2)  break;
+    }
+}
+
+int reslove(int x)
+{
+    // Initialize the array with all values set to 1 and the product equal to 1
+    int c[15]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int p=0; // Count of solutions
+    // Loop through the array, incrementing each value until the product of the array exceeds x
+    while (c[0]*c[1]*c[2]*c[3]*c[4]*c[5]*c[6]*c[7]*c[8]*c[9]*c[10]*c[11]*c[12]*c[13]*c[14]<=x)
+    {
+        // If the product of the array is equal to x, increment the counter
+        if (c[0]*c[1]*c[2]*c[3]*c[4]*c[5]*c[6]*c[7]*c[8]*c[9]*c[10]*c[11]*c[12]*c[13]*c[14]==x) p++;
+        // Call the next function to increment the array
+        next(c, x);
+    }
+    // Return the count of solutions
+    return p;
+}
+
+void main()
+{
+    int i=0,n,a;
+    // Read the number of test cases and loop through them
+    scanf("%d",&n);
+    while (i++<n)
+    {
+        // Read the input number and call the reslove function
+        scanf("%d",&a);
+        printf("%d\n",reslove(a));
+    }
+```
+
+**Part II: Summary**
+
+The code is designed to solve a specific problem related to combinatorics and number theory. It counts the number of solutions to a system of equations, where each variable is within a certain range. The solution is implemented using a recursive function that iterates through the range, incrementing the variables until the product of the variables exceeds the target number.

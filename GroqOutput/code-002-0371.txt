@@ -1,0 +1,39 @@
+**Part I**
+```
+int main()
+{
+    // Declare an array to store book titles, initialized with null characters
+    char book[1000][20]={'\0'},
+         // Declare an array to store author names, initialized with null characters
+         name[1000][30]={'\0'};
+
+    // Declare variables for length, number of books, and loop counters
+    int length,n,i,j,number[30]={0},memory,largest,temp;
+
+    // Read the number of books from the input
+    scanf("%d",&n);
+
+    // Read the book titles and author names for each book
+    for(i=0;i<n;i++)
+    {
+        scanf("%s %s",book[i],name[i]);
+    }
+}
+```
+
+**Part II**
+
+Summary:
+
+This C program reads a list of book titles and author names, and determines the most frequent letter in the author names. It then prints the letter and the number of times it appears in the author names, as well as a list of book titles that contain this letter.
+
+Here is a summary of the program's functionality:
+
+* Reads the number of books from the input
+* Reads the book titles and author names for each book
+* Calculates the frequency of each letter in the author names
+* Finds the most frequent letter
+* Prints the most frequent letter and its frequency
+* Prints a list of book titles that contain the most frequent letter
+
+The program uses arrays to store the book titles and author names, and uses the `scanf` function to read the input. The `strlen` function is used to calculate the length of the author names, and the `printf` function is used to print the output. The program uses loops and conditional statements to iterate over the input data and perform the calculations.

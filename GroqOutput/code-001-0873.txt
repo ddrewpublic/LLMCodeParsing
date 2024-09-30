@@ -1,0 +1,44 @@
+Here is the code with developer comments and a summary:
+
+Part I: Code with Comments
+
+```c
+int elm[100]={0}; // declare an array elm of size 100 and initialize all elements to 0
+int counts=0,num=0; // declare three integer variables counts, num, initialized to 0
+void Try(int b,int s) {
+    // define a function Try that takes two integer parameters b and s
+    int j;
+    for(j=2;j<=num;j++) {
+        // loop from 2 to num (inclusive)
+        if(j>=elm[s-1]) { // check if j is greater than or equal to the current element in the elm array
+            if(b%j==0) { // check if b is divisible by j
+                elm[s]=j; // assign j to the current element in the elm array
+                if(b/j==1) // check if b is divisible by j without a remainder
+                    counts++; // increment the counts variable
+                else if(b/j<j) // check if b is greater than j
+                    continue; // skip to the next iteration of the loop
+                else
+                    Try(b/j,s+1); // recursive call to Try with b/j as the new value of b and s+1 as the new value of s
+            }
+        }
+    }
+}
+
+int main() {
+    int n,i;
+    // read an integer n from the standard input
+    cin>>n;
+    for(i=0;i<n;i++) {
+        // loop for n times
+        counts=0;  // reset the counts variable to 0
+        cin>>num; // read an integer num from the standard input
+        Try(num,1);  // call the Try function with num and 1 as the initial values of b and s
+        cout<<counts<<endl; // output the value of the counts variable
+    }
+    return 0;
+}
+```
+
+Part II: Summary
+
+This C++ code is designed to find the number of prime factors for a given number. The function `Try` takes two parameters: `b` (which represents the number to be factored) and `s` (which represents the current level of factorialization). It uses a loop to divide `b` by all numbers from 2 to `num`, where `num` is the input number. If `b` is divisible by a number `j` and `j` is greater than or equal to the current element in the array `elm`, then `elm[s]` is assigned the value of `j` and the function recursively calls itself with `b/j` as the new value of `b` and `s+1` as the new value of `s`. The counts variable is incremented each time `b/j` equals 1. The main function reads a number `n` from the standard input, loops `n` times, and for each iteration, it resets the counts variable to 0, reads a number `num` from the standard input, calls the `Try` function, and outputs the value of counts.

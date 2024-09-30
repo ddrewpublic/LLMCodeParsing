@@ -1,0 +1,23 @@
+Here is the code with developer comments added for each line:
+
+**Part I: Code with comments**
+
+```c
+int count;  // Variable to store the count of factors
+void f(int n, int min) {  // Function to calculate factors of a number
+    int i;  // Local variable for loop iteration
+    if (n == min) { count++; return;}  // If the number is equal to the minimum divisor, increment the count and return
+    if (n % min != 0) { return;}  // If the number is not divisible by the minimum divisor, return
+    for (i = min; i <= n; i++) {  // Loop through the range of numbers from minimum divisor to the number
+        f(n/min, i);  // Recursively call the function to calculate factors of the quotient
+    }
+}
+```
+
+**Part II: Summary**
+
+This code is designed to calculate the number of factors of a given integer. It uses a recursive function `f` to find the factors of a number, and it uses a global variable `count` to store the total count of factors. The main function reads input from the user, calculates the factors for each number, and prints the count.
+
+The code works by recursively dividing the number by the minimum divisor and counting the factors of the quotient. It stops when the number is equal to the minimum divisor, which means that we have reached the smallest factor. The function uses a loop to iterate through the range of numbers from the minimum divisor to the original number, and recursively calls itself to find the factors of the quotient.
+
+The main function uses a loop to read input from the user, calculate the factors for each number, and print the count. It uses a `for` loop to iterate through the range of input numbers, and uses the `scanf` function to read each number from the user. The `printf` function is used to print the count of factors for each number.

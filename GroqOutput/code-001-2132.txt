@@ -1,0 +1,46 @@
+Here is the code with developer comments:
+
+
+**Part I**
+
+```cpp
+int fenjie(int n, int min)
+{
+    // Initialize variables i, a, and x to 0
+    int i, a = 0, x = 0;
+    
+    // Iterate from i = 2 to n (inclusive)
+    for(i = 2; i <= n; i++)
+    {
+        // If n is divisible by i, increment a by 1
+        if(n % i == 0)
+            a = a + 1;
+    }
+    
+    // If n is 1, return 1
+    if(n == 1)
+        return 1;
+    else
+    {
+        // Initialize x to 0
+        for(i = min; i <= n; i++)
+        {
+            // If n is divisible by i, increment x by the result of fenjie(n/i, i)
+            if(n % i == 0)
+                x = x + fenjie(n/i, i);
+        }
+        // Return x
+        return x;
+    }
+}
+```
+
+**Part II**
+
+This code is an implementation of a function to calculate the prime factorization of a given integer `n`. The function `fenjie(n, min)` takes two parameters: `n` (the number to be factorized) and `min` (the minimum possible divisor).
+
+The function works by iterating from `i = 2` to `n` and checking if `n` is divisible by `i`. If it is, the function increments a counter `a` to keep track of the number of divisors. If `n` is 1, the function returns 1, since 1 has only one divisor (itself).
+
+If `n` is not 1, the function calls itself recursively with `n/i` as the new `n` and `i` as the new `min`. This process continues until `n` is reduced to 1. The final result `x` is the sum of all the prime factorizations.
+
+In the `main` function, the program reads an integer `t` from the input and then iterates `t` times to read an integer `num` and prints the result of calling `fenjie(num, 2)` for each `num`.

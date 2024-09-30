@@ -1,0 +1,68 @@
+**Part I: Code with Comments**
+
+```c
+// Function prototype declaration for f function
+int f(int x, int k);
+
+// Main function
+int main()
+{
+    // Initialize variables
+    int i = 1, n, m;
+    int result;
+
+    // Read input for the number of test cases
+    scanf("%d", &n);
+
+    // Loop through each test case
+    for (i = 1; i <= n; i++)
+    {
+        // Read input for the value m
+        scanf("%d", &m);
+
+        // Call the f function and store the result
+        result = f(m, 2);
+
+        // Print the result
+        printf("%d\n", result);
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+// Function definition for f
+int f(int x, int k)
+{
+    // Initialize variable a to 0
+    int a = 0;
+
+    // Initialize variable i
+    int i;
+
+    // Base case for the recursion
+    if (x == 1) 
+        return 1;
+
+    // Loop through from k to x
+    for (i = k; i <= x; i++)
+    {
+        // If x is divisible by i, recursively call f with x/i and i
+        if (x % i == 0) 
+            a = a + f(x/i, i);
+    }
+
+    // Return the result
+    return a;
+}
+```
+
+**Part II: Summary**
+
+This code is a solution to a programming problem that involves calculating the sum of divisors of a given number. The code consists of a main function and a recursive function f.
+
+The main function reads the number of test cases from the input, and then for each test case, it reads a value m and calls the f function with m and 2 as arguments. The f function calculates the sum of divisors of m and returns the result. The sum of divisors is calculated by recursively adding up the divisors of m, starting from the smallest divisor and up to m.
+
+The code uses a for loop to iterate through the divisors of m, and for each divisor, it recursively calls the f function with the remaining value of x (m divided by the current divisor) and the current divisor. The base case for the recursion is when x is equal to 1, in which case the function returns 1.
+
+The code then prints the result to the output and returns 0 to indicate successful execution.

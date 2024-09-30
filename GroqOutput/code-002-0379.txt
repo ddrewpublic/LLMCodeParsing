@@ -1,0 +1,84 @@
+Here is the code with developer comments for each line:
+
+```
+Part I
+
+struct tushu{
+    // Define a struct called tushu with two fields: bianhao (int) and writer (char array of length 27)
+    int bianhao;
+    char writer[27];
+}; // Define an array of struct tushu called book with a maximum size of 1000
+
+void jishu(struct tushu *p1,int a[26],int b){
+    // Function to count the frequency of each letter in the writer field of each book
+    int j,k,diji;
+    for(j=0;j<26;j++){
+        a[j]=0;
+        // Initialize the frequency array to 0
+    }
+    for(j=0;j<b;j++){
+        k=0;
+        do{
+            // Get the current character from the writer field
+            diji=(*(p1+j)).writer[k]-'A';
+            // Increment the frequency of the character
+            a[diji]++;
+            k++;
+        }while((*(p1+j)).writer[k]!='\0');
+    }
+}
+
+int max(int c[26]){
+    // Function to find the maximum frequency and return its index
+    int k,da,jieguo=0;
+    da=c[0];
+    for(k=1;k<26;k++){
+        if(c[k]>da){
+            // Update the maximum frequency and its index
+            da=c[k];
+            jieguo=k;
+        }
+    }
+    printf("%c\n%d\n",65+jieguo,da);
+    // Print the maximum frequency and its corresponding letter
+    return(jieguo);
+}
+
+void shu(struct tushu *p2,int d,int e){
+    // Function to print the book numbers that contain the maximum frequency letter
+    char ai=65+d;
+    int x,y;
+    for(x=0;x<e;x++){
+        y=0;
+        do{
+            // Check if the current character in the writer field matches the maximum frequency letter
+            if((*(p2+x)).writer[y]==ai){
+                printf("%d\n",(p2+x)->bianhao);
+                // Print the book number if it contains the maximum frequency letter
+            }
+            y++;
+        }while((*(p2+x)).writer[y]!='\0');
+    }
+}
+
+int main(){
+    int n,i,m;
+    int zimu[26];
+    struct tushu *pointer;
+    pointer=&book[0];
+    // Get the number of books from the input
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        // Scan the book information and store it in the book array
+        scanf("%d %s",&book[i].bianhao,&book[i].writer);
+    }
+    jishu(pointer,zimu,n);
+    m=max(zimu);
+    shu(pointer,m,n);
+    return 0;
+}
+```
+
+Here is a 200-word summary:
+
+This code is designed to analyze the frequency of letters in the writer fields of a set of books. It uses a struct to represent each book, with fields for the book number and writer name. The code defines three functions: `jishu` counts the frequency of each letter in the writer field for each book, `max` finds the maximum frequency and returns its index, and `shu` prints the book numbers that contain the maximum frequency letter. The main function reads the number of books from the input, scans the book information, calls the frequency counting function, finds the maximum frequency, and then calls the printing function to print the book numbers that contain the maximum frequency letter.

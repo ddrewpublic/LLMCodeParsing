@@ -1,0 +1,74 @@
+**Part I: Code with Comments**
+```
+int main()
+{
+    // declare function f that takes three integer parameters and returns an integer
+    int f(int p,int q,int t);
+    
+    // declare variables n and i
+    int n,i;
+    
+    // declare an array g of 100 integers
+    int g[100];
+    
+    // read an integer from input and store it in variable n
+    scanf("%d",&n);
+    
+    // read n integers from input and store them in array g
+    for(i=0;i<n;i++)
+        scanf("%d",&g[i]);
+    
+    // loop through array g and call function f with parameters 2, g[i], and 1
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n",f(2,g[i],1));
+    }
+    
+    // return 0 to indicate successful execution of program
+    return 0;
+}
+
+int f(int p,int q,int t)
+{
+    // declare a 2D array h of 100x100 integers
+    int h[100][100];
+    
+    // declare a variable i and an integer k initialized to 0
+    int i,k=0;
+    
+    // loop through array h using variable i
+    for(i=p;i*i<=q;i++)
+    {
+        // reset variable k to 0
+        k=0;
+        
+        // check if q is divisible by i
+        if(q%i==0)
+        {
+            // if q is divisible by i, store i and q/i in array h
+            h[k][0]=i;
+            h[k][1]=q/i;
+            k++;
+            
+            // if k is not 0, recursively call function f with parameters h[k-1][0], h[k-1][1], and t
+            if(k!=0)
+            {
+                t=f(h[k-1][0],h[k-1][1],t);
+            }
+        }
+        
+        // increment t by k
+        t=t+k;
+    }
+    
+    // return t
+    return t;
+}
+```
+**Part II: Summary**
+
+The program is designed to find the total number of divisors for each element in an input array. The main function reads an integer n from input, followed by n integers which are stored in an array g. It then loops through the array g and calls the function f with parameters 2, the current element in g, and 1.
+
+The function f is a recursive function that takes three integer parameters p, q, and t. It initializes a 2D array h of size 100x100 and a variable k. It then loops through the array h and checks if the current element q is divisible by the index i. If q is divisible by i, it stores i and q/i in the array h and increments k. If k is not 0, it recursively calls function f with parameters h[k-1][0], h[k-1][1], and t. Finally, it increments t by k and returns the value of t.
+
+The main function then prints the returned value of t for each element in the input array, which represents the total number of divisors for each element.

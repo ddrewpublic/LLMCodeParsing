@@ -1,0 +1,65 @@
+**Part I: Code**
+```
+main()
+{
+    // Declare an integer variable n to store the number of books
+    int n;
+    // Read the value of n from the user using scanf
+    scanf("%d",&n);
+    // Declare a struct called book with two members: num and a (a character array of size 25)
+    struct 
+    {
+        int num;
+        char a[25];
+    }book [999];
+    // Declare two integer variables i and j
+    int i,j;
+    // Loop through each book (n times) and read the book number and title using scanf
+    for(i=0;i<=n-1;i++)
+    {
+        scanf("%d %s",&book[i].num,book[i].a);
+    }
+    // Declare an array s of size 26 to store the frequency of each letter in the titles
+    int s[26]={0};
+    // Loop through each book and count the frequency of each letter in the title using strlen and array indexing
+    for(i=0;i<=n-1;i++)
+    {
+        int len=strlen(book[i].a);
+        for(j=0;j<len;j++)
+        {
+            s[book[i].a[j]-'A']++;
+        }
+    }
+    // Declare an integer variable max to store the maximum frequency
+    int max=0;
+    // Declare a character variable name to store the letter with the maximum frequency
+    char name;
+    // Loop through the array s and find the letter with the maximum frequency
+    for(i=0;i<=25;i++)
+    {
+        if(s[i]>max)
+        {
+            max=s[i];
+            name='A'+i;
+        }
+    }
+    // Print the letter with the maximum frequency
+    printf("%c\n",name);
+    // Print the frequency of the letter with the maximum frequency
+    printf("%d\n",max);
+    // Loop through each book again and print the book numbers that contain the letter with the maximum frequency
+    for(i=0;i<=n-1;i++)
+    {
+        int len=strlen(book[i].a);
+        for(j=0;j<len;j++)
+        {
+            if(book[i].a[j]==name)
+                printf("%d\n",book[i].num);
+        }
+    }
+}
+```
+
+**Part II: Summary**
+
+This program is designed to find the letter that appears most frequently in a collection of book titles, and display the letter and its frequency. It uses a struct to store the book details, and an array to store the frequency of each letter. The program loops through each book, counting the frequency of each letter in the title, and then finds the letter with the highest frequency. It then prints the letter and its frequency, as well as the book numbers that contain the letter. The program uses several loops and conditional statements to achieve this, and is designed to be efficient and easy to understand.

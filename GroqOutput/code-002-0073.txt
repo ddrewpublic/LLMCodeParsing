@@ -1,0 +1,89 @@
+Here is the code with developer comments:
+
+**Part I: Code with comments**
+
+```c
+int main()
+{
+    // Declare variables
+    int i, j, k, n, num[1000], len[1000], num1[1000][26]={0}, sum[26]={0}, max=0, m;
+    char writer[1000][26], letter[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+    // Read the number of inputs
+    scanf("%d", &n);
+
+    // Read the inputs one by one
+    for(i=0; i<n; i++)
+    {
+        // Read the number and writer information
+        scanf("%d%s", &num[i], writer[i]);
+        // Calculate the length of the writer information
+        len[i]=strlen(writer[i]);
+    }
+
+    // Count the occurrence of each letter for each writer
+    for(i=0; i<26; i++)
+    {
+        // Loop through each writer
+        for(j=0; j<n; j++)
+        {
+            // Loop through each character in the writer
+            for(k=0; k<len[j]; k++)
+            {
+                // Check if the character is the current letter
+                if(writer[j][k]==letter[i])
+                {
+                    // Increment the count for the current letter
+                    num1[j][i]++;
+                }
+            }
+        }
+    }
+
+    // Calculate the total count for each letter
+    for(i=0; i<26; i++)
+    {
+        // Loop through each writer
+        for(j=0; j<n; j++)
+        {
+            // Add the count for the current letter to the total count
+            sum[i]=sum[i]+num1[j][i]; 
+        }	
+    }
+
+    // Find the letter with the maximum total count
+    for(i=0; i<26; i++)
+    {
+        // Check if the current letter has a higher count than the maximum count so far
+        if(max<sum[i])
+        {
+            // Update the maximum count and the index of the letter
+            max=sum[i];
+            m=i;
+        }
+    }
+
+    // Print the result
+    printf("%c\n%d\n", letter[m], sum[m]);
+    for(i=0; i<n; i++)
+    {
+        // Loop through each character in the writer
+        for(j=0; j<len[i]; j++)
+        {
+            // Check if the character is the letter with the maximum count
+            if(writer[i][j]==letter[m])
+            {
+                // Print the number
+                printf("%d\n", num[i]);
+            }
+        }
+    }
+
+    // Return exit status
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This program reads a series of inputs, where each input consists of a number and a string of characters. It counts the occurrence of each letter in each string and then finds the letter that occurs the most times across all strings. Finally, it prints the letter and the number of strings that contain this letter. The program uses nested loops to iterate through the characters in each string and to calculate the counts for each letter. The maximum count is kept track of using the `max` variable. The program then uses a similar loop to print the numbers of strings that contain the letter with the maximum count.

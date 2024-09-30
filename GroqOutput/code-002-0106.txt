@@ -1,0 +1,40 @@
+**Part I: Code**
+
+```
+int main()
+{
+    // Declare an array to store strings for writers
+    char writer[1000][30];
+
+    // Declare an array to store alphabet characters
+    char abc[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+    // Declare variables to store the number of writers, marks, and letters for each writer
+    int m, n, mark[1000], num[26]={0}, sum=0, i, j;
+
+    // Read the number of writers from the user
+    scanf("%d", &m);
+
+    // Loop through each writer
+    for(i=0;i<m;i++)
+    {
+        // Read the mark and writer's string from the user
+        scanf("%d", &mark[i]);
+        scanf("%s", writer[i]);
+
+        // Loop through each letter in the writer's string
+        for(j=0;j<strlen(writer[i]);j++)
+        {
+            // Count the occurrences of each letter in the alphabet
+            if(writer[i][j]=='A')
+                num[0]++;
+            else if(writer[i][j]=='B')
+                num[1]++;
+            // ... (and so on for each letter in the alphabet)
+        }
+    }
+```
+
+**Part II: Summary**
+
+This C code calculates the most frequently occurring letter in a set of strings provided by users. The program first reads the number of writers and marks from the users, then reads each writer's string. It then counts the occurrences of each letter in the alphabet (A to Z) in each writer's string. The program keeps track of the highest count and the corresponding letter. Finally, it prints the most frequent letter and the marks of all writers who wrote this letter. The program uses a 2D array to store the writers' strings, an array to store the alphabet, and an array to store the counts of each letter. It uses nested loops to iterate through each letter in each writer's string and to find the most frequent letter. The program uses scanf and printf functions to read and display data, and strlen function to get the length of each writer's string.

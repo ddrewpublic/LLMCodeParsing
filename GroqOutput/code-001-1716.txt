@@ -1,0 +1,31 @@
+Here is the code with developer comments:
+
+**Part I**
+```c
+// a recursive function to calculate the sum of proper divisors of a number
+int im(int n, int max)
+{
+    // initialize a variable to keep track of the sum of divisors
+    int s = 0;
+    // initialize a loop variable to iterate through numbers up to max
+    int i;
+    // if the input number is 1, return 1 (since 1 has only 1 proper divisor)
+    if (n == 1)
+        return 1;
+    // iterate through numbers from max down to 2
+    for (i = max; i > 1; i--)
+    {
+        // if the current number is a divisor of the input number, recursively add its sum to s
+        if (n % i == 0)
+            s += im(n / i, i);
+    }
+    // return the calculated sum of divisors
+    return s;
+}
+```
+
+**Part II**
+
+**Summary:** This program calculates the sum of proper divisors of a given number using recursive function "im". It takes input from the user and prints the sum of divisors for each number. The recursive function works by iterating through numbers from "max" down to 2 and checks if each number is a divisor of the input number. If it is, it recursively calls itself with the quotient and the same "max" value, adding the result to the sum. The main function reads input from the user, calls the "im" function for each number, and prints the result.
+
+Note: The "getch()" function is commented out in the main function, which suggests that it was used to pause the program and wait for user input before closing, but this is not necessary and can be removed.

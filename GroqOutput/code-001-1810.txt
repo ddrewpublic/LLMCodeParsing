@@ -1,0 +1,20 @@
+Here is the code with developer comments:
+
+**Part I**
+```
+int counter = 1; // Initialize a counter variable to keep track of the number of factors
+void abc(int a, int b) {
+  int i; // Initialize a for loop variable
+  for (i = b; i <= a; i++) { // Loop from b to a
+    if (a % i == 0 && (a / i) >= i) { // Check if a is divisible by i and if the quotient is greater than or equal to i
+      counter++; // If condition is true, increment the counter
+      abc(a / i, i); // Recursive call with updated values
+    }
+  }
+}
+```
+**Part II**
+
+Summary:
+
+This code is designed to find the number of factors a given integer has. The function `abc` takes two parameters: the integer `a` and the starting number `b` for the loop. The loop iterates from `b` to `a` and for each iteration, it checks if `a` is divisible by `i` and if the quotient is greater than or equal to `i`. If both conditions are true, the counter is incremented and a recursive call is made with the updated values. The main function reads the number of test cases, and for each test case, it calls the `abc` function with the given integer and 2 as the starting value, and then prints the counter value.

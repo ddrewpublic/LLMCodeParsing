@@ -1,0 +1,49 @@
+Here is the output with developer comments:
+
+**Part I: Code**
+```
+/*
+ * hanshu_huisu_1.cpp
+ * Name?????
+ *  Created on: 2010-12-7
+ *      Author: ??
+ */
+int n,c; // Define two integer variables n and c
+
+int solutionnumber(int n,int c){//n?????,c???
+	// If n is equal to c, return 1
+	if(n==c) return 1;
+	// If n is less than c, return 0
+	if(n<c) return 0;
+	// If n is divisible by c, recursively call the function with n divided by c and c incremented
+	if(n%c==0) return solutionnumber(n/c,c)+solutionnumber(n,c+1);
+	// Otherwise, recursively call the function with n and c incremented
+	else return solutionnumber(n,c+1);
+}
+
+int main(){
+	// Define an integer variable N and read input from the console
+	int N,a;
+	cin>>N;
+	// While N is greater than 0
+	while(N>0){
+		// Read an integer value a from the console
+		cin>>a;
+		// Print the result of the solutionnumber function with a and 2 as arguments
+		cout<<solutionnumber(a,2)<<endl;
+		// Decrement N
+		N--;
+	}
+	return 0;
+}
+```
+
+**Part II: Summary**
+
+This is a C++ program that calculates the total number of solutions for a given input value a, where the solution number is based on the parameters n and c. The program uses a recursive function called solutionnumber to calculate the total number of solutions.
+
+The solutionnumber function takes two integer arguments n and c, and returns an integer value representing the total number of solutions. The function returns 1 when n is equal to c, 0 when n is less than c, and recursively calls itself when n is divisible by c. This process continues until n is no longer divisible by c.
+
+The main function reads input values from the console and calls the solutionnumber function with the input values and a fixed value of 2. The program then prints the result of the solutionnumber function and decrements the input value N until it reaches 0.
+
+Overall, this program demonstrates a basic example of recursion in C++ and can be used to solve problems that involve finding the total number of solutions based on given parameters.

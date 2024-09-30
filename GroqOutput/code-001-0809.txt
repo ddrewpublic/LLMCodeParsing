@@ -1,0 +1,56 @@
+Here is the code with developer comments added, divided into two parts:
+
+**Part I**
+
+```
+int main()
+{
+  // Declare a function fj that takes two integer parameters and returns an integer
+  int fj(int m,int min); 
+  // Declare integer variables t, i, and an array a with 100 elements
+  int t,i,a[100];
+  // Read an integer from the input and store it in variable t
+  cin>>t;
+  // Loop t times
+  for(i=1;i<=t;i++)
+     {
+       
+       // Read an integer from the input and store it in the i-th element of array a
+       cin>>a[i];
+       // Call function fj with the current value of a[i] and 2 as parameters, and print the result
+       cout<<fj(a[i],2)<<endl;
+     }
+ 
+  // Return 0 to indicate success
+  return 0;
+}
+```
+
+```
+int fj(int m,int min)
+{
+  // Initialize a variable counter to 1
+  int counter=1;
+  // Initialize a loop variable i
+  int i;
+  // If m is less than min, return 0
+  if(m<min)
+     return 0;
+     // Loop from min to m-1
+     for(i=min;i<m;i++)
+         // If m is divisible by i, recursively call fj with m/i and i as parameters, and add the result to counter
+         if(m%i==0)
+         {
+           counter=fj(m/i,i)+counter; 
+         }
+   // Return the final value of counter
+   return counter;
+   
+}
+```
+
+**Part II**
+
+Summary:
+
+This program calculates the sum of all proper divisors (excluding 1 and the number itself) of a given integer. The function `fj` takes two integer parameters `m` and `min`, where `min` is the smallest possible proper divisor of `m`. The function recursively loops from `min` to `m-1`, checking if each integer is a divisor of `m`. If it is, the function calls itself with the quotient of `m` and the divisor, and adds the result to a cumulative counter. The `main` function reads input integers from the user, calls the `fj` function with the input integer and 2 as parameters, and prints the result.

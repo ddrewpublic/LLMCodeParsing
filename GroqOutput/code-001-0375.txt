@@ -1,0 +1,90 @@
+**Part I: Code with Comments**
+
+```c
+/*
+ * Compute the sum of all factors of a given number
+ * Author: ??????  Date: 2010 - 12 - 07
+ * Purpose:  ??????????????
+ */
+
+int num(int n, int g, int h);  // Function to compute the sum of all factors of a given number
+int qufen(int n);              // Function to compute the highest power of 2 that is less than or equal to n
+int power(int a, int b);        // Function to compute the power of a given number
+int main()
+{
+    int t;
+    // Read the value of t from input
+    cin >> t;
+    // Loop until t is greater than 0
+    while(t >= 1)
+    {
+        int n, i, x, sum = 1;
+        // Read the value of n from input
+        cin >> n;
+        // Compute the highest power of 2 that is less than or equal to n
+        x = qufen(n);  
+        // Initialize the sum to 1 and loop from 2 to x
+        for(i = 2; i <= x; i++)
+            // Add the sum of all factors of n, with i as the divisor, to the total sum
+            sum = sum + num(n, i, 2);
+        // Print the sum
+        cout << sum << endl;
+        // Decrement t
+        t--;
+    }
+    return 0;  // Return 0 to indicate successful execution
+}
+
+int qufen(int n)
+{
+    int j;
+    // Loop until we find the highest power of 2 that is less than or equal to n
+    for(j = 1; ; j++)
+    {
+        if(power(2, j) > n)  // Check if the power of 2 is greater than n
+        {
+            return j - 1;  // If true, return j - 1 as the highest power of 2
+            break;  // Exit the loop
+        }
+    }
+}
+
+int power(int a, int b)
+{
+    int sum = 1, k;
+    // Compute the power of a using a loop
+    for(k = 1; k <= b; k++)
+        // Multiply sum by a
+        sum = sum * a;
+    return sum;  // Return the computed power
+}
+
+int num(int n, int g, int h)
+{
+    if((g == 1)&&(n >= h))  // Check if g is 1 and n is greater than or equal to h
+        return 1;  // If true, return 1 as the sum is always n when g is 1
+    int i, j = 0, count = 0, a[20000];
+    // Compute all divisors of n greater than or equal to h
+    for(i = h; i < n; i++)
+    {
+        if(n % i == 0)  // Check if i is a divisor of n
+        {
+            a[j] = i;  // Store the divisor in the array
+            j++;
+        }
+    }
+    if(j == 0)  // Check if no divisors were found
+        return 0;  // If true, return 0 as the sum is 0
+    else
+    {
+        // Recursively compute the sum of all factors of n, with a[i] as the divisor
+        for(i = 0; i < j; i++)
+            count = count + num(n / a[i], g - 1, a[i]);
+        return count;  // Return the computed sum
+    }
+}
+```
+
+**Part II: Summary**
+
+This code is a solution to a programming problem that involves computing the sum of all factors of a given number. The main function reads an integer t, then loops until t is greater than 0. Inside the loop, it reads an integer n and computes the highest power of 2 that is less than or equal to n. It then loops from 2 to that power and adds the sum of all factors of n, with the current number as the divisor, to the total sum. The sum is then printed. The functions num, qufen, and power are used to compute the sum of all factors, the highest power of 2, and the power of a number, respectively. The code uses recursion to compute the sum of all factors.

@@ -1,0 +1,37 @@
+**Part I**
+```
+int ct;
+```
+Developer comment: This line declares a variable `ct` of type `int`, which will be used to count the number of proper divisors.
+
+```
+int count(int n, int p)
+{
+```
+Developer comment: This line declares a function `count` that takes two parameters, `n` of type `int` and `p` of type `int`. This function will be used recursively to find the number of proper divisors of `n`, starting from `p`.
+
+```
+        int i;
+```
+Developer comment: This line declares a variable `i` of type `int`, which will be used as a loop variable.
+
+```
+        if(n==1) ct++;
+```
+Developer comment: This line checks if `n` is equal to 1. If true, it increments the `ct` variable to indicate that `1` is a proper divisor.
+
+```
+        for(i=p;i<=n;i++)
+```
+Developer comment: This line starts a loop that will iterate from `p` to `n` (inclusive).
+
+```
+        if(n%i==0) count(n/i,i);
+```
+Developer comment: This line checks if `n` is divisible by `i`. If true, it recursively calls the `count` function with `n` divided by `i` and `i` as the new values for `n` and `p`, respectively.
+
+**Part II**
+
+This code is a simple implementation of a function to count the number of proper divisors of a given integer `n`. The function `count` uses recursion to iterate from `p` to `n`, checking each number to see if it is a divisor of `n`. The base case is when `n` is equal to 1, at which point it increments the `ct` variable to indicate that 1 is a proper divisor. The function returns the final value of `ct`, which represents the number of proper divisors.
+
+The `main` function reads input from the user, calls the `count` function for each input `n`, and prints the result to the console. The program assumes that the input `n` will be between 1 and 32,767.

@@ -1,0 +1,50 @@
+**Part I**
+
+```c
+int main()
+{
+	// Declare an integer variable m
+	int m;
+	// Declare an array of 1020 integers
+	int book[1020];
+	// Read an integer value from the standard input and store it in m
+	scanf("%d",&m);
+	// Declare an integer variable i
+	int i;
+	// Declare a character variable c
+	char c;
+	// Declare an array of 27 integers initialized to 0
+	int a[27]={0};
+	// Declare a 2D array of 27 rows and 1000 columns initialized to 0
+	int b[27][1000]={0};
+	// Loop through each of the m iterations
+	for(i=1;i<=m;i++)
+	{
+		// Read an integer value from the standard input and store it in the i-th element of the book array
+		scanf("%d",&book[i]);
+		// Read the newline character from the standard input
+		getchar();
+		// Loop indefinitely
+		for(;;)
+		{
+			// Read a character from the standard input
+			scanf("%c",&c);
+			// If the character is a newline, break out of the loop
+			if(c=='\n') break;
+			// Increment the count of the character in the a array by 1
+			a[c-64]+=1;
+			// Increment the count of the character in the i-th row of the b array by 1
+			b[c-64][i]=1;
+		}
+	}
+```
+
+**Part II**
+
+This code is a solution to a problem involving processing a sequence of strings and storing the frequency of each character in the strings. The code reads an integer value m from the standard input, followed by m lines of text. For each line of text, it reads the text and counts the frequency of each character in the text. The code then prints the character with the highest frequency and the frequency itself. Finally, it prints all the books whose text contains the character with the highest frequency.
+
+The code uses two arrays, a and b, to store the frequency of each character and the books that contain the character, respectively. The outer loop iterates m times, and for each iteration, it reads a line of text and updates the frequency of each character in the a array and the books that contain the character in the b array.
+
+The code uses the getchar function to read the newline character after reading an integer value, and the scanf function with the format specifier %c to read a single character. The code also uses the break statement to exit the loop when the newline character is read.
+
+The code has a time complexity of O(m), where m is the number of lines of text, and a space complexity of O(1), since the size of the arrays a and b is fixed.

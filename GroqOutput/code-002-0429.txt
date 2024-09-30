@@ -1,0 +1,31 @@
+**Part I**
+```c
+void main()
+{
+    // Declare integer variables
+    int m,n,i,j,k,d,s;
+    // Declare integer variables a, b, and c
+    int a,b=0,c;
+
+    // Declare 1000 arrays of characters (Char) and integers (Int) 
+    int tt[1000],pp[1000],miao[26]={0};
+
+    // Declare 1000 arrays of characters (Char) with length 30
+    char kk[1000][30];
+    // Declare character (Char) variable w
+    char w;
+
+    // Read the first integer 'm' from input
+    scanf("%d",&m);
+    // Iterate 'm' times to read the next integer and a string
+    for(i=0;i<m;i++)
+    {
+        // Read the next integer 'tt[i]' and a string 'kk[i]' from input
+        scanf("%d %s",&tt[i],kk[i]);
+    }
+    // ... rest of the code ...
+}
+```
+**Part II**
+
+This program is designed to solve a problem involving counting the frequency of each uppercase letter (A-Z) in a set of strings and finding the most frequent letter. The main function takes the number of strings (m) as input, and then iterates to read each string and its corresponding integer value. It counts the frequency of each uppercase letter in each string and stores it in the array `miao`. The program then finds the most frequent letter by iterating over the `miao` array and prints the result, along with the integer value of the first string that contains the most frequent letter.

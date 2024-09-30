@@ -1,0 +1,73 @@
+Here is the output with developer comments for each line:
+
+```
+Part I
+
+int main() {
+    // Declare variables for this program
+    int m;
+    int i, j, a, n;
+    struct book {
+        int no;
+        char name[30];
+    } book[999];
+    int author1[30] = {0}, author2[30] = {0};
+    char k;
+    scanf("%d", &m);
+    // Read the number of books from the input
+    for (i = 0; i < m; i++) {
+        // Read the book number and name from the input
+        scanf("%d %s", &book[i].no, &book[i].name);
+    }
+    for (i = 0; i < m; i++) {
+        a = strlen(book[i].name);
+        // Iterate through each character in the book name
+        for (j = 0; j < a; j++) {
+            for (k = 'A'; k <= 'Z'; k++) {
+                // Check if the character is an uppercase letter
+                if (book[i].name[j] == k)
+                    // Increment the count for that letter
+                    author1[(int)k - 65]++;
+            }
+        }
+    }
+    for (i = 0; i < 26; i++)
+        // Copy the author1 array to author2
+        author2[i] = author1[i];
+    for (i = 0; i < 26; i++) {
+        for (j = i + 1; j < 26; j++) {
+            // Sort the author1 array in descending order
+            if (author1[i] < author1[j]) {
+                int tmp;
+                tmp = author1[i];
+                author1[i] = author1[j];
+                author1[j] = tmp;
+            }
+        }
+    }
+    for (i = 0; i < 26; i++) {
+        // Find the most frequent letter in the book names
+        if (author2[i] == author1[0]) {
+            printf("%c\n", (char)(65 + i));
+            // Print the most frequent letter and its frequency
+            printf("%d\n", author1[0]);
+            for (j = 0; j < m; j++) {
+                a = strlen(book[j].name);
+                // Find the book numbers that contain the most frequent letter
+                for (n = 0; n < a; n++) {
+                    if (book[j].name[n] == (char)(65 + i)) {
+                        printf("%d\n", book[j].no);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}
+```
+
+Part II
+=====
+
+This program reads a number of books and their names from the input. It then counts the frequency of each uppercase letter in the book names and stores this information in the `author1` array. It then copies this array to the `author2` array and sorts the `author1` array in descending order. Finally, it finds the most frequent letter in the book names by comparing the `author2` and `author1` arrays and prints the most frequent letter and its frequency. It also prints the numbers of the books that contain the most frequent letter.

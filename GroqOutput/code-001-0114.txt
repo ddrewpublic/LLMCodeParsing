@@ -1,0 +1,37 @@
+**Part I**
+
+```
+/*
+ *  1000012850_34.1.cpp
+ *  ????????????a??????????????? ?????????
+ *  Created on: 2010-11-27
+ *      Author: william
+ */
+```
+This is the header of the source code file, including the filename, creation date, and author.
+
+**Line 1-2:**
+```
+int resolution_into_factors(int j,int i)
+{
+```
+This is a function declaration for a function named `resolution_into_factors` that takes two integer parameters `j` and `i` and returns an integer value.
+
+**Lines 3-4:**
+```
+int m, sum=0, k=0;
+```
+These are variable declarations for three integer variables `m`, `sum`, and `k` and initialize them to 0.
+
+**Lines 5-9:**
+```
+for(m=j ;m<=sqrt(i); m++)
+{
+    if(i%m==0)
+    {
+        sum=resolution_into_factors(m, i/m)+sum+1;
+        k++;
+    }
+}
+```
+This is a for loop that iterates from `j` to the square root of `i` (inclusive). For each iteration, it checks if `i` is divisible by `m`. If it is, it recursively calls itself with `m` and `i` divided by `m`, adds the result to the `sum` variable, and increments the `k` variable.

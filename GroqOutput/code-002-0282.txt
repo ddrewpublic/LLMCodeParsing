@@ -1,0 +1,64 @@
+Here is the code with developer comments:
+
+**Part I: Code**
+
+```c
+// Define a struct to hold information about an author
+struct author
+{
+    char name;
+    int count;
+}aut[26];
+
+// Function to find the maximum count of authors
+int max(struct author a[26])
+{
+    int i, max; // Initialize i and max
+    max = a[0].count; // Initialize max to the count of the first author
+    for(i = 0; i < 26; i++) // Loop through all authors
+        if(a[i].count > max) // If the current author's count is greater than max
+            max = a[i].count; // Update max
+    return(max); // Return the maximum count
+}
+
+void main()
+{
+    int m, h = 0; // Initialize m and h
+    scanf("%d", &m); // Read the number of books
+    int i, j, n, l[1000], book_name[1000];
+    char author_name[1000][27];
+    for(i = 0; i < 26; i++) // Initialize the authors
+    {
+        aut[i].name = 'A' + i; // Set the name of the author (A-Z)
+        aut[i].count = 0; // Initialize the count to 0
+    }
+    for(i = 0; i < m; i++) // Loop through all books
+    {
+        scanf("%d%s", &l[i], author_name[i]); // Read the number and name of the book
+        for(j = 0; j < 26; j++) // Loop through all authors
+        for(n = 0; n < l[i]; n++) // Loop through the name of the book
+                if(author_name[i][n] == aut[j].name) // If the current character in the book matches the author
+                    aut[j].count++; // Increment the count of the author
+    }
+    for(i = 0; i < 26; i++) // Loop through all authors
+    {
+        if(aut[i].count == max(aut)) // If the count of the author is the maximum
+        {    
+            printf("%c\n", aut[i].name); // Print the name of the author
+            h = i; // Store the index of the author
+        }
+    }
+    printf("%d\n", max(aut)); // Print the maximum count
+    for(i = 0; i < m; i++) // Loop through all books again
+    {
+        l[i] = strlen(author_name[i]); // Get the length of the book name
+        for(n = 0; n < l[i]; n++) // Loop through the name of the book
+            if(author_name[i][n] == aut[h].name) // If the current character in the book matches the author
+                printf("%d\n", book_name[i]); // Print the number of the book
+    }
+}
+```
+
+**Part II: Summary**
+
+This program reads information about a list of books and their authors. It then finds the author with the most books and prints a list of all books written by that author. The program uses a struct `author` to hold information about each author, with a `name` field to store the author's name (A-Z) and a `count` field to store the number of books written by that author. The `max` function finds the maximum count of authors and is used to determine which author to print. The program uses a loop to read information about each book, incrementing the count of the corresponding author for each book. Finally, the program prints the list of books written by the author with the most books.

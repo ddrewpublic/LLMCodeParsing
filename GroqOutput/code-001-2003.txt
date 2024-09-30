@@ -1,0 +1,50 @@
+**Part I: Code with Developer Comments**
+```
+int factoring(int a,int b) {
+    // Declare local variables
+    int i, kind = 0;
+
+    // If 'a' is 1, set 'kind' to 1
+    if (a == 1) {
+        kind = 1;
+    } else {
+        // Iterate from 'b' to 'a' inclusive
+        for (i = b; i <= a; i++) {
+            // Check if 'a' is divisible by 'i'
+            if (a % i == 0) {
+                // Recursively call factoring function with 'a/i' and 'i'
+                kind = factoring(a / i, i) + kind;
+            }
+        }
+    }
+    return kind;
+}
+
+int main() {
+    // Declare local variables
+    int n, i, j, a[30000] = {0}, b[30000] = {0};
+
+    // Read the number of test cases 'n'
+    scanf("%d", &n);
+
+    // Iterate through each test case
+    for (i = 0; i < n; i++) {
+        // Read the number 'a[i]'
+        scanf("%d", &a[i]);
+        // Calculate the number of factors of 'a[i]' using the factoring function
+        b[i] = factoring(a[i], 2);
+    }
+
+    // Print the results
+    for (i = 0; i < n; i++) {
+        printf("%d\n", b[i]);
+    }
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code is a implementation of a function that calculates the number of factors of a given integer. The function, `factoring`, uses a recursive approach to find all the factors of the input integer `a`. The function takes two parameters, `a` and `b`, where `b` is the starting point for the search. The function returns the total number of factors, including 1 and the number itself (if `a` is not 1).
+
+The `main` function reads a number of test cases `n` and then iterates through each test case, reading the input integer `a[i]` and calculating the number of its factors using the `factoring` function. The results are then printed out for each test case.

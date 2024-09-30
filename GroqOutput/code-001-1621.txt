@@ -1,0 +1,34 @@
+Here is the code with comments added:
+
+**Part I**
+
+```c
+int f(int a, int min) {
+    // Initialize the result variable to 1, and a counter variable i
+    int result = 1, i;
+
+    // If a is less than min, return 0 immediately
+    if (a < min) {
+        return 0;
+    } else {
+        // Start a loop from min to a
+        for (i = min; i <= a; i++) {
+            // Check if a is divisible by i
+            if (a % i == 0) {
+                // If a is divisible by i, recursively call f with a/i and i
+                result += f(a / i, i);
+            }
+        }
+        // Return the final result
+        return result;
+    }
+}
+```
+
+**Part II**
+
+Summary:
+
+The code provided is a C program that calculates the sum of all divisors of a given number. The function `f(a, min)` recursively finds all divisors of `a` greater than or equal to `min`, and the main function uses a loop to calculate and print the sum of divisors for multiple input numbers. The program uses the Euler's Totient Function to calculate the sum of divisors.
+
+The code consists of two main parts: the `f` function and the `main` function. The `f` function takes two integer arguments `a` and `min`, and returns the sum of all divisors of `a` greater than or equal to `min`. The `main` function uses a loop to read input numbers, call the `f` function to calculate the sum of divisors for each number, and print the result.

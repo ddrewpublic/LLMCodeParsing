@@ -1,0 +1,37 @@
+Here is the code with developer comments:
+
+**Part I**
+```c
+int fenjie(int n, int min)
+{
+  // Initialize x to 0, i will be a loop variable
+  int x = 0, i;
+  
+  // If n is 1, return 1 immediately
+  if (n == 1)
+    return 1;
+    
+  // Otherwise, recursively call fenjie for each divisor of n starting from min
+  else
+  {
+    for (i = min; i <= n; i++)
+    {
+      // Check if i is a divisor of n
+      if (n % i == 0)
+        x = x + fenjie(n / i, i); // Recursively call fenjie with n/i and i
+    }
+  }
+  // Return the final value of x
+  return x;
+}
+```
+
+**Part II**
+
+Summary:
+
+The provided code is a recursive function that calculates the sum of proper divisors of a given number `n`. The function `fenjie` takes two arguments: `n` (the number to find divisors for) and `min` (the starting point for the search). It returns the sum of all proper divisors of `n` greater than or equal to `min`.
+
+The function works by recursively dividing `n` by each divisor `i` starting from `min`, and adding the result to `x`. The recursion continues until `n` is reduced to 1. The final value of `x` is the sum of all proper divisors of `n`.
+
+The main function reads a series of numbers from input, calls `fenjie` for each number starting from 2, and prints the result. It then reads one more number and prints the sum of its proper divisors starting from 2.

@@ -1,0 +1,43 @@
+**Part I: Code with developer comments**
+
+```c
+int fenjie(int num, int min); // Function prototype for fenjie function
+int k = 2; // Initialize a variable k with value 2
+
+int main() { // Main function starts
+    int n, i, jieguo, num; // Declare integer variables n, i, jieguo, and num
+    scanf("%d", &n); // Read an integer value from input
+    for (i = 1; i <= n; i++) { // Loop through n times
+        scanf("%d", &num); // Read another integer value from input
+        jieguo = fenjie(num, 2); // Call fenjie function with num and min = 2, store result in jieguo
+        printf("%d\n", jieguo); // Print the result
+    }
+    return 0; // Exit main function
+}
+
+int fenjie(int num, int min) { // fenjie function definition starts
+    int j, jieguo = 1; // Initialize jieguo to 1 and declare j
+
+    if (num < min) { // If num is less than min, return 0
+        return 0;
+    }
+    for (j = min; j < num; j++) { // Loop from min to num-1
+        if (num % j == 0) { // If num is divisible by j
+            jieguo += fenjie(num / j, j); // Recursively call fenjie with num/j and j, add result to jieguo
+        }
+    }
+    return jieguo; // Return the final result
+}
+```
+
+**Part II: Summary**
+
+The provided code is a solution to a programming problem that involves finding the number of divisors of a given number. The problem is divided into two parts: the main function and the fenjie function.
+
+The main function reads input values from the user and calls the fenjie function for each value. The fenjie function recursively finds the divisors of the given number and calculates the total number of divisors.
+
+The code uses a loop to iterate through the input values, and for each value, it calls the fenjie function with the value and a minimum value (initially set to 2). The fenjie function then recursively calculates the divisors of the given number and returns the total count.
+
+The code is designed to handle numbers with multiple divisors, including 1 and itself. The fenjie function uses a recursive approach to find the divisors, starting from the minimum value (2) and incrementing by 1 until it finds a divisor. The function then adds the divisor to the total count and recursively calls itself with the new value (num/j) until it reaches 1. The total count is returned as the final result.
+
+Overall, the code demonstrates a recursive solution to the problem of finding the number of divisors of a given integer, with the fenjie function being the core part of the solution.

@@ -1,0 +1,79 @@
+**Part I: Code**
+
+```
+int zhi(int a);
+int yin(int m,int t);
+int main()
+{
+    int n,i=0;
+    int str[10000];
+    // Read the number of input integers
+    scanf("%d",&n);
+    // Read the input integers
+    for(i=0;i<n;i++)
+    scanf("%d",&str[i]);
+    // Reset the loop variable
+    i=0;
+    // Perform the computation for each input integer
+    for(i=0;i<n;i++)
+    printf("%d\n",yin(str[i],2));
+    return 0;
+}
+int zhi(int a)
+{
+    // Initialize the variables
+    int k=2,flag=0;
+    // Iterate from 2 to the half of the input integer
+    for(k=2;k<=a/2;k++)
+    {
+        // Check if the input integer is divisible by k
+        if(a%k==0)
+        {   // Mark the integer as not prime
+            flag=1;
+            break;
+        }
+    }
+    return flag;
+}
+int yin(int m,int t)
+{
+    // Initialize the variables
+    int j=t,c=0,b=0,x=0;
+    // Allocate an array to store the factors of the input integer
+    int str1[10000][2];
+    // Check if the input integer is less than the threshold or equal to 1
+    if(m<t&&m!=1)
+        return 0;
+    // Check if the input integer is equal to 1
+    else if(m==1)
+        return 1;
+    else if(zhi(m)==0)
+        return 1;
+    else
+    {
+        // Iterate from the threshold to the input integer
+        for(j=t;j<=m;j++)
+        {
+            // Check if the input integer is divisible by j
+            if(m%j==0)
+            {
+                // Store the factor in the array
+                str1[c][0]=m/j;
+                str1[c][1]=j;
+                c++;
+            }
+        }
+        // Iterate through the array of factors
+        for(b=0;b<c;b++)
+        {
+            // Recursively call the function for each factor
+            x+=yin(str1[b][0],str1[b][1]);
+        }
+        return x;
+    }
+}
+```
+
+**Part II: Summary**
+
+This code is used to compute the integer sequence known as the Collatz Conjecture or 3x+1 problem. The program takes an input integer, and then recursively applies a simple transformation to obtain a new integer. The transformation is: if the integer is even, it is divided by 2, and if it is odd, it is multiplied by 3 and added 1. The program continues applying this transformation until it reaches the number 1. The function "yin" computes the sequence for a given initial integer and threshold. The function "zhi" checks if a number is prime or not. The main function reads the input, applies the transformation and prints the result.

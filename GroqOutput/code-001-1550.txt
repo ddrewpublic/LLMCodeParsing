@@ -1,0 +1,50 @@
+**Part I: Code with Comments**
+
+```c
+int factor(int N, int min){
+    // The function calculates the sum of all divisors of the number N, starting from the minimum value min.
+    int result=1, i;
+    // Initialize the result to 1, as 1 is a divisor of every number.
+    if(N<min)
+        // If N is less than min, it means N is smaller than the smallest divisor we're looking for.
+        // In this case, we return 0, as there's no useful value to return.
+        return 0;
+    for(i=min;i<N;i++){
+        // Iterate from the minimum value to N-1.
+        if(N%i==0){
+            // If N is divisible by the current number i, it means i is a divisor of N.
+            result+=factor(N/i,i);
+            // Recursively call the function to find the divisors of N/i, and add the result to the current sum.
+            }
+        }
+    return result;
+    // Once the loop finishes, return the sum of all divisors found.
+}
+
+int main(){
+    // The main function reads input and calls the factor function to calculate the sum of divisors.
+    int n,m,j,re;
+    scanf("%d",&n); 
+    // Read the number of test cases.
+    for(j=0;j<n;j++){
+        // Iterate for each test case.
+        scanf("%d",&m);
+        // Read the number for the current test case.
+        re=factor(m,2);
+        // Call the factor function to calculate the sum of divisors, starting from 2.
+        printf("%d\n",re);
+        // Print the result.
+        }
+    scanf("%d",&n);
+    return 0;
+    // Free the memory and return the exit status.
+}
+```
+
+**Part II: Summary (200 words)**
+
+The provided C code calculates the sum of all divisors of a given number N, starting from a user-defined minimum value min. The `factor` function is a recursive function that iterates from the minimum value to N-1, checking if each number is a divisor of N. If it is, the function calls itself with the remaining value (N divided by the current number) and the current number as the new minimum value, adding the result to the current sum. The function returns the final sum of divisors.
+
+The `main` function reads the number of test cases and the numbers to be processed. For each test case, it calls the `factor` function with the given number and the minimum value 2, and prints the result. The code assumes that the input is valid and that the numbers are non-negative.
+
+The code can be used to calculate the sum of all divisors of a number, which is useful in various mathematical and cryptographic applications. For example, in number theory, the sum of divisors of a number is used to calculate its perfect number, which is a number equal to the sum of its proper divisors.

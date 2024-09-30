@@ -1,0 +1,41 @@
+**Part I: Code with Developer Comments**
+```
+int num; // Global variable to store the number of divisors
+int fjys(int n, int m, int i, int d, int ji[20]) {
+    int a; // Local variable to store the current divisor
+    for (a = i; a < m; a++) { // Loop through all possible divisors
+        if (n % a == 0) { // Check if n is divisible by a
+            ji[d] = a; // Store the divisor in the array
+            int chenji = 1, k; // Initialize variables for calculating the product
+            for (k = 0; k <= d; k++)
+                chenji = chenji * ji[k]; // Calculate the product of divisors
+            if (chenji == m) { // Check if the product equals m
+                num++; // Increment the global variable num
+                break; // Exit the function
+            } else
+                fjys(n / a, m, a, d + 1, ji); // Recursively call the function with n/a
+        }
+    }
+    return num; // Return the value of num
+}
+
+int main() {
+    int m, n, j, result = 0, ji[20] = {0}; // Initialize variables
+    cin >> m; // Read the input value m
+    for (j = 1; j <= m; j++) {
+        num = 0; // Reset the global variable num for each iteration
+        cin >> n; // Read the input value n
+        result = fjys(n, n, 2, 0, ji); // Call the function fjys with n and m
+        cout << result + 1 << endl; // Print the result
+    }
+    return 0; // Exit the program
+}
+```
+
+**Part II: Summary**
+
+The code implements a program to find the number of prime factors of a given number `m`. The program uses a recursive function `fjys` to iterate through all possible divisors of `m` and checks if the product of these divisors equals `m`. If the product equals `m`, it increments a global variable `num` to track the number of prime factors.
+
+The `main` function takes input values `m` and `n` from the user, and for each iteration, it calls the `fjys` function with `n` and `m` as arguments. The function returns the value of `num`, which is then printed to the console. The program uses a global variable `ji` to store the divisors of `m`.
+
+The code uses a brute-force approach to find the prime factors of a given number, which may be inefficient for large input values. However, for smaller input values, this program can be used to find the number of prime factors.

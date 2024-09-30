@@ -1,0 +1,23 @@
+**Part I**
+
+```
+int Factorization(int,int); // function declaration for Factorization function
+int main()
+{
+    int n=0,num=0; // initializing variables n and num
+    cin>>n; // taking input for the number of test cases
+    for(int i=0;i<n;i++)
+      {
+          cin>>num; // taking input for the number
+          cout<<Factorization(num,2)+1<<endl; // calling Factorization function and printing the result
+      }
+      return 0; // terminating the program
+}
+```
+
+**Part II**
+
+Summary:
+This C++ program calculates the number of factors of a given number. The program takes an integer as input and returns the number of factors of the number excluding 1. The Factorization function is a recursive function that takes two parameters: the number to factorize and the current divisor. It returns the count of factors found. The main function reads input for the number of test cases, reads input for each test case, calls the Factorization function, and prints the result.
+
+The Factorization function works by testing each divisor to see if the number is divisible. If it is, it counts the divisor and recursively calls the function with the quotient of the division (num/i). This process continues until the quotient becomes 1 or less. The base case for the recursion is when the quotient becomes 1 or less. The count of divisors is then returned.

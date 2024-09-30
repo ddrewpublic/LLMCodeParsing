@@ -1,0 +1,52 @@
+**Part I: Code**
+
+```cpp
+/*
+ *????????.cpp
+ *?????
+ *????: 2012-11-25
+ *???????????????
+ */
+int b, j, f[1010]; // Declare variables
+void factorization(int x) // Function to factorize a number
+{
+    int now, i; // Declare loop variables
+    for (i = 2; i <= x; i++) // Loop from 2 to x
+    {
+        if (x % i == 0 && i >= f[j]) // Check if x is divisible by i and i is greater than or equal to the current factor
+        {
+            f[++j] = i; // Add i to the array of factors
+            now = x / i; // Calculate the quotient
+            if (now == 1) // If the quotient is 1, increment the counter b
+            {
+                b++;
+            }
+            else // If the quotient is not 1, recursively call the function on the quotient
+            {
+                factorization(now);
+            }
+            j--; // Decrement the factor array index
+        }
+    }
+    return; // Return from the function
+}
+int main () // Main function
+{
+    int n, i, num; // Declare variables
+    cin >> n; // Read the number of inputs
+    for (i = 0; i < n; i++) // Loop for each input
+    {
+        b = 0; // Reset the counter
+        j = 0; // Reset the factor array index
+        memset (f, 0, sizeof(f)); // Clear the factor array
+        cin >> num; // Read the input number
+        factorization(num); // Factorize the number
+        cout << b << endl; // Print the result
+    }
+    return 0; // Return from the main function
+}
+```
+
+**Part II: Summary**
+
+This code is a C++ solution for a problem that involves factorizing a given number and counting the number of prime factors. The `factorization` function takes an integer `x` as input and iteratively divides it by the smallest prime number greater than or equal to 2, updating the list of factors until `x` is reduced to 1. The `main` function reads a number of inputs `n` and for each input, it calls the `factorization` function to compute the number of prime factors and prints the result. The code uses a brute-force approach to factorize numbers, which may be inefficient for large inputs.

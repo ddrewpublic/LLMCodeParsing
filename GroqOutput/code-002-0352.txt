@@ -1,0 +1,73 @@
+**Part I: Code with developer comments**
+
+```c
+struct stu{
+    // Define a struct to hold student information
+    int id;
+    char author[26];
+    int length;
+} a[1000];
+
+int main(){
+    // Initialize variables
+    int n, i, k, num = 0, max = 0;
+    char b, c;
+
+    // Read the number of students
+    scanf("%d", &n);
+
+    // Loop through each student
+    for (i = 0; i < n; i++) {
+        // Read the student's ID and author name
+        scanf("%d%s", &a[i].id, a[i].author);
+        // Calculate the length of the author name
+        a[i].length = strlen(a[i].author);
+    }
+
+    // Loop through each uppercase letter
+    for (b = 'A'; b <= 'Z'; b++) {
+        // Initialize a counter for the current letter
+        num = 0;
+
+        // Loop through each student
+        for (i = 0; i < n; i++) {
+            // Loop through each character in the author name
+            for (k = 0; k < a[i].length; k++) {
+                // If the character matches the current letter, increment the counter
+                if (a[i].author[k] == b) {
+                    num++;
+                    break;
+                }
+            }
+        }
+
+        // If the counter is greater than the maximum, update the maximum and the letter
+        if (num > max) {
+            max = num;
+            c = b;
+        }
+    }
+
+    // Print the letter with the maximum count
+    printf("%c\n%d\n", c, max);
+
+    // Loop through each student again
+    for (i = 0; i < n; i++) {
+        // Loop through each character in the author name
+        for (k = 0; k < a[i].length; k++) {
+            // If the character matches the letter with the maximum count, print the ID
+            if (a[i].author[k] == c) {
+                printf("%d\n", a[i].id);
+                break;
+            }
+        }
+    }
+
+    // Return 0 to indicate successful program execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This program reads in a list of students, each with an ID and an author name. It then finds the uppercase letter that appears most frequently in the author names and prints this letter and its frequency. Finally, it prints the IDs of all students whose author name contains the most frequent letter. The program uses a struct to hold student information, and loops through each student and each character in each author name to calculate the frequency of each letter. The maximum frequency and the corresponding letter are used to determine which students to print.

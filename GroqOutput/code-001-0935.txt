@@ -1,0 +1,51 @@
+**Part I**
+
+Here is the code with developer comments:
+```
+int su(int input)//Function to check if a number is prime
+{
+    int ju=1; // Initialize a flag to 1, assuming the number is prime
+    for(int i=2;i<sqrt(input);i++)// Loop through all numbers up to the square root of the input
+    {
+        if(input%i==0)// If the input is divisible by i, it's not prime
+        {
+            ju=0; // Set the flag to 0
+            break; // Exit the loop immediately
+        }
+    }
+    return ju; // Return the flag
+}
+
+int fenjie(int input, int k)//Function to factorize a number
+{
+    int ret=1; // Initialize a result variable to 1
+    for(int i=k;i<=sqrt(input);i++)// Loop through all numbers from k upwards to the square root of the input
+    {
+        if(input%i==0)// If the input is divisible by i
+        {
+            if(su(input/i)==0)// And the quotient is not prime
+            {
+                ret=fenjie(input/i,i)+ret; // Recursively factorize the quotient
+            }
+        }
+    }
+    return ret; // Return the result
+}
+
+int main()
+{
+    int input,num,sol; // Declare variables for input, number of inputs, and solution
+    cin>>num; // Read the number of inputs from the console
+    while(num--)// Loop through each input
+    {
+        cin>>input; // Read the input from the console
+        cout<<fenjie(input,2)<<endl; // Call the factorize function and print the result
+    }
+    return 0; // Return from main
+}
+```
+**Part II**
+
+This code is designed to factorize a given number into its prime factors. The `su` function checks if a number is prime by iterating through all numbers up to its square root and checking for divisibility. The `fenjie` function recursively factorizes a number by iterating through all numbers from a given start value to the square root of the input, and checking for divisibility. If the quotient is not prime, it is recursively factorized. The `main` function reads a number of inputs from the console, and for each input, it calls the `fenjie` function with a start value of 2 and prints the result.
+
+The code is designed to be efficient by only iterating up to the square root of the input, and by using a recursive function to factorize the quotient. However, it may still be slow for very large inputs due to the exponential time complexity of the recursive function.

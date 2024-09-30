@@ -1,0 +1,62 @@
+**Part I: Code with comments**
+```
+int f(int a, int b)
+{
+    // Initialize a variable k to store the count of divisors
+    int k = 0;
+    
+    // If a is greater than or equal to 2 times b, start searching for divisors
+    if (a >= 2 * b)
+    {
+        // Iterate through numbers from b to a divided by b
+        for (int i = b; i <= a / b; i++)
+        {
+            // Check if i is a divisor of a and a divided by i is greater than or equal to i
+            if (a % i == 0 && a/i >= i)
+            {
+                // Recursively call function f with a divided by i and i, and add 1 to the count
+                k += f(a/i, i) + 1;
+            }
+        }
+    }
+    else
+    {
+        // If a is less than 2 times b, set k to 0
+        k = 0;
+    }
+    
+    // Return the count of divisors
+    return k;
+}
+
+int main()
+{
+    // Declare variables n, a, and t
+    int n, a, t;
+    
+    // Read the number of input cases from the user
+    cin >> n;
+    
+    // Loop through each input case
+    while (n--)
+    {
+        // Read the input number a
+        cin >> a;
+        
+        // Call function f with a and 2, and add 1 to the result
+        t = f(a, 2) + 1;
+        
+        // Print the result
+        cout << t << endl;
+    }
+    
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a solution to a programming problem related to finding the number of divisors of a given integer. The `f` function takes two integer arguments `a` and `b` and recursively calculates the number of divisors of `a` that are also divisors of `b`. The function uses a base case where `a` is less than `2*b`, in which case the number of divisors is 0.
+
+The `main` function reads the number of input cases from the user and iterates through each case, calling the `f` function with the input number `a` and 2. The result is then incremented by 1 and printed to the console.

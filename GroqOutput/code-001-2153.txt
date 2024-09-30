@@ -1,0 +1,37 @@
+**Part I: Code with Comments**
+
+```c
+void f(int i, int m); // Function prototype for recursive function f()
+int sum; // Global variable to store the sum of divisors
+
+int main()
+{
+    int n, i, m, k; // Declare variables for the main function
+    scanf("%d", &n); // Read an integer from the user
+    for (i = 0; i < n; i++) // Loop for the number of inputs
+    {
+        sum = 1; // Reset the sum for each iteration
+        scanf("%d", &m); // Read another integer from the user
+        f(2, m); // Call the function f() with initial values
+        printf("%d\n", sum); // Print the sum
+    }
+}
+
+void f(int i, int m)
+{
+    int k, s; // Declare variables for the function f()
+    s = (int)sqrt(m); // Calculate the square root of m
+    for (k = i; k <= s; k++) // Loop for the possible divisors
+    {
+        if (m % k == 0) // Check if m is divisible by k
+        {
+            sum++; // Increment the sum if m is divisible
+            f(k, m / k); // Recursively call f() with updated values
+        }
+    }
+}
+```
+
+**Part II: Summary**
+
+This program calculates the sum of divisors for a given number. The main function takes an integer input from the user, which is used to determine how many times to iterate the process. Each iteration reads another integer from the user and calls the function f() to calculate the sum of its divisors. The function f() uses a recursive approach to find the divisors of the given number. It starts by calculating the square root of the number and then checks for divisors from 2 to the square root. If a divisor is found, it increments the sum and recursively calls itself with the divisor and the quotient of the number and the divisor. The final sum is then printed.

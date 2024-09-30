@@ -1,0 +1,40 @@
+Here is the output with developer comments added:
+```
+/* 
+ * ?????1118-4.cpp
+ * ?????
+ * ????: 2011-11-29
+ * ??????????a?????????????????a = a1 * a2 * a3 * ... * an???1 < a1 <= a2 <= a3 <= ... <= an?????????????
+ */
+
+Part I
+
+int divide(int n, int a) { // Function to calculate the sum of divisors of a number
+    int s = 0, i; // Initialize sum (s) to 0 and loop variable (i) to a variable
+    if (n == 1) return 1; // If the number is 1, return 1 (1 is a divisor of all numbers)
+
+    for (i = a; i > 1; i--) { // Loop from a down to 2
+        if (n % i == 0) { // Check if i is a divisor of n
+            s += divide(n / i, i); // Recursively calculate the sum of divisors for n/i and add to s
+        }
+    }
+    return s; // Return the sum of divisors
+}
+
+int main() { // Main function
+    int n, k; // Declare variables n and k
+    cin >> k; // Read an integer from input
+    while (k > 0) { // Loop while k is greater than 0
+        cin >> n; // Read an integer from input
+        cout << divide(n, n) << endl; // Calculate and print the sum of divisors of n
+        k--; // Decrement k
+    }
+    return 0; // Return 0 to indicate successful execution
+}
+```
+
+Part II
+
+This code calculates the sum of divisors for a given number. The function `divide` takes two arguments, `n` and `a`, where `n` is the number for which the sum of divisors is to be calculated and `a` is the maximum divisor. The function works by recursively dividing `n` by its divisors and adding the sum of divisors of the resulting number to the sum. The function returns the sum of divisors.
+
+In the `main` function, the user is prompted to enter a number `k`. The program then reads `k` numbers from input, calculates the sum of divisors for each number, and prints the result. The loop continues until `k` becomes 0.

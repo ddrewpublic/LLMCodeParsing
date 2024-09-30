@@ -1,0 +1,64 @@
+**Part I: Code with Comments**
+
+```c
+int main()
+{
+    // Declare a function pointer to nFactor
+    int nFactor(int n, int border);
+
+    // Declare a variable n to store the input number
+    int n;
+
+    // Read the input number from the console
+    cin >> n;
+
+    // Loop through the input number until we reach 1
+    for (; n >= 1; n--)
+    {
+        // Declare a variable a to store the current number
+        int a;
+
+        // Read the current number from the console
+        cin >> a;
+
+        // Call the nFactor function and print the result
+        cout << nFactor(a, a) << endl;
+    }
+
+    // Return 0 to indicate successful program termination
+    return 0;
+}
+
+// Define the nFactor function to calculate the number of factors
+int nFactor(int n, int border)
+{
+    // Base case: if n is 1, return 1 because 1 has only 1 factor
+    if (n == 1) return 1;
+
+    // Recursive case: calculate the sum of factors
+    else
+    {
+        // Declare variables i and sum to store the current number and sum of factors
+        int i, sum = 0;
+
+        // Loop through the number from the given border down to 2
+        for (i = border; i >= 2; i --)
+        {
+            // If n is divisible by i, recursively call nFactor and add the result to sum
+            if (n % i == 0)
+                sum += nFactor(n / i, i);
+        }
+
+        // Return the sum of factors
+        return sum;
+    }
+}
+```
+
+**Part II: Summary (200 words)**
+
+The code defines a recursive function `nFactor` to calculate the number of factors for a given number `n` up to a specified `border`. The function is called from the `main` function, which reads an integer `n` from the console and then loops through the numbers from `n` down to 1. For each number `a`, the `nFactor` function is called with `a` as the first argument and `a` as the second argument (the border). The result is then printed to the console.
+
+The `nFactor` function uses a recursive approach to calculate the sum of factors for the given number `n`. It starts by checking if `n` is 1, in which case it returns 1 as 1 has only 1 factor. Otherwise, it loops through the number from the given border down to 2, checking for each number `i` if `n` is divisible by `i`. If it is, the function recursively calls itself with `n/i` as the first argument and `i` as the second argument, and adds the result to the sum. Finally, the function returns the sum of factors.
+
+The code provides a clear example of how to use recursive functions to solve a problem. However, it may be worth noting that the use of recursion may not be efficient for large input values due to the overhead of function calls and stack management.

@@ -1,0 +1,83 @@
+**Part I:**
+
+```
+/*************************************************************************************************************
+* @file .cpp
+* @author ????
+* @date 
+* @description
+*         ???
+*/
+```
+
+This is a standard C++ comment block that provides metadata about the file.
+
+```
+int i;
+```
+
+Declares an integer variable `i`.
+
+```
+int fenjie( int x, int t)
+{
+```
+
+Declares a function `fenjie` that takes two integer arguments `x` and `t`, and returns an integer value.
+
+```
+	int j;
+	if(x == 1 || x == 2)
+		return 1;
+```
+
+Declares another integer variable `j` and defines a conditional statement that checks if `x` is equal to 1 or 2, and returns 1 if true.
+
+```
+	int s = 1;
+	for (j = t; j <= sqrt(x); j++)
+	{
+		if (x % j == 0)
+			s += fenjie((x / j), j);
+	}
+	return s;
+```
+
+Declares an integer variable `s` and initializes it to 1. The function then iterates from `t` to the square root of `x` using a for loop, and checks if `x` is divisible by `j`. If it is, it recursively calls the `fenjie` function with the quotient of `x` and `j`, and adds the result to `s`. Finally, the function returns the value of `s`.
+
+```
+int main()
+{
+```
+
+Declares the `main` function, the entry point of the program.
+
+```
+	int n, a[100],x,t;
+	cin >> n;
+```
+
+Declares three integer variables `n`, `a`, and `x`, initializes `n` with input from the console, and initializes an array `a` of size 100.
+
+```
+	for (i = 0; i < n; i++)
+	{
+		cin >> x;
+		a[i] = fenjie(x,2);
+	}
+```
+
+Uses a for loop to iterate `n` times, reading an integer value `x` from the console each time. It then calls the `fenjie` function with `x` and 2 as arguments, and stores the result in the corresponding element of array `a`.
+
+```
+	for(i = 0; i < n; i++)
+		cout << a[i] << endl;
+	return 0;
+}
+```
+
+Uses a for loop to iterate `n` times, printing the elements of array `a` to the console each time, and returns an exit status of 0 to indicate successful execution.
+
+**Part II: Summary**
+
+The program is a implementation of the Euler's totient function, which calculates the number of positive integers up to a given number `x` that are relatively prime to `x`. The `fenjie` function is a recursive implementation of the Euler's totient function, and it calculates the totient function value for each `x` in the input array `a`. The `main` function reads `n` numbers from the console, calculates the totient function value for each number using the `fenjie` function, and prints the result to the console.

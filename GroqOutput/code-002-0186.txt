@@ -1,0 +1,95 @@
+**Part I: Code with Developer Comments**
+
+```c
+struct book {
+    // Structure to represent a book with id (integer) and title (character array of 27 characters)
+    int id;
+    char c[27];
+};
+
+int main() {
+    // Declare function prototypes
+    void number_of_books(int n, int *p, struct book book[1000]);
+    char max(int n, int *p, struct book book[1000]);
+    void name_of_book(int n, int *p, struct book book[1000], int m);
+
+    // Declare variables
+    int *p;  // Pointer to an integer
+    char s[100], m;  // Character array and a character
+    struct book book[1000];  // Array of 1000 book structures
+    int n, i;  // Integer variables
+
+    // Dynamically allocate memory for the pointer p
+    p = (int *)calloc(257, sizeof(int));
+
+    // Read the number of books from the input
+    scanf("%d\n", &n);
+
+    // Read the details of each book (id and title) from the input
+    for (i = 0; i < n; i++) {
+        scanf("%d %s", &book[i].id, &book[i].c);
+    }
+
+    // Call the number_of_books function to count the frequency of each letter
+    number_of_books(n, p, book);
+
+    // Get the maximum frequency
+    m = max(n, p, book);
+
+    // Print the character with the maximum frequency and its frequency
+    printf("%c\n%d\n", m, (*(p + m)));
+
+    // Call the name_of_book function to print the id of the book with the maximum frequency
+    name_of_book(n, p, book, m);
+
+    return 0;
+}
+
+void number_of_books(int n, int *p, struct book book[1000]) {
+    // Initialize all counts to 0
+    int i, j;
+    for (i = 65; i < 91; i++) {
+        (*(p + i)) = 0;
+    }
+
+    // Count the frequency of each letter in each book title
+    for (i = 0; i < n; i++) {
+        for (j = 0; book[i].c[j] != '\0'; j++) {
+            (*(p + book[i].c[j]))++;
+        }
+    }
+}
+
+char max(int n, int *p, struct book book[1000]) {
+    // Initialize maximum frequency and maximum letter
+    int i, k = 0;
+    char m;
+
+    // Find the letter with the maximum frequency
+    for (i = 65; i < 91; i++) {
+        if (*((p + i)) > k) {
+            k = *((p + i));
+            m = i;
+        }
+    }
+
+    return (m);
+}
+
+void name_of_book(int n, int *p, struct book book[1000], int m) {
+    // Find the book with the maximum frequency
+    int i, j;
+    for (i = 0; i < n; i++) {
+        for (j = 0; book[i].c[j] != '\0'; j++) {
+            if (book[i].c[j] == m) {
+                printf("%d\n", book[i].id);
+                break;
+            }
+        }
+    }
+}
+```
+
+**Part II: 200-word Summary**
+
+This program reads the details of several books, including their IDs and titles. It then counts the frequency of each letter in each title and finds the letter with the maximum frequency. The ID of the book with the maximum frequency is then printed. The program uses three functions: `number_of_books` to count the frequency of each letter, `max` to find the letter with the maximum frequency, and `name_of_book` to print the ID of the book with the maximum frequency. The program uses a dynamically allocated array `p` to store the counts of each letter, with indices ranging from 65 (the ASCII code for 'A') to 91 (the ASCII code for 'Z'). The program assumes that the input titles only contain letters and do not exceed 27 characters.

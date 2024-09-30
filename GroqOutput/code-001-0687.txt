@@ -1,0 +1,38 @@
+**Part I**
+
+```
+int all=1;   // Initializes a variable called all to 1
+void divd(int,int);   // Declares a function called divd that takes two integer parameters
+int main()
+{
+    int n,num;
+    cin>>n;   // Reads an integer from the console and stores it in the variable n
+    while(n--)   // Loops until n becomes 0
+    {
+        cin>>num;   // Reads an integer from the console and stores it in the variable num
+        divd(2,num);   // Calls the function divd with arguments 2 and num
+        cout<<all<<endl;   // Prints the value of all and moves to the next line
+        all=1;   // Resets the value of all to 1
+    }
+    return 0;
+}
+void divd(int fac,int num)
+{
+    int i;
+    for(i=fac;i*i<=num;i++)   // Loops until the square of i is less than or equal to num
+    {
+        if(num%i==0)   // Checks if num is divisible by i
+        {
+            fac=i;   // Updates the value of fac to i
+            all++;   // Increments the value of all
+            divd(fac,num/fac);   // Recursively calls the function divd with arguments fac and num/fac
+        }
+    }
+}
+```
+
+**Part II**
+
+In this program, we are calculating the number of divisors for each number from 1 to n. The function divd takes two parameters: an integer fac and an integer num. It loops through numbers from fac to the square root of num, and for each number i, it checks if num is divisible by i. If it is, it increments the value of fac to i, increments a counter called all, and recursively calls the function divd with arguments fac and num/fac. This process continues until all divisors have been found or num becomes 1.
+
+The main function reads an integer from the console and then loops through each number from 1 to n. For each number, it reads the number from the console, calls the function divd with arguments 2 and the number, prints the value of all, and resets the value of all to 1.

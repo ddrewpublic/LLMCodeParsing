@@ -1,0 +1,23 @@
+**Part I**
+
+```
+int sum=0;                             // Initialize a variable 'sum' to store the sum of divisors
+void fj(int n,int m)
+{
+    int i;                             // Initialize a variable 'i' of type 'int'
+    for(i=m;i<=sqrt(n);i++)            // Iterate from 'm' to the square root of 'n' (inclusive)
+    {
+        if(n%i==0)
+        {
+            sum++;                     // Increment 'sum' if 'n' is divisible by 'i'
+            fj(n/i,i);                // Recursively call 'fj' with 'n' divided by 'i' and 'i' as arguments
+        }
+    }
+}
+```
+
+**Part II**
+
+The above code is used to find the number of divisors of a given number. The function `fj` is a recursive function that takes two arguments `n` and `m`. It initializes a variable `i` and iterates from `m` to the square root of `n` (inclusive), checking if `n` is divisible by `i`. If it is, it increments the variable `sum` and recursively calls `fj` with `n` divided by `i` and `i` as arguments. 
+
+The `main` function reads a number `N` from the input and an array of `N` integers. For each integer in the array, it calls `fj` with the integer and 2 as arguments, and then prints the sum of divisors plus 1 (since the function counts 1 and the number itself as divisors, and we don't want to include the number itself as a divisor).

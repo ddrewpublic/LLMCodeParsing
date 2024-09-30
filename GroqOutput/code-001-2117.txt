@@ -1,0 +1,34 @@
+**Part I**
+```
+int wtf(int p,int a); // function declaration
+int main()
+{
+    int n,i,a,p; // declare integer variables
+    scanf("%d",&n); // read input integer
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a); // read integer array elements
+        printf("%d\n",wtf(2,a));                  
+    }    
+    return 0;    
+}
+int wtf(int p,int a)
+{  
+    int i,ways=0,j=0; 
+    int m=(int)sqrt(a);        
+    for(;p<=m;p++)    
+        {if(a%p==0 && a>=p*p )    {ways=ways+wtf(p,a/p);j++;}}     
+    if(j==0)
+    return 1;
+    else 
+    return ways+1;
+}
+```
+
+**Part II**
+
+This program uses a recursive function named `wtf` to calculate the number of ways a number can be expressed as the sum of two squares. The function uses a for loop to try all the numbers from 1 to the square root of the number. For each number `p`, it checks if the number `a` is divisible by `p` and if `a` is greater than or equal to `p*p`. If these conditions are met, it recursively calls the function with `p` as the new argument and `a` divided by `p`. The base case for the recursion is when `p` is 1 or when `a` is not divisible by `p`. The function returns the sum of the number of ways the number can be expressed as the sum of two squares.
+
+The main function reads an integer `n` and an array of integers. It then calls the `wtf` function for each number in the array and prints the result.
+
+The program is useful in calculating the number of ways a number can be expressed as the sum of two squares, which is a basic problem in number theory.

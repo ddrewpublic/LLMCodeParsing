@@ -1,0 +1,36 @@
+**Part I:**
+
+Here is the code with developer comments for each line:
+```
+int T,n; // declare variables T and n as integers
+int calc(int n, int min){ // declare a function calc that takes two integer parameters n and min
+	if(n==1)
+		return 1; // if n is equal to 1, return 1
+	if(n<=min)
+		return 0; // if n is less than or equal to min, return 0
+	int re=0; // initialize a variable re to 0
+	for(int i=min+1; i<=n; i++) // loop from min+1 to n
+		if(n%i==0){ // if n is divisible by i
+			//printf("calc %d,%d += calc %d,%d\n",n,min,n/i,i); // debug statement
+			re+=calc(n/i, i-1); // recursively call calc with n/i and i-1
+		}
+	if(!re)re=1; // if re is still 0, set it to 1
+	//printf("calc %d,%d=%d\n", n, min, re); // debug statement
+	return re; // return the calculated value of re
+}
+
+int main(){
+	scanf("%d",&T); // read an integer from stdin and store it in T
+	while(T--){ // loop T times
+		scanf("%d",&n); // read an integer from stdin and store it in n
+		printf("%d\n", calc(n,1)); // call calc with n and 1, and print the result
+	}
+	return 0; // return 0 to indicate successful execution
+}
+```
+**Part II:**
+
+Summary:
+The code is a implementation of the Euler's Totient function, which counts the number of positive integers up to a given number n that are relatively prime to n. The function is calculated recursively and uses a loop to iterate over the divisors of n. The function returns the total count of numbers that are relatively prime to n.
+
+In the main function, the code reads an integer T from the input, and then reads T integers n from the input. For each integer n, the code calls the calc function with n and 1, and prints the result to the output. The result represents the number of positive integers up to n that are relatively prime to n.

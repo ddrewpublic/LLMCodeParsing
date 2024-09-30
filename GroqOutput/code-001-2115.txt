@@ -1,0 +1,48 @@
+**Part I:**
+
+```c
+int count;
+```
+Declare a global variable `count` to store the count of divisors.
+
+```c
+void fun(int i, int j)
+{
+```
+Define a function `fun` that takes two integers `i` and `j` as parameters.
+
+```c
+    int k;
+```
+Declare a local variable `k` of type integer.
+
+```c
+    for(k=i; k<=sqrt(j); k++) {
+```
+Start a loop that iterates from `i` to the square root of `j` (exclusive).
+
+```c
+        if(j%k == 0) {
+```
+Check if `j` is divisible by `k`.
+
+```c
+            count++;
+```
+Increment the global variable `count` if `j` is divisible by `k`.
+
+```c
+            fun(k,j/k);
+```
+Recursively call the function `fun` with arguments `k` and `j` divided by `k`.
+
+```c
+        }
+    }
+}
+```
+End the loop and the function.
+
+**Part II: Summary (200 words)**
+
+This code is a program that calculates the number of divisors for a given positive integer `n`. The program uses a recursive function `fun` to find the divisors of `n`. The function starts by checking if `n` is divisible by 2, and if so, it increments the global variable `count` and recursively calls itself with `n` divided by 2. This process continues until the square root of `n` is reached. The program uses the `scanf` function to read the input and the `printf` function to print the output. The `main` function contains a loop that reads the input, calls the `fun` function, and prints the output. The program uses the `sqrt` function from the `math.h` library to calculate the square root of a number. The program is efficient because it uses a recursive approach to find the divisors, which reduces the number of iterations required.

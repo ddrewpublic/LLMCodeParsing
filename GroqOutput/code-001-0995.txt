@@ -1,0 +1,58 @@
+**Part I**
+
+```c
+int m=0;
+// Initialize a variable m to 0, it will be used as a counter
+
+int main()
+{
+    // Define a void function count with two integer parameters a and b
+    void count(int a,int b);
+    int r,i,k,n;
+    // Take an integer input r from user
+    scanf("%d",&r);
+    for(i=0;i<r;i++)
+    {
+        // Take an integer input n from user
+        scanf("%d",&n);
+        for(k=2;k<=sqrt(n);k++)
+        {
+            // Check if n is divisible by k
+            if(n%k==0)
+            {
+                // Increment the counter m
+                m++;
+                // Recursive call to count function with k and n/k as parameters
+                count(k,n/k);
+            }
+        }
+        // Print the current value of m+1
+        printf("%d\n",m+1);
+        // Reset the value of m
+        m=0;
+    }
+}
+
+void count(int a,int b)
+{
+    // Define a variable j
+    int j;
+    // Calculate the square root of b
+    double t=sqrt(b);
+    for(j=a;j<=t;j++)
+    {
+        // Check if b is divisible by j
+        if(b%j==0)
+        {
+            // Increment the counter m
+            m++;
+            // Recursive call to count function with j and b/j as parameters
+            count(j,b/j);
+        }
+    }
+}
+```
+
+**Part II**
+
+The code is designed to find the total count of divisors for each input number from the range 1 to n. For each number, it checks if the number is divisible by any number from 2 to the square root of the number. If it is divisible, it increments the counter m and recursively calls the count function with the divisor and the quotient as parameters. The count function does the same process until it reaches the number 1. The total count is then printed along with the original number.

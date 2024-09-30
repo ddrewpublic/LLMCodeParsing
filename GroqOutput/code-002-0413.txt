@@ -1,0 +1,107 @@
+**Part I: Code with Developer Comments**
+
+```c
+void main()
+{
+	// Declare character arrays s and t to store input strings
+	char s[400][400],t[400][400];
+	// Declare integer variables n, m, i, j, k, l, p, y, and z
+	int n,m,i,j,k,l,p,y,z;
+	// Declare a character variable c
+	char c;
+	// Declare an integer array a to store frequency of characters
+	int a[30];
+	// Read the number of input strings
+	scanf("%d",&n);
+	// Read input strings into t and s arrays
+	for(i=1;i<=n;i++)
+		scanf("%s%s",t[i],s[i]);
+	// Initialize variable j to 0
+	j=0;
+	// Iterate through all uppercase letters from 65 to 90
+	for(c=65;c<91;c++)
+	{
+		// Initialize variable p to 0
+		p=0;
+		// Iterate through all input strings
+		for(k=1;k<=n;k++)
+		{
+			// Calculate the length of the current string
+			l=strlen(s[k]);
+			// Iterate through each character in the string
+			for(m=0;m<l;m++)
+			{
+				// If the character matches the current letter, increment p
+				if(s[k][m]==c)
+					p++;
+			}
+		}
+		// Store the frequency of the letter in array a
+		a[j]=p;
+		// Increment j
+		j++;
+	}
+	// Sort array a in descending order
+	for(i=0;i<j;i++)
+	{
+		for(m=j-2;m>=i;m--)
+		{
+			if(a[m]<a[m+1])
+			{y=a[m];a[m]=a[m+1];a[m+1]=y;}
+		}
+	}
+	// Store the maximum frequency in variable z
+	z=a[0];
+	// Iterate through all uppercase letters from 65 to 90 again
+	for(c=65;c<91;c++)
+	{
+		// Initialize variable p to 0
+		p=0;
+		// Iterate through all input strings
+		for(k=1;k<=n;k++)
+		{
+			// Calculate the length of the current string
+			l=strlen(s[k]);
+			// Iterate through each character in the string
+			for(m=0;m<l;m++)
+			{
+				// If the character matches the current letter, increment p
+				if(s[k][m]==c)
+					p++;
+			}
+		}
+		// If the frequency of the letter matches the maximum frequency
+		if(p==z)
+		{
+			// Print the letter and the maximum frequency
+			printf("%c\n",c);
+			printf("%d\n",z);
+			// Iterate through all input strings again
+			for(k=1;k<=n;k++)
+			{
+				// Initialize variable p to 0
+				p=0;
+				// Calculate the length of the current string
+				l=strlen(s[k]);
+				// Iterate through each character in the string
+				for(m=0;m<l;m++)
+				{
+					// If the character matches the current letter, increment p
+					if(s[k][m]==c)
+						p++;
+				}
+				// If the frequency of the letter is greater than 0
+				if(p>0)
+					// Print the string
+					printf("%s\n",t[k]);
+			}
+			// Break out of the loop
+			break;
+		}
+	}
+}
+```
+
+**Part II: Summary**
+
+The program reads a number of input strings followed by pairs of strings. It then finds the most frequent uppercase letter in the input strings and prints the letter, its frequency, and all strings that contain this letter. The program uses two arrays, s and t, to store the input strings and their corresponding labels. It calculates the frequency of each uppercase letter using a loop and stores the frequencies in an array a. The array is then sorted in descending order to find the maximum frequency. The program then iterates through the input strings again to find the strings that contain the most frequent letter and prints them. The output includes the most frequent letter, its frequency, and the strings that contain this letter.

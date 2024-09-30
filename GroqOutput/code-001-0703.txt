@@ -1,0 +1,43 @@
+Here is the code with developer comments for each line, using the header "Part I". I also added a 200-word summary using the header "Part II".
+
+**Part I: Code with comments**
+
+```c
+int f(int x,int y) // Function to find the sum of proper divisors of a number
+{
+    int i, num = 0;
+    int a[100]; // Array to store divisors
+    int sum = 0;
+    for (i = x; i <= sqrt(y); i++) {
+        if (y % i == 0) { // Check if i is a divisor of y
+            num++; // Increment num if i is a divisor
+            a[num] = 1 + f(i, y / i); // Recursively find sum of divisors of i
+        }
+    }
+    for (i = 1; i <= num; i++) { // Sum up all divisors found
+        sum = sum + a[i];
+    }
+    return sum;
+}
+
+int main() {
+    int n, x, i, b[100];
+    cin >> n; // Input number of test cases
+    for (i = 1; i <= n; i++) {
+        cin >> x; // Input value for each test case
+        b[i] = x;
+    }
+    for (i = 1; i <= n; i++) {
+        cout << f(2, b[i]) + 1 << endl; // Print the sum of divisors + 1
+    }
+    return 0;
+}
+```
+
+**Part II: Summary (200 words)**
+
+This code is designed to find the sum of proper divisors of a given integer, and it uses a recursive function to achieve this. The `f` function takes two integer arguments, `x` and `y`, where `x` is the starting point for searching divisors and `y` is the number for which we want to find its sum of proper divisors.
+
+The function works by iterating through numbers from `x` to the square root of `y`, checking whether each number is a divisor of `y`. If it is, the function recursively calls itself to find the sum of divisors of that number, until it reaches 1. The sum of divisors for each divisor is stored in an array `a`, and the function returns the sum of all divisors found.
+
+In the `main` function, the program reads in a number of test cases, and for each test case, it reads in a value and prints the sum of its divisors plus 1. The sum of divisors plus 1 is calculated by calling the `f` function with an initial value of `x` set to 2.

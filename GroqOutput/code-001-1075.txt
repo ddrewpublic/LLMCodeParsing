@@ -1,0 +1,32 @@
+Here is the code with developer comments for each line, using the header "Part I" and a 200-word summary using the header "Part II":
+
+**Part I: Code**
+
+```c
+int a; // variable to store the input number
+int res; // variable to store the result
+int sum; // variable to store the sum of multiples
+
+void dfs(int cnt){ // recursive function to calculate the multiples
+    if(cnt*sum==a){ // if the sum of multiples is equal to the input number
+        res++; // increment the result
+        return; // stop recursing
+    }
+    if(cnt*sum<a){ // if the sum of multiples is less than the input number
+        sum*=cnt; // multiply the sum by the current number
+        int j=a/sum; // calculate the limit
+        for(int i=cnt;i<=j;i++) // loop through the numbers
+            dfs(i); // recursively calculate the multiples
+        sum/=cnt; // divide the sum by the current number
+        return; // stop recursing
+    }
+}
+```
+
+**Part II: Summary**
+
+This program is designed to calculate the number of ways to express a given number `a` as the sum of multiples of one or more consecutive positive integers. The program uses a recursive function `dfs` to calculate the multiples and counts the number of ways the input number can be expressed.
+
+The program first prompts the user to input the number of test cases, `nCases`. For each test case, it reads the input number `a` and initializes the result `res` and the sum `sum` to 0 and 1, respectively. It then iterates through numbers from 2 to `a` using the `dfs` function to calculate the multiples and counts the number of ways `a` can be expressed.
+
+Finally, the program prints the result for each test case. The `dfs` function uses recursion to calculate the multiples of each number up to the limit calculated by dividing `a` by the sum of the multiples. The result is incremented each time the sum of multiples is equal to the input number.

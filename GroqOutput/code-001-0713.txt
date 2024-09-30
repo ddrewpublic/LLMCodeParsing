@@ -1,0 +1,43 @@
+**Part I: Code with Developer Comments**
+
+```
+int sum = 1; // initialize sum to 1
+int kk(int a, int b) {
+  int i; // declare local variable i
+  for (i = b; i >= 2; i--) { // loop from b to 2
+    if (a % i == 0) { // check if a is divisible by i
+      return a / i; // return a/i if true
+    }
+  }
+  return 0; // return 0 if not found
+}
+
+int seperate(int a, int b) {
+  int i; // declare local variable i
+  for (i = b; i >= 2; i--) { // loop from b to 2
+    if (a % i == 0 && (a / i) <= i) { // check if a is divisible by i and if a/i is less than or equal to i
+      sum++; // increment sum if true
+      if ((a / i) == 2) continue; // skip if a/i is 2
+      else seperate(a / i, a / i - 1); // recursively call seperate with a/i as new a and a/i-1 as new b
+    } else if ((a % i == 0) && (kk(a / i, i) != 0)) { // check if a is divisible by i and if a/i has factors in the range of i to 2
+      seperate(a / i, i); // recursively call seperate with a/i as new a and i as new b
+    }
+  }
+  return sum; // return sum
+}
+
+int main() {
+  int n, i, m; // declare variables
+  cin >> n; // read input n
+  for (i = 1; i <= n; i++) { // loop n times
+    cin >> m; // read input m
+    cout << seperate(m, m - 1) << endl; // print results
+    sum = 1; // reset sum for next iteration
+  }
+  return 0; // return 0
+}
+```
+
+**Part II: Summary**
+
+The code is designed to find the number of distinct prime factors of a given number m, and to do so recursively. The main function takes an integer n as input and iterates n times. In each iteration, it takes an integer m as input and prints the number of distinct prime factors of m using the separate function. The separate function uses the kk function to find the greatest common divisor (GCD) of a and i, and recursively calls itself with a/i as new a and i as new b. If a/i is less than or equal to i, it increments the sum and checks if a/i is 2, in which case it skips the current iteration and continues with the next value of a/i. If a/i has factors in the range of i to 2, it also recursively calls separate with a/i as new a and i as new b.

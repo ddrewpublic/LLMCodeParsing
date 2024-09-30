@@ -1,0 +1,34 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```c
+int ana(int n,int p)
+{
+    int i;
+    int t,s=1;  //Initializing variables: i for loop counter, t for square root of n, s for sum
+    t=pow(n,0.5);  //Calculating square root of n
+    for(i=p;i<=t;i++)  //Loop runs from p to square root of n
+        if(n%i==0)  //Checking if n is divisible by i
+            s=s+ana(n/i,i);  //Recursive call to ana function
+    return s;  //Returning sum
+}
+```
+
+**Part II**
+
+This program calculates the sum of all perfect numbers within a given range. A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself.
+
+The function `ana` takes two integer arguments: `n`, the number to check for perfectness, and `p`, the starting number for the loop.
+
+Here's how it works:
+
+1. Calculate the square root of `n`.
+2. Iterate from `p` to the square root of `n`, and for each `i`, check if `n` is divisible by `i`.
+3. If `n` is divisible by `i`, make a recursive call to `ana` with `n` divided by `i` and `i` as arguments.
+4. Add the result of the recursive call to the sum `s`.
+5. Return the final sum.
+
+The `main` function reads an integer `n` and an array of integers `a` from the input. Then, for each number in `a`, it calls the `ana` function with the number as the first argument and 2 as the second argument, and prints the result.
+
+This program assumes that the input numbers are less than 100, which limits the range of perfect numbers it can find.

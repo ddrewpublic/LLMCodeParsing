@@ -1,0 +1,42 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```
+/*
+ * 1.cpp
+ *
+ *  Created on: 2010-12-1
+ *      Author: ???
+ *        ??? ???
+ */
+
+// Define a function g() that takes two integer parameters: x and j
+int g(int x, int j) {
+  // Loop until j exceeds x
+  for (j++; j <= x; j++) {
+    // Check if x is equal to j
+    if (x == j)
+      // Return 1 if x is equal to j
+      return 1;
+    // Check if x is divisible by j and x divided by j is greater than or equal to j
+    if (x % j == 0 && x / j >= j)
+      // Recursively call g() with x divided by j and j decremented by 1
+      return g(x / j, j - 1) + g(x, j);
+  }
+  // If all conditions fail, return 0
+  return 0;
+}
+```
+
+**Part II**
+
+This code consists of a recursive function `g()` that calculates the sum of proper divisors of a given integer `x`. The function takes two parameters: `x` and `j`, where `j` is initially set to 1.
+
+The function loops until `j` exceeds `x`, and in each iteration, it checks three conditions:
+
+1. If `x` is equal to `j`, the function returns 1, indicating that `x` is a proper divisor of itself.
+2. If `x` is divisible by `j` and `x` divided by `j` is greater than or equal to `j`, the function recursively calls itself with `x` divided by `j` and `j` decremented by 1. This is because `j` is a proper divisor of `x`.
+3. If none of the above conditions are met, the function returns 0, indicating that `j` is not a proper divisor of `x`.
+
+The `main()` function reads an integer `n` from the input, and for each integer `a` from 1 to `n`, it calls `g(a, 1)` and prints the result.

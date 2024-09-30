@@ -1,0 +1,72 @@
+**Part I: Code with Developer Comments**
+
+```c
+void main()
+{
+    // Declare variables
+    int i, n, j, t, m, a[26]={0}, book[999], max;
+    char writer[999][26], maxwriter;
+    
+    // Read the number of books from the input
+    scanf("%d",&n);
+    
+    // Loop through each book
+    for(i=0;i<n;i++)
+    {
+        // Read the book number and writer name from the input
+        scanf("%d %s",&book[i],writer[i]);
+        
+        // Get the length of the writer's name
+        m=strlen(writer[i]);
+        
+        // Loop through each character in the writer's name
+        for(j=0;j<m;j++)
+        {
+            // Convert the character to a numerical index (A=0, B=1, etc.)
+            t=writer[i][j]-'A';
+            
+            // Increment the count for the corresponding character in the 'a' array
+            a[t]++;
+        }
+    }
+    
+    // Initialize max to 0 and maxwriter to 'A'
+    max=0;
+    maxwriter='A';
+    
+    // Loop through each character in the 'a' array
+    for(i=0;i<26;i++)
+    {
+        // Check if the count for the current character is greater than max
+        if(a[i]>max)
+        {
+            // Update max and maxwriter if the count is greater
+            max=a[i];
+            maxwriter='A'+i;
+        }
+    }
+    
+    // Print the character and count that appears most frequently
+    printf("%c\n%d\n",maxwriter,max);
+    
+    // Loop through each book again
+    for(i=0;i<n;i++)
+    {
+        // Loop through each character in the writer's name
+        for(j=0;j<strlen(writer[i]);j++)
+        {
+            // Check if the current character is the most frequent character
+            if(writer[i][j]==maxwriter)
+            {
+                // Print the book number if the character is found
+                printf("%d\n",book[i]);
+                break;
+            }
+        }
+    }
+}
+```
+
+**Part II: 200-word Summary**
+
+This program reads a list of book pairs, where each pair consists of a book number and a writer's name. It then analyzes the writer's name to find the most frequently occurring character and prints the character along with the count of its occurrences. Finally, it loops through the list of book pairs again and prints the book number of each book that contains the most frequently occurring character. This program can be used to identify the most popular character in a list of book authors and find the corresponding books. The code is written in C and uses arrays and loops to perform the necessary calculations and printing.

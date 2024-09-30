@@ -1,0 +1,52 @@
+Here is the code with developer comments for each line, using the header "Part I":
+
+```
+Part I
+
+int shuliang(int m,int n);  // declare a function shuliang that takes two integers as input and returns an integer
+
+main()
+{
+    int n;  // declare a variable n to store the input number
+    scanf("%d",&n);  // read an integer from the standard input and store it in n
+    for (int i = 1;i <= n;i ++)  // loop through n times
+    {
+        int x,q,answer=1;  // declare variables x, q, and answer
+        scanf("%d",&x);  // read an integer from the standard input and store it in x
+        q=sqrt(x)+1;  // calculate the square root of x and add 1 to get the value of q
+        for (int j = 2; j < q; j ++)  // loop through the numbers from 2 to q
+        {
+            if (x%j==0)  // check if x is divisible by j
+                answer+=shuliang(j,x/j);  // call the shuliang function with j and x/j as input and add the return value to answer
+        }
+        printf("%d\n\n",answer);  // print the value of answer to the standard output
+    }
+}
+
+int shuliang(int m,int n)
+{
+    int q,answer=0,y=0;  // declare variables q, answer, and y
+    q=sqrt(n)+1;  // calculate the square root of n and add 1 to get the value of q
+    for (int j = m;j < q;j ++)  // loop through the numbers from m to q
+    {
+        if (n%j==0)  // check if n is divisible by j
+            answer+=shuliang(j,n/j),y=1;  // call the shuliang function with j and n/j as input and add the return value to answer, and set y to 1
+    }
+    if(y==1)  // check if y is 1
+        return answer+1;  // return answer+1 if y is 1
+    else
+        return 1;  // return 1 if y is 0
+}
+```
+
+Part II
+
+This program is designed to calculate the sum of the proper divisors of a given number x. The main function takes an integer n as input, reads n integers x from the standard input, and then prints the sum of the proper divisors of each x.
+
+The shuliang function is a recursive function that calculates the sum of the proper divisors of a given number n. It takes two integers m and n as input, and returns the sum of the proper divisors of n.
+
+In the main function, the shuliang function is called recursively to calculate the sum of the proper divisors of each x. The function uses a loop to iterate through the numbers from 2 to the square root of x, and checks if x is divisible by each number. If x is divisible, the function calls itself recursively with the divisor and the quotient of x, and adds the return value to the answer.
+
+The program uses the concept of proper divisors, which are the divisors of a number except for 1 and the number itself. The shuliang function calculates the sum of the proper divisors of a given number, and the main function prints the sum for each input number.
+
+Overall, this program is designed to demonstrate the concept of proper divisors and how to calculate the sum of the proper divisors of a given number.

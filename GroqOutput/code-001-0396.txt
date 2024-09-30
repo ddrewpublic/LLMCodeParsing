@@ -1,0 +1,60 @@
+Here is the code with developer comments added for each line:
+
+**Part I**
+
+```cpp
+//*****************************************************
+//* ??????????.cpp                             *
+//* ?????????                                       *
+//* ??????2010?12?8?                            *
+//* ?????????????????????                    *
+//*************************************
+
+int answer = 0;  // Initialize answer variable to 0
+int a = 2;  // Set value of 'a' to 2
+
+void f(int, int);  // Declare function f with two integer parameters
+
+int main()  // Main function
+{
+    int n = 0;  // Initialize variable 'n' to 0
+    int i = 0;  // Initialize variable 'i' to 0
+    int data[100] = {0};  // Array of 100 integers initialized to 0
+    cin >> n;  // Read an integer value from standard input and store it in 'n'
+
+    for (i = 0; i < n; i++)
+    {
+        cin >> data[i];  // Read an integer value from standard input and store it in 'data[i]'
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        f(data[i], a);  // Call function f with 'data[i]' and 'a' as parameters
+        cout << answer << endl;  // Print the value of 'answer' followed by a newline character
+        answer = 0;  // Reset 'answer' to 0
+    }
+}
+
+void f(int m, int n)  // Function f with two integer parameters
+{
+    int i = 0;  // Initialize variable 'i' to 0
+
+    if (m == 1)  // Check if 'm' is equal to 1
+    {
+        answer = answer + 1;  // Increment 'answer' by 1
+    }
+
+    for (i = n; i <= m; i++)  // Loop from 'n' to 'm' (inclusive)
+    {
+        if (m % i == 0)  // Check if 'm' is divisible by 'i'
+        {
+            f(m / i, i);  // Recursively call function f with 'm/i' and 'i' as parameters
+        }
+    }
+}
+```
+
+**Part II**
+
+Summary:
+This program implements a function called "f" that finds the smallest number greater than 1 that divides a given number "m" without leaving a remainder. This function is called recursively until the number 1 is reached. The program reads a series of numbers from input and for each number, it calls the function "f" with that number and 2 as parameters. The result is then printed and the 'answer' variable is reset to 0 for the next number.

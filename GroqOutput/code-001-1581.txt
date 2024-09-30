@@ -1,0 +1,42 @@
+**Part I: Code with Comments**
+
+```
+int Digui(int a, int min) {
+    // Initialize a variable to store the result
+    int i, result = 1;
+    // If 'a' is less than 'min', return 0
+    if (a < min) {
+        return 0;
+    }
+    // Loop from 'min' to 'a'
+    for (i = min; i < a; i++) {
+        // If 'a' is divisible by 'i', recursively call Digui with a/i and i
+        if (a % i == 0) {
+            result += Digui(a / i, i);
+        }
+    }
+    // Return the result
+    return result;
+}
+
+int main() {
+    // Declare an array to store numbers and a variable to store the number of inputs
+    int a[1000], n, i;
+    // Read the number of inputs from the user
+    scanf("%d", &n);
+    // Read the inputs and store them in the array
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    // Loop through the array and call Digui with each number and 2
+    for (i = 0; i < n; i++) {
+        printf("%d\n", Digui(a[i], 2));
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C program that calculates the sum of divisors of each number in an array for all numbers from 2 to the given number. The main function reads an array of numbers and their quantities from the user, and then calls the Digui function for each number in the array. The Digui function takes two parameters: the number and the minimum divisor to consider. It calculates the sum of divisors of the given number by recursively calling itself for each divisor and adding it to the total. The Digui function starts from the minimum divisor and checks for divisors up to the given number. The result is returned as the sum of divisors.

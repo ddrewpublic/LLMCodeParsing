@@ -1,0 +1,48 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```
+int main()
+{
+  // Initialize the variable 'mo' to the character 'A'
+  char mo='A';
+  
+  // Declare an array 'a' of size 'ASC' with all elements initialized to 0
+  int a[ASC]={0};
+  
+  // Declare variables 'i', 'j', and 'n' of type int
+  int i,j,n;
+  
+  // Declare a struct 'book' with two fields: 'num' of type int and 'wr' of type char array of size MAX_N+1
+  struct
+  { 
+    int num;
+    char wr[MAX_N+1];
+  }book[MAX_M];
+  
+  // Read the value of variable 'n' from the input
+  scanf("%d",&n);
+  
+  // Loop through each element in the 'book' array
+  for(i=0;i<n;i++)
+  {
+    // Read the value of 'num' and 'wr' for the current element from the input
+    scanf("%d%s",&book[i].num,book[i].wr);
+    
+    // Iterate through each character in the current 'wr' string
+    for(j=0;book[i].wr[j];j++)
+    {
+      // If the count of the current character in the array 'a' is greater than the count of the character 'mo', update 'mo'
+      if(++a[book[i].wr[j]]>a[mo]) mo=book[i].wr[j];
+    }
+  }
+```
+
+**Part II**
+
+Summary:
+
+This code is a solution to a programming problem that involves reading in a list of books and counting the frequency of each character in the titles of the books. The code uses a struct to represent each book, with fields for the book number and the title of the book. It iterates through each book, counting the frequency of each character in the title and keeping track of the character that appears most frequently. Finally, it prints out the most frequently occurring character and the numbers of the books that contain it.
+
+Note: The variable 'ASC' and 'MAX_M' and 'MAX_N' are not defined in the given code. They are expected to be defined elsewhere in the program.

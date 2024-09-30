@@ -1,0 +1,64 @@
+Here is the code with developer comments:
+
+**Part I: Code with comments**
+
+```c
+int f2(int i, int a) {
+    // initialize variables
+    int c, s = 0;
+
+    // loop from i to a/2
+    for(i; i <= a/2; i++) {
+        // check if a is divisible by i
+        if(a % i == 0) {
+            // calculate the quotient c = a/i
+            c = a/i;
+            // check if c is greater than or equal to i
+            if(c >= i) {
+                // recursively call f2 with parameters i and c
+                s = s + f2(i, c);
+            }
+        }
+    }
+    // add 1 to s
+    s = s + 1;
+    // return s
+    return s;
+}
+
+int f(int a) {
+    // initialize variable s to 0
+    int s = 0;
+    
+    // recursive call f2 with parameters 2 and a
+    s = s + f2(2, a);
+    // return s
+    return s;
+}
+
+int main() {
+    // declare variables
+    int n, i, a, b;
+    
+    // read number of test cases
+    scanf("%d", &n);
+    
+    // loop through test cases
+    for(i = 0; i < n; i++) {
+        // read input a
+        scanf("%d", &a);
+        
+        // calculate the result using function f
+        b = f(a);
+        
+        // print the result
+        printf("%d\n", b);
+    }
+    // return 0
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This C program calculates the sum of all numbers from 2 to a given number a, which are also factors of a. The program consists of three functions: `f2`, `f`, and `main`. The `f2` function recursively calculates the sum of factors of a number, while the `f` function is a wrapper function that calls `f2` with the parameters 2 and a. The `main` function reads the number of test cases, loops through the test cases, and calculates the result using the `f` function. The program then prints the result for each test case.

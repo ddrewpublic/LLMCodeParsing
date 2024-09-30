@@ -1,0 +1,49 @@
+Here is the code with developer comments for each line, along with a summary:
+
+**Part I: Code**
+
+```c
+int cal(int y, int x) {
+    // Initialize two integer variables i and sum
+    int i, sum;
+    if (x == 1) return 1; // If x is 1, return 1
+    else {
+        // Initialize sum to 0
+        sum = 0;
+        // Start a loop from y to x
+        for (i = y; i <= x; i++) {
+            // Check if i is a divisor of x and if the result of division is 1 or greater than y
+            if ((x % i == 0) && ((x / i == 1) || (x / i > y))) {
+                // Recursively call the cal function with i and x/i as arguments
+                sum += cal(i, x / i);
+            }
+        }
+        // Return the sum
+        return sum;
+    }
+}
+```
+
+```c
+int main() {
+    // Initialize integer variables n, i, and l
+    int n, i, l;
+    // Read an integer from the user
+    scanf("%d", &n);
+    // Loop n times
+    for (i = 1; i <= n; i++) {
+        // Read an integer from the user
+        scanf("%d", &l);
+        // Print the result of the cal function with arguments 2 and l
+        printf("%d", cal(2, l));
+        // If this is not the last iteration, print a newline
+        if (i != n) printf("\n");
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The code is designed to calculate the sum of all divisors of a given integer, excluding 1 and the integer itself. The `cal` function takes two integer arguments, `y` and `x`, and recursively calculates the sum of all divisors of `x` greater than `y`. The `main` function reads an integer `n` from the user and repeatedly asks for an integer `l` until `n` iterations have been performed. For each `l`, it calls the `cal` function with arguments 2 and `l` and prints the result. The code is intended to be used for calculating the sum of all proper divisors of a given integer, which is a common problem in number theory.

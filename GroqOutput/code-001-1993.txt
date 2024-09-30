@@ -1,0 +1,51 @@
+**Part I**
+```c
+int p=0;
+int factor(int a,int min)
+{
+	// Initialize the sum variable to 0. This sum will be used to store the total number of factors.
+    int sum=0;
+    // If the minimum value (min) is greater than or equal to the input number (a), return 1.
+    // This is because the total number of factors is always at least 1 (the number itself).
+    if(min>=a)return 1;
+    // Loop through all possible factors j starting from min to a/min (inclusive).
+    // Since every factor of a must be less than or equal to a/min, this loop will cover all possible factors.
+    for(int j=min;j<=a/min;j++)
+    {
+        // Check if j is a factor of a by checking if a is divisible by j.
+        if (a%j==0)
+        {
+            // If a is divisible by j, add the number of factors of a/j (excluding j) to the sum.
+            // This is because each factor j is counted multiple times, once for each j's multiples, so we need to exclude j.
+            sum+=factor(a/j,j);
+        }
+    }
+    // Return the total number of factors.
+    return sum;
+}
+int main()
+{
+    // Initialize the number of test cases (n) and the number to calculate its factors (a) to 0.
+    int n=0,a=0;
+    // Read the number of test cases from the input.
+    cin>>n;
+    // Loop through each test case.
+    while(n>0)
+    {
+        // Read the number to calculate its factors from the input.
+        cin>>a;
+        // If the number is less than or equal to 2, its only factor is 1 (the number itself) so print 1.
+        if(a<=2) cout<<1<<endl;
+        // Otherwise, print the total number of factors calculated by the factor function plus 1 (the number itself).
+        else cout<<factor(a,2)+1<<endl;
+        // Decrement the number of test cases.
+        n--;
+    }
+    // Return 0 to indicate the program has finished executing successfully.
+    return 0;
+}
+```
+
+**Part II**
+
+This program calculates the total number of factors for a given number. The number of factors of a number includes 1, the number itself, and all its proper divisors. For example, the factors of 12 are 1, 2, 3, 4, 6, and 12. The program does this by recursively finding the factors of the input number. If the number is less than or equal to 2, it only has one factor (the number itself), so the program prints 1. Otherwise, it uses a recursive function to calculate the total number of factors, which includes the factors of the number's prime factors (excluding 1 and the number itself). This makes the program efficient for calculating the number of factors, especially for larger numbers. The program reads the number of test cases from the input and then loops through each test case, reading the number to calculate its factors and printing the total number of factors.

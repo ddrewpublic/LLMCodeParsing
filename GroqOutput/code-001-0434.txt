@@ -1,0 +1,39 @@
+Here is the code with developer comments added:
+
+**Part I: Code**
+```c
+// Function to count the number of divisors of a given number
+int divi(int n, int i) {
+    int num = 0; // Initialize the variable to store the number of divisors
+    if (n % i == 0) { // Check if 'i' is a divisor of 'n'
+        if (n == i) { // Check if 'i' and 'n' are equal
+            return 1; // Return 1 if 'i' is equal to 'n'
+        }
+        for (int j = 2; j <= i; j++) { // Recursively call the function for all divisors of 'i'
+            num = num + divi(n / i, j); // Add the number of divisors of 'n/i' to 'num'
+        }
+        return num; // Return the total number of divisors
+    } else {
+        return 0; // Return 0 if 'i' is not a divisor of 'n'
+    }
+}
+
+int main() {
+    int n = 0; // Initialize the variable to store the input value
+    int t = 0; // Initialize the variable to store the number of test cases
+    int sum = 0; // Initialize the variable to store the sum of divisors
+    cin >> t; // Read the number of test cases from the input
+    for (int i = 0; i < t; i++) { // Loop for each test case
+        sum = 0; // Reset the sum for each test case
+        cin >> n; // Read the input value for the current test case
+        for (int j = 2; j <= n / 2; j++) { // Loop for all possible divisors of 'n'
+            sum = sum + divi(n, j); // Add the number of divisors of 'n' to 'sum'
+        }
+        cout << sum + 1 << endl; // Print the sum of divisors plus 1 (for 'n' itself)
+    }
+    return 0; // Return 0 to indicate successful execution
+}
+```
+**Part II: Summary**
+
+This program is designed to calculate the sum of divisors for a given number. The `divi` function takes two integers as input, `n` and `i`, and returns the number of divisors of `n` that are less than or equal to `i`. The `main` function reads the number of test cases and for each test case, it reads an integer value and calculates the sum of its divisors using the `divi` function. The sum of divisors plus 1 (for the number itself) is then printed to the output. The program uses recursion to calculate the number of divisors, which can be less efficient for large input values. However, it is a simple and straightforward implementation for small to medium-sized input values.

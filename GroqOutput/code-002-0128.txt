@@ -1,0 +1,77 @@
+Here is the code with developer comments and a 200-word summary:
+
+**Part II: Summary**
+
+This C program is designed to solve a problem involving finding the most frequently occurring uppercase letter in a series of strings. The program takes as input a number `n` followed by `n` pairs of integers and strings. For each pair, the integer represents the frequency of a letter in a particular string, and the string itself contains the letters. The program then iterates through the strings, counting the occurrences of each uppercase letter (from 'A' to 'Z') and keeps track of the letter with the maximum count. Finally, the program prints the most frequent letter and the strings that contain this letter.
+
+**Part I: Code with Comments**
+
+```c
+int main()
+{
+    // Initialize variables
+    int maxc = 0, i, j, n, a[1000], c; // maximum count, indices, number of strings, array for frequencies, count variable
+    char maxp, b[1000][27]; // maximum letter, array for strings
+
+    // Read the number of strings
+    scanf("%d", &n);
+
+    // Read each string and its frequency
+    for(i=0; i<n; i++)
+    {
+        // Read the frequency and string
+        scanf("%d%s", &a[i], b[i]);
+    }
+
+    // Iterate through uppercase letters ('A' to 'Z')
+    for (p='A'; p<='Z'; p++)
+    {
+        // Initialize count for current letter
+        c = 0;
+
+        // Count occurrences of current letter in each string
+        for(i=0; i<n; i++)
+        {
+            for(j=0;;j++)
+            {
+                // If the end of the string is reached, break the loop
+                if(b[i][j] == '\0') break;
+                // If the current character is the same as the current letter, increment the count
+                if(b[i][j] == p)
+                {
+                    c++;
+                }
+            }
+        }
+
+        // Update maximum count and letter if necessary
+        if(c > maxc)
+        {
+            maxc = c;
+            maxp = p;
+        }
+    }
+
+    // Print the maximum letter and count
+    printf("%c\n", maxp);
+    printf("%d\n", maxc);
+
+    // Print the strings that contain the maximum letter
+    for(i=0; i<n; i++)
+    {
+        for(j=0;;j++)
+        {
+            // If the end of the string is reached, break the loop
+            if(b[i][j] == '\0') break;
+            // If the current character is the same as the maximum letter, print the string and break
+            if(b[i][j] == maxp)
+            {
+                printf("%d\n", a[i]);
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+```

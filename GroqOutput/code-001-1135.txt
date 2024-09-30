@@ -1,0 +1,43 @@
+**Part I: Code with Comments**
+```c
+int make(int x,int t) {
+    // Initialize the answer variable to 0
+    int ans = 0, i;
+    // If x is 1, return 1 because the only divisor of 1 is 1
+    if (x == 1) return 1;
+    // Loop through all numbers from t to x
+    for (i = t; i <= x; i++) {
+        // Check if x is divisible by i
+        if (x % i == 0) {
+            // If it is, recursively call make() with x divided by i and i as arguments
+            ans += make(x / i, i);
+        }
+    }
+    // Return the total sum of divisors found
+    return ans;
+}
+
+int main() {
+    // Declare variables
+    int i, k, j, p, n, t, m, x;
+    // Read the number of test cases
+    scanf("%d", &t);
+    // Loop through each test case
+    for (p = 1; p <= t; p++) {
+        // Read the number for which to find divisors
+        scanf("%d", &n);
+        // Calculate the sum of divisors using the make() function
+        x = make(n, 2);
+        // Print the result
+        printf("%d\n", x);
+    }
+}
+```
+
+**Part II: Summary**
+
+The provided code calculates the sum of all proper divisors of a given number up to a certain threshold. The function `make()` is a recursive algorithm that takes an integer `x` and an integer `t` as input. It starts by checking if `x` is 1, in which case it returns 1 since 1 is the only divisor of 1. Then, it loops through all numbers from `t` to `x` and checks if `x` is divisible by each of these numbers. If it is, the function recursively calls itself with `x` divided by the current number and the current number as arguments, and adds the result to the total sum of divisors. Finally, the function returns the total sum of divisors.
+
+The `main()` function is used to control the flow of the program and to input the test cases and the threshold value. It reads the number of test cases from the standard input, loops through each test case, reads the number for which to find divisors, calculates the sum of divisors using the `make()` function, and prints the result.
+
+The code is well-structured and easy to follow, making it suitable for understanding and modifying as needed.

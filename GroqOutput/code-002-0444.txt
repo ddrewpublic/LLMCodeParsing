@@ -1,0 +1,92 @@
+**Part I**
+```
+//****************************************
+//*???????                       **
+//*?????? 1100012763              **
+//*???2011.11.14                     **
+//****************************************
+```
+Developer Comment: This is a comment block with some unnecessary characters and a date. It might be a signature of the developer or a timestamp of the project.
+
+```
+int main() 
+{
+```
+Developer Comment: This line declares the main function of the program, which is the entry point of the program.
+
+```
+    int n , number , i , j , k , t , len , max;
+```
+Developer Comment: This line declares several integer variables: n for the number of inputs, number for storing the input number, i, j, k, and t for loops, len for the length of a string, and max for the maximum frequency of a character.
+
+```
+    int map[26][1000] = {0};
+```
+Developer Comment: This line declares a 2D array (map) of size 26x1000, initialized with all elements as 0. The size 26 corresponds to the 26 letters of the English alphabet.
+
+```
+    char name[27];
+```
+Developer Comment: This line declares a character array (name) of size 27, which is enough to store the names of people with a maximum of 26 characters (plus the null-terminating character).
+
+```
+    cin >> n;
+```
+Developer Comment: This line reads an integer from the standard input and stores it in the variable n.
+
+```
+    for (i = 0; i <= 25; i++)
+        map[i][0] = 0;
+```
+Developer Comment: This loop initializes the first column of the map array to 0 for all indices from 0 to 25.
+
+```
+    for (i = 1; i <= n; i++)
+    {
+        cin >> number >> name;
+        len = strlen(name);
+```
+Developer Comment: This loop reads the number and name of each person from the standard input and stores the length of the name in the variable len.
+
+```
+        for (j = 0; j <= len - 1; j++)
+        {
+            k = name[j] - 'A';
+            map[k][0]++;
+            t = map[k][0];
+            map[k][t] = number;
+        }
+```
+Developer Comment: This loop iterates over each character in the name, converts it to its corresponding alphabet index (0-25), and increments the count in the map array. It also stores the current number in the map array.
+
+```
+    max = 0;
+    for (i = 0; i <= 25; i++)
+    {
+        if (map[i][0] > max)
+        {
+            max = map[i][0];
+            k = i;
+        }
+    }
+```
+Developer Comment: This loop finds the maximum frequency of any character in the map array and stores its corresponding index in the variable k.
+
+```
+    cout << (char)(65 + k) << endl;
+    cout << map[k][0];
+    for (i = 1; i <= map[k][0]; i++)
+        cout << endl << map[k][i];
+```
+Developer Comment: This block of code outputs the character corresponding to the maximum frequency, followed by the frequency itself, and finally the numbers associated with each occurrence of the character.
+
+```
+    return 0;
+}
+```
+Developer Comment: This line returns an integer value from the main function, indicating the successful execution of the program.
+
+**Part II**
+
+Summary:
+This program is designed to store the names of people and their corresponding numbers in a 2D array. It takes the number of inputs (n) and for each input, it reads the name and number, and stores them in the map array. The map array is initialized with the frequency of each character and the numbers associated with it. The program then finds the maximum frequency and outputs the corresponding character and the numbers associated with it.

@@ -1,0 +1,76 @@
+**Part I: Code with Comments**
+
+```c
+void main() {
+  // Define a struct 'b' with two members: an integer 'n' and a character array 'a' of size 26
+  struct b {
+    int n;
+    char a[26];
+  };
+
+  // Declare an array of 999 structs 'b'
+  struct b b[999];
+
+  // Initialize integer variables 'm', 'k', 'i', 'j', and arrays 'c' and 'c'
+  int m, k, i, j, c[26] = {0}, p = 0, q = 0;
+
+  // Declare a character variable 'x'
+  char x;
+
+  // Read an integer from the user and store it in 'm'
+  scanf("%d", &m);
+
+  // Loop 'm' times
+  for (i = 0; i < m; i++) {
+    // Read an integer and a string from the user and store them in the current 'b[i]'
+    scanf("%d%s", &b[i].n, &b[i].a);
+
+    // Initialize a counter 'k'
+    k = c[0];
+
+    // Loop through the characters of the string stored in the current 'b[i].a'
+    for (j = 0; (x = b[i].a[j]) != '\0' && j < 26; j++) {
+      // Increment the count at index 'x-65' in the array 'c'
+      c[x - 65]++;
+    }
+
+    // Find the maximum count in array 'c' and store it in 'k'
+    k = c[0];
+
+    // Find the index of the maximum count in array 'c' and store it in 'p'
+    for (i = 0; i < 26; i++) {
+      if (c[i] > k) {
+        k = c[i];
+        p = i;
+      }
+    }
+
+    // Print the character at index 'p+65' in array 'c'
+    printf("%c\n", p + 65);
+
+    // Print the maximum count 'k'
+    printf("%d\n", c[p]);
+
+    // Initialize a flag 'q'
+    q = 0;
+
+    // Loop through the characters of the string stored in the current 'b[i].a'
+    for (j = 0; (x = b[i].a[j]) != '\0' && j < 26; j++) {
+      // Check if the current character is equal to the character at index 'p+65'
+      if (x == p + 65) {
+        q = 1;
+      }
+    }
+
+    // Check if the flag 'q' is set
+    if (q == 1) {
+      // Print the value of 'n' stored in the current 'b[i]'
+      printf("%d\n", b[i].n);
+    }
+  }
+}
+```
+
+**Part II: Summary**
+
+This code is a solution to a programming problem that requires finding the most frequently occurring letter in a series of strings and printing the letter and its frequency. The code defines a struct 'b' with an integer 'n' and a character array 'a' of size 26, and declares an array of 999 structs 'b'. It then reads an integer 'm' from the user and loops 'm' times, reading an integer and a string for each iteration. The code counts the frequency of each letter in the string and finds the most frequent letter. It then prints the most frequent letter and its frequency, and prints the values of 'n' for strings that contain the most frequent letter. The code uses ASCII values to convert the character values to 0-25 and use them as indices in the frequency array 'c'. The code can be optimized by reducing the number of loops and using more efficient data structures.

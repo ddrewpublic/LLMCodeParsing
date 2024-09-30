@@ -1,0 +1,26 @@
+**Part I**
+
+```c
+int f(int n,int min){
+	// Function f takes two arguments: n and min. It calculates the sum of all proper divisors of n excluding min.
+    int i,result=1; 
+    // Initialize a variable i to store the loop counter and result to 1, as 1 is always a divisor.
+    
+    if(n<min)return 0;
+    // If n is less than min, return 0 because there are no more proper divisors.
+    
+    for(i=min;i<n;i++)
+        // Loop from min to n-1.
+        if(n%i==0)result+=f(n/i,i);
+        // For each number i in the loop, if it is a divisor of n, add the sum of its own proper divisors (excluding i) to the result.
+    return result;
+}
+```
+
+**Part II**
+
+Here is a 200-word summary of the code:
+
+The code is a C program that calculates the sum of all proper divisors of a given number, excluding a minimum value. The function `f` takes two arguments: `n` and `min`. It iterates from `min` to `n-1` and checks if each number `i` is a divisor of `n`. If `i` is a divisor, it calls itself with `n/i` and `i` as arguments, effectively adding the sum of the proper divisors of `n/i` (excluding `i`) to the result. The function returns the total sum of proper divisors.
+
+The `main` function reads input from the user, which is the number of test cases and the test cases themselves. For each test case, it reads a number `a` and prints the sum of its proper divisors (excluding 2) using the `f` function. The program uses `scanf` to read the input and `printf` to print the output.

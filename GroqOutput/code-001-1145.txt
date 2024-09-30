@@ -1,0 +1,49 @@
+**Part I**
+
+```c
+int Factor(int, int); // Function prototype for the Factor function
+int main()
+{
+	// Declare variables
+    int n, a, i;
+    // Read an integer 'n' from the input
+    scanf("%d",&n);
+    // Loop through 'n' times
+    for (i = 1;i <= n;i++)
+    {
+        // Read an integer 'a' from the input
+        scanf("%d",&a);
+        // Call the Factor function to find the factor of 'a' and print it
+        printf("%d\n",Factor(a, 2));
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+int Factor(int a,int p)
+{
+    // Declare variables
+    int i, j, z = 1;
+    // Check if 'a' is less than 'p'
+    if (a < p)
+        z = 0;
+    else
+    {
+        // Initialize a variable 'i' to start the loop from 'p'
+        for (i = p;i <= a;i++)
+        {
+            // Check if 'a' is divisible by 'i'
+            if (a % i == 0)
+            {
+                // Recursive call to the Factor function to find the factor of the divided 'a'
+                z += Factor(a / i, i);
+            }
+        }
+    }
+    // Return the result
+    return z;
+}
+```
+
+**Part II**
+
+This program reads an integer 'n' followed by 'n' integers 'a'. For each integer 'a', it finds the factor of 'a' using the Factor function and prints the result. The Factor function recursively finds the factor of 'a' by checking the divisibility of 'a' with all numbers from 'p' to 'a'. The factor of 'a' is the sum of the factors of 'a' divided by each divisor.

@@ -1,0 +1,73 @@
+**Part I**
+
+```c
+struct book {
+    int num;
+    char ren[26];
+};
+```
+
+* Define a struct called `book` with two members: `num` of type `int` and `ren` of type `char` array of size 26.
+
+```c
+main() {
+    struct book shu[999];
+    int m,i,j,k,max=0,p;
+    int a[26] = {0};
+```
+
+* Define the `main` function.
+* Declare an array `shu` of `999` elements of type `struct book`.
+* Declare five integer variables: `m`, `i`, `j`, `k`, `max` and `p` and initialize `max` to `0`.
+* Declare an integer array `a` of size `26` and initialize all elements to `0`.
+
+```c
+scanf("%d", &m);
+```
+
+* Read an integer from the standard input and store it in the variable `m`.
+
+```c
+for(i=0;i<m;i++) {
+    scanf("%d %s", &shu[i].num, shu[i].ren);
+    for(j=0; shu[i].ren[j] != '\0'; j++)
+        for(k=65; k<91; k++)
+            if(shu[i].ren[j] == k)
+                a[k-65]++;
+}
+```
+
+* Read `m` numbers of books from the standard input.
+* For each book, read an integer and a string, store them in the corresponding elements of the `shu` array.
+* For each character in the book title, increment the corresponding count in the `a` array.
+
+```c
+for(i=0;i<26;i++)
+    if(max<a[i])
+        max=a[i];
+```
+
+* Find the maximum count in the `a` array and store it in the variable `max`.
+
+```c
+for(i=0;i<26;i++)
+    if(max==a[i]) {
+        p=i+65;
+        printf("%c\n%d\n", p, a[p-65]);
+    }
+```
+
+* Find the character corresponding to the maximum count and print it along with its count.
+
+```c
+for(i=0;i<m;i++)
+    for(j=0; shu[i].ren[j] != '\0'; j++)
+        if(p==shu[i].ren[j])
+            printf("%d\n", shu[i].num);
+```
+
+* For each book, check if the character corresponding to the maximum count appears in the book title. If it does, print the book number.
+
+**Part II**
+
+This program reads a number of books and their titles from the standard input. For each book, it counts the frequency of each letter in the title. It then finds the most frequent letter and prints it along with its frequency. Finally, it prints the numbers of all books that have the most frequent letter in their titles.

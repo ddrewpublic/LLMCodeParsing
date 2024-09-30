@@ -1,0 +1,46 @@
+Here is the code with developer comments:
+
+Part I
+```
+int f(int x,int y) {
+    // Base case: if y is equal to x, return 1
+    if(y==x)
+        return 1; 
+    // Base case: if y is greater than x, return 0
+    if(y>x)
+        return 0;
+    // Recursive case: if x is divisible by y, return the sum of the recursive calls
+    if(x%y==0)
+        return f(x,y+1)+f(x/y,y);
+    // Recursive case: if x is not divisible by y, return the recursive call with y incremented by 1
+    else
+        return f(x,y+1);
+}
+```
+
+```
+int main() {
+    // Declare integer variable n and read input value from user
+    int n,x;
+    cin>>n;
+    // Declare integer variables z and i, and initialize i with the value of n
+    int z,i;
+    i=n;
+    // Loop until i becomes 0
+    while(i>0) {
+        // Decrement i by 1
+        i=i-1;
+        // Read input value x from user
+        cin>>x;
+        // Call the function f with parameters x and 2, and assign the result to z
+        z=f(x,2);
+        // Print the value of z to the screen
+        cout<<z<<endl;
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+Part II
+This program is a simple implementation of the Collatz Conjecture, also known as the 3x+1 problem. The conjecture is a mathematical idea proposed by Lothar Collatz in the 1930s, which suggests that starting with any positive integer, repeatedly applying a simple transformation, the sequence will always reach 1. The transformation is: if the number is even, divide it by 2, otherwise, multiply it by 3 and add 1.

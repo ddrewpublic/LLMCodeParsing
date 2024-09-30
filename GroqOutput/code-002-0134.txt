@@ -1,0 +1,59 @@
+**Part I: Code**
+
+```c
+int main()
+{
+    // Define a struct called Book to hold the book id and author
+    struct Book{
+        int id;
+        char zz[26];  // Array of 26 characters to hold the author's name
+    }book[1000];  // Create an array of 1000 Book structs
+
+    // Declare variables
+    int n,i,j,max=0,index;  // Number of books, indices, and maximum frequency
+    int sum[26]={0};  // Array to hold the frequency of each author's letter
+    char author;  // Author with maximum frequency
+
+    // Read the number of books
+    scanf("%d",&n);
+
+    // Read the book information
+    for (i=0;i<n;i++){
+        scanf("%d%s",&book[i].id,&book[i].zz);
+    }
+
+    // Calculate the frequency of each author
+    for (i=0;i<n;i++){
+        for (j=0;book[i].zz[j]!='\0';j++){
+            sum[book[i].zz[j]-'A']++;  // Convert character to 0-based index
+        }
+    }
+
+    // Find the author with maximum frequency
+    for (i=0;i<26;i++){
+        if (sum[i]>max){
+            max=sum[i];
+            author='A'+i;  // Convert 0-based index back to 1-based 'A'...'Z'
+        }
+    }
+
+    // Print the author and maximum frequency
+    printf("%c\n%d\n",author,max);
+
+    // Print the book ids of the author with maximum frequency
+    for (i=0;i<n;i++){
+        for (j=0;book[i].zz[j]!='\0';j++){
+            if (book[i].zz[j]==author){
+                printf("%d\n",book[i].id);
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This program reads information about books, including their IDs and authors, and then finds the author who appeared most frequently among all the books. The program uses a struct called `Book` to represent each book, with the `id` field storing the book's ID and the `zz` field storing the author's name. The program reads the number of books, then iterates through each book to record the frequency of each letter in the author's name. It then finds the author with the highest frequency and prints that author along with their frequency. Finally, the program prints the IDs of all books written by this author.

@@ -1,0 +1,51 @@
+**Part I: Code**
+
+```
+void main()
+{
+    // Declare a struct called book with two members: num (an integer) and name (a character array of size 26)
+    struct book
+    {
+        int num;
+        char name[26];
+    };
+    // Declare four integer variables: m, i, j, and max
+    int m,i,j,max;
+    // Declare an array sum of size 26 all initialized to 0
+    int sum[26]={0};
+    // Read an integer from the standard input and store it in m
+    scanf("%d",&m);
+    // Declare an array of m struct book objects called b
+    struct book b[m];
+    // For each book in the array, read an integer and a string from the standard input
+    // and store them in the corresponding book object
+    for(i=0;i<m;i++)
+        scanf("%d %s",&b[i].num,b[i].name);
+    // For each book in the array, count the frequency of each character in the string
+    // and store it in the sum array
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<strlen(b[i].name);j++)
+            sum[(b[i].name)[j]-'A']++;
+    }
+    // Find the index of the maximum value in the sum array and store it in max
+    max=0;
+    for(i=1;i<26;i++)
+        if(sum[i]>sum[max])max=i;
+    // Print the character represented by the index max (using ASCII values) and its frequency
+    printf("%c\n%d\n",max+'A',sum[max]);
+    // For each book in the array, print the number of the book if the most frequent character is found in its title
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<strlen(b[i].name);j++)
+        {
+            if((b[i].name)[j]==65+max)
+                printf("%d\n",b[i].num);
+        }
+    }
+}
+```
+
+**Part II: Summary**
+
+This program is designed to find the most frequent character in the titles of multiple books and print the numbers of all books that have this character in their title. The program uses a struct to represent a book with an integer and a string for the title. It then reads the titles of the books from the standard input and counts the frequency of each character in each title. It finds the index of the most frequent character and prints its frequency. Finally, it prints the numbers of all books that have this character in their title. The program assumes that the input is well-formed and does not contain any errors.

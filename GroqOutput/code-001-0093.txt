@@ -1,0 +1,43 @@
+**Part I: Code**
+
+```cpp
+/**
+ * author:liucheng
+ * date:2010-10-23 13:04:16
+ * file:factors.cpp
+ */
+int factor(int num,int minA1)
+{
+        int count=0;  // Initialize count variable to 0
+        int sqrtNum;  // Declare variable sqrtNum
+        int i;  // Declare variable i
+        if(num <= minA1)  // If num is less than or equal to minA1, return 0
+                return 0;
+        sqrtNum=(int)sqrt((double)num);  // Calculate and store the square root of num
+        for(i=minA1;i<=sqrtNum;i++)  // Iterate from minA1 to sqrtNum
+                if(num % i == 0)  // If num is divisible by i, count++
+                {
+                        count++;  // Increment count by 1
+                        count+=factor(num/i,i);  // Recursively call factor with num/i and i
+                }
+        return count;  // Return the total count
+}
+int main()
+{
+        int n;  // Declare variable n
+        int num;  // Declare variable num
+        cin>>n;  // Read input integer n
+        while(n -- )  // Loop n times
+        {
+                cin>>num;  // Read input integer num
+                cout<<factor(num,2)+1<<endl;  // Call factor() with num and 2, and print the result + 1
+        }
+        return 0;  // Return 0 to indicate successful execution
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C++ program that calculates the number of factors for a given integer number. The program uses a recursive function called `factor()` to count the number of factors. The function takes two parameters: `num`, the input integer number, and `minA1`, a minimum value for the factors.
+
+The program uses a while loop in the `main()` function to input multiple numbers from the user and calculate their factors. The output for each number is the total count of factors plus one, as the function returns the count of factors up to the square root of the number.

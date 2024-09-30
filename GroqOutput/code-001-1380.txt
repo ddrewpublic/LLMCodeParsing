@@ -1,0 +1,48 @@
+Here is the code with developer comments, separated into two parts:
+
+**Part I: Code**
+
+```cpp
+//*************************************
+//* ????1.cpp *
+//* ??????1200012844 *
+//* ?????2012?11?28? *
+//* ????????? *
+//**************************************
+int factor(int, int); // Function declaration for factor()
+
+int main()
+{
+    int n, i, a; // Declare variables n, i, and a
+    cin >> n; // Read integer n from standard input
+    for ( i = 0; i < n; i ++ )
+    {
+        cin >> a; // Read integer a from standard input
+        cout << factor(a, 2) << endl; // Call function factor() with arguments a and 2 and print result
+    }
+    return 0; // Return 0 to indicate successful execution
+}
+
+int factor(int a, int b)
+{
+    int c, i; // Declare variables c and i
+    int num = 1; // Initialize num to 1
+    if (a == 1) // Base case: if a is 1, return 0
+        return 0;
+    c = sqrt(a); // Compute square root of a
+    for ( i = b; i <= c; i++ ) // Loop from b to the square root of a
+    {
+        if ( a % i == 0 ) // Check if a is divisible by i
+            num += factor(a / i, i); // Recursively call factor() and add result to num
+    }
+    return num; // Return the result
+}
+```
+
+**Part II: Summary**
+
+This C++ program calculates the number of factors for a given integer. The program uses a recursive function, `factor()`, to compute the number of factors for an input integer `a`. The function takes two arguments, `a` and `b`, where `b` is a starting value for the factor computation.
+
+The `main()` function reads an integer `n` from the standard input and then reads and processes `n` integers `a`. For each `a`, it calls the `factor()` function with `a` and `b` (initially set to 2) and prints the result.
+
+The `factor()` function calculates the number of factors for `a` by recursively computing the number of factors for `a` divided by each integer `i` from `b` to the square root of `a`, and summing the results. The function returns the computed number of factors.

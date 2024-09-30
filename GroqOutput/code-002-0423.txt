@@ -1,0 +1,28 @@
+Here is the code with developer comments added:
+
+**Part I: Code**
+
+```c
+int a[26][1000]; // 2D array to store the frequency of each character
+int ai[26]; // array to store the count of each character
+void func()
+{
+    int k,i,len; // variables to store the input integer and string length
+    char str[27]; // input string
+    scanf("%d %s",&k,str); // read an integer and a string as input
+    len=strlen(str); // calculate the length of the string
+    for(i=0;i<len;i++) // loop through each character in the string
+    {
+        a[str[i]-'A'][ai[str[i]-'A']]=k; // store the integer and increment the count
+        ai[str[i]-'A']++; // increment the count of the current character
+    }
+}
+```
+
+**Part II: Summary and Explanation**
+
+This C program is designed to process a series of input strings, each consisting of a single integer followed by a string of alphabetic characters. The program keeps track of the frequency of each character in the input strings and finally outputs the most frequently occurring character, its frequency, and the integers associated with each occurrence of this character.
+
+The `func` function is responsible for processing each input string. It reads the integer and string as input, calculates the length of the string, and then loops through each character in the string. For each character, it updates the frequency count in the `ai` array and stores the integer in the corresponding element of the `a` 2D array.
+
+In the `main` function, the program initializes the `a` and `ai` arrays to zero, reads the number of input strings as input, and then calls the `func` function for each input string. After processing all input strings, the program finds the index of the most frequently occurring character, outputs this character, its frequency, and the integers associated with its occurrences.

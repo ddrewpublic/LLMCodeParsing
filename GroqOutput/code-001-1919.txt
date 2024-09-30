@@ -1,0 +1,48 @@
+Here is the code with developer comments for each line, with a 200-word summary:
+
+**Part I**
+```c
+int sum=0;// Initialize a variable to store the sum of divisors
+void count(int N,int i)
+{
+    if(N==1) sum++;// If N is 1, increment sum
+    while(i<=N){
+        if(N%i==0) count(N/i,i);// If N is divisible by i, recursively call count with N/i and i
+        i++;// Increment i
+    }
+    return ;
+}
+```
+
+**Part II**
+
+Summary:
+This code calculates the sum of divisors for each number up to a certain range, specified by the user. The `count` function is a recursive function that checks if a number is divisible by another number and if it is, it calls itself with the new number and the same divisor. The `main` function reads the number of test cases from the user, and for each test case, it reads a number, calculates its sum of divisors using the `count` function, and prints the result.
+
+```c
+int main()
+{
+    int T=0;// Initialize a variable to store the number of test cases
+    cin >> T;
+    while(T--)
+    {
+        int N=0;// Initialize a variable to store the current number
+        cin >> N;
+        int i=2,total=1;// Initialize variables to store the divisor and the sum of divisors
+        while(i<=N/2)
+        {
+            if(N%i==0)
+            {
+                sum = 0;
+                count(N/i,i);
+                total+=sum;
+            }// If N is divisible by i, calculate the sum of divisors
+            i++;
+        }
+        cout<<total<<endl;
+    }
+    return 0;
+}
+```
+
+Note: There is a variable named `sum` in the `main` function which is not initialized in the given code. In the code provided, it seems like the intention is to use the same `sum` variable from the function `count`, but it's not clear if this is the intended behavior.

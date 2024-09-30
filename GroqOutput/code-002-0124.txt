@@ -1,0 +1,49 @@
+**Part I**
+
+```c
+void function(int,int); // declares a function with two integer parameters
+int main() {
+   char s[200][100]; // declares a 2D array of characters to store strings
+   int n[100],h[100],maxh[100]; // declares three arrays of integers
+   int a; // declares an integer variable
+   int i,j,k,p; // declares four integer variables
+   int num,maxnum=0; // declares two integer variables and initializes maxnum to 0
+   char c; // declares a character variable
+   scanf("%d",&a); // reads an integer from the user and stores it in a
+   for(i=0;i<a;i++) {
+      scanf("%d%s",&n[i],s[i]); // reads an integer and a string from the user
+   }
+```
+
+**Part II**
+
+Summary:
+
+This is a C program that reads a number of lines, where each line consists of an integer and a string. It then counts the occurrence of each uppercase letter in the strings and keeps track of the ones with the maximum count. Finally, it prints the maximum occurring letter and the lines corresponding to that letter. The program uses arrays to store the integer values, string values, and counts of uppercase letters.
+
+```c
+   for(j='A';j<='Z';j++) {
+       num=0; // resets the count of uppercase letters for each iteration
+       for(i=0;i<a;i++) {
+          for(k=0;k<strlen(s[i]);k++) {
+             if(s[i][k]==j) {
+                 num++; // increments the count if the current character matches the uppercase letter
+                 h[num]=n[i] ; // stores the line number in the array
+             }
+          }
+       }
+       if(num>maxnum) {
+          c=j; // updates the maximum occurring letter
+          maxnum=num; // updates the maximum count
+          for(p=1;p<=maxnum;p++) {
+             maxh[p]=h[p]; // copies the corresponding line numbers into the maxh array
+          }
+       }
+   }
+   printf("%c\n%d\n",c,maxnum); // prints the maximum occurring letter and its count
+   for(p=1;p<=maxnum;p++) {
+       printf("%d\n",maxh[p]); // prints the lines corresponding to the maximum occurring letter
+   }
+   return 0; // ends the program execution
+}
+```

@@ -1,0 +1,58 @@
+Here is the code with developer comments, a summary, and the requested headers:
+
+**Part I: Code with comments**
+
+```c
+int ys(int af,int bf) {
+    // Initialize variable s to store the result
+    int s;
+    
+    // If af is less than bf, set s to 0
+    if(af<bf)
+        s=0;
+    
+    // If af is equal to bf, set s to 1
+    if(af==bf)
+        s=1;
+    
+    // If af is greater than bf, set s to 1 and recursively call ys() for af/i and i
+    if(af>bf)
+    {
+        s=1;
+        for(int i=af/2;i>=bf;i--) {
+            // Check if af is divisible by i
+            if(af%i == 0)
+            {
+                // Recursively call ys() for af/i and i
+                s+=ys(af/i,i);
+            }
+        }
+    }
+    // Return the value of s
+    return s;
+}
+
+int main() {
+    // Read an integer n from the user
+    int n;
+    cin >> n;
+    
+    // Read and process the integers one by one
+    int p;
+    while(cin>>p)
+    {
+        // Print the result of ys(p, 2)
+        cout << ys(p,2) << endl;
+    } 
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The program calculates the number of divisors for a given integer in a recursive manner. The `ys()` function takes two integers `af` and `bf` as input and returns the number of divisors of `af` greater than or equal to `bf`.
+
+The function uses a nested loop to iterate through the possible divisors of `af`, starting from `af/2` down to `bf`. For each divisor `i`, it checks if `af` is divisible by `i`. If it is, it recursively calls itself with `af` divided by `i` and `i`, and adds the result to the total count.
+
+The `main()` function reads an integer `n` from the user and then reads and processes `n` integers one by one. For each integer `p`, it calls the `ys()` function with `p` and `2` as arguments and prints the result.

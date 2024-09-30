@@ -1,0 +1,43 @@
+Here is the output with developer comments:
+
+**Part I**
+
+```
+int num(int a,int b,int c)// Function to calculate the sum of all divisors of a number starting from a and up to c
+{
+    int sum=0,j;// Initialize sum and j
+    if(a>c)return 0;// If a is greater than c, return 0
+    if(b==1)return 1;// If b is 1, return 1
+    for(j=a;j<=c;j++)// Iterate from a to c
+        if(c%j==0)sum=sum+num(j,b-1,c/j);
+    return sum;
+}
+
+int main()
+{
+    int k,n,m,e=0,i;// Initialize e and related variables
+    cin>>n;
+    while(e<n)
+    {
+        cin>>m;
+        k=0;// Initialize k to 0
+        int f=m;
+        for(i=2;i<=f;i++)// Iterate from 2 to m
+            if(f%i==0)
+            {
+                k++;
+                f=f/i;
+                i=1;// Reset i to 1
+            }
+        cout<<num(1,k,m)<<endl;// Call the num function and print the result
+        e++;
+    }
+    return 0;
+}
+```
+
+**Part II**
+
+This code is designed to calculate the sum of all divisors of a given number, and then use this sum to solve a more complex problem. The main function takes an integer n as input, and then repeatedly reads an integer m until n inputs have been processed. For each input m, the code calculates the number of divisors (k) of m, and then calls the num function with the minimum divisor (1), the number of divisors (k), and the original number m. The num function recursively calculates the sum of all divisors of m, starting from the minimum divisor and up to m.
+
+The output of the program is the sum of all divisors for each input number, separated by newlines. The developer comments provided above clarify the purpose of each line of code and the logic behind the functions and loops.

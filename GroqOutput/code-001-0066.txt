@@ -1,0 +1,30 @@
+**Part I: Code with Developer Comments**
+
+```c
+int N, A; // declares two integer variables: N and A
+int acSearch(int n, int i) {  // defines a recursive function named acSearch
+    int ret = 0;  // initializes a variable ret to store the result
+    if(n == 1) ret = 1;  // base case: if n is 1, ret is 1
+    else for(; i <= n; ++ i)  // loop from i to n
+        if(n%i == 0)  // if n is divisible by i
+            ret += acSearch(n/i, i);  // recursive call with n/i and i
+    return ret;  // returns the result
+}
+
+int main() {  // defines the main function
+    scanf("%d", &N);  // reads an integer value from input and stores it in N
+    for(; N --;) {  // loop until N becomes 0
+        scanf("%d", &A);  // reads an integer value from input and stores it in A
+        printf("%d\n", acSearch(A, 2));  // calls acSearch with A and 2, and prints the result
+    }
+    return 0;  // returns 0 to indicate successful program execution
+}
+```
+
+**Part II: 200-word Summary**
+
+The code is designed to find the number of prime factors for a given integer A. The `acSearch` function is a recursive function that takes two parameters: `n` (the input integer) and `i` (the current divisor). It uses a loop to check if `n` is divisible by `i`, and if so, it recursively calls itself with `n/i` and `i` as the new parameters. The base case is when `n` is 1, in which case the function returns 1.
+
+In the `main` function, the program reads in an integer `N` and then loops until `N` becomes 0. For each iteration, it reads in an integer `A` and calls the `acSearch` function with `A` and 2 as the parameters. The result is then printed to the console.
+
+The code uses the algorithm of recursive iteration to find the prime factors of a given integer. It's effective in finding the prime factors of small to medium-sized integers, but may be less efficient for larger integers due to the overhead of recursive function calls.

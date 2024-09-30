@@ -1,0 +1,23 @@
+**Part I**
+
+```
+int f(int,int);      // Declare a function named f that takes two integer parameters and returns an integer value
+int main( )      // Start of the main program
+{      // Start of the main function
+    int n,i,a[50];      // Declare three integer variables n, i, and an array a with 50 elements
+    cin >>n;      // Read an integer value from the input stream and assign it to n
+    for(i=0;i<n;i++){
+		cin >>a[i];      // Read an integer value from the input stream and assign it to the current element of array a
+		cout <<f(a[i],2) <<endl;      // Call the function f with a[i] and 2 as parameters and print the result
+	}
+    return 0;      // Return 0 to indicate successful execution
+}      // End of the main function
+```
+
+**Part II**
+
+This code is a C++ program that calculates the sum of the divisors of a given integer, excluding the number itself. The function `f(int n, int p)` calculates the sum of divisors of `n` that are greater than or equal to `p`. 
+
+The `main` function reads an integer `n` and an array of integers from the input stream, and then calls the `f` function for each element of the array with `p` set to 2. The result of each call is printed to the output stream.
+
+In the `f` function, if `n` is less than `p`, the function returns 0. Otherwise, it iterates from `p` to `n` and for each divisor `m`, it checks if `n` is divisible by `m`. If it is, the function adds `m` to the sum if `m` is less than `n`. If `m` is equal to `n`, it adds 1 to the sum. Finally, it returns the sum of the divisors.

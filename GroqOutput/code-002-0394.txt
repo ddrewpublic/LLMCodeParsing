@@ -1,0 +1,59 @@
+**Part I: Code with Developer Comments**
+
+```c
+// Define a struct to hold author information
+struct author{
+    char num[4]; // Character array to hold author number (4 characters)
+    char str[27]; // Character array to hold author string (26 characters + null terminator)
+};
+
+// Main function
+int main(int argc, char* argv[])
+{
+    int m, i, j, zimu[26] = {0}, x, max; // Initialize variables
+    char p; // Initialize a character variable
+    scanf("%d", &m); // Read number of authors from input
+    
+    // Dynamically allocate memory for 'm' authors
+    struct author *auth = (struct author *)malloc(sizeof(struct author) * m);
+
+    for (i = 0; i < m; i++) {
+        scanf("%s %s", auth[i].num, auth[i].str); // Read author number and string from input
+    }
+    
+    // Calculate the frequency of each character in each author's string
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < 26; j++) {
+            x = auth[i].str[j] - 65; // Convert character to integer index (A=0, B=1, ..., Z=25)
+            zimu[x]++; // Increment the frequency of the character
+        }
+    }
+    
+    max = zimu[0]; // Initialize the maximum frequency
+    for (i = 0; i < 26; i++) {
+        if (zimu[i] > max) { // Find the character with the maximum frequency
+            max = zimu[i];
+            p = i; // Store the index of the character
+        }
+    }
+    
+    printf("%c\n%d\n", p + 65, max); // Print the character with the maximum frequency and its frequency
+    
+    // Find and print the authors who have the character with the maximum frequency
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < 26; j++) {
+            if (auth[i].str[j] == p + 65) { // Check if the character is present in the author's string
+                printf("%s\n", auth[i].num); // Print the author's number
+            }
+        }
+    }
+    
+    // Free dynamically allocated memory
+    free(auth);
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The program reads a number of authors and their strings from input. For each author, it calculates the frequency of each character in the string and finds the character with the maximum frequency. It then prints the character with the maximum frequency and its frequency, as well as the authors who have the character with the maximum frequency. The program uses a struct to hold author information and dynamically allocates memory for the authors. The character frequency is calculated by subtracting 65 from the ASCII value of each character to get its integer index, and then incrementing a corresponding element in the `zimu` array. The maximum frequency and the corresponding character are found by iterating through the `zimu` array.

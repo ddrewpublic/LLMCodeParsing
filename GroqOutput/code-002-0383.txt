@@ -1,0 +1,76 @@
+**Part I: Code with comments**
+
+```c
+#include
+struct stu{
+  // Define a struct called stu with two fields: int num and char id[26]
+  int num;
+  char id[26];
+}a[999]; // Create an array of 999 structs of type stu
+
+struct aut{
+  // Define a struct called aut with two fields: char wri and int sum
+  char wri;
+  int sum;
+}b[26]; // Create an array of 26 structs of type aut
+
+int main(){
+  // Initialize variables
+  int n,i,j,k,t,m=0;
+  // Initialize a for loop to iterate over the array b
+  for(i=0;i<26;i++){
+    b[i].wri='A'+i; // Set the value of wri in each element of b to a letter from A to Z
+    b[i].sum=0; // Initialize the sum field to 0
+  }
+  // Read the number of students
+  scanf("%d",&n);
+  // Loop over each student
+  for(i=0;i<n;i++){
+    // Read the student's number and ID
+    scanf("%d",&a[i].num);
+    scanf("%s",a[i].id);
+  }
+  // Loop over each writer
+  for(j=0;j<26;j++){
+    // Loop over each student
+    for(i=0;i<n;i++){
+      // Loop over each character in the student's ID
+      for(k=0;k<26;k++){
+        // Check if the character matches the writer
+        if(b[j].wri==a[i].id[k]){
+          // Increment the writer's sum if a match is found
+          b[j].sum++;
+        }
+      }
+    }
+  }
+  int max=b[0].sum; // Initialize the maximum sum
+  for(j=0;j<26;j++){
+    // Check if the current sum is greater than the maximum sum
+    if(max<b[j].sum){
+      // Update the maximum sum
+      max=b[j].sum;
+      // Store the writer's index
+      m=j;
+    }
+  }
+  // Print the writer with the maximum sum
+  printf("%c\n%d\n",b[m].wri,max);
+  // Loop over each student
+  for(i=0;i<n;i++){
+    // Loop over each character in the student's ID
+    for(k=0;k<26;k++){
+      // Check if the character matches the writer
+      if(a[i].id[k]==b[m].wri){
+        // Print the student's number
+        printf("%d\n",a[i].num);
+      }
+    }
+  }
+  return 0;
+}
+```
+
+**Part II: Summary**
+
+This program is designed to analyze the writing habits of students. It uses two structures, `stu` and `aut`, to store information about the students and writers, respectively. The program first initializes an array of 26 writers, each with a unique letter and a sum field initialized to 0. It then reads the number of students and their IDs, and loops over each student to find matches with the writers. The writer with the maximum sum is then printed, along with the numbers of the students who matched that writer. The program aims to identify the most prolific writer among the students.

@@ -1,0 +1,82 @@
+**Part I: Code with Developer Comments**
+
+```c
+int main()
+{
+    // Define a structure to hold book information
+    struct book
+    {
+        int num;
+        char writer[26];
+    }bookn[999];
+
+    // Define a structure to hold author information
+    struct zuozhe
+    {
+        char w;
+        int count;
+    }zuozhen[26];
+
+    // Initialize variables
+    int n, i;
+    scanf("%d", &n);  // Read the number of books
+
+    // Initialize the author structure
+    for(i=0; i<26; i++)
+    {
+        zuozhen[i].w = 'A' + i;  // Initialize the author's name with uppercase letters
+        zuozhen[i].count = 0;  // Initialize the count of books written by each author to 0
+    }
+
+    int h = 0;
+    int m, j;
+    for(i=0; i<n; i++)
+    {
+        // Read the book information
+        scanf("%d %s", &bookn[i].num, bookn[i].writer);
+        m = strlen(bookn[i].writer);  // Get the length of the book title
+
+        // Count the frequency of each author's name in the book title
+        for(j=0; j<m; j++)
+        {
+            h = bookn[i].writer[j] - 'A';  // Convert the character to uppercase and calculate the author's index
+            zuozhen[h].count++;  // Increment the count of books written by the author
+        }
+    }
+
+    // Find the author who wrote the most books
+    struct zuozhe a;
+    a = zuozhen[0];  // Initialize the author who wrote the most books as the first author
+    for(i=1; i<26; i++)
+    {
+        if(a.count < zuozhen[i].count)  // If a author has written more books than the current author
+            a = zuozhen[i];  // Update the author who wrote the most books
+    }
+
+    printf("%c\n", a.w);  // Print the author who wrote the most books
+    printf("%d\n", a.count);  // Print the number of books written by the author
+
+    int t;
+    for(i=0; i<n; i++)
+    {
+        t = strlen(bookn[i].writer);  // Get the length of the book title
+        for(j=0; j<t; j++)
+        {
+            if(bookn[i].writer[j] == a.w)  // If the author's name is found in the book title
+                printf("%d\n", bookn[i].num);  // Print the book number
+        }
+    }
+}
+```
+
+**Part II: Summary**
+
+This C program is designed to analyze a list of books and determine the author who wrote the most books. The program uses two structures: `struct book` to hold book information and `struct zuozhe` to hold author information.
+
+The program first reads the number of books from the input and initializes the author structure with 26 authors, each with a count of 0.
+
+It then reads the book information, including the book number and title, and counts the frequency of each author's name in the title. The program updates the author structure with the count of books written by each author.
+
+The program then finds the author who wrote the most books by iterating through the author structure and updating the author with the highest count.
+
+Finally, the program prints the author who wrote the most books, the number of books they wrote, and the book numbers of the books they wrote. The output is in the format of uppercase letters and numbers, with each book number on a new line.

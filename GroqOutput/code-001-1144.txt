@@ -1,0 +1,53 @@
+**Part I: Code with Developer Comments**
+
+```c
+int main()
+{
+    // Declare a function called count that takes two integers as parameters
+    int count(int x, int y);
+    // Declare integer variables i, j, n, and arrays a and b
+    int i, j, n, a[100], b[100];
+    // Read an integer value for n
+    scanf("%d", &n);
+    // Read n integer values and store them in array a
+    for(i=1; i<=n; i++){
+        scanf("%d", &a[i]);
+    }
+    // Initialize array b with zeros
+    for(i=1; i<=n; i++){
+        // For each integer in array a, count the number of factors it has
+        b[i]=0;
+        for(j=2; j<=a[i]; j++){
+            // Add the result of calling function count with parameters a[i] and j to array b
+            b[i]+=count(a[i], j);
+        }
+    }
+    // Print the values in array b
+    for(i=1; i<=n; i++){printf("%d\n", b[i]);}
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+int count(int x, int y)
+{
+    // Initialize a counter variable c to 0
+    int c=0, k;
+    // If x is equal to y, increment counter c
+    if(x==y){c=1;}
+    // If x is not divisible by y, set counter c to 0
+    if(x%y!=0){c=0;}
+    // If x is divisible by y and is not equal to y
+    if(x!=y&&x%y==0){
+        // Recursively call function count with parameters x/y and k, starting from y and decrementing k
+        for(k=y; k>=2; k--){
+            c+=count((x/y), k);
+        }
+    }
+    // Return the counter value
+    return(c);
+}
+```
+
+**Part II: Summary**
+
+This code is a C program that calculates the number of factors for each integer in an input array. The program takes an integer input 'n' and reads 'n' integer values. For each integer 'a[i]', it calculates the number of factors 'count' and stores the result in an array 'b'. The function 'count' recursively counts the number of factors by checking if 'a[i]' is divisible by 'y' and if so, recursively calls itself with 'a[i]/y' and a decreasing range of 'k' values. The program then prints the calculated factors for each integer in the array.

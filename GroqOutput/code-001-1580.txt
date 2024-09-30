@@ -1,0 +1,46 @@
+**Part I: Code**
+
+```
+int minf(int p, int min);
+int main(){
+    int n, i, k, p, zs[20000] = {0};
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &p);
+        //for (min = 2; min <= (int)sqrt(p); min++) {
+        //    if (p % min == 0) {
+        //        zs[i] = minf(p, 2);
+        //        //printf("%d\n", minf(p, min));
+        //    }
+        //}
+        zs[i]++;
+    }
+    for (i = 0; i < n - 1; i++) {
+        printf("%d\n", zs[i]);
+    }
+    printf("%d", zs[n - 1]);
+    //scanf("%d", &n);
+    return 0; 
+}
+int minf(int p, int min){
+    int x = 0, i;
+    i = min;
+    for (i; i <= (int)sqrt(p); i++) {
+        if (p % i == 0) {
+            x += minf(p / i, i) + 1;
+        }
+    }
+    
+    return x;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C program that calculates the minimum number of factors required for a given set of positive integers. The program uses a recursive function `minf` to find the minimum number of factors for each integer in the set.
+
+The main function takes an integer `n` as input, which represents the number of integers in the set. It then reads `n` integers from the standard input using `scanf`. For each integer `p`, it calls the `minf` function with the initial minimum value set to 2.
+
+The `minf` function takes two parameters: the integer `p` and the initial minimum value `min`. It returns the minimum number of factors required for `p`. The function does this by iteratively dividing `p` by the current minimum value `i` as long as `i` is a factor of `p`. Each division increases the minimum number of factors by 1, and the process repeats until `i` exceeds the square root of `p`.
+
+The program then prints the minimum number of factors for each integer in the set, with the exception of the last integer, which is printed without a newline.

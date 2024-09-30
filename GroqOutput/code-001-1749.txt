@@ -1,0 +1,54 @@
+**Part I**
+
+```c
+int DFS(int ,int );
+
+int main()
+{
+	// Declare a variable q to store the number of tests
+	int q;
+	// Read the value of q from the input
+	cin>>q;
+	// Loop through each test case
+	for(int i=0;i<q;i++)
+	{
+		// Declare a variable n to store the number of nodes in the current test case
+		int n;
+		// Declare a variable h to initialize it to 0
+		int h=0;
+		// Read the value of n from the input
+		cin>>n;
+		// Calculate the depth of the DFS tree and print it
+		cout<<DFS(n,n)<<endl;
+	}
+	return 0;
+}
+```
+
+```c
+int DFS(int n,int p)
+{
+	// Initialize the answer to 0
+	int ans=0;
+	if(n==1)return 1;
+	// Loop from 2 to p (inclusive) to find the divisors of n
+	for(int i=2;i<=p;i++)
+	{
+		// Check if i is a divisor of n
+		if(n%i==0)
+		{
+			// Recursively call DFS on the quotient of n and i to include the subtrees
+			ans=ans+DFS(n/i,i);
+		}
+	}
+	return ans;
+}
+```
+
+**Part II**
+
+Summary:
+
+The code provided is a C++ implementation of the divisibility sequence problem using Depth-First Search (DFS). The program reads a series of inputs, where each input is a positive integer N, and calculates the value of the DFS tree. The main function iterates through each input, calling the DFS function for each value of N, and prints the result. The DFS function explores all possible divisors of N, incrementing the result by the sum of the subtrees formed by each divisor, and returns the final sum.
+
+The DFS function starts by initializing the result to 0 and checking if N is equal to 1, in which case it returns 1 (since the DFS tree for N=1 consists of a single node). For N greater than 1, the function loops from 2 to p (inclusive) and checks if each i (from 2 to p) is a divisor of N. If i is a divisor, the function recursively calls itself on the quotient of N and i, passing i as a parameter to include the subtrees.

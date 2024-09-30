@@ -1,0 +1,50 @@
+Here is the code with developer comments and a 200-word summary:
+
+**Part I: Code**
+
+```c
+int factor(int N, int min) {
+    // Initialize the result variable to 1
+    int result = 1, i;
+    // Check if N is less than min, if so return 0
+    if (N < min) {
+        return 0;		
+    }	
+    // Loop through numbers from min to N-1
+    for (i = min; i < N; i++) {
+        // Check if N is divisible by i
+        if (N % i == 0) {
+            // Recursively call the function with N/i and i
+            result += factor(N / i, i);	  	
+        }		
+    }
+    // Return the result
+    return result;
+}
+
+main() {
+    // Initialize variables
+    int n = 0, i = 0, x = 0, y = 0;
+    // Read the number of inputs
+    scanf("%d", &n);
+    // Loop through inputs
+    for (i = 0; i < n; i++) {
+        // Read the current input
+        scanf("%d", &x);
+        // Calculate the factor of x starting from 2
+        y = factor(x, 2);
+        // Print the result
+        printf("%d\n", y);	
+    }
+    // Return 0 to indicate successful execution
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C program that calculates the sum of all integers that divide a given number without leaving a remainder. The program takes an integer `n` as input and then reads `n` more integers, calculating the sum of their divisors for each.
+
+The `factor` function is a recursive function that takes two integers, `N` and `min`, as input. It initializes a variable `result` to 1, which will store the sum of the divisors. The function then loops through numbers from `min` to `N-1`, checking if `N` is divisible by each number. If it is, the function recursively calls itself with `N/i` and `i`, adding the result to `result`. The function returns the total sum of divisors found.
+
+The `main` function reads the input `n` and then iterates `n` times, reading each input number `x` and calculating its sum of divisors using the `factor` function. The results are then printed to the console.

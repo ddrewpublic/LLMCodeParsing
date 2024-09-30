@@ -1,0 +1,84 @@
+**Part I**
+```
+int sum[50];
+int i;
+int main()
+{
+	void digui(int x, int y);
+```
+* Declaration of a global array `sum` to store the sum of divisors for each number.
+
+```
+int n;
+int j[50],m[50];
+```
+* Declaration of three integer arrays: `n` to store the number of elements, `j` to store the possible divisors, and `m` to store the input numbers.
+
+```
+scanf("%d",&n);
+```
+* Read the number of elements `n` from the input.
+
+```
+for(i=0;i<n;i++)
+{	
+	scanf("%d",&m[i]);
+	sum[i]=0;
+```
+* Read each number `m[i]` from the input and initialize a variable `sum[i]` to 0.
+
+```
+	for (j[i]=2;j[i]*j[i]<=m[i];j[i])
+	{
+		if(m[i]%j[i]==0)
+		{
+			sum[i]++;
+			digui(j[i],m[i]/j[i]);
+		}
+	}
+```
+* Iterate through the possible divisors `j[i]` from 2 to the square root of `m[i]`. If `m[i]` is divisible by `j[i]`, increment the `sum[i]` and recursively call the `digui` function with `j[i]` and `m[i]/j[i]`.
+
+```
+	printf("%d\n",sum[i]+1);
+```
+* Print the number of divisors for `m[i]` (including 1 and the number itself) adding 1 to `sum[i]`.
+
+```
+return 0;
+}
+```
+* End of the `main` function and return 0 to indicate successful execution.
+
+**void digui(int x, int y)**
+
+```
+int s;
+```
+* Declaration of a local integer variable `s` to store the possible divisor.
+
+```
+for(s=x; s*s<=y; s++) 
+{
+```
+* Iterate through the possible divisors `s` from `x` to the square root of `y`.
+
+```
+	if(y%s==0) 
+	{
+```
+* If `y` is divisible by `s`, increment the `sum[i]` and recursively call the `digui` function with `s` and `y/s`.
+
+```
+		sum[i]++;
+		digui(s,y/s);
+	}
+}
+```
+* End of the `digui` function.
+
+**Part II**
+
+This code is a simple implementation of the Sieve of Eratosthenes algorithm to calculate the sum of divisors for a given set of numbers. The `digui` function is used recursively to find the divisors of a number. The `main` function reads the number of elements and each number, then iterates through the possible divisors for each number, incrementing the `sum` array and recursively calling the `digui` function.
+
+The output of the program will be the number of divisors for each input number, including 1 and the number itself. This code can be used to find the sum of divisors for a set of numbers, which can be useful in various mathematical and programming applications.

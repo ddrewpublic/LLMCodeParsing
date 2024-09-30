@@ -1,0 +1,52 @@
+**Part I**
+
+```c
+int shi(int a)
+{
+      // Calculate the square root of the input number 'a'
+      int b=sqrt(a);
+      for(int i=2;i<=b;i++)
+      {
+           // Check if 'a' is divisible by any number from 2 to its square root
+           if(a%i==0)return 0; // If 'a' is not a prime number, return 0
+       }
+      return 1; // If 'a' is a prime number, return 1
+}
+```
+
+```c
+int shu(int m,int k)
+{
+      // Initialize a counter 'a' to store the number of proper divisors of 'm'
+      int a=1;
+      for(int j=k;j<=sqrt(m);j++)
+     {
+            // Check if 'm' is divisible by 'j' and 'm/j' is greater than or equal to 'k'
+            if(m%j==0&&m/j>=k)
+            {
+                 // Increment the counter 'a' and recursively call the function shu()
+                 a++;
+                 if(shi(m/j)==0)a+=shu(m/j,j)-1; // If 'm/j' is not a prime number, add its number of divisors minus 1 to 'a'
+            }
+     }
+     return a;
+}
+```
+
+```c
+int main()
+{
+  // Read the number of test cases 'n'
+  int n;
+  scanf("%d",&n);
+  for(int i=1;i<=n;i++)
+ {
+     // Read the number 'm' for each test case
+     int m,a;
+     scanf("%d",&m);
+     // Print the number of proper divisors of 'm' that are greater than or equal to 'k' (in this case, 2)
+     printf("%d\n",shu(m,2));
+ }
+return 0;
+}
+```

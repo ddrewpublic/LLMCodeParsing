@@ -1,0 +1,47 @@
+Here is the code with developer comments and a summary:
+
+**Part I**
+```
+void main()
+{
+    // Declare a struct called 'b' that has two members: an integer 'num' and a character array 'str' of length 27.
+    struct b
+    {
+        int num;
+        char str[27];
+    }b[100];
+
+    // Declare several integer variables: 'n' to store the number of elements, 'i' and 'm' for loops, 'j' for a nested loop, 'max' to store the maximum value, and 'nmax' to store the index of the maximum value.
+    int n,i,m,j,max,nmax;
+
+    // Declare an array 'a' of size 26 to store the count of each character.
+    int a[26]={0};
+
+    // Read the number of elements 'n' from the input.
+    scanf("%d",&n);
+
+    // Loop through each element 'i' of the array 'b'.
+    for(i=0;i<n;i++)
+    {
+        // Read the number 'num' and string 'str' for each element 'i' from the input.
+        scanf("%d %s",&b[i].num,b[i].str);
+
+        // Calculate the length 'm' of the string 'str' for each element 'i'.
+        m=strlen(b[i].str);
+
+        // Loop through each character 'j' of the string 'str' for each element 'i'.
+        for(j=0;j<m;j++)
+        {
+            // Increment the count of the character at index 'j' in the array 'a'.
+            a[b[i].str[j]-65]++;
+        }
+    }
+```
+
+**Part II**
+
+Summary:
+The code is a solution to a problem where it reads a list of strings and their corresponding numbers, then it finds the most frequent character in the strings and prints the indices of the strings that contain this character.
+
+After reading the number of elements 'n' from the input, the code loops through each element 'i' of the array 'b'. For each element 'i', it reads the number 'num' and string 'str' from the input, then it calculates the length 'm' of the string 'str'. The code then loops through each character 'j' of the string 'str' and increments the count of the character in the array 'a'.
+Finally, it finds the index 'nmax' of the maximum value in the array 'a', prints the character at index 'nmax' and its count, and then loops through each string 'str' again to print the indices of the strings that contain the most frequent character.

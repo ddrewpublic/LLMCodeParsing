@@ -1,0 +1,69 @@
+**Part I: Code with Developer Comments**
+
+```c
+int main()
+{
+    // Function prototype for the recursive function 'brea'
+    int brea(int a, int min);
+
+    // Declaration of variables
+    int i, n, a;
+
+    // Read the number of inputs from the user
+    scanf("%d", &n);
+
+    // Loop through each input and call the 'brea' function
+    for (i = 1; i <= n; i++)
+    {
+        // Read each input value
+        scanf("%d", &a);
+
+        // Print the result of the 'brea' function
+        printf("%d\n", brea(a, 2));
+    }
+}
+
+int brea(int a, int min)
+{
+    // Initialize the result variable
+    int result = 1;
+
+    // Declaration of a variable 'i'
+    int i;
+
+    // Base cases
+    if (a < min)
+        return (0);
+    else if (a == min)
+        return (1);
+
+    // Recursive case
+    else
+    {
+        // Loop from 'min' to 'a'
+        for (i = min; i < a; i++)
+        {
+            // Check if 'a' is divisible by 'i'
+            if (a % i == 0)
+            {
+                // Recursively call 'brea' with 'a/i' and 'i' as arguments
+                result = result + brea(a / i, i);
+            }
+        }
+        // Return the final result
+        return (result);
+    }
+}
+```
+
+**Part II: Summary**
+
+The provided code is a C program that solves the problem of finding the number of divisors for a given integer. The program uses a recursive function `brea` to achieve this. 
+
+The function `brea` takes two integer arguments, `a` and `min`, where `a` is the input number and `min` is the minimum divisor. The function returns the number of divisors of `a`. 
+
+The program first reads the number of inputs from the user and then iterates through each input. For each input, it calls the function `brea` with the input value and 2 as arguments, and prints the result. 
+
+The function `brea` uses a combination of base cases and recursive calls to calculate the number of divisors. The base cases are when `a` is less than `min` or when `a` is equal to `min`, in which case the function returns 0 and 1 respectively. 
+
+In the recursive case, the function loops from `min` to `a`, checks if `a` is divisible by the current number, and if so, recursively calls itself with `a/i` and `i` as arguments. The results of these recursive calls are added to the result variable, which is finally returned.

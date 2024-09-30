@@ -1,0 +1,34 @@
+**Part I**
+
+```
+int f(int a, int x)
+{
+    // Initialize a variable count to 1
+    int count = 1;
+    // Initialize a variable i
+    int i;
+    // Start a loop from x to a
+    for(i = x; i < a; i++)
+    {
+        // If a is divisible by i, increment count and recursively call the function
+        if(a % i == 0)
+            count += f(a / i, i);
+    }
+    // If i is equal to a, return count
+    if(i == a)
+        return count;
+    // Else, return 0
+    else
+        return 0;
+}
+```
+
+**Part II**
+
+Summary:
+
+The code is a C program that calculates the sum of the divisors of each number from 1 to the user-input number. It does this by implementing a recursive function `f` that takes two parameters: `a`, the number for which to calculate the sum of divisors, and `x`, the starting point for the divisor search. The function iterates from `x` to `a`, and for each number `i` that is a divisor of `a`, it recursively calls itself with `a` divided by `i` and `i` as parameters. The function returns the sum of the divisors.
+
+The `main` function reads input from the user, one number at a time, and calls the `f` function with `a` as the input number and 2 as the starting point for the divisor search. If the input number is 1 or 2, the function returns 1, as these numbers have only one and two divisors respectively. Otherwise, it prints the sum of the divisors calculated by the `f` function.
+
+The program can be used to calculate the sum of the divisors of a set of numbers, making it useful for solving certain mathematical problems.

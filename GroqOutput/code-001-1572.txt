@@ -1,0 +1,51 @@
+**Part I**
+
+Here is the code with developer comments for each line:
+
+```c
+int f(int x, int y) {
+    // Function f takes two integer parameters, x and y, and returns an integer
+    int a, n = 1;
+    // Initialize a variable a and n to 1
+    for (a = y; a <= sqrt(x); a++) {
+        // Loop through all numbers from y to the square root of x
+        if (x % a == 0) {
+            // Check if x is divisible by a
+            n += f(x / a, a);
+            // If x is divisible by a, recursively call f with x divided by a and a as arguments
+        }
+    }
+    return n;
+    // Return the total count of divisors
+}
+
+int main() {
+    // Main function
+    int m, i;
+    // Declare variables m and i
+    scanf("%d", &m);
+    // Read an integer from the user and store it in m
+    int x[m], n[m];
+    // Declare arrays of size m for x and n
+    for (i = 0; i < m; i++) {
+        // Loop through each element in the array
+        scanf("%d", &x[i]);
+        // Read an integer from the user and store it in x[i]
+        n[i] = f(x[i], 2);
+        // Calculate the count of divisors for each x[i] and store it in n[i]
+    }
+    for (i = 0; i < m; i++) {
+        // Loop through each element in the array
+        printf("%d\n", n[i]);
+        // Print the count of divisors for each x[i]
+    }
+    return 0;
+    // Return 0 to indicate successful execution
+}
+```
+
+**Part II**
+
+This code calculates the count of divisors for each integer in an array within a range from 2 to the square root of the integer. The function `f` takes an integer `x` and an integer `y` as arguments and returns the count of divisors for `x` that are greater than or equal to `y`. The `main` function reads an array of integers from the user and calculates the count of divisors for each integer using the `f` function. The results are then printed to the console.
+
+The time complexity of this code is O(n*sqrt(n)) where n is the integer value. This is because for each integer in the array, we are recursively calling the `f` function up to the square root of the integer.

@@ -1,0 +1,46 @@
+Here is the code with developer comments and a summary:
+
+**Part I: Code with comments**
+
+```
+int countt; // global variable to count the number of factors
+
+void f(int p, int q) {
+    // recursive function to find factors of a number
+    for (int m = p; m <= sqrt(q); m++) {
+        // iterate from p to sqrt(q)
+        if (q % m == 0) {
+            // if q is divisible by m, increment the count and recurse
+            countt++;
+            f(m, q / m);
+        }
+    }
+}
+
+int main() {
+    int n;
+    // read the number of test cases
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        // read the input number
+        int num;
+        cin >> num;
+        countt = 0; // reset the count for each test case
+        for (int k = 2; k <= sqrt(num); k++) {
+            // iterate from 2 to sqrt(num)
+            if (num % k == 0) {
+                // if num is divisible by k, increment the count and recurse
+                countt++;
+                f(k, num / k);
+            }
+        }
+        // print the count (plus 1, since we start counting from 1)
+        cout << countt + 1 << endl;
+    }
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+This code calculates the number of factors for a given set of numbers. The recursive function `f` takes two parameters, `p` and `q`, where `p` is the starting point to search for factors and `q` is the number to find factors for. The function increments a global variable `countt` for each factor found and recursively calls itself with the discovered factors. In the `main` function, the code reads the number of test cases `n`, then iterates over each test case, reading an input number and calculating its factors using the `f` function. The count of factors is printed for each test case.

@@ -1,0 +1,61 @@
+Here is the code with developer comments for each line, with a 200-word summary:
+
+**Part I: Code**
+
+```c
+int number(int m, int x) {
+    // Declare local variables
+    int a, b, c, n, l, k, r;
+    // Calculate the square root of m
+    k = (int)sqrt(m);
+    // Check if x is greater than m
+    if (x > m) {
+        // If true, return 0
+        return 0;
+    } else if (x > k) {
+        // If true, return 1
+        return 1;
+    } else {
+        // Initialize l to 1
+        l = 1;
+        // Iterate from x to k
+        for (a = x; a <= k; a++) {
+            // Check if m is divisible by a
+            if (m % a == 0) {
+                // If true, recursively call number with m/a and a
+                l = l + number(m / a, a);
+            }
+            else {
+                // If false, do nothing
+            }
+        }
+        // Return the value of l
+        return l;
+    }
+}
+
+main() {
+    // Declare local variables
+    int n, a;
+    // Read input n
+    scanf("%d", &n);
+    // Iterate from 1 to n
+    for (a = 1; a <= n; a++) {
+        // Read input m
+        int m, b;
+        scanf("%d", &m);
+        // Call the number function with m and 2
+        b = number(m, 2);
+        // Print the result
+        printf("%d\n", b);
+    }
+}
+```
+
+**Part II: Summary**
+
+This code is designed to find the number of divisors for a given input number `m`. The `number` function takes two parameters, `m` and `x`, and returns the number of divisors of `m` that are greater than or equal to `x`. The function uses a recursive approach to find the divisors, calculating the square root of `m` to reduce the search range.
+
+The `main` function reads input `n` and then iterates from 1 to `n`, reading input numbers `m` and calling the `number` function with `m` and 2 to find the number of divisors of `m` that are greater than or equal to 2. The result is then printed to the console.
+
+Overall, this code demonstrates a basic approach to finding the number of divisors of a given number, with a focus on using recursive functions to simplify the calculation process.

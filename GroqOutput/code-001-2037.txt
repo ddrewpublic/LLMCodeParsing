@@ -1,0 +1,65 @@
+**Part I: Code with comments**
+
+```c
+int f(int q, int x)
+{
+    // If q is less than x, then we have a special condition
+    if(q < x)
+    {
+        int i, k, p, sum;
+        k = 0; sum = 0; p = 0;
+        // Check for divisors of x from 2 to x/2
+        for(i = 2; i <= x/2; i++)
+            if(x % i == 0) k = k + 1;
+        // If x has no divisors other than 1 and itself, return 1
+        if(k == 0) return 1;
+        else
+        {
+            // Check for divisors of x from 2 to sqrt(x)
+            for(i = 2; i <= sqrt(x); i++)
+            {
+                if(x % i == 0)
+                {
+                    // If the divisor is less than q, skip it
+                    if(i < q) continue;
+                    else
+                    {
+                        // Recursively call the function to find the sum of divisors
+                        sum = sum + f(i, x/i);
+                    }
+                }
+            }
+            // Add 1 to the sum (for x itself as a divisor)
+            return sum + 1;
+            p = 0;
+            sum = 0;
+        }
+    }
+    else
+    {
+        // If q is equal to x, return 1
+        if(q == x) return 1;
+        else
+            return 0;
+    }
+}
+
+int main()
+{
+    int n, i, x, sum, p;
+    p = 0;
+    sum = 0;
+    scanf("%d", &n);
+    for(i = 1; i <= n; i++)
+    {
+        scanf("%d", &x);
+        sum = f(2, x);
+        printf("%d\n", sum);
+    }
+    return 0;
+}
+```
+
+**Part II: Summary**
+
+The code implements a function `f(q, x)` that calculates the sum of all divisors of `x` excluding `q` and `x` itself. The function uses recursion to find the sum of divisors. If `q` is less than `x`, it checks for divisors of `x` from 2 to `sqrt(x)` and recursively calls itself to find the sum of divisors. If `q` is equal to `x`, it returns 1. The `main` function reads input from the user, calls the `f` function for each input, and prints the result. The function is designed to work with prime numbers and other composite numbers.

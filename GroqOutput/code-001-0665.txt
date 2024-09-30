@@ -1,0 +1,70 @@
+**Part I: Code with Comments**
+
+```
+// Function declaration to return the total number of prime factors for a given number
+int fenjie(int, int);
+
+// Main function to read input and call the fenjie function for each number
+int main()
+{
+    // Declare variables to store the number of times to process and the number to process
+    int times, k, num;
+
+    // Read the number of times to process from the standard input
+    cin >> times;
+
+    // Loop through each number to process
+    for (k = 1; k <= times; k++)
+    {
+        // Read the number to process from the standard input
+        cin >> num;
+
+        // Call the fenjie function to get the total number of prime factors and print the result
+        cout << fenjie(num, 1) << endl;
+    }
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+// Recursive function to count the total number of prime factors for a given number
+int fenjie(int x, int y)
+{
+    // Declare a variable to store the total count of prime factors
+    int i, a = 1;
+
+    // Base case for numbers less than y, return 0
+    if (x < y) return 0;
+
+    // Base case for numbers equal to y, return 1
+    if (x == y) return 1;
+
+    // Case for numbers greater than y, recursively count prime factors
+    if (x > y)
+    {
+        // Special case for y = 1
+        if (y == 1)
+        {
+            // Iterate through numbers from y+1 to x, count prime factors
+            for (i = y + 1; i <= x; i++)
+            {
+                if (x % i == 0) a += fenjie(x / i, i);
+            }
+        }
+        else
+        {
+            // Iterate through numbers from y to x, count prime factors
+            for (i = y; i <= x; i++)
+            {
+                if (x % i == 0) a += fenjie(x / i, i);
+            }
+        }
+        // Return the total count of prime factors
+        return a;
+    }
+}
+```
+
+**Part II: Summary**
+
+This code is designed to count the total number of prime factors for a given number. The `fenjie` function is a recursive function that takes two integers, `x` and `y`, as input. It returns the total number of prime factors for `x` excluding `y`. The `main` function reads the number of times to process and the numbers to process from the standard input and calls the `fenjie` function for each number, printing the result. The `fenjie` function recursively counts the prime factors by dividing the number by divisors and calling itself with the quotient and the divisor. The base cases are numbers less than `y`, numbers equal to `y`, and numbers greater than `y`. The code is designed to be efficient and scalable for large input numbers.

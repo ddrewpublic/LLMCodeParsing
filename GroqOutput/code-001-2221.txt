@@ -1,0 +1,42 @@
+**Part I**
+
+Here is the code with developer comments:
+
+```c
+int w = 1; // Initialize a variable 'w' to 1
+int f(int x) // Function to calculate the sum of divisors of 'x'
+{
+    int z = 1, y, v = 0; // Initialize variables 'z', 'y', and 'v'
+    for (y = w + 1; y <= sqrt(x); y++) // Loop through numbers from 'w' + 1 to the square root of 'x'
+    {
+        if (x % y == 0) // Check if 'x' is divisible by 'y'
+        {
+            z = z + f(x / y); // Add the sum of the divisors of 'x' / 'y' to 'z'
+            v++; // Increment 'v'
+            w = y; // Update 'w' to 'y'
+        }
+    }
+    if (v == 0)
+        z = 1;
+    return z; // Return the sum of the divisors
+}
+main() // The main function
+{
+    int n, u = 0, a; // Initialize variables 'n', 'u', and 'a'
+    scanf("%d", &n); // Read the number of test cases
+    do // Loop through the test cases
+    {
+        scanf("%d", &a); // Read the number
+        printf("%d\n", f(a)); // Calculate and print the sum of the divisors
+        u++; // Increment 'u'
+        w = 1; // Reset 'w' to 1
+    }
+    while (u != n); // Loop until 'u' is equal to 'n'
+}
+```
+
+**Part II**
+
+Summary:
+
+This is a C program that calculates the sum of divisors for each number from 1 to a specified number 'n'. The `f` function calculates the sum of divisors for a given number 'x'. It iterates from 'w' + 1 to the square root of 'x', checking for divisors. If a divisor is found, it recursively calls itself with the quotient of 'x' and the divisor, adding the result to the sum. The main function reads the number of test cases 'n', and then for each test case, it reads a number, calculates the sum of divisors, and prints the result. The variable 'w' is reset to 1 after each calculation.

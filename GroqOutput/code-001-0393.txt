@@ -1,0 +1,27 @@
+Here is the code with developer comments added for each line:
+
+**Part I: Code**
+
+```c
+int s=0,z=2;// Initialize two variables, s and z, to 0 and 2 respectively
+
+void number(int x,int y)
+{    // Define a function called number that takes two integers, x and y, as parameters
+    int i;
+	if(x==1) 
+	{
+		s=s+1;
+	}// If x is equal to 1, increment the value of s by 1
+	for(i=y;i<=x;i++)
+	{
+		if(x%i==0) 
+		{ 
+			number(x/i , i);
+		}// If x is divisible by i, recursively call the function with the quotient of x and i, and i as new values for x and y
+	}
+}
+```
+
+**Part II: Summary**
+
+This code is a C++ program that calculates the sum of all divisors for a given set of numbers. The program first initializes two variables, s and z, to 0 and 2 respectively. It then defines a function called number that takes two integers, x and y, as parameters. This function checks if x is equal to 1 and increments the value of s by 1 if true. It then recursively calls itself with the quotient of x and i, and i as new values for x and y, for all numbers from y to x, checking if x is divisible by i at each step. The main function reads a number n from the input, and for each number a from 1 to n, it calls the number function with a and z as parameters, and then prints the value of s. Finally, it resets the value of s to 0 for the next iteration.

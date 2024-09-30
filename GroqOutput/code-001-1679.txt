@@ -1,0 +1,39 @@
+Here is the code with developer comments:
+
+**Part I**
+
+```
+int num = 0; // initialize variable num to 0
+int judge1(int n)
+{
+    int i;
+    if(n==2||n==3||n==5) // if n is 2, 3, or 5, return 1
+    {
+        return 1;
+    }
+    if(n==4) // if n is 4, return 0
+    {
+        return 0;
+    }
+    for(i=2;i*i<n;i++) // iterate from 2 to sqrt(n) - 1
+    {
+        if(n%i==0) // if n is divisible by i, return 0 and break
+        {
+            return 0;
+            break;
+        }
+    }
+    if(i*i>n) // if i is greater than sqrt(n), return 1
+    {
+        return 1;
+    }
+}
+```
+
+**Part II**
+
+This code is a prime factorization program that takes an integer as input and outputs the number of distinct prime factors it has. The `judge1` function is used to check if a number is prime, and the `divide` function recursively finds the prime factors of a given number.
+
+Here's a summary of the code:
+
+This program uses a recursive function `divide` to find the prime factors of a given number. The function takes two integer parameters, `n` and `d`, where `n` is the number to be divided and `d` is the current divisor. The function iterates from `d` to the square root of `n`, checking if `n` is divisible by each divisor. If it is, the function increments a counter `num` and recursively calls itself with the quotient `n/i` and the updated divisor `d`. The function returns 0 if a divisor is found, indicating that the number is not prime. The `judge1` function is used to check if a number is prime, and the main function uses this function to determine the number of distinct prime factors of each input number.

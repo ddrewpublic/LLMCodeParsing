@@ -1,0 +1,65 @@
+Part I:
+
+```c
+// declare an integer variable 'a'
+int a;
+
+// initialize variables 'm' to 0 and 's' to 1
+int m=0,s=1;
+
+void temp(int b,int k,int c)
+{
+	for(int i=k;i<=b;i++)// start iterating from 'k' to 'b'
+	{
+		// check if 'b' is divisible by 'i'
+		if(b%i==0)
+		{
+			// divide 'b' by 'i' and update 'b'
+			b=b/i;
+			// calculate the new value of 's'
+			s=s*i;
+			// update the value of 'k' to 'i'
+			k=i;
+			if(s==c)
+			{
+				// increment 'm' if 's' equals 'c'
+				m++;
+			}
+			else
+			{
+				// recursive call to 'temp' with updated values
+				temp(b,k,c);
+				// divide 's' by 'i' and update 'b' by multiplying it with 'i'
+				s=s/i;
+				b=b*i;
+			}
+		}
+	}
+}
+
+// main function
+int main()
+{
+	// declare integer variables 'n', 'a', and 'i'
+	int n,a,i;
+	// read 'n' from input
+	cin>>n;
+	for(i=0;i<n;i++)
+	{
+		// read 'a' from input
+		cin>>a;
+		// call the function 'temp' with 'a', 2, and 'a' as parameters
+		temp(a,2,a);
+		// print the value of 'm'
+		cout<<m<<endl;
+		// reset 'm' to 0
+		m=0;
+	}
+	
+	return 0;
+}
+```
+
+Part II:
+
+This code calculates the number of times a number (input by the user) is divisible by all its prime factors. It uses a recursive function `temp` to iterate through the prime factors of the input number. The function calculates the product of the prime factors until it reaches the input number or encounters a factor that is not a prime factor. It then increments a counter `m` whenever the product of the prime factors matches the input number. The final count is printed for each input number.
