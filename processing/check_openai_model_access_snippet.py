@@ -29,7 +29,7 @@ Notes
 -----
 - On any unexpected exception (e.g., permissions or network), this function
   **fails open** and returns True after printing a warning, so it does not block
-  your program’s execution. This preserves the original behavior.
+  program’s execution. This preserves the original behavior.
 """
 
 from __future__ import annotations

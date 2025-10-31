@@ -16,7 +16,6 @@ Key behaviors:
 Notes:
     - This script assumes `gcc` and (optionally) `pkg-config` are installed and available on PATH.
     - The compile timeout is fixed at 20 seconds per file.
-    - No style or code changes have been made—only comments and docstrings added.
 """
 
 import subprocess
