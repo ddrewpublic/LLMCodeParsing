@@ -1,4 +1,15 @@
-/.env
-/.idea
-/.venv
-/Archive
+# ---- local secrets
+.env
+
+# ---- archive, output & testing directories
+_archive/
+_testing/
+processing/_failed_builds
+processing/_ignore
+_output
+
+# ---- Python & IDE cruft
+__pycache__/
+*.py[cod]
+.idea
+.venv

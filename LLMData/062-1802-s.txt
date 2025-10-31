@@ -1,5 +1,0 @@
-This C++ program takes a string input, and replaces consecutive spaces after the first space with '['.
-
-It uses a flag to detect the first space and replaces subsequent spaces with '['.
-
-Finally, it prints the modified string, omitting any '[' characters, thus compressing multiple spaces into one.

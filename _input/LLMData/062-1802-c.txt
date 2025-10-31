@@ -1,0 +1,36 @@
+int main() {
+    // Declare variables for indexing (i) and flagging (flag)
+    int i = 0, flag = 0;
+    // Declare a character array to store the input word
+    char word[100];
+    
+    // Read a line of input from the user, allowing up to 200 characters
+    cin.getline(word, 200);
+    
+    // Create a pointer to traverse the word array
+    char *p = word;
+    
+    // Loop through the characters of the input string until the null terminator is found
+    for (i = 0; *(p + i) != '\0'; i++) {
+        // Check if the current character is a space and the flag is unset
+        if (flag == 0 && *(p + i) == ' ')
+            flag = 1;  // Set the flag when the first space is encountered
+        
+        // If the flag is set and another space is found, replace it with '['
+        else if (flag == 1 && *(p + i) == ' ')
+            *(p + i) = '[';
+        
+        // If a non-space character is encountered, reset the flag
+        else if (flag == 1 && *(p + i) != ' ')
+            flag = 0;
+    }
+    
+    // Loop through the characters again to print the modified string, ignoring '[' characters
+    for (i = 0; *(p + i) != '\0'; i++) {
+        // Print characters except '['
+        if (*(p + i) != '[')
+            cout << *(p + i);  
+    }
+    
+    return 0;
+}

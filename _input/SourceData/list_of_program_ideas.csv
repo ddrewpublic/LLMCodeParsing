@@ -1,0 +1,101 @@
+ID,Category,Task
+1,Automation,Rename files in bulk based on a pattern
+2,Automation,Convert file formats (e.g. .csv to .json)
+3,Automation,Automatically organize files into folders by type/date
+4,Automation,Download images from a list of URLs
+5,Automation,Resize or compress images in a folder
+6,Automation,Monitor a folder and alert when new files are added
+7,Automation,Clean up temporary or duplicate files
+8,Automation,Batch rename photo EXIF data
+9,Automation,Extract zip files in a folder recursively
+10,Automation,Generate QR codes for text or URLs
+11,Data/Text Processing,Count word frequencies in a document
+12,Data/Text Processing,Summarize a text file using basic NLP
+13,Data/Text Processing,Visualize data from a CSV as charts
+14,Data/Text Processing,Extract email addresses from a block of text
+15,Data/Text Processing,Convert markdown to HTML
+16,Data/Text Processing,Search and replace patterns in text files
+17,Data/Text Processing,Parse and reformat logs
+18,Data/Text Processing,Find and delete blank or near-duplicate lines in a text file
+19,Data/Text Processing,Compare two documents and highlight differences
+20,Data/Text Processing,Analyze and plot trends in time-series data
+21,Web/APIs,Scrape product prices from a website
+22,Web/APIs,Check website uptime and response speed
+23,Web/APIs,Send daily weather updates via email
+24,Web/APIs,Create a tiny REST API with a few endpoints
+25,Web/APIs,Monitor website changes and notify if any
+26,Web/APIs,Download and archive tweets from a user
+27,Web/APIs,Get the latest news headlines via RSS
+28,Web/APIs,Fetch and summarize a Wikipedia article
+29,Web/APIs,Convert webpage HTML to plain text
+30,Web/APIs,Check for broken links on a website
+31,Games/Fun,Text-based adventure game
+32,Games/Fun,Simple 2D platformer or maze game
+33,Games/Fun,Hangman or word guessing game
+34,Games/Fun,Memory match game (flip and find pairs)
+35,Games/Fun,Command-line trivia quiz
+36,Games/Fun,Tic-tac-toe with a basic AI
+37,Games/Fun,Random writing prompt generator
+38,Games/Fun,Sudoku solver or generator
+39,Games/Fun,Virtual dice roller or coin flipper
+40,Games/Fun,ASCII art image viewer
+41,AI/ML,Predict house prices with linear regression (small dataset)
+42,AI/ML,Classify handwritten digits with MNIST + scikit-learn
+43,AI/ML,Spam or ham classifier using Naive Bayes
+44,AI/ML,Sentiment analysis on a tweet
+45,AI/ML,Recommend movies using cosine similarity
+46,AI/ML,Generate simple poetry with a Markov chain
+47,AI/ML,Face detection with OpenCV
+48,AI/ML,Chatbot using keyword-based logic
+49,AI/ML,AI that plays rock-paper-scissors
+50,AI/ML,Text-to-speech from user input
+51,Automation,Backup important folders to a zip file
+52,Automation,Automatically send birthday emails
+53,Automation,Track time spent on different applications
+54,Automation,Auto-fill forms using stored templates
+55,Automation,Set up a Pomodoro timer
+56,Automation,Extract metadata from video/audio files
+57,Automation,Merge multiple PDFs into one
+58,Automation,Split a PDF into separate pages
+59,Automation,Create a to-do list CLI tool
+60,Automation,Record your screen and save it as a video
+61,Data/Text Processing,Detect and correct common grammar errors
+62,Data/Text Processing,Convert Roman numerals to integers and vice versa
+63,Data/Text Processing,Generate a word cloud from a text file
+64,Data/Text Processing,Create ASCII bar charts from numbers
+65,Data/Text Processing,Translate text between languages using an API
+66,Data/Text Processing,Count lines of code in a project directory
+67,Data/Text Processing,Sort and deduplicate a contact list
+68,Data/Text Processing,Convert YAML to JSON and back
+69,Data/Text Processing,Build a mini regular expression tester
+70,Data/Text Processing,Simulate and visualize dice roll probabilities
+71,Web/APIs,Build a URL shortener
+72,Web/APIs,Get real-time cryptocurrency prices
+73,Web/APIs,Translate web pages on the fly
+74,Web/APIs,Scrape Google search results
+75,Web/APIs,Get public transportation arrival times
+76,Web/APIs,Track the ISS location in real-time
+77,Web/APIs,Monitor stock prices and plot trends
+78,Web/APIs,Generate random user profiles using an API
+79,Web/APIs,Simulate browser actions (e.g. fill a form and submit)
+80,Web/APIs,Generate memes using an image API
+81,Games/Fun,Generate random names or fantasy characters
+82,Games/Fun,Create a Mad Libs generator
+83,Games/Fun,Build a Simon Says memory game
+84,Games/Fun,"Make a command-line ""Who Wants to Be a Millionaire?"" game"
+85,Games/Fun,Procedurally generate a maze
+86,Games/Fun,Text-based blackjack or poker
+87,Games/Fun,Conway’s Game of Life
+88,Games/Fun,Animate bouncing balls with Pygame
+89,Games/Fun,Turn keyboard input into sound (basic piano)
+90,Games/Fun,Build a “Pet Simulator” with ASCII output
+91,AI/ML,Generate color palettes from an image
+92,AI/ML,Recommend songs based on mood tags
+93,AI/ML,Generate pixel art using cellular automata
+94,AI/ML,Basic object tracking in a video
+95,AI/ML,Convert handwriting to typed text (OCR)
+96,AI/ML,Train a chatbot on a small custom dataset
+97,AI/ML,Predict next words using simple n-gram model
+98,AI/ML,Basic pose estimation with a webcam
+99,AI/ML,Create a mini visual novel engine
+100,AI/ML,Build a minimal recommender system (books & movies etc.)
